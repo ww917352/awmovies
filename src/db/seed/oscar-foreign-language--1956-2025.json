@@ -1,0 +1,1791 @@
+{
+  "slug": "oscar-foreign-language",
+  "organization": "Academy Awards",
+  "name": "Academy Award for Best International Feature Film (formerly Best Foreign Language Film)",
+  "wins": [
+    {
+      "year": 1957,
+      "editionLabel": "29th Academy Awards",
+      "title": "La Strada",
+      "releaseYear": 1954,
+      "directors": [
+        "Federico Fellini"
+      ],
+      "studios": [
+        "Ponti-De Laurentiis Cinematografica"
+      ],
+      "mainCast": [
+        "Giulietta Masina",
+        "Anthony Quinn",
+        "Richard Basehart",
+        "Aldo Silvani",
+        "Marcella Rovere"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/La_Strada",
+      "letterboxdUrl": "https://letterboxd.com/film/la-strada/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1958,
+      "editionLabel": "30th Academy Awards",
+      "title": "Nights of Cabiria",
+      "releaseYear": 1957,
+      "directors": [
+        "Federico Fellini"
+      ],
+      "studios": [
+        "Dino De Laurentiis Cinematografica"
+      ],
+      "mainCast": [
+        "Giulietta Masina",
+        "François Périer",
+        "Franca Marzi",
+        "Dorian Gray",
+        "Amedeo Nazzari"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Nights_of_Cabiria",
+      "letterboxdUrl": "https://letterboxd.com/film/nights-of-cabiria/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1959,
+      "editionLabel": "31st Academy Awards",
+      "title": "Mon Oncle",
+      "releaseYear": 1958,
+      "directors": [
+        "Jacques Tati"
+      ],
+      "studios": [
+        "Specta-Films",
+        "Gray-Film",
+        "Alter-Films",
+        "Film del Centauro",
+        "Cady-Films"
+      ],
+      "mainCast": [
+        "Jacques Tati",
+        "Jean-Pierre Zola",
+        "Adrienne Servantie",
+        "Alain Bécourt",
+        "Betty Schneider"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Mon_Oncle",
+      "letterboxdUrl": "https://letterboxd.com/film/mon-oncle/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1960,
+      "editionLabel": "32nd Academy Awards",
+      "title": "Black Orpheus",
+      "releaseYear": 1959,
+      "directors": [
+        "Marcel Camus"
+      ],
+      "studios": [
+        "Dispat Films",
+        "Gemma",
+        "Tupan Filmes"
+      ],
+      "mainCast": [
+        "Breno Mello",
+        "Marpessa Dawn",
+        "Fausto Guerzoni",
+        "Lourdes de Oliveira"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Black_Orpheus",
+      "letterboxdUrl": "https://letterboxd.com/film/black-orpheus/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1961,
+      "editionLabel": "33rd Academy Awards",
+      "title": "The Virgin Spring",
+      "releaseYear": 1960,
+      "directors": [
+        "Ingmar Bergman"
+      ],
+      "studios": [
+        "Svensk Filmindustri"
+      ],
+      "mainCast": [
+        "Max von Sydow",
+        "Birgitta Valberg",
+        "Gunnel Lindblom",
+        "Birgitta Pettersson",
+        "Axel Düberg"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Virgin_Spring",
+      "letterboxdUrl": "https://letterboxd.com/film/the-virgin-spring/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1962,
+      "editionLabel": "34th Academy Awards",
+      "title": "Through a Glass Darkly",
+      "releaseYear": 1961,
+      "directors": [
+        "Ingmar Bergman"
+      ],
+      "studios": [
+        "Svensk Filmindustri"
+      ],
+      "mainCast": [
+        "Harriet Andersson",
+        "Gunnar Björnstrand",
+        "Max von Sydow",
+        "Lars Passgård"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Through_a_Glass_Darkly_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/through-a-glass-darkly/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1963,
+      "editionLabel": "35th Academy Awards",
+      "title": "Sundays and Cybèle",
+      "releaseYear": 1962,
+      "directors": [
+        "Serge Bourguignon"
+      ],
+      "studios": [
+        "Terra Film",
+        "Fides"
+      ],
+      "mainCast": [
+        "Hardy Krüger",
+        "Nicole Courcel",
+        "Patricia Gozzi",
+        "Daniel Ivernel",
+        "André Oumansky"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Sundays_and_Cybele",
+      "letterboxdUrl": "https://letterboxd.com/film/sundays-and-cybele/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1964,
+      "editionLabel": "36th Academy Awards",
+      "title": "8½",
+      "releaseYear": 1963,
+      "directors": [
+        "Federico Fellini"
+      ],
+      "studios": [
+        "Cineriz",
+        "Francinex"
+      ],
+      "mainCast": [
+        "Marcello Mastroianni",
+        "Claudia Cardinale",
+        "Anouk Aimée",
+        "Sandra Milo",
+        "Rossella Falk"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/8%C2%BD",
+      "letterboxdUrl": "https://letterboxd.com/film/8-1-2/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1965,
+      "editionLabel": "37th Academy Awards",
+      "title": "Yesterday, Today and Tomorrow",
+      "releaseYear": 1963,
+      "directors": [
+        "Vittorio De Sica"
+      ],
+      "studios": [
+        "Compagnia Cinematografica Champion",
+        "Les Films Concordia"
+      ],
+      "mainCast": [
+        "Sophia Loren",
+        "Marcello Mastroianni",
+        "Aldo Giuffrè",
+        "Agostino Salvietti",
+        "Tina Pica"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Yesterday,_Today_and_Tomorrow",
+      "letterboxdUrl": "https://letterboxd.com/film/yesterday-today-and-tomorrow/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1966,
+      "editionLabel": "38th Academy Awards",
+      "title": "The Shop on Main Street",
+      "releaseYear": 1965,
+      "directors": [
+        "Ján Kadár",
+        "Elmar Klos"
+      ],
+      "studios": [
+        "Barrandov Studios"
+      ],
+      "mainCast": [
+        "Jozef Kroner",
+        "Ida Kamińska",
+        "Hana Slivková",
+        "Martin Hollý, Sr.",
+        "František Zvarík"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Shop_on_Main_Street",
+      "letterboxdUrl": "https://letterboxd.com/film/the-shop-on-main-street/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1967,
+      "editionLabel": "39th Academy Awards",
+      "title": "A Man and a Woman",
+      "releaseYear": 1966,
+      "directors": [
+        "Claude Lelouch"
+      ],
+      "studios": [
+        "Les Films 13"
+      ],
+      "mainCast": [
+        "Anouk Aimée",
+        "Jean-Louis Trintignant",
+        "Pierre Barouh",
+        "Valérie Lagrange",
+        "Simone Paris"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/A_Man_and_a_Woman",
+      "letterboxdUrl": "https://letterboxd.com/film/a-man-and-a-woman/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1968,
+      "editionLabel": "40th Academy Awards",
+      "title": "Closely Watched Trains",
+      "releaseYear": 1966,
+      "directors": [
+        "Jiří Menzel"
+      ],
+      "studios": [
+        "Barrandov Studios",
+        "Československý film"
+      ],
+      "mainCast": [
+        "Václav Neckář",
+        "Jitka Bendová",
+        "Josef Somr",
+        "Vlastimil Brodský",
+        "Vladimír Valenta"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Closely_Watched_Trains",
+      "letterboxdUrl": "https://letterboxd.com/film/closely-watched-trains/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1969,
+      "editionLabel": "41st Academy Awards",
+      "title": "War and Peace",
+      "releaseYear": 1966,
+      "directors": [
+        "Sergei Bondarchuk"
+      ],
+      "studios": [
+        "Mosfilm"
+      ],
+      "mainCast": [
+        "Sergei Bondarchuk",
+        "Ludmila Savelyeva",
+        "Vyacheslav Tikhonov",
+        "Boris Zakhava",
+        "Anatoly Ktorov"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/War_and_Peace_(film_series)",
+      "letterboxdUrl": "https://letterboxd.com/film/war-and-peace-1966/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1970,
+      "editionLabel": "42nd Academy Awards",
+      "title": "Z",
+      "releaseYear": 1969,
+      "directors": [
+        "Costa-Gavras"
+      ],
+      "studios": [
+        "Office National pour le Commerce et l'Industrie Cinématographique",
+        "Reggane Films",
+        "Valoria Films"
+      ],
+      "mainCast": [
+        "Jean-Louis Trintignant",
+        "Yves Montand",
+        "Irene Papas",
+        "Charles Denner",
+        "Georges Geret"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Z_(1969_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/z-1969/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1971,
+      "editionLabel": "43rd Academy Awards",
+      "title": "Investigation of a Citizen Above Suspicion",
+      "releaseYear": 1970,
+      "directors": [
+        "Elio Petri"
+      ],
+      "studios": [
+        "Vera Film"
+      ],
+      "mainCast": [
+        "Gian Maria Volonté",
+        "Florinda Bolkan",
+        "Gianni Santuccio",
+        "Orazio Orlando",
+        "Sergio Tramonti"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Investigation_of_a_Citizen_Above_Suspicion",
+      "letterboxdUrl": "https://letterboxd.com/film/investigation-of-a-citizen-above-suspicion/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1972,
+      "editionLabel": "44th Academy Awards",
+      "title": "The Garden of the Finzi-Continis",
+      "releaseYear": 1970,
+      "directors": [
+        "Vittorio De Sica"
+      ],
+      "studios": [
+        "Documento Film",
+        "CCC-Filmkunst"
+      ],
+      "mainCast": [
+        "Lino Capolicchio",
+        "Dominique Sanda",
+        "Helmut Berger",
+        "Fabio Testi",
+        "Romolo Valli"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Garden_of_the_Finzi-Continis_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-garden-of-the-finzi-continis/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1973,
+      "editionLabel": "45th Academy Awards",
+      "title": "The Discreet Charm of the Bourgeoisie",
+      "releaseYear": 1972,
+      "directors": [
+        "Luis Buñuel"
+      ],
+      "studios": [
+        "Greenwich Film Productions"
+      ],
+      "mainCast": [
+        "Fernando Rey",
+        "Paul Frankeur",
+        "Delphine Seyrig",
+        "Bulle Ogier",
+        "Stéphane Audran"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Discreet_Charm_of_the_Bourgeoisie",
+      "letterboxdUrl": "https://letterboxd.com/film/the-discreet-charm-of-the-bourgeoisie/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1974,
+      "editionLabel": "46th Academy Awards",
+      "title": "Day for Night",
+      "releaseYear": 1973,
+      "directors": [
+        "François Truffaut"
+      ],
+      "studios": [
+        "Les Films du Carrosse",
+        "PECF",
+        "PIC"
+      ],
+      "mainCast": [
+        "Jacqueline Bisset",
+        "Valentina Cortese",
+        "Dani",
+        "Alexandra Stewart",
+        "Jean-Pierre Aumont"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Day_for_Night",
+      "letterboxdUrl": "https://letterboxd.com/film/day-for-night/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1975,
+      "editionLabel": "47th Academy Awards",
+      "title": "Amarcord",
+      "releaseYear": 1973,
+      "directors": [
+        "Federico Fellini"
+      ],
+      "studios": [
+        "FC Produzioni",
+        "PECF"
+      ],
+      "mainCast": [
+        "Bruno Zanin",
+        "Magali Noël",
+        "Pupella Maggio",
+        "Armando Brancia",
+        "Ciccio Ingrassia"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Amarcord",
+      "letterboxdUrl": "https://letterboxd.com/film/amarcord/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1976,
+      "editionLabel": "48th Academy Awards",
+      "title": "Dersu Uzala",
+      "releaseYear": 1975,
+      "directors": [
+        "Akira Kurosawa"
+      ],
+      "studios": [
+        "Daiei Film",
+        "Mosfilm"
+      ],
+      "mainCast": [
+        "Yury Solomin",
+        "Maxim Munzuk",
+        "Vladimir Kremena"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Dersu_Uzala_(1975_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/dersu-uzala/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1977,
+      "editionLabel": "49th Academy Awards",
+      "title": "Black and White in Color",
+      "releaseYear": 1976,
+      "directors": [
+        "Jean-Jacques Annaud"
+      ],
+      "studios": [
+        "FR3",
+        "Reggane Films",
+        "Société Française de Production",
+        "Société Ivoirienne de Cinema"
+      ],
+      "mainCast": [
+        "Jean Carmet",
+        "Jacques Dufilho",
+        "Catherine Rouvel",
+        "Jacques Spiesser",
+        "Maurice Barrier"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Black_and_White_in_Color",
+      "letterboxdUrl": "https://letterboxd.com/film/black-and-white-in-color/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1978,
+      "editionLabel": "50th Academy Awards",
+      "title": "Madame Rosa",
+      "releaseYear": 1977,
+      "directors": [
+        "Moshé Mizrahi"
+      ],
+      "studios": [
+        "Warner-Columbia Film"
+      ],
+      "mainCast": [
+        "Simone Signoret",
+        "Michal Bat-Adam",
+        "Samy Ben-Youb",
+        "Gabriel Jabbour",
+        "Geneviève Fontanel"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Madame_Rosa",
+      "letterboxdUrl": "https://letterboxd.com/film/madame-rosa/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1979,
+      "editionLabel": "51st Academy Awards",
+      "title": "Get Out Your Handkerchiefs",
+      "releaseYear": 1978,
+      "directors": [
+        "Bertrand Blier"
+      ],
+      "studios": [
+        "Compagnie Commerciale Française Cinématographique"
+      ],
+      "mainCast": [
+        "Gérard Depardieu",
+        "Patrick Dewaere",
+        "Carole Laure",
+        "Michel Serrault",
+        "Riton Liebman"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Get_Out_Your_Handkerchiefs",
+      "letterboxdUrl": "https://letterboxd.com/film/get-out-your-handkerchiefs/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1980,
+      "editionLabel": "52nd Academy Awards",
+      "title": "The Tin Drum",
+      "releaseYear": 1979,
+      "directors": [
+        "Volker Schlöndorff"
+      ],
+      "studios": [
+        "Franz Seitz Filmproduktion",
+        "Bioskop Film",
+        "Argos Films",
+        "Jadran Film"
+      ],
+      "mainCast": [
+        "David Bennent",
+        "Mario Adorf",
+        "Angela Winkler",
+        "Katharina Thalbach",
+        "Daniel Olbrychski"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Tin_Drum_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-tin-drum/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1981,
+      "editionLabel": "53rd Academy Awards",
+      "title": "Moscow Does Not Believe in Tears",
+      "releaseYear": 1980,
+      "directors": [
+        "Vladimir Menshov"
+      ],
+      "studios": [
+        "Mosfilm"
+      ],
+      "mainCast": [
+        "Vera Alentova",
+        "Irina Muravyova",
+        "Raisa Ryazanova",
+        "Aleksey Batalov",
+        "Aleksandr Fatyushin"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Moscow_Does_Not_Believe_in_Tears",
+      "letterboxdUrl": "https://letterboxd.com/film/moscow-does-not-believe-in-tears/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Москва слезам не верит",
+      "appleTvUrl": "https://tv.apple.com/us/movie/moscow-does-not-believe-in-tears/umc.cmc.2cfmh8duoqsv02q98ynrhl0t9",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/Moscow_for_US.jpg",
+      "plotSummary": "In 1958 Moscow, three young women share a dormitory while chasing different visions of happiness: factory worker Katerina, marriage-minded Lyudmila, and the more grounded Antonina. Katerina falls for a television cameraman who fathers her child and then abandons her, leaving her to raise their daughter alone while building a career. Twenty years later, now a successful factory director, she meets a warm-hearted metalworker named Gosha but conceals her status from him, and when the truth comes out it nearly derails their romance before a hard-won reconciliation."
+    },
+    {
+      "year": 1982,
+      "editionLabel": "54th Academy Awards",
+      "title": "Mephisto",
+      "releaseYear": 1981,
+      "directors": [
+        "István Szabó"
+      ],
+      "studios": [
+        "Mafilm",
+        "Objektív Film",
+        "Manfred Durniok Filmproduktion",
+        "Hessischer Rundfunk",
+        "ORF"
+      ],
+      "mainCast": [
+        "Klaus Maria Brandauer",
+        "Krystyna Janda",
+        "Ildikó Bánsági",
+        "Rolf Hoppe",
+        "Martin Hellberg"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Mephisto_(1981_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/mephisto/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/mephisto/umc.cmc.5jd34vnx11g0s7yffeenaguyv",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/aa/Mephisto_hungarian_poster_1981.png",
+      "plotSummary": "Ambitious actor Hendrik Höfgen claws his way up from provincial German theaters to national stardom, most famously playing Mephistopheles in a production of Faust. When the Nazis seize power, he chooses to stay and align himself with the new regime rather than flee like his colleagues, using his old leftist ties as leverage for forgiveness and advancement. His fame grows alongside his moral compromises, until he comes to embody the very devil he plays on stage, propped up by patrons far more dangerous than himself."
+    },
+    {
+      "year": 1983,
+      "editionLabel": "55th Academy Awards",
+      "title": "Begin the Beguine",
+      "releaseYear": 1982,
+      "directors": [
+        "José Luis Garci"
+      ],
+      "studios": [
+        "Nickel Odeon"
+      ],
+      "mainCast": [
+        "Antonio Ferrandis",
+        "Encarna Paso",
+        "Agustín González",
+        "José Bódalo",
+        "Marta Fernández Muro"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Begin_the_Beguine_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/begin-the-beguine/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Volver a empezar",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/51/Volver_a_Empezar.jpg",
+      "plotSummary": "Antonio Albajar, an aging writer newly awarded the Nobel Prize, returns to his hometown of Gijón, Spain after decades in exile abroad. There he reconnects with old friends and rekindles a long-dormant love with Elena, a woman he left behind years earlier. Their reunion stirs up memories of Spain's turbulent past under Franco and gives Antonio a chance to make peace with the choices that shaped his life."
+    },
+    {
+      "year": 1984,
+      "editionLabel": "56th Academy Awards",
+      "title": "Fanny and Alexander",
+      "releaseYear": 1982,
+      "directors": [
+        "Ingmar Bergman"
+      ],
+      "studios": [
+        "Cinematograph",
+        "Sveriges Television",
+        "Gaumont International",
+        "Personafilm",
+        "Tobis Film"
+      ],
+      "mainCast": [
+        "Pernilla Allwin",
+        "Bertil Guve",
+        "Jan Malmsjö",
+        "Börje Ahlstedt",
+        "Anna Bergman"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Fanny_and_Alexander",
+      "letterboxdUrl": "https://letterboxd.com/film/fanny-and-alexander/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Fanny och Alexander",
+      "appleTvUrl": "https://tv.apple.com/us/movie/fanny-and-alexander/umc.cmc.3dyomwd4md85ydz3k200wryk0",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/56/Fanny%26Alexander.jpg",
+      "plotSummary": "In early-1900s Uppsala, siblings Fanny and Alexander live a rich theatrical family life until their father dies and their mother remarries a severe, authoritarian bishop. The children are moved into his household, where Alexander's vivid imagination and storytelling bring him cruel punishment, and the family becomes desperate to free them. A rescue is staged with the help of relatives, culminating in a fire that kills the bishop, after which the family reunites and Alexander is left haunted by visions of the man who tormented him."
+    },
+    {
+      "year": 1985,
+      "editionLabel": "57th Academy Awards",
+      "title": "Dangerous Moves",
+      "releaseYear": 1984,
+      "directors": [
+        "Richard Dembo"
+      ],
+      "studios": [
+        "Gaumont Distribution"
+      ],
+      "mainCast": [
+        "Michel Piccoli",
+        "Alexandre Arbatt",
+        "Liv Ullmann",
+        "Leslie Caron",
+        "Bernhard Wicki"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Dangerous_Moves",
+      "letterboxdUrl": "https://letterboxd.com/film/dangerous-moves/",
+      "letterboxdUnverified": true,
+      "originalTitle": "La Diagonale du fou",
+      "appleTvUrl": "https://tv.apple.com/us/movie/dangerous-moves/umc.cmc.70n5r7y5ldh6nujaq6ud28t28",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/5c/Dangerous_Moves_film_poster.jpg",
+      "plotSummary": "At a world chess championship in Geneva, an aging Soviet grandmaster with a failing heart faces off against a younger rival who defected from the USSR years earlier. As the match wears on, both men are worn down by forces beyond the board: the Soviet delegation's political pressure and surveillance, and the defector's own crumbling personal life. Their contest becomes as much a psychological and ideological battle as a game of chess, with neither side able to claim an easy victory."
+    },
+    {
+      "year": 1986,
+      "editionLabel": "58th Academy Awards",
+      "title": "The Official Story",
+      "releaseYear": 1985,
+      "directors": [
+        "Luis Puenzo"
+      ],
+      "studios": [
+        "Historias Cinematograficas Cinemania",
+        "Progress Communications"
+      ],
+      "mainCast": [
+        "Norma Aleandro",
+        "Héctor Alterio",
+        "Hugo Arana",
+        "Guillermo Battaglia",
+        "Chela Ruiz"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Official_Story",
+      "letterboxdUrl": "https://letterboxd.com/film/the-official-story/",
+      "letterboxdUnverified": true,
+      "originalTitle": "La historia oficial",
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-official-story/umc.cmc.3ftdq4p1b3l1mi4nifta86kcc",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b4/La_Historia_Oficial.jpg",
+      "plotSummary": "In Buenos Aires in 1983, history teacher Alicia lives a comfortable life with her government-connected husband Roberto and their adopted daughter Gaby, largely insulated from her country's recent political violence. Conversations with a returning friend and a chance meeting with a grandmother searching for a missing grandchild lead Alicia to suspect that Gaby was taken from a mother who disappeared under the military dictatorship. As she pushes for the truth, Roberto's evasiveness and anger force Alicia to confront both her husband's complicity and her own willful blindness, and she ultimately leaves him."
+    },
+    {
+      "year": 1987,
+      "editionLabel": "59th Academy Awards",
+      "title": "The Assault",
+      "releaseYear": 1986,
+      "directors": [
+        "Fons Rademakers"
+      ],
+      "studios": [
+        "Fons Rademakers Produktie"
+      ],
+      "mainCast": [
+        "Derek de Lint",
+        "Monique van de Ven",
+        "Marc van Uchelen",
+        "John Kraaijkamp",
+        "Elly Weller"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Assault_(1986_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-assault-1986/",
+      "letterboxdUnverified": true,
+      "originalTitle": "De aanslag",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/bc/The_Assault_poster.jpg",
+      "plotSummary": "In January 1945, near the end of the Nazi occupation of the Netherlands, a collaborator is assassinated outside the Steenwijk family's home, and neighbors move his body in front of their door to shift blame. In retaliation, the Germans kill Anton Steenwijk's parents and brother and take the boy into custody. Decades later, in the postwar years and again in the 1980s, an adult Anton keeps circling back to that night, piecing together what really happened and who bears responsibility for his family's death."
+    },
+    {
+      "year": 1988,
+      "editionLabel": "60th Academy Awards",
+      "title": "Babette's Feast",
+      "releaseYear": 1987,
+      "directors": [
+        "Gabriel Axel"
+      ],
+      "studios": [
+        "Nordisk Film"
+      ],
+      "mainCast": [
+        "Stéphane Audran",
+        "Birgitte Federspiel",
+        "Bodil Kjer"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Babette%27s_Feast",
+      "letterboxdUrl": "https://letterboxd.com/film/babettes-feast/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Babettes gæstebud",
+      "appleTvUrl": "https://tv.apple.com/us/movie/babettes-feast/umc.cmc.6ayvjy1b89d39r0pm3vfceihy",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d1/Babettesg%C3%A6stebudposter.jpg",
+      "plotSummary": "In a remote, devout Danish coastal village, elderly sisters Martine and Filippa have spent their lives tending their late father's austere religious community, having each given up a chance at love and a life beyond the village. Babette, a French refugee fleeing political turmoil, arrives and works as their housekeeper for fourteen years. After winning a lottery, she spends her entire winnings on an elaborate French feast for the congregation, and the meal's sensuous generosity quietly overwhelms the villagers' guarded piety, revealing Babette to have once been a celebrated Parisian chef."
+    },
+    {
+      "year": 1989,
+      "editionLabel": "61st Academy Awards",
+      "title": "Pelle the Conqueror",
+      "releaseYear": 1987,
+      "directors": [
+        "Bille August"
+      ],
+      "studios": [
+        "Odyssey Entertainment",
+        "Svensk Filmindustri",
+        "Per Holst Filmproduktion"
+      ],
+      "mainCast": [
+        "Max von Sydow",
+        "Pelle Hvenegaard",
+        "Erik Paaske",
+        "Björn Granath",
+        "Astrid Villaume"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Pelle_the_Conqueror",
+      "letterboxdUrl": "https://letterboxd.com/film/pelle-the-conqueror/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Pelle Erobreren",
+      "appleTvUrl": "https://tv.apple.com/us/movie/pelle-the-conqueror/umc.cmc.4ump3vppenebp2tcqj3crhp8p",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0f/Pelle_original.jpg",
+      "plotSummary": "In the late 19th century, elderly Swedish widower Lasse and his young son Pelle emigrate to the Danish island of Bornholm in search of work, ending up as poorly treated laborers on a large farm. Pelle slowly adapts to his new home, learning the language and enduring the prejudice of his Danish peers while dreaming, like a fellow farmhand, of a bigger life beyond the island. As the farm's own domestic dramas unfold around them and Lasse's brief romance collapses, Lasse eventually urges his son to leave and chase the future for himself."
+    },
+    {
+      "year": 1990,
+      "editionLabel": "62nd Academy Awards",
+      "title": "Cinema Paradiso",
+      "releaseYear": 1988,
+      "directors": [
+        "Giuseppe Tornatore"
+      ],
+      "studios": [
+        "Cristaldi Film",
+        "Les Films Ariane",
+        "RAI",
+        "TF1",
+        "Forum Picture"
+      ],
+      "mainCast": [
+        "Philippe Noiret",
+        "Jacques Perrin",
+        "Antonella Attili",
+        "Pupella Maggio",
+        "Salvatore Cascio"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Cinema_Paradiso",
+      "letterboxdUrl": "https://letterboxd.com/film/cinema-paradiso/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Nuovo Cinema Paradiso",
+      "appleTvUrl": "https://tv.apple.com/us/movie/cinema-paradiso/umc.cmc.hb9z911n4zjfg96n5vp5mokb",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/86/CinemaParadiso.jpg",
+      "plotSummary": "In 1988 Rome, Salvatore Di Vita, a famous film director, returns home late one evening, where his girlfriend sleepily tells him that his mother called to say someone named Alfredo has died. Salvatore shies from committed relationships and has not been to his home village of Giancaldo, Sicily, in thirty years. As his girlfriend asks him who Alfredo was, Salvatore is unable to fall asleep and flashes back to his childhood."
+    },
+    {
+      "year": 1991,
+      "editionLabel": "63rd Academy Awards",
+      "title": "Journey of Hope",
+      "releaseYear": 1990,
+      "directors": [
+        "Xavier Koller"
+      ],
+      "studios": [
+        "Beyond Films",
+        "Premium Films"
+      ],
+      "mainCast": [
+        "Necmettin Cobanoglu",
+        "Nur Sürer",
+        "Emin Sivas",
+        "Yaman Okay",
+        "Mathias Gnädinger"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Journey_of_Hope",
+      "letterboxdUrl": "https://letterboxd.com/film/journey-of-hope/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Reise der Hoffnung",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/15/Journey_of_Hope.jpg",
+      "plotSummary": "The film begins in a remote and impoverished village in Eastern Turkey, where the Öztürk family resides. They consist of the father, Haydar; the mother, Meryem; and their seven children, including their young son, Mehmet. Haydar, a hardworking farmer, is struggling to provide for his family amidst political turmoil and economic difficulties."
+    },
+    {
+      "year": 1992,
+      "editionLabel": "64th Academy Awards",
+      "title": "Mediterraneo",
+      "releaseYear": 1991,
+      "directors": [
+        "Gabriele Salvatores"
+      ],
+      "studios": [
+        "Penta Film",
+        "A.M.A. Film",
+        "Silvio Berlusconi Communications",
+        "Cecchi Gori Group Tiger Cinematografica"
+      ],
+      "mainCast": [
+        "Diego Abatantuono",
+        "Claudio Bigagli",
+        "Giuseppe Cederna",
+        "Claudio Bisio",
+        "Luigi Alberti"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Mediterraneo",
+      "letterboxdUrl": "https://letterboxd.com/film/mediterraneo/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/es/movie/mediterraneo/umc.cmc.15fnyxlglkakovu5ypmobr6mo",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/8a/Mediterraneo_sheet.jpg",
+      "plotSummary": "In 1941, one year after Italy joined Germany against the Allies in World War II, a small group of misfit Italian soldiers is sent to Megísti, a small Greek island in the Aegean Sea, for four months of lookout duty. The soldiers include a lieutenant who likes art, a macho sergeant, a ski instructor accompanied by his beloved donkey Silvana, and other quirky people. They are not very good soldiers, but a cross section of average, independent men."
+    },
+    {
+      "year": 1993,
+      "editionLabel": "65th Academy Awards",
+      "title": "Indochine",
+      "releaseYear": 1992,
+      "directors": [
+        "Régis Wargnier"
+      ],
+      "studios": [
+        "Paradis Films",
+        "BAC Films",
+        "Orly Films",
+        "Ciné Cinq"
+      ],
+      "mainCast": [
+        "Catherine Deneuve",
+        "Vincent Pérez",
+        "Linh Dan Pham",
+        "Jean Yanne",
+        "Dominique Blanc"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Indochine_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/indochine/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/indochine/umc.cmc.46gfqnzwy7wfintxygu4y3qgc",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/29/Indochine-movie-poster-1992-french.jpg",
+      "plotSummary": "In 1930, Éliane Devries, a woman born to French parents in colonial Indochina, runs her and her widowed father's rubber plantation with indentured laborers. She is the adoptive mother of Camille, a teenaged girl whose birth parents were friends of Éliane's and members of the Nguyễn dynasty. Éliane meets young French Navy lieutenant Jean-Baptiste Le Guen when they bid on the same painting at an auction."
+    },
+    {
+      "year": 1994,
+      "editionLabel": "66th Academy Awards",
+      "title": "Belle Époque",
+      "releaseYear": 1992,
+      "directors": [
+        "Fernando Trueba"
+      ],
+      "studios": [
+        "Fernando Trueba PC",
+        "Lola Films",
+        "Animatógrafo"
+      ],
+      "mainCast": [
+        "Jorge Sanz",
+        "Penélope Cruz",
+        "Fernando Fernán Gómez",
+        "Miriam Díaz Aroca",
+        "Ariadna Gil"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Belle_%C3%89poque_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/belle-epoque/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/es/movie/belle-epoque/umc.cmc.32wpy1435r2f4szsn7wu7eth4",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/ab/BelleEpoque.jpg",
+      "plotSummary": "In February 1931, some weeks after the failed Jaca uprising and the likewise failed Cuatro Vientos uprising, Spain is on the verge of the proclamation of the Second Republic. Fernando, a deserting private with Republican leanings and former seminarist, is on the run from his assignment at the Cuatro Vientos base. After escaping from two Guardia Civil officers, he reaches the outskirts of a village, befriending Manolo, an old man with a semblance of a \"Dickensian observer of life\"."
+    },
+    {
+      "year": 1995,
+      "editionLabel": "67th Academy Awards",
+      "title": "Burnt by the Sun",
+      "releaseYear": 1994,
+      "directors": [
+        "Nikita Mikhalkov"
+      ],
+      "studios": [
+        "Studio Trite",
+        "Camera One",
+        "Caméra One"
+      ],
+      "mainCast": [
+        "Oleg Menshikov",
+        "Nikita Mikhalkov",
+        "Ingeborga Dapkūnaitė",
+        "Nadezhda Mikhalkova",
+        "André Oumansky"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Burnt_by_the_Sun",
+      "letterboxdUrl": "https://letterboxd.com/film/burnt-by-the-sun/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Утомлённые солнцем",
+      "appleTvUrl": "https://tv.apple.com/us/movie/burnt-by-the-sun/umc.cmc.5xr132qixcdth6071d61eyixp",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f3/Burnt_by_the_Sun_Poster.jpg",
+      "plotSummary": "The entirety of the film takes place within the course of one day in the summer of 1936 in the Soviet Union. Mitya (Dmitri), a former nobleman and veteran of the anti-communist White Army, contemplates suicide. The film cuts to Komdiv Sergei Petrovich Kotov, his wife Maroussia, and their young six-year-old daughter Nadia relaxing in a banya (sauna) when a peasant from the local collective farm frantically tells them the Red Army's tanks are about to crush the wheat harvest as part of general maneuvers."
+    },
+    {
+      "year": 1996,
+      "editionLabel": "68th Academy Awards",
+      "title": "Antonia's Line",
+      "releaseYear": 1995,
+      "directors": [
+        "Marleen Gorris"
+      ],
+      "studios": [
+        "Meteor Film"
+      ],
+      "mainCast": [
+        "Willeke van Ammelrooy",
+        "Els Dottermans",
+        "Jan Decleir",
+        "Marina de Graaf",
+        "Mil Seghers"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Antonia%27s_Line",
+      "letterboxdUrl": "https://letterboxd.com/film/antonias-line/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Antonia",
+      "appleTvUrl": "https://tv.apple.com/us/movie/antonias-line/umc.cmc.4warwv53dmimv8dlz5ct7vqfa",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c6/Antoniasline.jpg",
+      "plotSummary": "Following World War II, the widow Antonia and her daughter Danielle arrive in Antonia's home town where her mother is dying. She reunites with her old friend Crooked Finger, a depressed intellectual who refuses to leave his house. She also begins attracting a following, including Deedee, a mentally handicapped girl, after she is raped by her brother Pitte, and Loony Lips, a simple-minded man who falls in love with Deedee."
+    },
+    {
+      "year": 1997,
+      "editionLabel": "69th Academy Awards",
+      "title": "Kolya",
+      "releaseYear": 1996,
+      "directors": [
+        "Jan Svěrák"
+      ],
+      "studios": [
+        "Biograf Jan Svěrák",
+        "Pandora Cinema",
+        "Česká Televize",
+        "CinemArt",
+        "Portobello Pictures"
+      ],
+      "mainCast": [
+        "Andrey Khalimon",
+        "Zdeněk Svěrák",
+        "Libuše Šafránková",
+        "Ondřej Vetchý",
+        "Stella Zázvorková"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Kolya_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/kolya/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Kolja",
+      "appleTvUrl": "https://tv.apple.com/us/movie/kolya/umc.cmc.7depij5s0tl4qds1kg3ohc40",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/45/Kolya.jpg",
+      "plotSummary": "The film begins in 1988 in Soviet-occupied Czechoslovakia. František Louka, a middle-aged man dedicated to bachelorhood and the pursuit of women, is a concert cellist struggling to eke out a living by playing funerals at the Prague crematoriums. He has lost his previous job at the Czech Philharmonic, having been blacklisted as \"politically unreliable\" by the authorities."
+    },
+    {
+      "year": 1998,
+      "editionLabel": "70th Academy Awards",
+      "title": "Character",
+      "originalTitle": "Karakter",
+      "releaseYear": 1997,
+      "directors": [
+        "Mike van Diem"
+      ],
+      "studios": [
+        "First Floor Features",
+        "Almerica Film",
+        "NPS"
+      ],
+      "mainCast": [
+        "Jan Decleir",
+        "Fedja van Huêt",
+        "Betty Schuurman",
+        "Tamar van den Dop",
+        "Victor Löw"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Character_(1997_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/character/",
+      "letterboxdUnverified": false,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/cf/Karakter.jpg",
+      "plotSummary": "In 1930's Rotterdam, A.B. Dreverhaven, a dreaded bailiff, is found dead, with a knife stuck in his stomach. The obvious suspect is Jacob Willem Katadreuffe, an ambitious young lawyer who worked his way up from poverty, always managing to overcome Dreverhaven's personal attacks against him."
+    },
+    {
+      "year": 1999,
+      "editionLabel": "71st Academy Awards",
+      "title": "Life Is Beautiful",
+      "originalTitle": "La vita è bella",
+      "releaseYear": 1997,
+      "directors": [
+        "Roberto Benigni"
+      ],
+      "studios": [
+        "Melampo Cinematografica"
+      ],
+      "mainCast": [
+        "Roberto Benigni",
+        "Nicoletta Braschi",
+        "Giorgio Cantarini",
+        "Giustino Durano",
+        "Horst Buchholz"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+      "letterboxdUrl": "https://letterboxd.com/film/life-is-beautiful/",
+      "letterboxdUnverified": false,
+      "appleTvUrl": "https://tv.apple.com/us/movie/life-is-beautiful/umc.cmc.1fl0dchykieky5jute5dp4jpb",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7c/Vitaebella.jpg",
+      "plotSummary": "In 1939, in Fascist Italy, young Italian Jew Guido Orefice arrives to work in Arezzo, Tuscany, with his uncle Eliseo in a hotel restaurant. He is comical and sharp, and falls in love with the gentile girl Dora. Later, Guido sees her again in the city where she is a teacher and set to be engaged to Rodolfo, a rich but arrogant local government official with whom he regularly clashes."
+    },
+    {
+      "year": 2000,
+      "editionLabel": "72nd Academy Awards",
+      "title": "All About My Mother",
+      "originalTitle": "Todo sobre mi madre",
+      "releaseYear": 1999,
+      "directors": [
+        "Pedro Almodóvar"
+      ],
+      "studios": [
+        "El Deseo",
+        "Renn Productions",
+        "France 2 Cinéma",
+        "Via Digital"
+      ],
+      "mainCast": [
+        "Cecilia Roth",
+        "Marisa Paredes",
+        "Penélope Cruz",
+        "Candela Peña",
+        "Antonia San Juan"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/All_About_My_Mother",
+      "letterboxdUrl": "https://letterboxd.com/film/all-about-my-mother/",
+      "letterboxdUnverified": false,
+      "appleTvUrl": "https://tv.apple.com/us/movie/all-about-my-mother/umc.cmc.ttczvysh0yttws9xapvj7rer",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d7/All_about_my_mother.jpg",
+      "plotSummary": "Manuela is an Argentine nurse who supervises donor organ transplants at Ramón y Cajal Hospital in Madrid. She is also a single mother to Esteban, a teenager who aspires to become a writer. On the night of Esteban's 17th birthday, he is hit and killed by a car while chasing after his favorite actress, Huma Rojo, for her autograph following a performance of A Streetcar Named Desire, where Huma portrays Blanche DuBois."
+    },
+    {
+      "year": 2001,
+      "editionLabel": "73rd Academy Awards",
+      "title": "Crouching Tiger, Hidden Dragon",
+      "originalTitle": "臥虎藏龍",
+      "releaseYear": 2000,
+      "directors": [
+        "Ang Lee"
+      ],
+      "studios": [
+        "Columbia Pictures Film Production Asia",
+        "Edko Films",
+        "Zoom Hunt Productions",
+        "China Film Co-production Corp.",
+        "Asia Union Film & Entertainment"
+      ],
+      "mainCast": [
+        "Chow Yun-fat",
+        "Michelle Yeoh",
+        "Zhang Ziyi",
+        "Chang Chen",
+        "Lang Sihung"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon",
+      "letterboxdUrl": "https://letterboxd.com/film/crouching-tiger-hidden-dragon/",
+      "letterboxdUnverified": false,
+      "appleTvUrl": "https://tv.apple.com/us/movie/crouching-tiger-hidden-dragon/umc.cmc.1qyopok7zvm57lvbxa2oz4ibq",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/27/Crouching_Tiger%2C_Hidden_Dragon_%28Chinese_poster%29.png",
+      "plotSummary": "In 1778, Qing dynasty China, Li Mu Bai is a renowned Wudang swordsman, and his friend Yu Shu Lien heads a private security company. Shu Lien and Mu Bai have long had feelings for each other, but because Shu Lien had been engaged to Mu Bai's close friend Meng Sizhao before his death, Shu Lien and Mu Bai feel bound by loyalty to Meng Sizhao and have not revealed their feelings to each other. Mu Bai, choosing to retire from the life of a swordsman, asks Shu Lien to give his fabled 400-year-old jian sword \"Green Destiny\" to their benefactor Sir Te in Beijing."
+    },
+    {
+      "year": 2002,
+      "editionLabel": "74th Academy Awards",
+      "title": "No Man's Land",
+      "originalTitle": "Ničija zemlja",
+      "releaseYear": 2001,
+      "directors": [
+        "Danis Tanović"
+      ],
+      "studios": [
+        "Fabrica",
+        "Man's Films",
+        "Studio Maj"
+      ],
+      "mainCast": [
+        "Branko Đurić",
+        "Rene Bitorajac",
+        "Filip Šovagović",
+        "Georges Siatidis",
+        "Serge-Henri Valcke"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/No_Man%27s_Land_(2001_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/no-mans-land-2001/",
+      "letterboxdUnverified": false,
+      "appleTvUrl": "https://tv.apple.com/us/movie/no-mans-land/umc.cmc.5h87mlv6hu00v0mhui2xjui0q",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1a/No_Man%27s_Land_movie.jpg",
+      "plotSummary": "During the Bosnian War, two wounded soldiers, a Bosniak named Čiki and a Bosnian Serb named Nino, are caught between their lines in no man's land. The two soldiers confront each other in a trench, where they wait for dark. Trading insults at first, they eventually begin to find some common ground."
+    },
+    {
+      "year": 2003,
+      "editionLabel": "75th Academy Awards",
+      "title": "Nowhere in Africa",
+      "releaseYear": 2001,
+      "directors": [
+        "Caroline Link"
+      ],
+      "studios": [
+        "Constantin Film"
+      ],
+      "mainCast": [
+        "Juliane Köhler",
+        "Merab Ninidze",
+        "Sidede Onyulo",
+        "Matthias Habich",
+        "Lea Kurka"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Nowhere_in_Africa",
+      "letterboxdUrl": "https://letterboxd.com/film/nowhere-in-africa/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/nowhere-in-africa/umc.cmc.12m6raxwc8wfh7hgcth8xewxt",
+      "originalTitle": "Nirgendwo in Afrika",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/fa/Nirgendwo_in_Afrika.png",
+      "plotSummary": "In 1938, the Redlich family flees to Kenya from Leobschütz in Silesia, Nazi Germany, to escape the increasing persecution of the Jews. Walter, a former lawyer, finds work as a farm manager and sends for his family. His wife Jettel has trouble adjusting to life in Africa, although their daughter Regina quickly adapts to her new environment, easily learning the language of the country and showing interest in local culture."
+    },
+    {
+      "year": 2004,
+      "editionLabel": "76th Academy Awards",
+      "title": "The Barbarian Invasions",
+      "releaseYear": 2003,
+      "directors": [
+        "Denys Arcand"
+      ],
+      "studios": [
+        "Canal+",
+        "Telefilm Canada"
+      ],
+      "mainCast": [
+        "Rémy Girard",
+        "Stéphane Rousseau",
+        "Dorothée Berryman",
+        "Louise Portal",
+        "Marie-Josée Croze"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Barbarian_Invasions",
+      "letterboxdUrl": "https://letterboxd.com/film/the-barbarian-invasions/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-barbarian-invasions/umc.cmc.5ji1moombw4yd8okfne7dm8t5",
+      "originalTitle": "Les Invasions barbares",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/The_Barbarian_Invasions.jpg",
+      "plotSummary": "Seventeen years after the events of The Decline of the American Empire, Sébastien is enjoying a successful career in quantitative finance in London when he receives a call from his mother, Louise, that his father and Louise's ex-husband Rémy is terminally ill with cancer. Sébastien is not enthused about seeing Rémy, whom he blames for breaking up the family with his many adulteries. Rémy and his friends of the older generation are still largely social-democrats and proponents of Quebec nationalism."
+    },
+    {
+      "year": 2005,
+      "editionLabel": "77th Academy Awards",
+      "title": "The Sea Inside",
+      "releaseYear": 2004,
+      "directors": [
+        "Alejandro Amenábar"
+      ],
+      "studios": [
+        "Sogepaq",
+        "UGC Images",
+        "Eyescreen"
+      ],
+      "mainCast": [
+        "Javier Bardem",
+        "Belén Rueda",
+        "Lola Dueñas",
+        "Mabel Rivera",
+        "Celso Bugallo"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Sea_Inside",
+      "letterboxdUrl": "https://letterboxd.com/film/the-sea-inside/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-sea-inside/umc.cmc.37icxz0xyd10ikoxexchffpvd",
+      "originalTitle": "Mar adentro",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/Mar_adentro_poster.jpg",
+      "plotSummary": "This is the life story of Spaniard Ramón Sampedro, who fought a 28-year campaign to win the right to end his own life with assisted suicide. The film explores Ramón's relationships with two women: Julia, a lawyer suffering from Cadasil syndrome who supports his cause, and Rosa, a local woman who wants to convince him that his life is worth living. Through the gift of his love, these two women are inspired to accomplish things they never previously thought possible."
+    },
+    {
+      "year": 2006,
+      "editionLabel": "78th Academy Awards",
+      "title": "Tsotsi",
+      "releaseYear": 2005,
+      "directors": [
+        "Gavin Hood"
+      ],
+      "studios": [
+        "The UK Film & TV Production Company PLC",
+        "Industrial Development Corporation of South Africa",
+        "The National Film and Video Foundation of SA",
+        "Moviworld"
+      ],
+      "mainCast": [
+        "Presley Chweneyagae",
+        "Mothusi Magano",
+        "Kenneth Nkosi",
+        "Zenzo Ngqobe",
+        "Jerry Mofokeng"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Tsotsi",
+      "letterboxdUrl": "https://letterboxd.com/film/tsotsi/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/tsotsi/umc.cmc.257sl2wjk7y20yna6a7nmk4qp",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2c/Tsotsiposter.jpg",
+      "plotSummary": "As his mother is dying of disease, David runs away from an abusive father and lives with other homeless children in a series of large concrete construction pipes. A few years later, David, who now goes by Tsotsi, is the leader of a gang that includes his friends Butcher, Aap, and Boston. After getting involved in a murder committed by Butcher during a mugging, Tsotsi and Boston get into a fight that leaves Boston badly injured."
+    },
+    {
+      "year": 2007,
+      "editionLabel": "79th Academy Awards",
+      "title": "The Lives of Others",
+      "releaseYear": 2006,
+      "directors": [
+        "Florian Henckel von Donnersmarck"
+      ],
+      "studios": [
+        "Wiedemann & Berg",
+        "Bayerischer Rundfunk",
+        "Arte",
+        "Creado Film"
+      ],
+      "mainCast": [
+        "Ulrich Mühe",
+        "Sebastian Koch",
+        "Martina Gedeck",
+        "Ulrich Tukur"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Lives_of_Others",
+      "letterboxdUrl": "https://letterboxd.com/film/the-lives-of-others/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-lives-of-others/umc.cmc.224kr8cdaqu3wsdr44cpjxf1c",
+      "originalTitle": "Das Leben der Anderen",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9f/Leben_der_anderen.jpg",
+      "plotSummary": "In 1984 East Germany (GDR), Stasi Hauptmann Gerd Wiesler, code name HGW XX/7, is ordered by his friend and superior, Lt. Col. Anton Grubitz, to spy on playwright Georg Dreyman, whose pro-communist politics and international recognition have so far kept the state from directly monitoring him. Dreyman's apparent life as a model East German mystifies Wiesler; the playwright has no known vices or record of disloyalty or dissent at all. At the request of Minister of Culture Bruno Hempf, Wiesler and his team bug Dreyman's apartment, set up surveillance equipment, and report Dreyman's activities."
+    },
+    {
+      "year": 2008,
+      "editionLabel": "80th Academy Awards",
+      "title": "The Counterfeiters",
+      "releaseYear": 2007,
+      "directors": [
+        "Stefan Ruzowitzky"
+      ],
+      "studios": [
+        "Aichholzer Film",
+        "Magnolia Filmproduktion",
+        "Babelsberg Studio"
+      ],
+      "mainCast": [
+        "Karl Markovics",
+        "August Diehl",
+        "Devid Striesow",
+        "Martin Brambach",
+        "August Zirner"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Counterfeiters_(2007_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-counterfeiters/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-counterfeiters/umc.cmc.4onakuawonjwdkxvb8dqhdagq",
+      "originalTitle": "Die Fälscher",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/The_Counterfeiters_%282007_film%29.jpg",
+      "plotSummary": "The film begins shortly after the end of the Second World War, with a man arriving in Monte Carlo. After checking into an expensive hotel and paying with cash, he takes in the high life of Monte Carlo, successfully gambling in a casino and attracting the attention of a beautiful French woman. Later, she discovers tattooed numerals on his arm, revealing him as a survivor of the Nazi concentration camps."
+    },
+    {
+      "year": 2009,
+      "editionLabel": "81st Academy Awards",
+      "title": "Departures",
+      "releaseYear": 2008,
+      "directors": [
+        "Yōjirō Takita"
+      ],
+      "studios": [
+        "Tokyo Broadcasting System",
+        "Amuse Soft Entertainment",
+        "Asahi Shimbun",
+        "Dentsu",
+        "Shochiku"
+      ],
+      "mainCast": [
+        "Masahiro Motoki",
+        "Ryōko Hirosue",
+        "Tsutomu Yamazaki",
+        "Kimiko Yo",
+        "Tetta Sugimoto"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Departures_(2008_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/departures-2008/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/departures/umc.cmc.527t2y0u9c85mo5k4mzlfn4pw",
+      "originalTitle": "おくりびと",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e1/Okuribito_%282008%29.jpg",
+      "plotSummary": "Daigo Kobayashi loses his job as a cellist when his orchestra is disbanded. He and his wife Mika move from Tokyo to his hometown in Yamagata, where they live in his childhood home that was left to him when his mother died two years earlier. It is fronted by a coffee shop that Daigo's father had operated before he ran off with a waitress when Daigo was six; since then the two have had no contact."
+    },
+    {
+      "year": 2010,
+      "editionLabel": "82nd Academy Awards",
+      "title": "The Secret in Their Eyes",
+      "releaseYear": 2009,
+      "directors": [
+        "Juan José Campanella"
+      ],
+      "studios": [
+        "Haddock Films",
+        "100 Bares",
+        "Tornasol Films"
+      ],
+      "mainCast": [
+        "Ricardo Darín",
+        "Soledad Villamil",
+        "Pablo Rago",
+        "Javier Godino",
+        "Guillermo Francella"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Secret_in_Their_Eyes",
+      "letterboxdUrl": "https://letterboxd.com/film/the-secret-in-their-eyes/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-secret-in-their-eyes/umc.cmc.4vd5pkllyv1ammc41q6jn3pxb",
+      "originalTitle": "El secreto de sus ojos",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/91/Cartel-nuevo-de-el-secreto-de-sus-ojos.jpg",
+      "plotSummary": "In June 1974, judiciary agent Benjamín Espósito investigates the rape and murder of Liliana Colotto. Espósito promises her husband, Ricardo Morales, that he will find the killer and ensure a life sentence. Espósito is assisted by his alcoholic partner Pablo Sandoval and the new department chief, Irene Menéndez-Hastings."
+    },
+    {
+      "year": 2011,
+      "editionLabel": "83rd Academy Awards",
+      "title": "In a Better World",
+      "releaseYear": 2010,
+      "directors": [
+        "Susanne Bier"
+      ],
+      "studios": [
+        "Zentropa"
+      ],
+      "mainCast": [
+        "Mikael Persbrandt",
+        "Trine Dyrholm",
+        "Ulrich Thomsen",
+        "Markus Rygaard",
+        "William Jøhnk Juels Nielsen"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/In_a_Better_World",
+      "letterboxdUrl": "https://letterboxd.com/film/in-a-better-world/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/in-a-better-world/umc.cmc.4a1lni7p57uu90lneier6hx97",
+      "originalTitle": "Hævnen",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/In_a_Better_World.jpg",
+      "plotSummary": "Anton (Mikael Persbrandt) is a Swedish doctor who commutes between his home in Denmark and his work in a Sudanese refugee camp. In Sudan, he often treats female patients who are the victims of a sadistic warlord. Anton is married to Marianne (Trine Dyrholm), but they are separated, and struggling with the possibility of divorce over an affair that Anton had with another woman."
+    },
+    {
+      "year": 2012,
+      "editionLabel": "84th Academy Awards",
+      "title": "A Separation",
+      "releaseYear": 2011,
+      "directors": [
+        "Asghar Farhadi"
+      ],
+      "studios": [
+        "Filmiran"
+      ],
+      "mainCast": [
+        "Leila Hatami",
+        "Peyman Moaadi",
+        "Shahab Hosseini",
+        "Sareh Bayat",
+        "Sarina Farhadi"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/A_Separation",
+      "letterboxdUrl": "https://letterboxd.com/film/a-separation/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/a-separation/umc.cmc.6xuqpuk6y220yqqd0p6jne5ip",
+      "originalTitle": "جدایی نادر از سیمین",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/41/A_Separation_%282011_film_poster%29.png",
+      "plotSummary": "Nader, Simin, and their 10-year-old daughter, Termeh, are an upper-middle-class family living in a flat in Tehran. Simin wants the whole family to leave Iran and has prepared the visas, but Nader wishes to stay to care for his father, who lives with them, and has Alzheimer's disease. Simin therefore files for divorce, but the family court considers the grounds to be insufficient and rejects the application."
+    },
+    {
+      "year": 2013,
+      "editionLabel": "85th Academy Awards",
+      "title": "Amour",
+      "releaseYear": 2012,
+      "directors": [
+        "Michael Haneke"
+      ],
+      "studios": [
+        "Les Films du Losange",
+        "X Filme Creative Pool",
+        "Wega Film"
+      ],
+      "mainCast": [
+        "Jean-Louis Trintignant",
+        "Emmanuelle Riva",
+        "Isabelle Huppert",
+        "Alexandre Tharaud",
+        "William Shimell"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Amour_(2012_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/amour-2012/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/amour/umc.cmc.6unhxgooyohjelip1zcsstgsc",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/95/Amour-poster-french.jpg",
+      "plotSummary": "After residents of a Paris apartment building complain of a smell coming from one of the apartments, the emergency services break down its door to find an elderly woman's corpse in the bedroom, adorned with cut flowers. Several months before the opening scene, Anne and her husband Georges, both retired piano teachers in their eighties, attend a performance by one of Anne's former pupils, Alexandre. They return home to find that someone has unsuccessfully tried to break into their apartment."
+    },
+    {
+      "year": 2014,
+      "editionLabel": "86th Academy Awards",
+      "title": "The Great Beauty",
+      "releaseYear": 2013,
+      "directors": [
+        "Paolo Sorrentino"
+      ],
+      "studios": [
+        "Indigo Film",
+        "Babe Films",
+        "Pathé",
+        "Medusa Film",
+        "France 2 Cinéma"
+      ],
+      "mainCast": [
+        "Toni Servillo",
+        "Carlo Verdone",
+        "Sabrina Ferilli",
+        "Carlo Buccirosso",
+        "Iaia Forte"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Great_Beauty",
+      "letterboxdUrl": "https://letterboxd.com/film/the-great-beauty/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-great-beauty/umc.cmc.4iwwbrb2tskddpq9953tlgln1",
+      "originalTitle": "La grande bellezza",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/19/The_Great_Beauty_poster.jpg",
+      "plotSummary": "Jep Gambardella is a 65-year-old seasoned journalist and theater critic, mostly committed to wandering among the social events of a Rome immersed in the beauty of its history and in the superficiality of its inhabitants today, in a merciless contrast. He also ventured into creative writing in his youth: he is the author of only one work called The Human Apparatus. Despite the appreciation and the many awards he received, Jep has not written other books, not only for his laziness but above all for a creative block from which he cannot escape."
+    },
+    {
+      "year": 2015,
+      "editionLabel": "87th Academy Awards",
+      "title": "Ida",
+      "releaseYear": 2013,
+      "directors": [
+        "Paweł Pawlikowski"
+      ],
+      "studios": [
+        "Polish Film Institute",
+        "Canal+ Polska",
+        "Danish Film Institute",
+        "Eurimages",
+        "Opus Film"
+      ],
+      "mainCast": [
+        "Agata Kulesza",
+        "Agata Trzebuchowska",
+        "Dawid Ogrodnik"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Ida_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/ida/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/ida/umc.cmc.3vkqemk9s5hgjxmftaspjj16l",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/ab/Ida_%282013_film%29.jpg",
+      "plotSummary": "In the 1960s Poland, Anna, a young novice nun, is told by her prioress that she must visit Wanda Gruz, her aunt and only surviving relative, before she takes her vows. Anna travels to Warsaw to see Wanda, a chain-smoking, hard-drinking, sexually promiscuous state prosecutor and former communist resistance fighter. Wanda reveals that Anna's actual name is Ida Lebenstein, and that she was raised in a convent after her Jewish parents were murdered late in the German occupation during World War II."
+    },
+    {
+      "year": 2016,
+      "editionLabel": "88th Academy Awards",
+      "title": "Son of Saul",
+      "releaseYear": 2015,
+      "directors": [
+        "László Nemes"
+      ],
+      "studios": [
+        "Laokoon Filmgroup"
+      ],
+      "mainCast": [
+        "Géza Röhrig",
+        "Levente Molnár",
+        "Urs Rechn",
+        "Todd Charmont",
+        "Sándor Zsótér"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Son_of_Saul",
+      "letterboxdUrl": "https://letterboxd.com/film/son-of-saul/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/son-of-saul/umc.cmc.3v7076adyb6owmqennid0t5lv",
+      "originalTitle": "Saul fia",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/dd/Son_of_Saul_%28Saul_fia%29.png",
+      "plotSummary": "In October 1944, Jewish–Hungarian prisoner Saul Ausländer works as a Sonderkommando at the gas chambers in Auschwitz. He works stoically, seemingly numbed by the daily atrocities. Among the dead after a gassing, Saul sees a still living boy suffocated by a Nazi doctor who calls for an autopsy."
+    },
+    {
+      "year": 2017,
+      "editionLabel": "89th Academy Awards",
+      "title": "The Salesman",
+      "releaseYear": 2016,
+      "directors": [
+        "Asghar Farhadi"
+      ],
+      "studios": [
+        "Memento Films Production",
+        "Asghar Farhadi Production",
+        "Arte France Cinéma"
+      ],
+      "mainCast": [
+        "Shahab Hosseini",
+        "Taraneh Alidoosti",
+        "Babak Karimi",
+        "Farid Sajjadi Hosseini",
+        "Mina Sadati"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Salesman_(2016_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-salesman-2016/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-salesman/umc.cmc.1lvrjp2eo9jzhbxmxtj1tx9aw",
+      "originalTitle": "فروشنده",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/8c/The_Salesman.png",
+      "plotSummary": "Emad and Rana are a married couple who both work in the theatre, currently starring in a production of Death of a Salesman by Arthur Miller, with Emad portraying Willy Loman and Rana playing Linda. Emad is also a popular instructor at a local school, where the youth joke about him being a \"salesman.\" One night, their apartment begins to collapse and they flee the building with the other residents."
+    },
+    {
+      "year": 2018,
+      "editionLabel": "90th Academy Awards",
+      "title": "A Fantastic Woman",
+      "releaseYear": 2017,
+      "directors": [
+        "Sebastián Lelio"
+      ],
+      "studios": [
+        "Fábula",
+        "Komplizen Film"
+      ],
+      "mainCast": [
+        "Daniela Vega",
+        "Francisco Reyes",
+        "Luis Gnecco",
+        "Aline Küppenheim",
+        "Amparo Noguera"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/A_Fantastic_Woman",
+      "letterboxdUrl": "https://letterboxd.com/film/a-fantastic-woman/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/a-fantastic-woman/umc.cmc.mzrra2wv74727ps8l7lzebi2",
+      "originalTitle": "Una mujer fantástica",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/40/A_Fantastic_Woman.png",
+      "plotSummary": "Marina is a young trans woman living in Santiago, Chile. She works as a singer and a waitress and is in a relationship with an older man named Orlando. They have recently moved in together, and on Marina's birthday, Orlando gives her a note promising tickets to a famous resort as a gift."
+    },
+    {
+      "year": 2019,
+      "editionLabel": "91st Academy Awards",
+      "title": "Roma",
+      "releaseYear": 2018,
+      "directors": [
+        "Alfonso Cuarón"
+      ],
+      "studios": [
+        "Espectáculos Fílmicos El Coyúl",
+        "Pimienta Films",
+        "Participant Media",
+        "Esperanto-Filmoj"
+      ],
+      "mainCast": [
+        "Yalitza Aparicio",
+        "Marina de Tavira",
+        "Fernando Grediaga",
+        "Jorge Antonio Guerrero",
+        "Marco Graf"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Roma_(2018_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/roma-2018/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Roma_theatrical_poster.png",
+      "plotSummary": "In 1970, Cleodegaria \"Cleo\" Gutiérrez is a Mixtec live-in maid in an upper-middle-class household in Mexico City's Colonia Roma neighborhood. The household consists of the mother, Sofía; the father, Antonio; their four school-aged children, Pepe, Sofi, Toño and Paco; and Sofía's mother, Teresa. Antonio, a medical doctor, often leaves for business conferences, but Sofía's distressed reactions to his absences suggest he is having an extramarital affair."
+    },
+    {
+      "year": 2020,
+      "editionLabel": "92nd Academy Awards",
+      "title": "Parasite",
+      "releaseYear": 2019,
+      "directors": [
+        "Bong Joon-ho"
+      ],
+      "studios": [
+        "Barunson E&A"
+      ],
+      "mainCast": [
+        "Song Kang-ho",
+        "Lee Sun-kyun",
+        "Cho Yeo-jeong",
+        "Choi Woo-shik",
+        "Park So-dam"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/parasite-2019/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/parasite/umc.cmc.5j8t2blurpxgpnxeqtm15n8i1",
+      "originalTitle": "기생충",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png",
+      "plotSummary": "Kim Ki-taek and Chung-sook live in a semi-basement flat (banjiha) in Seoul with their daughter Ki-jung and son Ki-woo. As the family has financial struggles and low-income jobs, family friend Min-hyuk gives them a scholar's rock meant to promise wealth. Leaving to study abroad, he suggests that Ki-woo lie about his qualifications to take over Min-hyuk's job as an English tutor for Da-hye, the daughter of the wealthy but naïve Park family."
+    },
+    {
+      "year": 2021,
+      "editionLabel": "93rd Academy Awards",
+      "title": "Another Round",
+      "releaseYear": 2020,
+      "directors": [
+        "Thomas Vinterberg"
+      ],
+      "studios": [
+        "Zentropa Entertainments",
+        "Film i Väst",
+        "Topkapi Films"
+      ],
+      "mainCast": [
+        "Mads Mikkelsen",
+        "Thomas Bo Larsen",
+        "Magnus Millang",
+        "Lars Ranthe"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Another_Round_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/another-round-2020/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/another-round/umc.cmc.3mcqgmi9vb3ifxj9r8knajtzr",
+      "originalTitle": "Druk",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ea/Another_Round_%28film%29.jpg",
+      "plotSummary": "Teachers Martin, Tommy, Peter, and Nikolaj are colleagues and friends who work at a gymnasium school in Copenhagen. All four struggle with unmotivated students and feel that their lives have become boring and stale. Martin is confronted by his senior students and their parents, who express that he has become a barrier to their passing their history exams."
+    },
+    {
+      "year": 2022,
+      "editionLabel": "94th Academy Awards",
+      "title": "Drive My Car",
+      "releaseYear": 2021,
+      "directors": [
+        "Ryusuke Hamaguchi"
+      ],
+      "studios": [
+        "C&I Entertainment",
+        "Culture Entertainment",
+        "Bitters End",
+        "Nekojarashi"
+      ],
+      "mainCast": [
+        "Hidetoshi Nishijima",
+        "Tōko Miura",
+        "Reika Kirishima",
+        "Park Yu-rim",
+        "Jin Dae-yeon"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Drive_My_Car_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/drive-my-car/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/drive-my-car/umc.cmc.yjsrt5pn0yjvl57dyq5t7a6l",
+      "originalTitle": "ドライブ・マイ・カー",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3d/Drive_My_Car_movie_poster.jpeg",
+      "plotSummary": "Stage actor and director Yūsuke Kafuku lives in Tokyo with his wife Oto, a screenwriter who conceives her stories after sex and narrates them to him. He learns his lines by listening to tapes recorded by Oto, while driving his red Aero performance variant of Saab 900 Turbo. After Yūsuke performs in Waiting for Godot, Oto introduces him to young television star Kōji Takatsuki."
+    },
+    {
+      "year": 2023,
+      "editionLabel": "95th Academy Awards",
+      "title": "All Quiet on the Western Front",
+      "releaseYear": 2022,
+      "directors": [
+        "Edward Berger"
+      ],
+      "studios": [
+        "Amusement Park"
+      ],
+      "mainCast": [
+        "Felix Kammerer",
+        "Albrecht Schuch",
+        "Daniel Brühl",
+        "Aaron Hilmer",
+        "Moritz Klaus"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/All_Quiet_on_the_Western_Front_(2022_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/all-quiet-on-the-western-front-2022/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/all-quiet-on-the-western-front/umc.cmc.6dhlhfswpjp8cfx45cscx7jto",
+      "originalTitle": "Im Westen nichts Neues",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c3/All_quiet_on_the_western_front_%282022_film%29.jpg",
+      "plotSummary": "In 1917, three years into World War I, 17-year-old Paul Bäumer enthusiastically enlists in the Imperial German Army alongside schoolmates Albert Kropp, Franz Müller, and Ludwig Behm. They hear a patriotic speech by a school official and unknowingly receive recycled uniforms from soldiers killed in a previous battle. After they are deployed in northern France near La Malmaison, they are befriended by an older and more experienced soldier, Stanislaus \"Kat\" Katczinsky."
+    },
+    {
+      "year": 2024,
+      "editionLabel": "96th Academy Awards",
+      "title": "The Zone of Interest",
+      "releaseYear": 2023,
+      "directors": [
+        "Jonathan Glazer"
+      ],
+      "studios": [
+        "JW Films",
+        "Extreme Emotions",
+        "Film4",
+        "Access Entertainment"
+      ],
+      "mainCast": [
+        "Christian Friedel",
+        "Sandra Hüller",
+        "Johann Karthaus",
+        "Luis Noah Witte",
+        "Nele Ahrensmeier"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Zone_of_Interest_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-zone-of-interest/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-zone-of-interest/umc.cmc.7kkyptyet8f8uon4ijegjj1di",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/24/The_Zone_of_Interest_film_poster.jpg",
+      "plotSummary": "In 1943, Rudolf Höss, commandant of the German Auschwitz concentration camp, lives with his wife Hedwig and their five children in an idyllic home next to the camp. Höss takes the children out to swim and fish, and Hedwig spends time tending the garden. Non-Jewish inmates handle the chores, and the murdered Jews' best belongings are given to the family."
+    },
+    {
+      "year": 2025,
+      "editionLabel": "97th Academy Awards",
+      "title": "I'm Still Here",
+      "releaseYear": 2024,
+      "directors": [
+        "Walter Salles"
+      ],
+      "studios": [
+        "VideoFilmes",
+        "RT Features",
+        "MACT Productions",
+        "Arte France Cinéma",
+        "Conspiração"
+      ],
+      "mainCast": [
+        "Fernanda Torres",
+        "Selton Mello",
+        "Fernanda Montenegro",
+        "Guilherme Silveira",
+        "Valentina Herszage"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/I%27m_Still_Here_(2024_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/im-still-here-2024/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/im-still-here/umc.cmc.4yxcgs8ksgoik23teosvfdozy",
+      "originalTitle": "Ainda Estou Aqui",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0a/I%27m_Still_Here_%282024_film%29_poster.jpg",
+      "plotSummary": "In December 1970, former Brazilian congressman Rubens Paiva lives in a house near Leblon beach in Rio de Janeiro with his wife Eunice and their five children. Returning to his civil career, after the revocation of his tenure as a congressman following the 1964 Brazilian coup d'état, Paiva continues to support political expatriates without disclosing his activities to his family. After revolutionary movements kidnap the Swiss ambassador to Brazil, the country faces looming political instability."
+    }
+  ]
+}

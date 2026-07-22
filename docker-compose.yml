@@ -1,0 +1,43 @@
+name: award-winning-movies
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: movies
+      POSTGRES_PASSWORD: movies
+      POSTGRES_DB: movies
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U movies -d movies']
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    build: .
+    image: award-winning-movies:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://movies:movies@db:5432/movies
+    command: sh -c "npm run db:migrate && npm run seed"
+
+  app:
+    image: award-winning-movies:latest
+    restart: unless-stopped
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql://movies:movies@db:5432/movies
+    ports:
+      - '3000:3000'
+
+volumes:
+  db_data:

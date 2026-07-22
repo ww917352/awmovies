@@ -1,0 +1,981 @@
+{
+  "slug": "berlin-golden-bear",
+  "organization": "Berlin International Film Festival",
+  "name": "Golden Bear",
+  "wins": [
+    {
+      "year": 1951,
+      "editionLabel": "1st Berlin International Film Festival",
+      "title": "Four in a Jeep",
+      "releaseYear": 1951,
+      "directors": [
+        "Leopold Lindtberg",
+        "Elizabeth Montagu"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Ralph Meeker",
+        "Viveca Lindfors",
+        "Yoseph Yadin",
+        "Michael Medwin",
+        "Albert Dinan"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Four_in_a_Jeep",
+      "letterboxdUrl": "https://letterboxd.com/film/four-in-a-jeep/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1952,
+      "editionLabel": "2nd Berlin International Film Festival",
+      "title": "One Summer of Happiness",
+      "releaseYear": 1951,
+      "directors": [
+        "Arne Mattsson"
+      ],
+      "studios": [
+        "Nordisk Tonefilm"
+      ],
+      "mainCast": [
+        "Ulla Jacobsson",
+        "Folke Sundquist",
+        "Edvin Adolphson",
+        "John Elfström"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/One_Summer_of_Happiness",
+      "letterboxdUrl": "https://letterboxd.com/film/one-summer-of-happiness/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1953,
+      "editionLabel": "3rd Berlin International Film Festival",
+      "title": "The Wages of Fear",
+      "releaseYear": 1953,
+      "directors": [
+        "Henri-Georges Clouzot"
+      ],
+      "studios": [
+        "Vera Film",
+        "Filmsonor",
+        "C.I.C.C.",
+        "Fono Roma"
+      ],
+      "mainCast": [
+        "Yves Montand",
+        "Charles Vanel",
+        "Folco Lulli",
+        "Peter Van Eyck",
+        "Véra Clouzot"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Wages_of_Fear",
+      "letterboxdUrl": "https://letterboxd.com/film/the-wages-of-fear/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1954,
+      "editionLabel": "4th Berlin International Film Festival",
+      "title": "Hobson's Choice",
+      "releaseYear": 1954,
+      "directors": [
+        "David Lean"
+      ],
+      "studios": [
+        "London Films"
+      ],
+      "mainCast": [
+        "Charles Laughton",
+        "John Mills",
+        "Brenda de Banzie",
+        "Daphne Anderson",
+        "Prunella Scales"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Hobson%27s_Choice_(1954_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/hobson-s-choice/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1955,
+      "editionLabel": "5th Berlin International Film Festival",
+      "title": "Die Ratten",
+      "releaseYear": 1955,
+      "directors": [
+        "Robert Siodmak"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Maria Schell",
+        "Curd Jürgens",
+        "Heidemarie Hatheyer",
+        "Gustav Knuth",
+        "Ilse Steppat"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Die_Ratten",
+      "letterboxdUrl": "https://letterboxd.com/film/die-ratten/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1956,
+      "editionLabel": "6th Berlin International Film Festival",
+      "title": "Invitation to the Dance",
+      "releaseYear": 1956,
+      "directors": [
+        "Gene Kelly"
+      ],
+      "studios": [
+        "Metro-Goldwyn-Mayer",
+        "M-G-M Cartoons (animated sequences)"
+      ],
+      "mainCast": [
+        "Gene Kelly",
+        "Tamara Toumanova",
+        "Igor Youskevitch",
+        "Tommy Rall"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Invitation_to_the_Dance_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/invitation-to-the-dance/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1957,
+      "editionLabel": "7th Berlin International Film Festival",
+      "title": "12 Angry Men",
+      "releaseYear": 1957,
+      "directors": [
+        "Sidney Lumet"
+      ],
+      "studios": [
+        "Orion-Nova Productions"
+      ],
+      "mainCast": [
+        "Henry Fonda",
+        "Lee J. Cobb",
+        "Ed Begley",
+        "E. G. Marshall",
+        "Jack Warden"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/12_Angry_Men",
+      "letterboxdUrl": "https://letterboxd.com/film/12-angry-men/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1958,
+      "editionLabel": "8th Berlin International Film Festival",
+      "title": "Wild Strawberries",
+      "releaseYear": 1957,
+      "directors": [
+        "Ingmar Bergman"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Victor Sjöström",
+        "Bibi Andersson",
+        "Gunnar Björnstrand",
+        "Folke Sundquist",
+        "Ingrid Thulin"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Wild_Strawberries_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/wild-strawberries/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1959,
+      "editionLabel": "9th Berlin International Film Festival",
+      "title": "Les Cousins",
+      "releaseYear": 1959,
+      "directors": [
+        "Claude Chabrol"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Gérard Blain",
+        "Jean-Claude Brialy",
+        "Juliette Mayniel"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Les_Cousins_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/les-cousins/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1960,
+      "editionLabel": "10th Berlin International Film Festival",
+      "title": "El Lazarillo de Tormes",
+      "releaseYear": 1959,
+      "directors": [
+        "César Fernández Ardavín"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Marco Paoletti"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/El_Lazarillo_de_Tormes",
+      "letterboxdUrl": "https://letterboxd.com/film/el-lazarillo-de-tormes/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1961,
+      "editionLabel": "11th Berlin International Film Festival",
+      "title": "La Notte",
+      "releaseYear": 1961,
+      "directors": [
+        "Michelangelo Antonioni"
+      ],
+      "studios": [
+        "Nepi Film",
+        "Sofitedip",
+        "Silver Film"
+      ],
+      "mainCast": [
+        "Marcello Mastroianni",
+        "Jeanne Moreau",
+        "Maria Pia Luzi",
+        "Rosy Mazzacurati",
+        "Monica Vitti"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/La_Notte",
+      "letterboxdUrl": "https://letterboxd.com/film/la-notte/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1962,
+      "editionLabel": "12th Berlin International Film Festival",
+      "title": "A Kind of Loving",
+      "releaseYear": 1962,
+      "directors": [
+        "John Schlesinger"
+      ],
+      "studios": [
+        "Vic Films Productions",
+        "Waterhall Productions"
+      ],
+      "mainCast": [
+        "Alan Bates",
+        "June Ritchie",
+        "Thora Hird"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/A_Kind_of_Loving_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/a-kind-of-loving/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1963,
+      "editionLabel": "13th Berlin International Film Festival",
+      "title": "Bushido, Samurai Saga",
+      "releaseYear": 1963,
+      "directors": [
+        "Tadashi Imai"
+      ],
+      "studios": [
+        "Toei Company"
+      ],
+      "mainCast": [
+        "Kinnosuke Nakamura"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Bushido,_Samurai_Saga",
+      "letterboxdUrl": "https://letterboxd.com/film/bushido-samurai-saga/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1963,
+      "editionLabel": "13th Berlin International Film Festival",
+      "title": "To Bed or Not to Bed",
+      "releaseYear": 1963,
+      "directors": [
+        "Gian Luigi Polidoro"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Alberto Sordi"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/To_Bed_or_Not_to_Bed",
+      "letterboxdUrl": "https://letterboxd.com/film/to-bed-or-not-to-bed/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1964,
+      "editionLabel": "14th Berlin International Film Festival",
+      "title": "Dry Summer",
+      "releaseYear": 1963,
+      "directors": [
+        "Metin Erksan"
+      ],
+      "studios": [
+        "Hitit Filim"
+      ],
+      "mainCast": [
+        "Hülya Koçyiğit",
+        "Erol Taş",
+        "Ercan Yazgan",
+        "Hakkı Haktan",
+        "Zeki Tüney"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Dry_Summer",
+      "letterboxdUrl": "https://letterboxd.com/film/dry-summer/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1965,
+      "editionLabel": "15th Berlin International Film Festival",
+      "title": "Alphaville",
+      "releaseYear": 1965,
+      "directors": [
+        "Jean-Luc Godard"
+      ],
+      "studios": [
+        "Chaumiane Productions",
+        "Filmstudio"
+      ],
+      "mainCast": [
+        "Eddie Constantine",
+        "Anna Karina",
+        "Akim Tamiroff"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Alphaville_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/alphaville/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1966,
+      "editionLabel": "16th Berlin International Film Festival",
+      "title": "Cul-de-Sac",
+      "releaseYear": 1966,
+      "directors": [
+        "Roman Polanski"
+      ],
+      "studios": [
+        "Compton Films",
+        "Tekli British Productions"
+      ],
+      "mainCast": [
+        "Donald Pleasence",
+        "Françoise Dorléac",
+        "Lionel Stander",
+        "Jack MacGowran"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Cul-de-sac_(1966_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/cul-de-sac/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1967,
+      "editionLabel": "17th Berlin International Film Festival",
+      "title": "Le Départ",
+      "releaseYear": 1967,
+      "directors": [
+        "Jerzy Skolimowski"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Jean-Pierre Léaud",
+        "Catherine-Isabelle Duport"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Le_Départ",
+      "letterboxdUrl": "https://letterboxd.com/film/le-depart/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1968,
+      "editionLabel": "18th Berlin International Film Festival",
+      "title": "Who Saw Him Die?",
+      "releaseYear": 1968,
+      "directors": [
+        "Jan Troell"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Per Oscarsson"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Who_Saw_Him_Die%3F",
+      "letterboxdUrl": "https://letterboxd.com/film/who-saw-him-die/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1969,
+      "editionLabel": "19th Berlin International Film Festival",
+      "title": "Early Works",
+      "releaseYear": 1969,
+      "directors": [
+        "Želimir Žilnik"
+      ],
+      "studios": [
+        "Avala Film Beograd",
+        "Neoplanta film Novi Sad"
+      ],
+      "mainCast": [
+        "Milja Vujanović",
+        "Bogdan Tirnanić",
+        "Čedomir Radović",
+        "Marko Nikolić"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Early_Works_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/early-works/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1971,
+      "editionLabel": "21st Berlin International Film Festival",
+      "title": "The Garden of the Finzi-Continis",
+      "releaseYear": 1970,
+      "directors": [
+        "Vittorio De Sica"
+      ],
+      "studios": [
+        "Documento Film",
+        "CCC-Filmkunst"
+      ],
+      "mainCast": [
+        "Lino Capolicchio",
+        "Dominique Sanda",
+        "Helmut Berger",
+        "Fabio Testi",
+        "Romolo Valli"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Garden_of_the_Finzi-Continis_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-garden-of-the-finzi-continis/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1972,
+      "editionLabel": "22nd Berlin International Film Festival",
+      "title": "The Canterbury Tales",
+      "releaseYear": 1972,
+      "directors": [
+        "Pier Paolo Pasolini"
+      ],
+      "studios": [
+        "Les Productions Artistes Associés",
+        "Produzioni Europee Associate"
+      ],
+      "mainCast": [
+        "Hugh Griffith",
+        "Laura Betti",
+        "Ninetto Davoli",
+        "Franco Citti",
+        "Josephine Chaplin"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Canterbury_Tales_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-canterbury-tales/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1973,
+      "editionLabel": "23rd Berlin International Film Festival",
+      "title": "Distant Thunder",
+      "releaseYear": 1973,
+      "directors": [
+        "Satyajit Ray"
+      ],
+      "studios": [
+        "Balaka Movies"
+      ],
+      "mainCast": [
+        "Soumitra Chatterjee",
+        "Bobita",
+        "Sandhya Roy",
+        "Monu Mukherjee"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Distant_Thunder_(1973_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/distant-thunder/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1974,
+      "editionLabel": "24th Berlin International Film Festival",
+      "title": "The Apprenticeship of Duddy Kravitz",
+      "releaseYear": 1974,
+      "directors": [
+        "Ted Kotcheff"
+      ],
+      "studios": [
+        "International Cinemedia Center",
+        "Canadian Film Development Corporation",
+        "Welco United Canada",
+        "Famous Players",
+        "Astral-Bellevue-Pathé",
+        "The Duddy Kravitz Syndicate"
+      ],
+      "mainCast": [
+        "Richard Dreyfuss",
+        "Micheline Lanctôt",
+        "Randy Quaid",
+        "Joseph Wiseman",
+        "Denholm Elliott"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Apprenticeship_of_Duddy_Kravitz_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-apprenticeship-of-duddy-kravitz/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1975,
+      "editionLabel": "25th Berlin International Film Festival",
+      "title": "Adoption",
+      "releaseYear": 1975,
+      "directors": [
+        "Márta Mészáros"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Katalin Berek",
+        "Gyöngyvér Vigh",
+        "Péter Fried"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Adoption_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/adoption/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1976,
+      "editionLabel": "26th Berlin International Film Festival",
+      "title": "Buffalo Bill and the Indians, or Sitting Bull's History Lesson",
+      "releaseYear": 1976,
+      "directors": [
+        "Robert Altman"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Paul Newman",
+        "Joel Grey",
+        "Kevin McCarthy",
+        "Harvey Keitel",
+        "Will Sampson"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Buffalo_Bill_and_the_Indians,_or_Sitting_Bull%27s_History_Lesson",
+      "letterboxdUrl": "https://letterboxd.com/film/buffalo-bill-and-the-indians-or-sitting-bull-s-history-lesson/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1977,
+      "editionLabel": "27th Berlin International Film Festival",
+      "title": "The Ascent",
+      "releaseYear": 1977,
+      "directors": [
+        "Larisa Shepitko"
+      ],
+      "studios": [
+        "Mosfilm"
+      ],
+      "mainCast": [
+        "Boris Plotnikov",
+        "Vladimir Gostyukhin",
+        "Sergei Yakovlev",
+        "Lyudmila Polyakova",
+        "Anatoly Solonitsyn"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Ascent_(1977_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-ascent/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1978,
+      "editionLabel": "28th Berlin International Film Festival",
+      "title": "Ascensor",
+      "releaseYear": 1978,
+      "directors": [
+        "Tomás Muñoz"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Armando Aguirre"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Ascensor",
+      "letterboxdUrl": "https://letterboxd.com/film/ascensor/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1978,
+      "editionLabel": "28th Berlin International Film Festival",
+      "title": "Las truchas",
+      "releaseYear": 1978,
+      "directors": [
+        "José Luis García Sánchez"
+      ],
+      "studios": [
+        "Arándano"
+      ],
+      "mainCast": [
+        "Héctor Alterio",
+        "Lautaro Murúa",
+        "Roberto Font",
+        "Manuel Huete",
+        "Luis Ciges"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Las_truchas",
+      "letterboxdUrl": "https://letterboxd.com/film/las-truchas/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1978,
+      "editionLabel": "28th Berlin International Film Festival",
+      "title": "What Max Said",
+      "releaseYear": 1978,
+      "directors": [
+        "Emilio Martínez Lázaro"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Héctor Alterio",
+        "Myriam de Maeztu",
+        "Ignacio Fernández de Castro",
+        "Gracia Querejeta",
+        "Raúl Sender"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/What_Max_Said",
+      "letterboxdUrl": "https://letterboxd.com/film/what-max-said/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1979,
+      "editionLabel": "29th Berlin International Film Festival",
+      "title": "David",
+      "releaseYear": 1979,
+      "directors": [
+        "Peter Lilienthal"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Walter Taub",
+        "Irene Vrkijan",
+        "Eva Mattes",
+        "Mario Fischel"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/David_(1979_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/david/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1980,
+      "editionLabel": "30th Berlin International Film Festival",
+      "title": "Heartland",
+      "releaseYear": 1979,
+      "directors": [
+        "Richard Pearce"
+      ],
+      "studios": [
+        "Filmhaus",
+        "The National Endowment for the Humanities",
+        "Wilderness Women"
+      ],
+      "mainCast": [
+        "Conchata Ferrell",
+        "Rip Torn",
+        "Lilia Skala",
+        "Barry Primus",
+        "Megan Folsom"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Heartland_(1979_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/heartland/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1980,
+      "editionLabel": "30th Berlin International Film Festival",
+      "title": "Palermo or Wolfsburg",
+      "releaseYear": 1980,
+      "directors": [
+        "Werner Schroeter"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Nicola Zarbo"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Palermo_or_Wolfsburg",
+      "letterboxdUrl": "https://letterboxd.com/film/palermo-or-wolfsburg/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Palermo oder Wolfsburg",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/ac/Palermo_or_Wolfsburg.jpg",
+      "plotSummary": "Palermo or Wolfsburg follows Nicola, a young Sicilian man who leaves his rural hometown to seek work in the West German industrial city of Wolfsburg. Struggling against prejudice and alienation as an immigrant laborer, he becomes entangled with the German legal system, as reflected in the film's courtroom scenes. Director Werner Schroeter contrasts the warmth of Nicola's Sicilian origins with the coldness he encounters in industrial West Germany."
+    },
+    {
+      "year": 1981,
+      "editionLabel": "31st Berlin International Film Festival",
+      "title": "Deprisa, deprisa",
+      "releaseYear": 1981,
+      "directors": [
+        "Carlos Saura"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Berta Socuéllamos",
+        "José Antonio Valdelomar",
+        "Jesús Arias",
+        "José María Hervás Roldán"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Deprisa,_deprisa",
+      "letterboxdUrl": "https://letterboxd.com/film/deprisa-deprisa/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0b/Deprisa_deprisa.jpg",
+      "plotSummary": "Deprisa, deprisa follows a gang of young delinquents in Madrid, led by Pablo and Meca, who rob banks and businesses to fund a life of fast cars and reckless freedom. Pablo falls for a supermarket cashier, Ángela, who is drawn into the gang's escalating heists. As their crimes grow more violent, the group is picked off one by one, and the film ends with Ángela driving away alone with the stolen money after Pablo dies from his wounds."
+    },
+    {
+      "year": 1982,
+      "editionLabel": "32nd Berlin International Film Festival",
+      "title": "Veronika Voss",
+      "releaseYear": 1982,
+      "directors": [
+        "Rainer Werner Fassbinder"
+      ],
+      "studios": [
+        "Laura Film",
+        "Tango Film",
+        "Rialto Film",
+        "Trio Film",
+        "Maran Film",
+        "Süddeutscher Rundfunk"
+      ],
+      "mainCast": [
+        "Rosel Zech",
+        "Hilmar Thate",
+        "Cornelia Froboess"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Veronika_Voss",
+      "letterboxdUrl": "https://letterboxd.com/film/veronika-voss/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Die Sehnsucht der Veronika Voss",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c7/Veronikavoss.jpg",
+      "plotSummary": "Set in 1955 Munich, the film follows Veronika Voss, a once-famous UFA star now faded and forgotten, who begins an affair with sports journalist Robert Krohn. As Robert investigates her life, he discovers that Veronika is a morphine addict controlled by Dr. Marianne Katz, a corrupt neurologist who is slowly draining her of her wealth. Robert's attempts to expose the scheme fail, and Dr. Katz ultimately administers a fatal overdose after coercing Veronika into signing over her assets."
+    },
+    {
+      "year": 1983,
+      "editionLabel": "33rd Berlin International Film Festival",
+      "title": "Ascendancy",
+      "releaseYear": 1983,
+      "directors": [
+        "Edward Bennett"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Julie Covington",
+        "Ian Charleson"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Ascendancy_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/ascendancy/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2d/Ascendancy_(film).jpg",
+      "plotSummary": "Set in Ireland during and after the First World War, Ascendancy follows Connie Wintour, a young woman from the Protestant landowning class known as the Ascendancy. As the Irish War of Independence intensifies around her family's estate, Connie is gradually drawn into contact with the Irish nationalist movement, forcing her to confront the crumbling world of British rule in Ireland.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/ascendancy/umc.cmc.7ciy44ojt80yh9b3qjj4xcpju"
+    },
+    {
+      "year": 1983,
+      "editionLabel": "33rd Berlin International Film Festival",
+      "title": "La colmena",
+      "releaseYear": 1982,
+      "directors": [
+        "Mario Camus"
+      ],
+      "studios": [
+        "Ágata Films"
+      ],
+      "mainCast": [
+        "Victoria Abril",
+        "Francisco Algora",
+        "Rafael Alonso",
+        "Ana Belén",
+        "José Bódalo"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/La_colmena_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/la-colmena/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2b/The_Beehive_poster.jpg",
+      "plotSummary": "Set in Madrid in the harsh years following the Spanish Civil War, La colmena weaves together the lives of dozens of characters -- café regulars, writers, prostitutes, and ordinary citizens -- who cross paths at the café La Delicia. Through this mosaic of interconnected stories, the film paints a portrait of a society struggling with poverty, repression, and quiet desperation under the early Franco regime."
+    },
+    {
+      "year": 1984,
+      "editionLabel": "34th Berlin International Film Festival",
+      "title": "Love Streams",
+      "releaseYear": 1984,
+      "directors": [
+        "John Cassavetes"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Gena Rowlands",
+        "John Cassavetes",
+        "Diahnne Abbott",
+        "Seymour Cassel"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Love_Streams_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/love-streams/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/cf/Love_Streams.jpg",
+      "plotSummary": "Sarah Lawson, in the midst of a difficult divorce, moves in with her brother Robert Harmon, a hard-drinking writer who avoids emotional commitment despite his relationships with women. When Robert is forced to look after the young son he has never known, the visit unsettles both father and son, while Sarah tries to draw Robert out of his self-destructive isolation. As the siblings care for one another through their respective crises, the film builds to a surreal, dreamlike reckoning with love, loneliness, and family bonds."
+    },
+    {
+      "year": 1985,
+      "editionLabel": "35th Berlin International Film Festival",
+      "title": "Wetherby",
+      "releaseYear": 1985,
+      "directors": [
+        "David Hare"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Vanessa Redgrave",
+        "Ian Holm",
+        "Judi Dench",
+        "Stuart Wilson",
+        "Tim McInnerny"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Wetherby_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/wetherby/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/43/Wetherby.jpg",
+      "plotSummary": "In the Yorkshire town of Wetherby, schoolteacher Jean Travers hosts a dinner party attended by a mysterious young stranger, John Morgan. The next morning Morgan returns unannounced and fatally shoots himself at her kitchen table, sending Jean and her circle of friends searching for answers. Through interlocking flashbacks the film uncovers the histories of Jean, her guests, and Morgan himself, ultimately leading Jean to a reckoning with her own long-buried disappointments and losses.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/wetherby/umc.cmc.6li74dskwa3dxhg251ctuyjhf"
+    },
+    {
+      "year": 1985,
+      "editionLabel": "35th Berlin International Film Festival",
+      "title": "The Woman and the Stranger",
+      "releaseYear": 1985,
+      "directors": [
+        "Rainer Simon"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Kathrin Waligura",
+        "Siegfried Höchst",
+        "Joachim Lätsch",
+        "Katrin Knappe"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Woman_and_the_Stranger",
+      "letterboxdUrl": "https://letterboxd.com/film/the-woman-and-the-stranger/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Die Frau und der Fremde",
+      "plotSummary": "Based on Leonhard Frank's novella Karl und Anna, the film follows two friends, Karl and Richard, who grow close while held together in a German POW camp during the First World War. Richard escapes and makes his way to Karl's wife, Anna, eventually forming a relationship with her while posing as her missing husband. When the real Karl finally returns home, the three must confront the consequences of the deception."
+    },
+    {
+      "year": 1986,
+      "editionLabel": "36th Berlin International Film Festival",
+      "title": "Stammheim",
+      "releaseYear": 1986,
+      "directors": [
+        "Reinhard Hauff"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Ulrich Pleitgen",
+        "Ulrich Tukur",
+        "Therese Affolter"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Stammheim_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/stammheim/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Stammheim – Die Baader-Meinhof-Gruppe vor Gericht",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0e/Stammheim.jpg",
+      "plotSummary": "Stammheim dramatizes the mid-1970s trial of the founding members of the Red Army Faction, also known as the Baader-Meinhof Group, held in a specially built courtroom adjoining Stammheim Prison in Stuttgart. Drawing heavily on actual trial transcripts, the film reconstructs the courtroom proceedings and the defendants' confrontational stance toward the West German state, as the legal system struggles to contain them."
+    },
+    {
+      "year": 1987,
+      "editionLabel": "37th Berlin International Film Festival",
+      "title": "The Theme",
+      "releaseYear": 1979,
+      "directors": [
+        "Gleb Panfilov"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Mikhail Ulyanov",
+        "Inna Churikova",
+        "Stanislav Lyubshin",
+        "Yevgeni Vesnik"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Theme",
+      "letterboxdUrl": "https://letterboxd.com/film/the-theme/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1988,
+      "editionLabel": "38th Berlin International Film Festival",
+      "title": "Red Sorghum",
+      "releaseYear": 1988,
+      "directors": [
+        "Zhang Yimou"
+      ],
+      "studios": [
+        "Xi'an Film Studio"
+      ],
+      "mainCast": [
+        "Gong Li",
+        "Jiang Wen",
+        "Teng Rujun"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Red_Sorghum_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/red-sorghum/",
+      "letterboxdUnverified": true,
+      "originalTitle": "红高粱",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/ca/Red_Sorghum_movie_poster.jpg",
+      "plotSummary": "Set in rural Shandong province from the 1920s through the Second Sino-Japanese War, Red Sorghum follows Jiu'er, a young woman married off to an elderly, leprous distillery owner. After bandits attack her wedding procession, one of her sedan-chair carriers rescues her and later becomes her lover, and together they take over the distillery following her husband's death. Years later, as Japanese forces invade the region, Jiu'er and the distillery workers mount a desperate ambush against the occupiers, with tragic consequences."
+    },
+    {
+      "year": 1989,
+      "editionLabel": "39th Berlin International Film Festival",
+      "title": "Rain Man",
+      "releaseYear": 1988,
+      "directors": [
+        "Barry Levinson"
+      ],
+      "studios": [
+        "United Artists",
+        "Guber-Peters Company",
+        "Star Partners II, Ltd."
+      ],
+      "mainCast": [
+        "Dustin Hoffman",
+        "Tom Cruise",
+        "Valeria Golino"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Rain_Man",
+      "letterboxdUrl": "https://letterboxd.com/film/rain-man/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b2/Rain_Man_poster.jpg",
+      "plotSummary": "Charlie Babbitt, a fast-talking Los Angeles car dealer, learns that his estranged father has died and left most of his multi-million-dollar estate to an institutionalized brother Charlie never knew existed: Raymond, an autistic savant. Charlie takes Raymond on a cross-country road trip in an attempt to gain control of the inheritance, but along the way discovers Raymond's extraordinary abilities and the childhood bond they once shared. By the journey's end, Charlie's motives shift from greed toward genuine love for his brother.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/rain-man/umc.cmc.60tlefmlnwzxo1epq9ropxi1w"
+    },
+    {
+      "year": 1990,
+      "editionLabel": "40th Berlin International Film Festival",
+      "title": "Larks on a String",
+      "releaseYear": 1990,
+      "directors": [
+        "Jiří Menzel"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Rudolf Hrušínský",
+        "Vlastimil Brodský",
+        "Václav Neckář",
+        "Jitka Zelenohorská",
+        "Jaroslav Satoranský"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Larks_on_a_String",
+      "letterboxdUrl": "https://letterboxd.com/film/larks-on-a-string/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Skřivánci na niti",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/54/Larks_on_a_String.jpg",
+      "plotSummary": "Larks on a String (Czech: Skřivánci na niti) is a 1969 Czech film directed by Jiří Menzel. The film was banned by the Czechoslovak government, but was later released in 1990 after the fall of the Communist regime. It tells the stories of various characters considered bourgeois by Czechoslovakia's communist government in the 1950s, who have been forced to work in a junkyard for the purposes of re-education."
+    },
+    {
+      "year": 1990,
+      "editionLabel": "40th Berlin International Film Festival",
+      "title": "Music Box",
+      "releaseYear": 1989,
+      "directors": [
+        "Costa-Gavras"
+      ],
+      "studios": [
+        "Carolco Pictures",
+        "Irwin Winkler Productions"
+      ],
+      "mainCast": [
+        "Jessica Lange",
+        "Armin Mueller-Stahl",
+        "Frederic Forrest",
+        "Lukas Haas"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Music_Box_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/music-box/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/music-box/umc.cmc.38ma1httje7hon0nj4ccej9pm",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Music_Box_1989_poster.jpg",
+      "plotSummary": "Hungarian immigrant Michael J. Laszlo faces a trial and having his U.S. citizenship revoked after being accused of war crimes during the Second World War. Laszlo insists it is mistaken identity. His daughter, Ann Talbot, a defense attorney, resolves to defend her father in court."
+    }
+  ]
+}

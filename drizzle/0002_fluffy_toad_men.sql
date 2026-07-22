@@ -1,0 +1,1 @@
+ALTER TABLE "films" ADD COLUMN "apple_tv_url" text;

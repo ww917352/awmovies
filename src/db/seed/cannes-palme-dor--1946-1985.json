@@ -1,0 +1,1170 @@
+{
+  "slug": "cannes-palme-dor",
+  "organization": "Cannes Film Festival",
+  "name": "Palme d'Or",
+  "wins": [
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Brief Encounter",
+      "releaseYear": 1945,
+      "directors": [
+        "David Lean"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Celia Johnson",
+        "Trevor Howard",
+        "Stanley Holloway",
+        "Joyce Carey",
+        "Cyril Raymond"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Brief_Encounter",
+      "letterboxdUrl": "https://letterboxd.com/film/brief-encounter/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "The Last Chance",
+      "releaseYear": 1945,
+      "directors": [
+        "Leopold Lindtberg"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Ewart G. Morrison"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Last_Chance_(1945_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-last-chance/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "The Lost Weekend",
+      "releaseYear": 1945,
+      "directors": [
+        "Billy Wilder"
+      ],
+      "studios": [
+        "Paramount Pictures"
+      ],
+      "mainCast": [
+        "Ray Milland",
+        "Jane Wyman",
+        "Phillip Terry",
+        "Howard da Silva",
+        "Doris Dowling"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Lost_Weekend",
+      "letterboxdUrl": "https://letterboxd.com/film/the-lost-weekend/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "María Candelaria",
+      "releaseYear": 1944,
+      "directors": [
+        "Emilio Fernández"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Dolores del Río",
+        "Pedro Armendáriz",
+        "Alberto Galán",
+        "Miguel Inclán",
+        "Julio Ahuet"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Mar%C3%ADa_Candelaria",
+      "letterboxdUrl": "https://letterboxd.com/film/maria-candelaria/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Men Without Wings",
+      "releaseYear": 1946,
+      "directors": [
+        "František Čáp"
+      ],
+      "studios": [
+        "Československá filmová společnost"
+      ],
+      "mainCast": [
+        "Gustav Nezval",
+        "Ladislav H. Struna",
+        "Jaroslav Zrotal"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Men_Without_Wings",
+      "letterboxdUrl": "https://letterboxd.com/film/men-without-wings/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Neecha Nagar",
+      "releaseYear": 1946,
+      "directors": [
+        "Chetan Anand"
+      ],
+      "studios": [
+        "India Pictures"
+      ],
+      "mainCast": [
+        "Rafiq Anwar",
+        "Uma Anand",
+        "Kamini Kaushal",
+        "Rafi Peer",
+        "Hamid Butt"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Neecha_Nagar",
+      "letterboxdUrl": "https://letterboxd.com/film/neecha-nagar/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Pastoral Symphony",
+      "releaseYear": 1946,
+      "directors": [
+        "Jean Delannoy"
+      ],
+      "studios": [
+        "Les Films Gibé"
+      ],
+      "mainCast": [
+        "Pierre Blanchar",
+        "Michèle Morgan",
+        "Jean Desailly"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Pastoral_Symphony_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/pastoral-symphony/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "The Red Meadows",
+      "releaseYear": 1945,
+      "directors": [
+        "Bodil Ipsen",
+        "Lau Lauritzen Jr."
+      ],
+      "studios": [],
+      "mainCast": [
+        "Poul Reichhardt",
+        "Lisbeth Movin"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Red_Meadows",
+      "letterboxdUrl": "https://letterboxd.com/film/the-red-meadows/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Rome, Open City",
+      "releaseYear": 1945,
+      "directors": [
+        "Roberto Rossellini"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Aldo Fabrizi"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Rome,_Open_City",
+      "letterboxdUrl": "https://letterboxd.com/film/rome-open-city/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "Torment",
+      "releaseYear": 1944,
+      "directors": [
+        "Alf Sjöberg"
+      ],
+      "studios": [
+        "Svensk Filmindustri"
+      ],
+      "mainCast": [
+        "Stig Järrel",
+        "Alf Kjellin",
+        "Mai Zetterling",
+        "Gösta Cederlund",
+        "Olof Winnerstrand"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Torment_(1944_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/torment/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1946,
+      "editionLabel": "1st Cannes Film Festival",
+      "title": "The Turning Point",
+      "releaseYear": 1945,
+      "directors": [
+        "Fridrikh Ermler"
+      ],
+      "studios": [
+        "Lenfilm"
+      ],
+      "mainCast": [
+        "Mikhail Derzhavin, Sr",
+        "Pyotr Andriyevsky",
+        "Yuri Tolubeyev",
+        "Andrei Abrikosov"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Turning_Point_(1945_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-turning-point/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1949,
+      "editionLabel": "3rd Cannes Film Festival",
+      "title": "The Third Man",
+      "releaseYear": 1949,
+      "directors": [
+        "Carol Reed"
+      ],
+      "studios": [
+        "London Films"
+      ],
+      "mainCast": [
+        "Joseph Cotten",
+        "Alida Valli",
+        "Orson Welles",
+        "Trevor Howard"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Third_Man",
+      "letterboxdUrl": "https://letterboxd.com/film/the-third-man/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1951,
+      "editionLabel": "4th Cannes Film Festival",
+      "title": "Miracle in Milan",
+      "releaseYear": 1951,
+      "directors": [
+        "Vittorio De Sica"
+      ],
+      "studios": [
+        "Produzioni De Sica",
+        "Ente Nazionale Industrie Cinematografiche (ENIC)"
+      ],
+      "mainCast": [
+        "Emma Gramatica",
+        "Paolo Stoppa",
+        "Francesco Golisano",
+        "Brunella Bovo"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Miracle_in_Milan",
+      "letterboxdUrl": "https://letterboxd.com/film/miracle-in-milan/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1951,
+      "editionLabel": "4th Cannes Film Festival",
+      "title": "Miss Julie",
+      "releaseYear": 1951,
+      "directors": [
+        "Alf Sjöberg"
+      ],
+      "studios": [
+        "AB Sandrew-Produktion"
+      ],
+      "mainCast": [
+        "Anita Björk",
+        "Ulf Palme"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Miss_Julie_(1951_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/miss-julie/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1952,
+      "editionLabel": "5th Cannes Film Festival",
+      "title": "Othello",
+      "releaseYear": 1951,
+      "directors": [
+        "Orson Welles"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Orson Welles",
+        "Micheál Mac Liammóir",
+        "Suzanne Cloutier",
+        "Robert Coote"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Othello_(1951_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/othello/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1952,
+      "editionLabel": "5th Cannes Film Festival",
+      "title": "Two Cents Worth of Hope",
+      "releaseYear": 1952,
+      "directors": [
+        "Renato Castellani"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Maria Fiore",
+        "Vincenzo Musolino"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Two_Cents_Worth_of_Hope",
+      "letterboxdUrl": "https://letterboxd.com/film/two-cents-worth-of-hope/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1953,
+      "editionLabel": "6th Cannes Film Festival",
+      "title": "The Wages of Fear",
+      "releaseYear": 1953,
+      "directors": [
+        "Henri-Georges Clouzot"
+      ],
+      "studios": [
+        "Vera Film",
+        "Filmsonor",
+        "C.I.C.C.",
+        "Fono Roma"
+      ],
+      "mainCast": [
+        "Yves Montand",
+        "Charles Vanel",
+        "Folco Lulli",
+        "Peter Van Eyck",
+        "Véra Clouzot"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Wages_of_Fear",
+      "letterboxdUrl": "https://letterboxd.com/film/the-wages-of-fear/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1954,
+      "editionLabel": "7th Cannes Film Festival",
+      "title": "Gate of Hell",
+      "releaseYear": 1953,
+      "directors": [
+        "Teinosuke Kinugasa"
+      ],
+      "studios": [
+        "Daiei Film"
+      ],
+      "mainCast": [
+        "Kazuo Hasegawa",
+        "Machiko Kyō"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Gate_of_Hell_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/gate-of-hell/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1955,
+      "editionLabel": "8th Cannes Film Festival",
+      "title": "Marty",
+      "releaseYear": 1955,
+      "directors": [
+        "Delbert Mann"
+      ],
+      "studios": [
+        "Hecht-Lancaster Productions",
+        "Steven Productions"
+      ],
+      "mainCast": [
+        "Ernest Borgnine",
+        "Betsy Blair"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Marty_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/marty/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1956,
+      "editionLabel": "9th Cannes Film Festival",
+      "title": "The Silent World",
+      "releaseYear": 1956,
+      "directors": [
+        "Jacques Cousteau",
+        "Louis Malle"
+      ],
+      "studios": [
+        "FSJYC Production",
+        "Requins Associés",
+        "Société Filmad",
+        "Titanus"
+      ],
+      "mainCast": [
+        "Jacques Cousteau"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Silent_World",
+      "letterboxdUrl": "https://letterboxd.com/film/the-silent-world/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1957,
+      "editionLabel": "10th Cannes Film Festival",
+      "title": "Friendly Persuasion",
+      "releaseYear": 1956,
+      "directors": [
+        "William Wyler"
+      ],
+      "studios": [
+        "William Wyler Productions",
+        "Allied Artists Pictures Corporation"
+      ],
+      "mainCast": [
+        "Gary Cooper",
+        "Dorothy McGuire",
+        "Anthony Perkins",
+        "Richard Eyer",
+        "Robert Middleton"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Friendly_Persuasion_(1956_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/friendly-persuasion/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1958,
+      "editionLabel": "11th Cannes Film Festival",
+      "title": "The Cranes Are Flying",
+      "releaseYear": 1957,
+      "directors": [
+        "Mikhail Kalatozov"
+      ],
+      "studios": [
+        "Mosfilm"
+      ],
+      "mainCast": [
+        "Tatyana Samojlova",
+        "Aleksey Batalov",
+        "Vasili Merkuryev",
+        "Aleksandr Shvorin"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Cranes_Are_Flying",
+      "letterboxdUrl": "https://letterboxd.com/film/the-cranes-are-flying/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1959,
+      "editionLabel": "12th Cannes Film Festival",
+      "title": "Black Orpheus",
+      "releaseYear": 1959,
+      "directors": [
+        "Marcel Camus"
+      ],
+      "studios": [
+        "Dispat Films (France)",
+        "Gemma (Italy)",
+        "Tupan Filmes (Brazil)"
+      ],
+      "mainCast": [
+        "Breno Mello",
+        "Marpessa Dawn"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Black_Orpheus",
+      "letterboxdUrl": "https://letterboxd.com/film/black-orpheus/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1960,
+      "editionLabel": "13th Cannes Film Festival",
+      "title": "La Dolce Vita",
+      "releaseYear": 1960,
+      "directors": [
+        "Federico Fellini"
+      ],
+      "studios": [
+        "Riama Film",
+        "Pathé Consortium Cinéma",
+        "Gray Films"
+      ],
+      "mainCast": [
+        "Marcello Mastroianni",
+        "Anita Ekberg",
+        "Anouk Aimée",
+        "Yvonne Furneaux",
+        "Alain Cuny"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/La_Dolce_Vita",
+      "letterboxdUrl": "https://letterboxd.com/film/la-dolce-vita/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1961,
+      "editionLabel": "14th Cannes Film Festival",
+      "title": "The Long Absence",
+      "releaseYear": 1961,
+      "directors": [
+        "Henri Colpi"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Alida Valli",
+        "Georges Wilson",
+        "Charles Blavette"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Long_Absence",
+      "letterboxdUrl": "https://letterboxd.com/film/the-long-absence/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1961,
+      "editionLabel": "14th Cannes Film Festival",
+      "title": "Viridiana",
+      "releaseYear": 1961,
+      "directors": [
+        "Luis Buñuel"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Silvia Pinal",
+        "Francisco Rabal",
+        "Fernando Rey"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Viridiana",
+      "letterboxdUrl": "https://letterboxd.com/film/viridiana/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1962,
+      "editionLabel": "15th Cannes Film Festival",
+      "title": "O Pagador de Promessas",
+      "releaseYear": 1962,
+      "directors": [
+        "Anselmo Duarte"
+      ],
+      "studios": [
+        "Cinedistri"
+      ],
+      "mainCast": [
+        "Leonardo Villar",
+        "Glória Menezes",
+        "Norma Bengell",
+        "Dionísio Azevedo"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/O_Pagador_de_Promessas",
+      "letterboxdUrl": "https://letterboxd.com/film/o-pagador-de-promessas/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1963,
+      "editionLabel": "16th Cannes Film Festival",
+      "title": "The Leopard",
+      "releaseYear": 1963,
+      "directors": [
+        "Luchino Visconti"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Burt Lancaster",
+        "Claudia Cardinale",
+        "Alain Delon",
+        "Paolo Stoppa",
+        "Rina Morelli"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Leopard_(1963_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-leopard/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1964,
+      "editionLabel": "17th Cannes Film Festival",
+      "title": "The Umbrellas of Cherbourg",
+      "releaseYear": 1964,
+      "directors": [
+        "Jacques Demy"
+      ],
+      "studios": [
+        "Parc Film",
+        "Madeleine Films",
+        "Beta Film GmbH"
+      ],
+      "mainCast": [
+        "Catherine Deneuve",
+        "Anne Vernon",
+        "Nino Castelnuovo",
+        "Marc Michel"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Umbrellas_of_Cherbourg",
+      "letterboxdUrl": "https://letterboxd.com/film/the-umbrellas-of-cherbourg/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1965,
+      "editionLabel": "18th Cannes Film Festival",
+      "title": "The Knack ...and How to Get It",
+      "releaseYear": 1965,
+      "directors": [
+        "Richard Lester"
+      ],
+      "studios": [
+        "Woodfall Film Productions"
+      ],
+      "mainCast": [
+        "Rita Tushingham",
+        "Ray Brooks",
+        "Michael Crawford",
+        "Donal Donnelly"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Knack_...and_How_to_Get_It",
+      "letterboxdUrl": "https://letterboxd.com/film/the-knack-and-how-to-get-it/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1966,
+      "editionLabel": "19th Cannes Film Festival",
+      "title": "The Birds, the Bees and the Italians",
+      "releaseYear": 1966,
+      "directors": [
+        "Pietro Germi"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Virna Lisi",
+        "Gastone Moschin",
+        "Nora Ricci"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Birds,_the_Bees_and_the_Italians",
+      "letterboxdUrl": "https://letterboxd.com/film/the-birds-the-bees-and-the-italians/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1966,
+      "editionLabel": "19th Cannes Film Festival",
+      "title": "A Man and a Woman",
+      "releaseYear": 1966,
+      "directors": [
+        "Claude Lelouch"
+      ],
+      "studios": [
+        "Les Films 13"
+      ],
+      "mainCast": [
+        "Anouk Aimée",
+        "Jean-Louis Trintignant",
+        "Pierre Barouh",
+        "Valérie Lagrange",
+        "Simone Paris"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/A_Man_and_a_Woman",
+      "letterboxdUrl": "https://letterboxd.com/film/a-man-and-a-woman/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1967,
+      "editionLabel": "20th Cannes Film Festival",
+      "title": "Blowup",
+      "releaseYear": 1966,
+      "directors": [
+        "Michelangelo Antonioni"
+      ],
+      "studios": [
+        "Metro-Goldwyn-Mayer",
+        "Carlo Ponti Productions",
+        "Bridge Films"
+      ],
+      "mainCast": [
+        "Vanessa Redgrave",
+        "David Hemmings",
+        "Sarah Miles"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Blowup",
+      "letterboxdUrl": "https://letterboxd.com/film/blowup/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1969,
+      "editionLabel": "22nd Cannes Film Festival",
+      "title": "If....",
+      "releaseYear": 1968,
+      "directors": [
+        "Lindsay Anderson"
+      ],
+      "studios": [
+        "Memorial Enterprises"
+      ],
+      "mainCast": [
+        "Malcolm McDowell",
+        "Richard Warwick",
+        "Christine Noonan",
+        "David Wood",
+        "Robert Swann"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/If....",
+      "letterboxdUrl": "https://letterboxd.com/film/if/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1970,
+      "editionLabel": "23rd Cannes Film Festival",
+      "title": "M*A*S*H",
+      "releaseYear": 1970,
+      "directors": [
+        "Robert Altman"
+      ],
+      "studios": [
+        "Aspen Productions",
+        "Ingo Preminger Productions"
+      ],
+      "mainCast": [
+        "Donald Sutherland",
+        "Elliott Gould",
+        "Tom Skerritt",
+        "Sally Kellerman",
+        "Robert Duvall"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/M*A*S*H_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/mash/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1971,
+      "editionLabel": "24th Cannes Film Festival",
+      "title": "The Go-Between",
+      "releaseYear": 1971,
+      "directors": [
+        "Joseph Losey"
+      ],
+      "studios": [
+        "EMI Films",
+        "World Film Services",
+        "Columbia Pictures",
+        "Associated British Pictures"
+      ],
+      "mainCast": [
+        "Julie Christie",
+        "Alan Bates",
+        "Margaret Leighton",
+        "Edward Fox",
+        "Dominic Guard"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Go-Between_(1971_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-go-between/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1972,
+      "editionLabel": "25th Cannes Film Festival",
+      "title": "The Mattei Affair",
+      "releaseYear": 1972,
+      "directors": [
+        "Francesco Rosi"
+      ],
+      "studios": [
+        "Vides Cinematografica",
+        "Verona Produzione"
+      ],
+      "mainCast": [
+        "Gian Maria Volonté"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Mattei_Affair",
+      "letterboxdUrl": "https://letterboxd.com/film/the-mattei-affair/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1972,
+      "editionLabel": "25th Cannes Film Festival",
+      "title": "The Working Class Goes to Heaven",
+      "releaseYear": 1971,
+      "directors": [
+        "Elio Petri"
+      ],
+      "studios": [
+        "Euro International Films"
+      ],
+      "mainCast": [
+        "Gian Maria Volonté",
+        "Mariangela Melato",
+        "Gino Pernice",
+        "Luigi Diberti",
+        "Donato Castellaneta"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Working_Class_Goes_to_Heaven",
+      "letterboxdUrl": "https://letterboxd.com/film/the-working-class-goes-to-heaven/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1973,
+      "editionLabel": "26th Cannes Film Festival",
+      "title": "The Hireling",
+      "releaseYear": 1973,
+      "directors": [
+        "Alan Bridges"
+      ],
+      "studios": [
+        "World Film Services"
+      ],
+      "mainCast": [
+        "Robert Shaw",
+        "Sarah Miles"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Hireling",
+      "letterboxdUrl": "https://letterboxd.com/film/the-hireling/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1973,
+      "editionLabel": "26th Cannes Film Festival",
+      "title": "Scarecrow",
+      "releaseYear": 1973,
+      "directors": [
+        "Jerry Schatzberg"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Gene Hackman",
+        "Al Pacino",
+        "Eileen Brennan",
+        "Richard Lynch"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Scarecrow_(1973_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/scarecrow/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1974,
+      "editionLabel": "27th Cannes Film Festival",
+      "title": "The Conversation",
+      "releaseYear": 1974,
+      "directors": [
+        "Francis Ford Coppola"
+      ],
+      "studios": [
+        "The Directors Company"
+      ],
+      "mainCast": [
+        "Gene Hackman",
+        "John Cazale",
+        "Allen Garfield",
+        "Cindy Williams",
+        "Frederic Forrest"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Conversation",
+      "letterboxdUrl": "https://letterboxd.com/film/the-conversation/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1975,
+      "editionLabel": "28th Cannes Film Festival",
+      "title": "Chronicle of the Years of Fire",
+      "releaseYear": 1975,
+      "directors": [
+        "Mohammed Lakhdar-Hamina"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Yorgo Voyagis",
+        "Mohammed Lakhdar-Hamina",
+        "Hadj Smaine Mohamed Seghir",
+        "Leila Shenna"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Chronicle_of_the_Years_of_Fire",
+      "letterboxdUrl": "https://letterboxd.com/film/chronicle-of-the-years-of-fire/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1976,
+      "editionLabel": "29th Cannes Film Festival",
+      "title": "Taxi Driver",
+      "releaseYear": 1976,
+      "directors": [
+        "Martin Scorsese"
+      ],
+      "studios": [
+        "Bill/Phillips Productions",
+        "Italo-Judeo Productions"
+      ],
+      "mainCast": [
+        "Robert De Niro",
+        "Jodie Foster",
+        "Albert Brooks",
+        "Harvey Keitel",
+        "Leonard Harris"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Taxi_Driver",
+      "letterboxdUrl": "https://letterboxd.com/film/taxi-driver/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1977,
+      "editionLabel": "30th Cannes Film Festival",
+      "title": "Padre Padrone",
+      "releaseYear": 1977,
+      "directors": [
+        "Paolo Taviani",
+        "Vittorio Taviani"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Omero Antonutti"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Padre_Padrone",
+      "letterboxdUrl": "https://letterboxd.com/film/padre-padrone/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1978,
+      "editionLabel": "31st Cannes Film Festival",
+      "title": "The Tree of Wooden Clogs",
+      "releaseYear": 1978,
+      "directors": [
+        "Ermanno Olmi"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Luigi Ornaghi",
+        "Francesca Moriggi",
+        "Omar Brignoli"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Tree_of_Wooden_Clogs",
+      "letterboxdUrl": "https://letterboxd.com/film/the-tree-of-wooden-clogs/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1979,
+      "editionLabel": "32nd Cannes Film Festival",
+      "title": "Apocalypse Now",
+      "releaseYear": 1979,
+      "directors": [
+        "Francis Coppola"
+      ],
+      "studios": [
+        "Omni Zoetrope"
+      ],
+      "mainCast": [
+        "Marlon Brando",
+        "Robert Duvall",
+        "Martin Sheen",
+        "Frederic Forrest",
+        "Albert Hall"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Apocalypse_Now",
+      "letterboxdUrl": "https://letterboxd.com/film/apocalypse-now/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1979,
+      "editionLabel": "32nd Cannes Film Festival",
+      "title": "The Tin Drum",
+      "releaseYear": 1979,
+      "directors": [
+        "Volker Schlöndorff"
+      ],
+      "studios": [
+        "Franz Seitz Filmproduktion",
+        "Bioskop Film",
+        "Argos Films",
+        "Jadran Film"
+      ],
+      "mainCast": [
+        "David Bennent",
+        "Mario Adorf",
+        "Angela Winkler",
+        "Katharina Thalbach",
+        "Daniel Olbrychski"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Tin_Drum_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-tin-drum/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1980,
+      "editionLabel": "33rd Cannes Film Festival",
+      "title": "All That Jazz",
+      "releaseYear": 1979,
+      "directors": [
+        "Bob Fosse"
+      ],
+      "studios": [
+        "20th Century-Fox",
+        "Columbia Pictures"
+      ],
+      "mainCast": [
+        "Roy Scheider",
+        "Jessica Lange",
+        "Ann Reinking",
+        "Leland Palmer",
+        "Cliff Gorman"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/All_That_Jazz_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/all-that-jazz/",
+      "letterboxdUnverified": true
+    },
+    {
+      "year": 1980,
+      "editionLabel": "33rd Cannes Film Festival",
+      "title": "Kagemusha",
+      "releaseYear": 1980,
+      "directors": [
+        "Akira Kurosawa"
+      ],
+      "studios": [
+        "Kurosawa Production",
+        "Toho"
+      ],
+      "mainCast": [
+        "Tatsuya Nakadai"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Kagemusha",
+      "letterboxdUrl": "https://letterboxd.com/film/kagemusha/",
+      "letterboxdUnverified": true,
+      "originalTitle": "影武者",
+      "appleTvUrl": "https://tv.apple.com/us/movie/kagemusha/umc.cmc.2th23y3x6qdihpvltshcy9zah",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/50/Kagemusha_poster.jpg",
+      "plotSummary": "In feudal Japan, the dying warlord Takeda Shingen orders his clan to conceal his death and use a petty thief who closely resembles him as a decoy to deter rival lords. The thief is trained to impersonate Shingen convincingly enough to fool allies and enemies alike, gradually growing into the role. When he is exposed after falling from Shingen's horse, revealing he lacks the warlord's battle scars, he is cast out in disgrace. The film ends with the catastrophic Battle of Nagashino, where the Takeda cavalry is destroyed by Oda Nobunaga's riflemen."
+    },
+    {
+      "year": 1981,
+      "editionLabel": "34th Cannes Film Festival",
+      "title": "Man of Iron",
+      "releaseYear": 1981,
+      "directors": [
+        "Andrzej Wajda"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Jerzy Radziwiłowicz",
+        "Krystyna Janda"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Man_of_Iron",
+      "letterboxdUrl": "https://letterboxd.com/film/man-of-iron/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Człowiek z żelaza",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1e/Cz%C5%82owiek_z_%C5%BCelaza_%28film%29.jpg",
+      "plotSummary": "A cynical, alcoholic radio journalist named Winkel is sent by Communist Party officials to the striking Gdańsk shipyard to dig up compromising material on Maciej Tomczyk, a leading Solidarity activist. As Winkel investigates Tomczyk's past and his marriage to the imprisoned filmmaker Agnieszka, he becomes increasingly sympathetic to the workers' cause instead of discrediting it. The film incorporates real newsreel footage from the 1980 strikes, including appearances by Lech Wałęsa. It closes with the government's negotiators reaching an agreement with the strikers, freeing Tomczyk and Agnieszka to reunite."
+    },
+    {
+      "year": 1982,
+      "editionLabel": "35th Cannes Film Festival",
+      "title": "Missing",
+      "releaseYear": 1982,
+      "directors": [
+        "Costa-Gavras"
+      ],
+      "studios": [
+        "PolyGram Pictures"
+      ],
+      "mainCast": [
+        "Jack Lemmon",
+        "Sissy Spacek",
+        "Melanie Mayron",
+        "John Shea"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Missing_(1982_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/missing/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/missing/umc.cmc.k8luzurjg5i4ub5zi111z83z",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b4/Missing_1982_film.jpg",
+      "plotSummary": "After a military coup in an unnamed South American country (based on Chile), American journalist Charles Horman disappears. His conservative father Ed travels there and, together with Charles's wife Beth, tries to track him down. Their search reveals that the U.S. embassy is stonewalling them and that American officials quietly supported the coup that toppled the elected government. Ed eventually learns that Charles was executed by the junta with the knowledge of U.S. officials, and returns home only after his son's body is finally released."
+    },
+    {
+      "year": 1982,
+      "editionLabel": "35th Cannes Film Festival",
+      "title": "Yol",
+      "releaseYear": 1982,
+      "directors": [
+        "Yılmaz Güney",
+        "Şerif Gören"
+      ],
+      "studios": [
+        "Güney Film",
+        "Cactus Film",
+        "Maran Film",
+        "Record Film"
+      ],
+      "mainCast": [
+        "Tarık Akan",
+        "Halil Ergün",
+        "Şerif Sezer",
+        "Necmettin Çobanoğlu",
+        "Meral Orhonsay"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Yol_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/yol/",
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/72/Yol_%281982_film%29.jpg",
+      "plotSummary": "Five prisoners in Turkey are granted a week's leave from jail to visit their homes and families in the aftermath of the 1980 military coup. One returns to find his wife has turned to prostitution to survive and dies trying to save her from freezing in the snow. Another is shot alongside his wife on a train after her family discovers their affair. A third abandons a planned escape across the Syrian border when his brother is killed, forcing him to take on the family's honor-bound obligations instead."
+    },
+    {
+      "year": 1983,
+      "editionLabel": "36th Cannes Film Festival",
+      "title": "The Ballad of Narayama",
+      "releaseYear": 1983,
+      "directors": [
+        "Shōhei Imamura"
+      ],
+      "studios": [],
+      "mainCast": [
+        "Ken Ogata",
+        "Sumiko Sakamoto",
+        "Takejo Aki",
+        "Tonpei Hidari",
+        "Seiji Kurasaki"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Ballad_of_Narayama_(1983_film)",
+      "letterboxdUrl": "https://letterboxd.com/film/the-ballad-of-narayama/",
+      "letterboxdUnverified": true,
+      "originalTitle": "楢山節考",
+      "appleTvUrl": "https://tv.apple.com/us/movie/the-ballad-of-narayama/umc.cmc.713xrqgck8yx2okp9fnbsr14s",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f6/Ballad_of_Narayama_1983.jpg",
+      "plotSummary": "In a poor 19th-century Japanese mountain village, tradition dictates that the elderly must be carried to a remote peak to die once they turn 70, so as not to burden the community. Orin, a healthy 69-year-old widow, spends her final year putting her family's affairs in order and arranging a new wife for her widowed son before willingly preparing for her own journey up the mountain. The film intercuts the villagers' harsh, often brutal struggle for survival with unflinching footage of the natural world around them."
+    },
+    {
+      "year": 1984,
+      "editionLabel": "37th Cannes Film Festival",
+      "title": "Paris, Texas",
+      "releaseYear": 1984,
+      "directors": [
+        "Wim Wenders"
+      ],
+      "studios": [
+        "Road Movies Filmproduktion GmbH",
+        "Argos Films S.A."
+      ],
+      "mainCast": [
+        "Harry Dean Stanton",
+        "Nastassja Kinski",
+        "Dean Stockwell",
+        "Aurore Clément",
+        "Hunter Carson"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Paris,_Texas_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/paris-texas/",
+      "letterboxdUnverified": true,
+      "appleTvUrl": "https://tv.apple.com/us/movie/paris-texas/umc.cmc.2whzw3m7z822nnhncasu2lxq5",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/db/Paris%2C_Texas_%281984_film_poster%29.png",
+      "plotSummary": "Travis Henderson wanders out of the Texas desert after vanishing without explanation four years earlier, and is found and reunited with his brother Walt in Los Angeles. There he reconnects with his young son Hunter, who Walt and his wife have been raising, and slowly resolves to find the boy's mother, Jane. Travis traces Jane to Houston, where she works at a peep show, and speaks to her through a one-way mirror, finally explaining what drove them apart. He reunites Hunter with Jane before walking away alone."
+    },
+    {
+      "year": 1985,
+      "editionLabel": "38th Cannes Film Festival",
+      "title": "When Father Was Away on Business",
+      "releaseYear": 1985,
+      "directors": [
+        "Emir Kusturica"
+      ],
+      "studios": [
+        "Centar Film",
+        "Forum Sarajevo"
+      ],
+      "mainCast": [
+        "Moreno De Bartoli",
+        "Miki Manojlović",
+        "Mirjana Karanović",
+        "Mustafa Nadarević",
+        "Mira Furlan"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/When_Father_Was_Away_on_Business",
+      "letterboxdUrl": "https://letterboxd.com/film/when-father-was-away-on-business/",
+      "letterboxdUnverified": true,
+      "originalTitle": "Otac na službenom putu",
+      "appleTvUrl": "https://tv.apple.com/at/movie/when-father-was-away-on-business/umc.cmc.epssyalpf55bxm7v7tyo2ibj?l=en",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a9/WhenFather.jpg",
+      "plotSummary": "In Tito's Yugoslavia in 1950, six-year-old Malik cannot understand why his father Meša, a Communist official, has suddenly been sent away. In truth, Meša has been informed on by his own brother-in-law over an indiscreet remark about a political cartoon and is serving time in a labor camp. Once the family is allowed to join him near his camp, Malik develops a childhood romance with a local girl while gradually witnessing his father's infidelity and the strained ties within his own family. The story unfolds entirely through Malik's uncomprehending, matter-of-fact perspective on the adult world around him."
+    }
+  ]
+}
