@@ -18,23 +18,27 @@ export default async function FilmDetailPage({ params }: { params: { id: string 
         &larr; Back to all films
       </Link>
 
-      <div className="flex flex-col sm:flex-row gap-5 mt-3">
+      <div
+        className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-4 mt-3 [grid-template-areas:'poster_title'_'rest_rest'] sm:[grid-template-areas:'poster_title'_'poster_rest']"
+      >
         {film.posterUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={film.posterUrl}
             alt={`${film.title} poster`}
-            className="w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-800 self-start"
+            className="[grid-area:poster] w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-800 self-start"
           />
         )}
 
-        <div className="min-w-0">
+        <div className="[grid-area:title] min-w-0 self-start">
           <h1 className="text-3xl font-bold">{film.title}</h1>
           {film.originalTitle && film.originalTitle !== film.title && (
             <p className="text-neutral-400 italic">{film.originalTitle}</p>
           )}
-          <p className="text-neutral-400 mb-4">{film.releaseYear}</p>
+          <p className="text-neutral-400">{film.releaseYear}</p>
+        </div>
 
+        <div className="[grid-area:rest] min-w-0">
           <div className="flex flex-wrap gap-1.5 mb-4">
             {film.wins.map((w, i) => (
               <span
@@ -89,7 +93,6 @@ export default async function FilmDetailPage({ params }: { params: { id: string 
               </a>
             )}
           </div>
-
         </div>
       </div>
 

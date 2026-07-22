@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import PinIcon from './PinIcon';
 
 const pillClass =
   'flex items-center gap-1.5 bg-card/90 backdrop-blur border border-neutral-700 rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg hover:border-neutral-500 whitespace-nowrap';
@@ -34,12 +35,12 @@ export default function QuickNav({
       </Link>
       {onYearClick ? (
         <button onClick={onYearClick} className={yearPillClass}>
-          {isPinned && '📌 '}
+          {isPinned && <PinIcon filled className="w-4 h-4" />}
           {targetYear}
         </button>
       ) : (
         <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearPillClass}>
-          {isPinned && '📌 '}
+          {isPinned && <PinIcon filled className="w-4 h-4" />}
           {targetYear}
         </Link>
       )}
