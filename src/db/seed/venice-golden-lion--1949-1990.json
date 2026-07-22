@@ -25,7 +25,10 @@
       "mainCast": ["Valentine Tessier", "Claude Nollier", "Noël Roquevert", "Raymond Bussières", "Jacques Castelot"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Justice_Is_Done",
       "letterboxdUrl": "https://letterboxd.com/film/justice-is-done/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "Justice est faite",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ec/Justice_is_done_poster.jpg",
+      "plotSummary": "A woman stands trial for the mercy killing of her terminally ill employer at his own request, and the film follows the seven jurors chosen to decide her fate, each bringing their own private prejudices and life experiences into the jury room. As deliberations unfold, personal grudges, faith, class resentment, and unrelated domestic troubles color each juror's reading of the same facts. André Cayatte's courtroom drama uses the case to expose how thoroughly \"justice\" is shaped by the flawed, biased humans tasked with dispensing it."
     },
     {
       "year": 1951,
@@ -37,7 +40,11 @@
       "mainCast": ["Toshiro Mifune", "Masayuki Mori", "Machiko Kyō", "Takashi Shimura"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Rashomon",
       "letterboxdUrl": "https://letterboxd.com/film/rashomon/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "羅生門",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Rashomon_poster.jpg",
+      "plotSummary": "A woodcutter, a priest, and a bystander take shelter from the rain at the ruined Rashomon gate, recounting the baffling trial testimony surrounding a samurai's murder and his wife's assault in a forest. Four witnesses, including the accused bandit, the wife, the dead samurai speaking through a medium, and the woodcutter himself, each tell a contradictory version of events that flatters their own conduct. Akira Kurosawa's landmark film uses the clashing accounts to question whether objective truth is even possible when every witness reshapes reality to preserve their own self-image.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/rashomon/umc.cmc.5ol8tzkoqwrs8amaqlf57plu7"
     },
     {
       "year": 1952,
@@ -49,7 +56,10 @@
       "mainCast": ["Georges Poujouly", "Brigitte Fossey", "Amédée", "Laurence Badie", "Suzanne Courtal"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Forbidden_Games",
       "letterboxdUrl": "https://letterboxd.com/film/forbidden-games/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "Jeux interdits",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/34/Jeux_interdits.jpg",
+      "plotSummary": "During the chaotic French exodus of 1940, five-year-old Paulette is orphaned when her parents and dog are killed in a German air attack, and she's taken in by the peasant family of ten-year-old Michel. The two children cope with the surrounding death by secretly building a pet cemetery in an abandoned watermill, escalating to stealing crosses from a real graveyard to mark their makeshift graves. René Clément's war drama uses the children's solemn, innocent ritual to reflect the adult world's violence back at itself, ending in Paulette's wrenching separation from the one friend who understood her grief."
     },
     {
       "year": 1954,
@@ -61,7 +71,11 @@
       "mainCast": ["Laurence Harvey", "Susan Shentall", "Flora Robson"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Romeo_and_Juliet_(1954_film)",
       "letterboxdUrl": "https://letterboxd.com/film/romeo-and-juliet-1954/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "Giulietta e Romeo",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/78/Romeo_and_Juliet_FilmPoster.jpeg",
+      "plotSummary": "Renato Castellani's adaptation of Shakespeare's tragedy follows the star-crossed young lovers of feuding Verona families, cast largely with inexperienced actors and shot on authentic Italian locations for a naturalistic, unglamorized take on the doomed romance. Laurence Harvey's Romeo and newcomer Susan Shentall's Juliet fall instantly in love despite their families' violent rivalry, setting in motion the secret marriage and tragic misunderstandings that doom them both. Castellani's version leans into period detail and location authenticity over theatrical polish, earning acclaim abroad despite disappointing box office.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/romeo-and-juliet/umc.cmc.1ew3zvq5haxrbbo8thifdsv8s"
     },
     {
       "year": 1955,
@@ -73,7 +87,10 @@
       "mainCast": ["Henrik Malberg", "Preben Lerdorff Rye", "Birgitte Federspiel", "Ejner Federspiel", "Emil Hass Christensen"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Ordet",
       "letterboxdUrl": "https://letterboxd.com/film/ordet/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "plotSummary": "In a devout rural Danish family, patriarch Morten's three sons each embody a different relationship to faith: the eldest has lost his; the middle son believes himself to be the second coming of Christ after a religious crisis; and the youngest wants to marry into a rival, stricter sect that Morten disdains. As a family tragedy pushes everyone's beliefs to their breaking point, the seemingly deluded middle son's unwavering faith becomes the film's central, startling test of whether miracles are still possible. Carl Theodor Dreyer's austere drama builds to one of cinema's most famous and controversial acts of faith.",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/15/Ordetposter.jpg",
+      "appleTvUrl": "https://tv.apple.com/us/movie/ordet/umc.cmc.3e7yw3q4t70o87nkpwc0kmtkg"
     },
     {
       "year": 1957,
@@ -85,7 +102,10 @@
       "mainCast": ["Pinaki Sengupta", "Kanu Banerjee", "Karuna Banerjee", "Smaran Ghosal", "Ramani Ranjan Sengupta"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Aparajito",
       "letterboxdUrl": "https://letterboxd.com/film/aparajito/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4a/Aparajito_poster.jpg",
+      "plotSummary": "The second chapter of Satyajit Ray's Apu Trilogy follows young Apu and his mother as they relocate to the holy city of Varanasi after his father's death, and later to a village where Apu's academic gifts pull him toward a wider world his mother can't follow. As Apu grows into adolescence and wins a scholarship to study in Calcutta, his ambitions increasingly separate him from his aging, lonely mother, who remains behind in the village. Ray's unsentimental portrait of a widening gulf between mother and son was criticized in India for its unconventional emotional restraint but won acclaim internationally for its honesty.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/aparajito/umc.cmc.199q3ynfmprxlp5s6vpngok6y"
     },
     {
       "year": 1958,
@@ -97,7 +117,10 @@
       "mainCast": ["Toshiro Mifune", "Hideko Takamine", "Hiroshi Akutagawa"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Rickshaw_Man",
       "letterboxdUrl": "https://letterboxd.com/film/the-rickshaw-man-1958/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "無法松の一生",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/13/Rickshaw_Man_poster.jpg",
+      "plotSummary": "Matsugoro, an illiterate but big-hearted rickshaw puller nicknamed \"Wild Matsu\" for his hot temper, becomes an unlikely father figure to a young boy after the child's father dies, forming a bond with the boy and his widowed mother that shapes the rest of his life. Though never able to cross the class divide to express his growing feelings for the widow, Matsu devotes himself to the boy's upbringing from the sidelines, watching him grow into a young man while his own rough, working-class life continues in the shadows. Hiroshi Inagaki's remake of his own earlier film follows Matsu's quiet, self-sacrificing devotion across decades."
     },
     {
       "year": 1959,
@@ -109,7 +132,11 @@
       "mainCast": ["Vittorio De Sica", "Hannes Messemer", "Vittorio Caprioli", "Sandra Milo", "Giovanna Ralli"],
       "wikiUrl": "https://en.wikipedia.org/wiki/General_Della_Rovere",
       "letterboxdUrl": "https://letterboxd.com/film/general-della-rovere/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "Il generale Della Rovere",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f2/Ilgeneraledellarovere.jpg",
+      "plotSummary": "In Nazi-occupied Genoa, small-time con man Emanuele Bardone is coerced by German forces into impersonating a captured Resistance leader, General Della Rovere, in order to infiltrate a prison and identify other partisans. As Bardone plays the role among genuine resistance fighters who look to him for leadership and courage, the impersonation gradually becomes real, and he finds himself transforming into the hero he was only pretending to be. Roberto Rossellini's drama follows Bardone's unexpected moral awakening to its ultimate test: whether he'll betray the real resistance leader to save himself, or die as the man he's become.",
+      "appleTvUrl": "https://tv.apple.com/us/movie/il-generale-della-rovere/umc.cmc.3bylyl8fmj6yuphjyg90vxh3j"
     },
     {
       "year": 1959,
@@ -121,7 +148,10 @@
       "mainCast": ["Alberto Sordi", "Vittorio Gassman", "Silvana Mangano", "Folco Lulli", "Bernard Blier"],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Great_War_(1959_film)",
       "letterboxdUrl": "https://letterboxd.com/film/the-great-war-1959/",
-      "letterboxdUnverified": true
+      "letterboxdUnverified": true,
+      "originalTitle": "La grande guerra",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/67/La_grande_guerra.jpg",
+      "plotSummary": "Two mismatched, cowardly Italian soldiers, the scheming Roman Oreste and the gruff Milanese Giovanni, meet during World War I conscription and forge an uneasy friendship built entirely on their shared desire to avoid danger and survive the war unscathed. Bouncing between training, combat, and rare leave, the two witness the catastrophic Italian defeat at Caporetto and are assigned as expendable relay runners, the army's most dangerous job, precisely because they're considered its least capable soldiers. Mario Monicelli's tragicomedy plays their cowardice for laughs until the war's grim reality forces an unexpectedly sobering final test of courage."
     },
     {
       "year": 1960,
