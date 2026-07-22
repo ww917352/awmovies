@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db/client';
 import { filmStatus, ownedFormatValues, digitalQualityValues } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
+import { getCurrentUser } from '@/lib/auth';
 
 type StatusPatch = {
   watched?: boolean;
@@ -30,6 +31,11 @@ function isValidPatch(body: unknown): body is StatusPatch {
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+  const user = await getCurrentUser();
+  if (!user) {
+    return NextResponse.json({ error: 'Not logged in' }, { status: 401 });
+  }
+
   const filmId = Number(params.id);
   if (!Number.isInteger(filmId)) {
     return NextResponse.json({ error: 'Invalid film id' }, { status: 400 });
@@ -40,14 +46,15 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
-  const [existing] = await db.select().from(filmStatus).where(eq(filmStatus.filmId, filmId));
+  const whereClause = and(eq(filmStatus.userId, user.id), eq(filmStatus.filmId, filmId));
+  const [existing] = await db.select().from(filmStatus).where(whereClause);
 
   if (!existing) {
-    await db.insert(filmStatus).values({ filmId, ...body });
+    await db.insert(filmStatus).values({ userId: user.id, filmId, ...body });
   } else {
-    await db.update(filmStatus).set(body).where(eq(filmStatus.filmId, filmId));
+    await db.update(filmStatus).set(body).where(whereClause);
   }
 
-  const [updated] = await db.select().from(filmStatus).where(eq(filmStatus.filmId, filmId));
+  const [updated] = await db.select().from(filmStatus).where(whereClause);
   return NextResponse.json(updated);
 }

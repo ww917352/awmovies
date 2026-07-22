@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getYearRange, getPinnedYear } from '@/db/queries';
+import { getCurrentUser } from '@/lib/auth';
 import QuickNav from '@/components/QuickNav';
 
 export const dynamic = 'force-dynamic';
@@ -13,7 +14,11 @@ function yearPillClass(isPinned: boolean) {
 }
 
 export default async function YearsPage() {
-  const [{ minYear, maxYear }, pinnedYear] = await Promise.all([getYearRange(), getPinnedYear()]);
+  const [{ minYear, maxYear }, pinnedYear, user] = await Promise.all([
+    getYearRange(),
+    getPinnedYear(),
+    getCurrentUser(),
+  ]);
 
   const decadeStarts: number[] = [];
   for (let d = Math.floor(maxYear / 10) * 10; d >= Math.floor(minYear / 10) * 10; d -= 10) {
@@ -27,6 +32,7 @@ export default async function YearsPage() {
         targetYear={pinnedYear ?? DEFAULT_YEAR}
         isPinned={pinnedYear !== null}
         yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}
+        user={user ? { username: user.username } : null}
       />
 
       <h1 className="text-2xl font-bold mb-4">All Years</h1>

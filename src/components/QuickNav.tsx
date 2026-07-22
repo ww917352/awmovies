@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 import PinIcon from './PinIcon';
 
 const pillClass =
@@ -12,13 +14,26 @@ export default function QuickNav({
   yearHref,
   onYearClick,
   className = '',
+  user = null,
 }: {
   targetYear: number;
   isPinned: boolean;
   yearHref?: string;
   onYearClick?: () => void;
   className?: string;
+  user?: { username: string } | null;
 }) {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  function logout() {
+    startTransition(async () => {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/');
+      router.refresh();
+    });
+  }
+
   const yearPillClass = `flex items-center gap-1.5 backdrop-blur border rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg whitespace-nowrap ${
     isPinned
       ? 'bg-amber-950/90 border-amber-700 text-amber-300 hover:border-amber-500'
@@ -42,6 +57,15 @@ export default function QuickNav({
         <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearPillClass}>
           {isPinned && <PinIcon filled className="w-4 h-4" />}
           {targetYear}
+        </Link>
+      )}
+      {user ? (
+        <button onClick={logout} disabled={isPending} className={`${pillClass} ${isPending ? 'opacity-60' : ''}`}>
+          {user.username} &middot; Log out
+        </button>
+      ) : (
+        <Link href="/login" prefetch={false} className={pillClass}>
+          Log in
         </Link>
       )}
     </div>

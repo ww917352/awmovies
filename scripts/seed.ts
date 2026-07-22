@@ -114,14 +114,6 @@ async function main() {
         });
       }
 
-      const statusExists = await db
-        .select()
-        .from(schema.filmStatus)
-        .where(eq(schema.filmStatus.filmId, film.id));
-      if (statusExists.length === 0) {
-        await db.insert(schema.filmStatus).values({ filmId: film.id });
-      }
-
       winCount++;
     }
   }

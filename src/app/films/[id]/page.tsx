@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFilmById } from '@/db/queries';
+import { getCurrentUser } from '@/lib/auth';
 import StatusControls from '@/components/StatusControls';
 
 export const dynamic = 'force-dynamic';
@@ -9,7 +10,8 @@ export default async function FilmDetailPage({ params }: { params: { id: string 
   const id = Number(params.id);
   if (!Number.isInteger(id)) notFound();
 
-  const film = await getFilmById(id);
+  const user = await getCurrentUser();
+  const film = await getFilmById(id, user?.id ?? null);
   if (!film) notFound();
 
   return (
@@ -97,7 +99,16 @@ export default async function FilmDetailPage({ params }: { params: { id: string 
       </div>
 
       <div className="bg-card border border-neutral-800 rounded-lg p-4 mb-6">
-        <StatusControls filmId={film.id} initialStatus={film.status} />
+        {user ? (
+          <StatusControls filmId={film.id} initialStatus={film.status} />
+        ) : (
+          <p className="text-sm text-neutral-500">
+            <Link href="/login" className="text-sky-400 hover:underline">
+              Log in
+            </Link>{' '}
+            to track watched/owned status.
+          </p>
+        )}
       </div>
 
       {film.plotSummary && <p className="text-sm text-neutral-300 leading-relaxed">{film.plotSummary}</p>}

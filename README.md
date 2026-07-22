@@ -11,11 +11,13 @@ full history:
 - Golden Bear (Berlin International Film Festival / Berlinale)
 
 For each film: director(s), studio(s), main cast, Wikipedia link, and a
-best-effort Letterboxd link — plus your own personal "watched" and
-"owned" (DVD / Blu-ray / Digital, with quality) tracking.
+best-effort Letterboxd link — plus a personal "watched" and "owned"
+(DVD / Blu-ray / Digital, with quality) tracking, scoped per logged-in user.
 
-This is a single-user app with no login — the watched/owned status is just
-yours.
+Anyone can browse the whole catalog without logging in. Watched/owned status
+is only visible and editable once logged in, and is private to that account.
+There's no self-service registration — new accounts are created manually (see
+"Adding users" below) for friends the admin invites.
 
 ## Tech stack
 
@@ -96,6 +98,36 @@ JSON (then re-run `npm run seed`) as you notice wrong ones.
 Re-run `npm run seed` any time after editing/adding seed JSON files to apply
 the changes.
 
+## Adding users
+
+There's no registration UI. To add a friend, pick a username and either give
+them an initial password or let the script generate a strong one:
+
+```bash
+DATABASE_URL="..." npm run create-user -- <username> [password]
+```
+
+The account is created with `must_change_password` set, so they're forced to
+pick their own (strong) password on first login. Password requirements: at
+least 8 characters, with an uppercase letter, a lowercase letter, a number,
+and a symbol — enforced both here and in the change-password form.
+
+### Migrating existing single-user watched/owned data
+
+Migration `drizzle/0005_bouncy_patriot.sql` (the single-user → multi-user
+schema change) attributes every pre-existing `film_status` row to a
+placeholder account, `__pending_owner__`, since every row now requires an
+owning user. After running that migration, claim the placeholder as a real
+account:
+
+```bash
+DATABASE_URL="..." npm run claim-owner -- <username> [password]
+```
+
+This renames `__pending_owner__` to `<username>` and sets its password (again
+forcing a change on first login) — so all the pre-existing watched/owned data
+ends up owned by that account. Run once per database (local, then Neon).
+
 ## Deploying to Vercel + Neon
 
 1. Create a Neon project (https://neon.tech) and copy its **pooled**
@@ -107,6 +139,12 @@ the changes.
    DATABASE_URL="<neon-pooled-connection-string>" npm run db:migrate
    DATABASE_URL="<neon-pooled-connection-string>" npm run seed
    ```
+   The first time you run the migration that adds multi-user support, also
+   claim the pre-existing watched/owned data as a real account (see
+   "Migrating existing single-user watched/owned data" above):
+   ```bash
+   DATABASE_URL="<neon-pooled-connection-string>" npm run claim-owner -- <username>
+   ```
 4. Deploy the repo to Vercel as normal (`vercel --prod`, or connect the Git
    repo in the Vercel dashboard). No other config is needed — this is a
    standard Next.js App Router project.
@@ -114,13 +152,18 @@ the changes.
 ## Project layout
 
 ```
-src/app/                    pages + the film-status Route Handler
-src/db/schema.ts             Drizzle schema (awards, films, award_wins, film_status)
+src/app/                    pages + the film-status/auth Route Handlers
+src/lib/auth.ts              sessions, cookies, getCurrentUser()
+src/lib/password.ts          password hashing/verification/policy (no Next.js deps)
+src/middleware.ts            edge redirect to /change-password while pending
+src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status)
 src/db/client.ts             pg Pool + drizzle()
 src/db/queries.ts            read queries used by Server Components
 src/db/seed/*.json            per-award seed data
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
+scripts/create-user.ts        adds a new user (see "Adding users")
+scripts/claim-owner.ts        one-time: attach pre-existing watched/owned data to a real user
 drizzle/                      generated SQL migrations
 docker-compose.yml
 Dockerfile

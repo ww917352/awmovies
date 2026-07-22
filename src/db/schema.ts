@@ -7,8 +7,27 @@ import {
   date,
   varchar,
   unique,
+  primaryKey,
+  timestamp,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
+
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  username: varchar('username', { length: 64 }).notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  mustChangePassword: boolean('must_change_password').notNull().default(true),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+});
+
+export const sessions = pgTable('sessions', {
+  id: text('id').primaryKey(), // sha256 hex of the session cookie token
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  expiresAt: timestamp('expires_at').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+});
 
 export const awards = pgTable('awards', {
   id: serial('id').primaryKey(),
@@ -67,19 +86,31 @@ export const awardWins = pgTable(
 export const ownedFormatValues = ['dvd', 'bluray', 'digital'] as const;
 export const digitalQualityValues = ['sd', 'hd', '4k'] as const;
 
-export const filmStatus = pgTable('film_status', {
-  filmId: integer('film_id')
-    .primaryKey()
-    .references(() => films.id, { onDelete: 'cascade' }),
-  watched: boolean('watched').notNull().default(false),
-  watchedDate: date('watched_date'),
-  ownedFormats: text('owned_formats').array().notNull().default([]),
-  digitalQuality: varchar('digital_quality', { length: 8 }),
-  notes: text('notes'),
-});
+// Composite-keyed on (userId, filmId): each user has their own watched/owned
+// status for a film. Anonymous (logged-out) visitors have no row and see
+// blank status — see getAllFilms/getAllWins in queries.ts.
+export const filmStatus = pgTable(
+  'film_status',
+  {
+    userId: integer('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    filmId: integer('film_id')
+      .notNull()
+      .references(() => films.id, { onDelete: 'cascade' }),
+    watched: boolean('watched').notNull().default(false),
+    watchedDate: date('watched_date'),
+    ownedFormats: text('owned_formats').array().notNull().default([]),
+    digitalQuality: varchar('digital_quality', { length: 8 }),
+    notes: text('notes'),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.filmId] }),
+  })
+);
 
-// Single-row table (id is always 1) holding app-wide preferences for this
-// single-user app, e.g. the pinned starting year for the home page.
+// Single-row table (id is always 1) holding app-wide preferences shared by
+// everyone (logged in or not), e.g. the pinned starting year for the home page.
 export const appSettings = pgTable('app_settings', {
   id: integer('id').primaryKey().default(1),
   pinnedYear: integer('pinned_year'),
@@ -89,12 +120,9 @@ export const awardsRelations = relations(awards, ({ many }) => ({
   wins: many(awardWins),
 }));
 
-export const filmsRelations = relations(films, ({ many, one }) => ({
+export const filmsRelations = relations(films, ({ many }) => ({
   wins: many(awardWins),
-  status: one(filmStatus, {
-    fields: [films.id],
-    references: [filmStatus.filmId],
-  }),
+  statuses: many(filmStatus),
 }));
 
 export const awardWinsRelations = relations(awardWins, ({ one }) => ({
@@ -112,5 +140,21 @@ export const filmStatusRelations = relations(filmStatus, ({ one }) => ({
   film: one(films, {
     fields: [filmStatus.filmId],
     references: [films.id],
+  }),
+  user: one(users, {
+    fields: [filmStatus.userId],
+    references: [users.id],
+  }),
+}));
+
+export const usersRelations = relations(users, ({ many }) => ({
+  filmStatuses: many(filmStatus),
+  sessions: many(sessions),
+}));
+
+export const sessionsRelations = relations(sessions, ({ one }) => ({
+  user: one(users, {
+    fields: [sessions.userId],
+    references: [users.id],
   }),
 }));

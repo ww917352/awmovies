@@ -1,6 +1,6 @@
 import { db } from './client';
 import { awards, awardWins, films, filmStatus, appSettings } from './schema';
-import { eq, min, max } from 'drizzle-orm';
+import { and, eq, min, max, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
   id: number;
@@ -36,7 +36,12 @@ export async function getAllAwards() {
   return db.select().from(awards);
 }
 
-export async function getAllFilms(): Promise<FilmWithWins[]> {
+// `userId` scopes watched/owned status to that user; pass `null` for
+// logged-out visitors, who see blank status regardless of what's in the DB.
+export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
+
   const rows = await db
     .select({
       filmId: films.id,
@@ -64,7 +69,7 @@ export async function getAllFilms(): Promise<FilmWithWins[]> {
       editionLabel: awardWins.editionLabel,
     })
     .from(films)
-    .leftJoin(filmStatus, eq(filmStatus.filmId, films.id))
+    .leftJoin(filmStatus, statusJoinCondition)
     .leftJoin(awardWins, eq(awardWins.filmId, films.id))
     .leftJoin(awards, eq(awards.id, awardWins.awardId));
 
@@ -116,8 +121,8 @@ export async function getAllFilms(): Promise<FilmWithWins[]> {
   });
 }
 
-export async function getFilmById(id: number): Promise<FilmWithWins | null> {
-  const all = await getAllFilms();
+export async function getFilmById(id: number, userId: number | null): Promise<FilmWithWins | null> {
+  const all = await getAllFilms(userId);
   return all.find((f) => f.id === id) ?? null;
 }
 
@@ -147,7 +152,10 @@ export type WinEntry = {
   };
 };
 
-export async function getAllWins(): Promise<WinEntry[]> {
+export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
+
   const rows = await db
     .select({
       year: awardWins.year,
@@ -173,7 +181,7 @@ export async function getAllWins(): Promise<WinEntry[]> {
     .from(awardWins)
     .innerJoin(awards, eq(awards.id, awardWins.awardId))
     .innerJoin(films, eq(films.id, awardWins.filmId))
-    .leftJoin(filmStatus, eq(filmStatus.filmId, films.id))
+    .leftJoin(filmStatus, statusJoinCondition)
     .orderBy(awardWins.year, awards.slug, films.title);
 
   return rows.map((row) => ({

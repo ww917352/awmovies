@@ -15,12 +15,14 @@ export default function YearScroll({
   maxYear,
   initialPinnedYear,
   requestedYear,
+  user,
 }: {
   wins: WinEntry[];
   minYear: number;
   maxYear: number;
   initialPinnedYear: number | null;
   requestedYear?: number | null;
+  user: { username: string } | null;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Map<number, HTMLElement>>(new Map());
@@ -89,6 +91,7 @@ export default function YearScroll({
         targetYear={homeYear}
         isPinned={pinnedYear !== null}
         onYearClick={scrollToHomeYear}
+        user={user}
       />
 
       <div
@@ -128,7 +131,7 @@ export default function YearScroll({
                 ) : (
                   <div>
                     {yearWins.map((w) => (
-                      <FilmRow key={`${w.awardSlug}-${w.film.id}`} win={w} />
+                      <FilmRow key={`${w.awardSlug}-${w.film.id}`} win={w} isLoggedIn={!!user} />
                     ))}
                   </div>
                 )}

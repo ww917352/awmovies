@@ -14,10 +14,12 @@ export default function MovieList({
   wins,
   awards,
   pinnedYear,
+  user,
 }: {
   wins: WinEntry[];
   awards: Award[];
   pinnedYear: number | null;
+  user: { username: string } | null;
 }) {
   const [awardSlug, setAwardSlug] = useState('all');
   const [year, setYear] = useState('all');
@@ -49,6 +51,7 @@ export default function MovieList({
       targetYear={pinnedYear ?? DEFAULT_YEAR}
       isPinned={pinnedYear !== null}
       yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}
+      user={user}
     />
     <main className="mx-auto max-w-3xl px-4 py-6">
       <h1 className="text-2xl font-bold mb-4">All Movies</h1>
@@ -96,7 +99,9 @@ export default function MovieList({
       {filtered.length === 0 ? (
         <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
       ) : (
-        filtered.map((w) => <FilmRow key={`${w.awardSlug}-${w.year}-${w.film.id}`} win={w} showYear />)
+        filtered.map((w) => (
+          <FilmRow key={`${w.awardSlug}-${w.year}-${w.film.id}`} win={w} showYear isLoggedIn={!!user} />
+        ))
       )}
     </main>
     </FilmWatchedProvider>

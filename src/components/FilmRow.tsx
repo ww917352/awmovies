@@ -3,7 +3,15 @@ import type { WinEntry } from '@/db/queries';
 import WatchedToggle from './WatchedToggle';
 import { AWARD_ABBR, formatOwnedLabel } from '@/lib/format';
 
-export default function FilmRow({ win, showYear = false }: { win: WinEntry; showYear?: boolean }) {
+export default function FilmRow({
+  win,
+  showYear = false,
+  isLoggedIn = false,
+}: {
+  win: WinEntry;
+  showYear?: boolean;
+  isLoggedIn?: boolean;
+}) {
   const ownedLabel = formatOwnedLabel(win.status);
 
   return (
@@ -13,7 +21,7 @@ export default function FilmRow({ win, showYear = false }: { win: WinEntry; show
           {showYear && <span className="text-neutral-300 font-semibold mr-1.5">{win.year}</span>}
           {AWARD_ABBR[win.awardSlug] ?? win.awardName}
         </span>
-        <WatchedToggle filmId={win.film.id} initialWatched={win.status.watched} />
+        {isLoggedIn && <WatchedToggle filmId={win.film.id} initialWatched={win.status.watched} />}
       </div>
 
       <Link href={`/films/${win.film.id}`} className="block leading-snug mt-1 hover:underline">
