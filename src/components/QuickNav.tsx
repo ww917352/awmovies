@@ -6,7 +6,7 @@ import { useTransition } from 'react';
 import PinIcon from './PinIcon';
 
 const pillClass =
-  'flex items-center gap-1.5 bg-card/90 backdrop-blur border border-neutral-700 rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg hover:border-neutral-500 whitespace-nowrap';
+  'flex items-center gap-1.5 bg-card/90 backdrop-blur border border-neutral-300 dark:border-neutral-700 rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg hover:border-neutral-400 dark:hover:border-neutral-500 whitespace-nowrap';
 
 export default function QuickNav({
   targetYear,
@@ -36,8 +36,8 @@ export default function QuickNav({
 
   const yearPillClass = `flex items-center gap-1.5 backdrop-blur border rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg whitespace-nowrap ${
     isPinned
-      ? 'bg-amber-950/90 border-amber-700 text-amber-300 hover:border-amber-500'
-      : 'bg-card/90 border-neutral-700 hover:border-neutral-500'
+      ? 'bg-amber-100/90 border-amber-300 text-amber-800 hover:border-amber-500 dark:bg-amber-950/90 dark:border-amber-700 dark:text-amber-300'
+      : 'bg-card/90 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-500'
   }`;
 
   return (

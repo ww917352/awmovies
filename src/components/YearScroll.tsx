@@ -119,7 +119,9 @@ export default function YearScroll({
                     <button
                       onClick={() => togglePinForYear(year)}
                       className={`rounded-full p-2 ${
-                        isPinned ? 'text-amber-400' : 'text-neutral-600 hover:text-neutral-400'
+                        isPinned
+                          ? 'text-amber-600 dark:text-amber-400'
+                          : 'text-neutral-400 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-400'
                       }`}
                       title={isPinned ? 'Unpin this year' : 'Pin this year as the default'}
                       aria-label={isPinned ? 'Unpin this year' : 'Pin this year as the default'}

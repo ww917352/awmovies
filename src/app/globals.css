@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-surface: 247 243 236;
+  --color-card: 255 255 255;
+  color-scheme: light;
+}
+
+.dark {
+  --color-surface: 15 17 21;
+  --color-card: 23 26 33;
+  color-scheme: dark;
+}
+
 body {
-  @apply bg-surface text-neutral-100;
+  @apply bg-surface text-neutral-900 dark:text-neutral-100;
 }

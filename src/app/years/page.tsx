@@ -9,7 +9,9 @@ const DEFAULT_YEAR = 2000;
 
 function yearPillClass(isPinned: boolean) {
   return `inline-flex items-center justify-center w-16 py-1.5 rounded-lg border text-sm font-medium hover:border-neutral-400 ${
-    isPinned ? 'bg-amber-950 border-amber-700 text-amber-300' : 'bg-card border-neutral-700 text-neutral-200'
+    isPinned
+      ? 'bg-amber-100 border-amber-300 text-amber-800 dark:bg-amber-950 dark:border-amber-700 dark:text-amber-300'
+      : 'bg-card border-neutral-300 text-neutral-800 dark:border-neutral-700 dark:text-neutral-200'
   }`;
 }
 
@@ -55,7 +57,7 @@ export default async function YearsPage() {
 
           return (
             <div key={decadeStart}>
-              <h2 className="text-lg font-semibold text-neutral-300 mb-2">{decadeStart}s</h2>
+              <h2 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">{decadeStart}s</h2>
               <div className="flex flex-wrap gap-2">
                 {yearsInDecade.map((y) => (
                   <Link key={y} href={`/?year=${y}`} className={yearPillClass(y === pinnedYear)}>

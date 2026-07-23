@@ -33,7 +33,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={submit} className="space-y-4">
       <div>
-        <label className="block text-sm text-neutral-400 mb-1" htmlFor="username">
+        <label className="block text-sm text-neutral-600 dark:text-neutral-400 mb-1" htmlFor="username">
           Username
         </label>
         <input
@@ -43,7 +43,7 @@ export default function LoginForm() {
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full bg-card border border-neutral-700 rounded px-3 py-2 text-base"
+          className="w-full bg-card border border-neutral-300 dark:border-neutral-700 rounded px-3 py-2 text-base"
         />
       </div>
 
@@ -55,7 +55,7 @@ export default function LoginForm() {
         autoComplete="current-password"
       />
 
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
 
       <button
         type="submit"

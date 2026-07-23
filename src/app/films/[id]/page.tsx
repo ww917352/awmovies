@@ -29,7 +29,7 @@ export default async function FilmDetailPage({
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
-      <Link href={backHref} className="text-sm text-sky-400 hover:underline">
+      <Link href={backHref} className="text-sm text-sky-600 dark:text-sky-400 hover:underline">
         &larr; Back to all films
       </Link>
 
@@ -41,16 +41,16 @@ export default async function FilmDetailPage({
           <img
             src={film.posterUrl}
             alt={`${film.title} poster`}
-            className="[grid-area:poster] w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-800 self-start"
+            className="[grid-area:poster] w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-200 dark:border-neutral-800 self-start"
           />
         )}
 
         <div className="[grid-area:title] min-w-0 self-start">
           <h1 className="text-3xl font-bold">{film.title}</h1>
           {film.originalTitle && film.originalTitle !== film.title && (
-            <p className="text-neutral-400 italic">{film.originalTitle}</p>
+            <p className="text-neutral-600 dark:text-neutral-400 italic">{film.originalTitle}</p>
           )}
-          <p className="text-neutral-400">{film.releaseYear}</p>
+          <p className="text-neutral-600 dark:text-neutral-400">{film.releaseYear}</p>
         </div>
 
         <div className="[grid-area:rest] min-w-0">
@@ -58,7 +58,7 @@ export default async function FilmDetailPage({
             {film.wins.map((w, i) => (
               <span
                 key={i}
-                className="text-xs bg-neutral-800 border border-neutral-700 rounded-full px-2 py-0.5 text-neutral-300"
+                className="text-xs bg-neutral-200 border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-700 rounded-full px-2 py-0.5 text-neutral-700 dark:text-neutral-300"
               >
                 {w.awardName} &mdash; {w.editionLabel ?? w.year}
               </span>
@@ -88,7 +88,7 @@ export default async function FilmDetailPage({
 
           <div className="flex gap-4 mb-6">
             {film.wikiUrl && (
-              <a href={film.wikiUrl} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+              <a href={film.wikiUrl} target="_blank" rel="noreferrer" className="text-sky-600 dark:text-sky-400 hover:underline">
                 Wikipedia
               </a>
             )}
@@ -97,13 +97,13 @@ export default async function FilmDetailPage({
                 href={film.letterboxdUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="text-emerald-400 hover:underline"
+                className="text-emerald-600 dark:text-emerald-400 hover:underline"
               >
                 Letterboxd{film.letterboxdUnverified ? ' (unverified link)' : ''}
               </a>
             )}
             {film.appleTvUrl && (
-              <a href={film.appleTvUrl} target="_blank" rel="noreferrer" className="text-fuchsia-400 hover:underline">
+              <a href={film.appleTvUrl} target="_blank" rel="noreferrer" className="text-fuchsia-600 dark:text-fuchsia-400 hover:underline">
                 Apple TV
               </a>
             )}
@@ -111,12 +111,12 @@ export default async function FilmDetailPage({
         </div>
       </div>
 
-      <div className="bg-card border border-neutral-800 rounded-lg p-4 mb-6">
+      <div className="bg-card border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 mb-6">
         {user ? (
           <StatusControls filmId={film.id} initialStatus={film.status} />
         ) : (
           <p className="text-sm text-neutral-500">
-            <Link href="/login" className="text-sky-400 hover:underline">
+            <Link href="/login" className="text-sky-600 dark:text-sky-400 hover:underline">
               Log in
             </Link>{' '}
             to track watched/owned status.
@@ -124,7 +124,7 @@ export default async function FilmDetailPage({
         )}
       </div>
 
-      {film.plotSummary && <p className="text-sm text-neutral-300 leading-relaxed">{film.plotSummary}</p>}
+      {film.plotSummary && <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">{film.plotSummary}</p>}
     </main>
   );
 }

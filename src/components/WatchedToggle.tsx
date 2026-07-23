@@ -33,7 +33,7 @@ export default function WatchedToggle({
       title="Watched"
     >
       <input type="checkbox" checked={watched} onChange={toggle} className="accent-emerald-500" />
-      <span className="hidden sm:inline text-neutral-400">Watched</span>
+      <span className="hidden sm:inline text-neutral-600 dark:text-neutral-400">Watched</span>
     </label>
   );
 }

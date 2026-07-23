@@ -57,7 +57,7 @@ export default function StatusControls({
       </label>
 
       <div className="flex items-center gap-2">
-        <span className="text-neutral-400">Owned:</span>
+        <span className="text-neutral-600 dark:text-neutral-400">Owned:</span>
         {FORMATS.map((format) => (
           <label key={format} className="flex items-center gap-1 cursor-pointer select-none">
             <input
@@ -75,7 +75,7 @@ export default function StatusControls({
         <select
           value={status.digitalQuality ?? ''}
           onChange={(e) => setQuality(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-1.5 py-0.5 text-base"
+          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-1.5 py-0.5 text-base"
         >
           <option value="">Quality?</option>
           {QUALITIES.map((q) => (

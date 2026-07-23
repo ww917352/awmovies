@@ -56,11 +56,11 @@ export default function MovieList({
     <main className="mx-auto max-w-3xl px-4 py-6">
       <h1 className="text-2xl font-bold mb-4">All Movies</h1>
 
-      <div className="flex flex-wrap gap-3 mb-4 sticky top-0 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-800">
+      <div className="flex flex-wrap gap-3 mb-4 sticky top-0 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
         <select
           value={awardSlug}
           onChange={(e) => setAwardSlug(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-base"
+          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base"
         >
           <option value="all">All awards</option>
           {awards.map((a) => (
@@ -73,7 +73,7 @@ export default function MovieList({
         <select
           value={year}
           onChange={(e) => setYear(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-base"
+          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base"
         >
           <option value="all">All years</option>
           {years.map((y) => (

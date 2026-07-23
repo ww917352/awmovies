@@ -5,12 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        surface: '#0f1115',
-        card: '#171a21',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        card: 'rgb(var(--color-card) / <alpha-value>)',
       },
     },
   },
-  darkMode: 'media',
+  darkMode: 'class',
   plugins: [],
 };
 
