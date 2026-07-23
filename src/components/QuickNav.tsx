@@ -48,17 +48,18 @@ export default function QuickNav({
       <Link href="/movies" prefetch={false} className={pillClass}>
         Movies
       </Link>
-      {onYearClick ? (
-        <button onClick={onYearClick} className={yearPillClass}>
-          {isPinned && <PinIcon filled className="w-4 h-4" />}
-          {targetYear}
-        </button>
-      ) : (
-        <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearPillClass}>
-          {isPinned && <PinIcon filled className="w-4 h-4" />}
-          {targetYear}
-        </Link>
-      )}
+      {user &&
+        (onYearClick ? (
+          <button onClick={onYearClick} className={yearPillClass}>
+            {isPinned && <PinIcon filled className="w-4 h-4" />}
+            {targetYear}
+          </button>
+        ) : (
+          <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearPillClass}>
+            {isPinned && <PinIcon filled className="w-4 h-4" />}
+            {targetYear}
+          </Link>
+        ))}
       {user ? (
         <button onClick={logout} disabled={isPending} className={`${pillClass} ${isPending ? 'opacity-60' : ''}`}>
           {user.username} &middot; Log out
