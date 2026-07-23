@@ -100,7 +100,13 @@ export default function MovieList({
         <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
       ) : (
         filtered.map((w) => (
-          <FilmRow key={`${w.awardSlug}-${w.year}-${w.film.id}`} win={w} showYear isLoggedIn={!!user} />
+          <FilmRow
+            key={`${w.awardSlug}-${w.year}-${w.film.id}`}
+            win={w}
+            showYear
+            isLoggedIn={!!user}
+            backHref="/movies"
+          />
         ))
       )}
     </main>

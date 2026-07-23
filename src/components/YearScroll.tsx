@@ -133,7 +133,12 @@ export default function YearScroll({
                 ) : (
                   <div>
                     {yearWins.map((w) => (
-                      <FilmRow key={`${w.awardSlug}-${w.film.id}`} win={w} isLoggedIn={!!user} />
+                      <FilmRow
+                        key={`${w.awardSlug}-${w.film.id}`}
+                        win={w}
+                        isLoggedIn={!!user}
+                        backHref={`/?year=${year}`}
+                      />
                     ))}
                   </div>
                 )}

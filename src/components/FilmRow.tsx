@@ -7,12 +7,15 @@ export default function FilmRow({
   win,
   showYear = false,
   isLoggedIn = false,
+  backHref = '/',
 }: {
   win: WinEntry;
   showYear?: boolean;
   isLoggedIn?: boolean;
+  backHref?: string;
 }) {
   const ownedLabel = formatOwnedLabel(win.status);
+  const filmHref = `/films/${win.film.id}?back=${encodeURIComponent(backHref)}`;
 
   return (
     <div className="rounded-lg border border-neutral-800 bg-card/40 px-3 py-2.5 mb-2.5">
@@ -24,7 +27,7 @@ export default function FilmRow({
         {isLoggedIn && <WatchedToggle filmId={win.film.id} initialWatched={win.status.watched} />}
       </div>
 
-      <Link href={`/films/${win.film.id}`} className="block leading-snug mt-1 hover:underline">
+      <Link href={filmHref} className="block leading-snug mt-1 hover:underline">
         <span className="text-lg font-semibold">{win.film.title}</span>
         {win.film.originalTitle && win.film.originalTitle !== win.film.title && (
           <span className="text-sm text-neutral-500 italic ml-1.5">({win.film.originalTitle})</span>

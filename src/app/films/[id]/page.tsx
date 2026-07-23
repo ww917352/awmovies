@@ -6,7 +6,13 @@ import StatusControls from '@/components/StatusControls';
 
 export const dynamic = 'force-dynamic';
 
-export default async function FilmDetailPage({ params }: { params: { id: string } }) {
+export default async function FilmDetailPage({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { back?: string };
+}) {
   const id = Number(params.id);
   if (!Number.isInteger(id)) notFound();
 
@@ -14,9 +20,16 @@ export default async function FilmDetailPage({ params }: { params: { id: string 
   const film = await getFilmById(id, user?.id ?? null);
   if (!film) notFound();
 
+  // Only accept a same-site relative path — searchParams is attacker-controlled,
+  // and an absolute/protocol-relative URL here would make this an open redirect.
+  const backHref =
+    searchParams.back && searchParams.back.startsWith('/') && !searchParams.back.startsWith('//')
+      ? searchParams.back
+      : '/';
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
-      <Link href="/" className="text-sm text-sky-400 hover:underline">
+      <Link href={backHref} className="text-sm text-sky-400 hover:underline">
         &larr; Back to all films
       </Link>
 
