@@ -109,10 +109,13 @@ export const filmStatus = pgTable(
   })
 );
 
-// Single-row table (id is always 1) holding app-wide preferences shared by
-// everyone (logged in or not), e.g. the pinned starting year for the home page.
-export const appSettings = pgTable('app_settings', {
-  id: integer('id').primaryKey().default(1),
+// One row per user holding their personal preferences, e.g. the pinned
+// starting year for the home page. Logged-out visitors have no row and no
+// pin — see getPinnedYear in queries.ts.
+export const userSettings = pgTable('user_settings', {
+  userId: integer('user_id')
+    .primaryKey()
+    .references(() => users.id, { onDelete: 'cascade' }),
   pinnedYear: integer('pinned_year'),
 });
 
@@ -147,14 +150,25 @@ export const filmStatusRelations = relations(filmStatus, ({ one }) => ({
   }),
 }));
 
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(users, ({ many, one }) => ({
   filmStatuses: many(filmStatus),
   sessions: many(sessions),
+  settings: one(userSettings, {
+    fields: [users.id],
+    references: [userSettings.userId],
+  }),
 }));
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
   user: one(users, {
     fields: [sessions.userId],
+    references: [users.id],
+  }),
+}));
+
+export const userSettingsRelations = relations(userSettings, ({ one }) => ({
+  user: one(users, {
+    fields: [userSettings.userId],
     references: [users.id],
   }),
 }));

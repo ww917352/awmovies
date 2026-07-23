@@ -1,5 +1,5 @@
 import { db } from './client';
-import { awards, awardWins, films, filmStatus, appSettings } from './schema';
+import { awards, awardWins, films, filmStatus, userSettings } from './schema';
 import { and, eq, min, max, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
@@ -217,14 +217,16 @@ export async function getYearRange(): Promise<{ minYear: number; maxYear: number
   return { minYear: row?.minYear ?? 1929, maxYear: row?.maxYear ?? currentYear };
 }
 
-export async function getPinnedYear(): Promise<number | null> {
-  const [row] = await db.select().from(appSettings).where(eq(appSettings.id, 1));
+// Logged-out visitors (userId === null) never have a pin — skip the query.
+export async function getPinnedYear(userId: number | null): Promise<number | null> {
+  if (userId === null) return null;
+  const [row] = await db.select().from(userSettings).where(eq(userSettings.userId, userId));
   return row?.pinnedYear ?? null;
 }
 
-export async function setPinnedYear(year: number | null): Promise<void> {
+export async function setPinnedYear(userId: number, year: number | null): Promise<void> {
   await db
-    .insert(appSettings)
-    .values({ id: 1, pinnedYear: year })
-    .onConflictDoUpdate({ target: appSettings.id, set: { pinnedYear: year } });
+    .insert(userSettings)
+    .values({ userId, pinnedYear: year })
+    .onConflictDoUpdate({ target: userSettings.userId, set: { pinnedYear: year } });
 }

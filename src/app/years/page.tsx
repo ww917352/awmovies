@@ -14,10 +14,10 @@ function yearPillClass(isPinned: boolean) {
 }
 
 export default async function YearsPage() {
-  const [{ minYear, maxYear }, pinnedYear, user] = await Promise.all([
+  const user = await getCurrentUser();
+  const [{ minYear, maxYear }, pinnedYear] = await Promise.all([
     getYearRange(),
-    getPinnedYear(),
-    getCurrentUser(),
+    getPinnedYear(user?.id ?? null),
   ]);
 
   const decadeStarts: number[] = [];

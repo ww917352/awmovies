@@ -43,6 +43,13 @@
       "when": 1784739150903,
       "tag": "0005_bouncy_patriot",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784784868086,
+      "tag": "0006_user_settings",
+      "breakpoints": true
     }
   ]
 }

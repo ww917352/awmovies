@@ -115,16 +115,18 @@ export default function YearScroll({
               <div className="w-full max-w-3xl">
                 <div className="flex items-center justify-center gap-3 mb-6">
                   <h1 className="text-5xl sm:text-6xl font-bold">{year}</h1>
-                  <button
-                    onClick={() => togglePinForYear(year)}
-                    className={`rounded-full p-2 ${
-                      isPinned ? 'text-amber-400' : 'text-neutral-600 hover:text-neutral-400'
-                    }`}
-                    title={isPinned ? 'Unpin this year' : 'Pin this year as the default'}
-                    aria-label={isPinned ? 'Unpin this year' : 'Pin this year as the default'}
-                  >
-                    <PinIcon filled={isPinned} />
-                  </button>
+                  {user && (
+                    <button
+                      onClick={() => togglePinForYear(year)}
+                      className={`rounded-full p-2 ${
+                        isPinned ? 'text-amber-400' : 'text-neutral-600 hover:text-neutral-400'
+                      }`}
+                      title={isPinned ? 'Unpin this year' : 'Pin this year as the default'}
+                      aria-label={isPinned ? 'Unpin this year' : 'Pin this year as the default'}
+                    >
+                      <PinIcon filled={isPinned} />
+                    </button>
+                  )}
                 </div>
                 {yearWins.length === 0 ? (
                   <p className="text-center text-neutral-500">No award recorded for this year.</p>

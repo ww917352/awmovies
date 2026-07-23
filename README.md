@@ -60,6 +60,16 @@ npm run seed
 npm run dev
 ```
 
+Never put the production `DATABASE_URL` in `.env` — Next.js auto-loads `.env`
+for `npm run dev`, so a prod URL there means local dev silently talks to
+production. If you want it on disk for convenience when running the admin
+scripts below, put it in `.env.production.local` instead (gitignored, and
+never auto-loaded by `npm run dev`) and export it explicitly, e.g.:
+```bash
+export DATABASE_URL=$(grep -E '^DATABASE_URL=' .env.production.local | cut -d= -f2-)
+npm run create-user -- <username>
+```
+
 ## Data seeding
 
 Award data lives in `src/db/seed/*.json`, one or more files per award (a

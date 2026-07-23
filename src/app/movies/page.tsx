@@ -9,7 +9,7 @@ export default async function MoviesPage() {
   const [wins, awards, pinnedYear] = await Promise.all([
     getAllWins(user?.id ?? null),
     getAllAwards(),
-    getPinnedYear(),
+    getPinnedYear(user?.id ?? null),
   ]);
 
   return (
