@@ -75,7 +75,7 @@ export default function StatusControls({
         <select
           value={status.digitalQuality ?? ''}
           onChange={(e) => setQuality(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-1.5 py-0.5 text-xs"
+          className="bg-card border border-neutral-700 rounded px-1.5 py-0.5 text-base"
         >
           <option value="">Quality?</option>
           {QUALITIES.map((q) => (

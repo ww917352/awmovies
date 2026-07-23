@@ -43,7 +43,7 @@ export default function LoginForm() {
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full bg-card border border-neutral-700 rounded px-3 py-2 text-sm"
+          className="w-full bg-card border border-neutral-700 rounded px-3 py-2 text-base"
         />
       </div>
 

@@ -60,7 +60,7 @@ export default function MovieList({
         <select
           value={awardSlug}
           onChange={(e) => setAwardSlug(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-sm"
+          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-base"
         >
           <option value="all">All awards</option>
           {awards.map((a) => (
@@ -73,7 +73,7 @@ export default function MovieList({
         <select
           value={year}
           onChange={(e) => setYear(e.target.value)}
-          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-sm"
+          className="bg-card border border-neutral-700 rounded px-2 py-1.5 text-base"
         >
           <option value="all">All years</option>
           {years.map((y) => (

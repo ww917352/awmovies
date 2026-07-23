@@ -30,7 +30,7 @@ export default function PasswordField({
           required
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full bg-card border border-neutral-700 rounded px-3 py-2 pr-14 text-sm"
+          className="w-full bg-card border border-neutral-700 rounded px-3 py-2 pr-14 text-base"
         />
         <button
           type="button"
