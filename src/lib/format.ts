@@ -1,3 +1,10 @@
+export function capitalizeWords(value: string): string {
+  return value
+    .split(' ')
+    .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : word))
+    .join(' ');
+}
+
 export const AWARD_ABBR: Record<string, string> = {
   'oscar-best-picture': 'Oscar · Best Picture',
   'oscar-foreign-language': 'Oscar · Int’l Feature',

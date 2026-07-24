@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useTransition } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import PinIcon from './PinIcon';
+import { capitalizeWords } from '@/lib/format';
 
 const pillClass =
   'flex items-center gap-1.5 bg-card/90 backdrop-blur border border-neutral-300 dark:border-neutral-700 rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg hover:border-neutral-400 dark:hover:border-neutral-500 whitespace-nowrap';
@@ -23,16 +23,9 @@ export default function QuickNav({
   className?: string;
   user?: { username: string } | null;
 }) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-
-  function logout() {
-    startTransition(async () => {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      router.push('/');
-      router.refresh();
-    });
-  }
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentPath = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
 
   const yearPillClass = `flex items-center gap-1.5 backdrop-blur border rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg whitespace-nowrap ${
     isPinned
@@ -61,9 +54,9 @@ export default function QuickNav({
           </Link>
         ))}
       {user ? (
-        <button onClick={logout} disabled={isPending} className={`${pillClass} ${isPending ? 'opacity-60' : ''}`}>
-          {user.username} &middot; Log out
-        </button>
+        <Link href={`/account?back=${encodeURIComponent(currentPath)}`} prefetch={false} className={pillClass}>
+          {capitalizeWords(user.username)}
+        </Link>
       ) : (
         <Link href="/login" prefetch={false} className={pillClass}>
           Log in
