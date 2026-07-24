@@ -30,13 +30,14 @@ function isValidPatch(body: unknown): body is StatusPatch {
   return true;
 }
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: 'Not logged in' }, { status: 401 });
   }
 
-  const filmId = Number(params.id);
+  const { id } = await params;
+  const filmId = Number(id);
   if (!Number.isInteger(filmId)) {
     return NextResponse.json({ error: 'Invalid film id' }, { status: 400 });
   }

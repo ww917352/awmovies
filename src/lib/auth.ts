@@ -26,7 +26,7 @@ export async function createSession(userId: number): Promise<void> {
 
   await db.insert(sessions).values({ id: hashToken(token), userId, expiresAt });
 
-  const jar = cookies();
+  const jar = await cookies();
   jar.set(SESSION_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -37,7 +37,7 @@ export async function createSession(userId: number): Promise<void> {
 }
 
 export async function setMustChangePasswordCookie(mustChange: boolean): Promise<void> {
-  const jar = cookies();
+  const jar = await cookies();
   if (mustChange) {
     jar.set(PWD_CHANGE_COOKIE, '1', {
       httpOnly: true,
@@ -52,7 +52,7 @@ export async function setMustChangePasswordCookie(mustChange: boolean): Promise<
 }
 
 export async function destroySession(): Promise<void> {
-  const jar = cookies();
+  const jar = await cookies();
   const token = jar.get(SESSION_COOKIE)?.value;
   if (token) {
     await db.delete(sessions).where(eq(sessions.id, hashToken(token)));
@@ -62,7 +62,7 @@ export async function destroySession(): Promise<void> {
 }
 
 export async function getCurrentUser(): Promise<SessionUser | null> {
-  const jar = cookies();
+  const jar = await cookies();
   const token = jar.get(SESSION_COOKIE)?.value;
   if (!token) return null;
 

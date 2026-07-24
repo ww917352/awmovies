@@ -10,22 +10,22 @@ export default async function FilmDetailPage({
   params,
   searchParams,
 }: {
-  params: { id: string };
-  searchParams: { back?: string };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ back?: string }>;
 }) {
-  const id = Number(params.id);
+  const { id: idParam } = await params;
+  const id = Number(idParam);
   if (!Number.isInteger(id)) notFound();
 
   const user = await getCurrentUser();
   const film = await getFilmById(id, user?.id ?? null);
   if (!film) notFound();
 
-  // Only accept a same-site relative path — searchParams is attacker-controlled,
+  const { back } = await searchParams;
+
+  // Only accept a same-site relative path — back is attacker-controlled,
   // and an absolute/protocol-relative URL here would make this an open redirect.
-  const backHref =
-    searchParams.back && searchParams.back.startsWith('/') && !searchParams.back.startsWith('//')
-      ? searchParams.back
-      : '/';
+  const backHref = back && back.startsWith('/') && !back.startsWith('//') ? back : '/';
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
