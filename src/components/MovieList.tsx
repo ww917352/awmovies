@@ -24,6 +24,7 @@ export default function MovieList({
   const [awardSlug, setAwardSlug] = useState('all');
   const [year, setYear] = useState('all');
   const [unwatchedOnly, setUnwatchedOnly] = useState(false);
+  const [search, setSearch] = useState('');
 
   const years = useMemo(() => {
     const set = new Set(wins.map((w) => w.year));
@@ -31,13 +32,27 @@ export default function MovieList({
   }, [wins]);
 
   const filtered = useMemo(() => {
+    const query = search.trim().toLowerCase();
     return wins.filter((w) => {
       if (awardSlug !== 'all' && w.awardSlug !== awardSlug) return false;
       if (year !== 'all' && w.year !== Number(year)) return false;
       if (unwatchedOnly && w.status.watched) return false;
+      if (query) {
+        const haystack = [
+          w.film.title,
+          w.film.originalTitle,
+          ...w.film.directors,
+          ...w.film.mainCast,
+          ...w.film.studios,
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
       return true;
     });
-  }, [wins, awardSlug, year, unwatchedOnly]);
+  }, [wins, awardSlug, year, unwatchedOnly, search]);
 
   const initialWatchedMap = useMemo(
     () => Object.fromEntries(wins.map((w) => [w.film.id, w.status.watched])),
@@ -57,6 +72,14 @@ export default function MovieList({
       <h1 className="text-2xl font-bold mb-4">All Movies</h1>
 
       <div className="flex flex-wrap gap-3 mb-4 sticky top-0 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search title, director, cast…"
+          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base flex-1 min-w-[10rem]"
+        />
+
         <select
           value={awardSlug}
           onChange={(e) => setAwardSlug(e.target.value)}
