@@ -29,3 +29,10 @@ export function useFilmWatched(filmId: number, fallback: boolean) {
   const setWatched = (value: boolean) => ctx?.setWatched(filmId, value);
   return [watched, setWatched] as const;
 }
+
+// Reads the live watched map so summary/progress UI stays in sync with
+// individual WatchedToggle changes without a page refresh.
+export function useWatchedMap(): WatchedMap {
+  const ctx = useContext(WatchedContext);
+  return ctx?.watchedMap ?? {};
+}

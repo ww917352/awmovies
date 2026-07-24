@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import type { WinEntry } from '@/db/queries';
 import FilmRow from './FilmRow';
 import QuickNav from './QuickNav';
+import WatchedProgress from './WatchedProgress';
 import { FilmWatchedProvider } from './FilmWatchedContext';
 import { AWARD_ABBR } from '@/lib/format';
 
@@ -60,6 +61,8 @@ export default function MovieList({
     [wins]
   );
 
+  const uniqueFilmIds = useMemo(() => Array.from(new Set(wins.map((w) => w.film.id))), [wins]);
+
   return (
     <FilmWatchedProvider initial={initialWatchedMap}>
     <QuickNav
@@ -71,6 +74,8 @@ export default function MovieList({
     />
     <main className="mx-auto max-w-3xl px-4 py-6">
       <h1 className="text-2xl font-bold mb-4">All Movies</h1>
+
+      {user && <WatchedProgress filmIds={uniqueFilmIds} />}
 
       <div className="flex flex-wrap gap-3 mb-4 sticky top-0 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
         <input
