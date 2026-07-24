@@ -5,6 +5,7 @@ import type { WinEntry } from '@/db/queries';
 import FilmRow from './FilmRow';
 import QuickNav from './QuickNav';
 import { FilmWatchedProvider } from './FilmWatchedContext';
+import { AWARD_ABBR } from '@/lib/format';
 
 type Award = { slug: string; name: string };
 
@@ -77,7 +78,7 @@ export default function MovieList({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search title, director, cast…"
-          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base flex-1 min-w-[10rem]"
+          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base w-full"
         />
 
         <select
@@ -88,7 +89,7 @@ export default function MovieList({
           <option value="all">All awards</option>
           {awards.map((a) => (
             <option key={a.slug} value={a.slug}>
-              {a.name}
+              {AWARD_ABBR[a.slug] ?? a.name}
             </option>
           ))}
         </select>
