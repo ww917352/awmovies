@@ -29,7 +29,7 @@
     "drizzle-kit": "0.31.10",
     "tsx": "4.16.5",
     "tailwindcss": "4.3.2",
-    "postcss": "8.4.40",
+    "postcss": "8.5.12",
     "autoprefixer": "10.4.19"
   }
 }
