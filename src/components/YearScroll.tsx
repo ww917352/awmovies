@@ -96,7 +96,7 @@ export default function YearScroll({
 
       <div
         ref={containerRef}
-        className="h-screen overflow-y-scroll snap-y snap-mandatory"
+        className="h-dvh overflow-y-scroll snap-y snap-mandatory"
         style={{ scrollBehavior: 'auto' }}
       >
         {years.map((year) => {
@@ -110,7 +110,7 @@ export default function YearScroll({
                 if (el) sectionRefs.current.set(year, el);
                 else sectionRefs.current.delete(year);
               }}
-              className="min-h-screen snap-start flex flex-col items-center justify-center px-4 pt-24 pb-16"
+              className="min-h-dvh snap-start flex flex-col items-center justify-center px-4 pt-24 pb-[calc(4rem+env(safe-area-inset-bottom))]"
             >
               <div className="w-full max-w-3xl">
                 <div className="flex items-center justify-center gap-3 mb-6">

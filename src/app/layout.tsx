@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import ThemeScript from '@/components/ThemeScript';
 import ThemeSync from '@/components/ThemeSync';
@@ -6,6 +6,10 @@ import ThemeSync from '@/components/ThemeSync';
 export const metadata: Metadata = {
   title: 'Award-Winning Movies',
   description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
+};
+
+export const viewport: Viewport = {
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
