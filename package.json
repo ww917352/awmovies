@@ -27,7 +27,7 @@
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "drizzle-kit": "0.31.10",
-    "postcss": "8.5.12",
+    "postcss": "8.5.19",
     "tailwindcss": "4.3.2",
     "tsx": "4.16.5",
     "typescript": "5.5.4"
