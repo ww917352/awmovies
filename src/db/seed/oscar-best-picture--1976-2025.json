@@ -312,7 +312,7 @@
       "mainCast": ["Mel Gibson", "Sophie Marceau", "Patrick McGoohan", "Catherine McCormack", "Angus Macfadyen"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Braveheart",
       "letterboxdUrl": "https://letterboxd.com/film/braveheart/",
-      "letterboxdUnverified": true,
+      "letterboxdUnverified": false,
       "appleTvUrl": "https://tv.apple.com/us/movie/braveheart/umc.cmc.6lkfj9wyv04km68kr34nv7t0k",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e1/Braveheart_film_poster.png",
       "plotSummary": "In 1280, Edward I of England, known as \"Longshanks\", conquers Scotland following the death of the Scots' king, who left no heir. Young William Wallace witnesses the aftermath of Longshanks' execution of several Scottish nobles, then loses his father and brother when they resist the English. He leaves home to be raised by his uncle, Argyle, during which he is educated and trained to fight."
@@ -327,7 +327,7 @@
       "mainCast": ["Ralph Fiennes", "Juliette Binoche", "Willem Dafoe", "Kristin Scott Thomas", "Naveen Andrews"],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_English_Patient_(film)",
       "letterboxdUrl": "https://letterboxd.com/film/the-english-patient/",
-      "letterboxdUnverified": true,
+      "letterboxdUnverified": false,
       "appleTvUrl": "https://tv.apple.com/us/movie/the-english-patient/umc.cmc.61v7tb5a7940pr2qo1fuhdirf",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/bd/The_English_Patient_Poster.jpg",
       "plotSummary": "German gunners shoot down a British biplane, containing a pilot and a slumped down woman, flying across the desert. A group of Bedouin pulls the badly burned pilot from the wreckage, rescuing him. Hana, a French-Canadian Royal Canadian Army Medical Corps nurse, learns from a wounded soldier that her boyfriend has been killed."
@@ -718,7 +718,7 @@
       "mainCast": ["Michelle Yeoh", "Stephanie Hsu", "Ke Huy Quan", "James Hong", "Jamie Lee Curtis"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Everything_Everywhere_All_at_Once",
       "letterboxdUrl": "https://letterboxd.com/film/everything-everywhere-all-at-once/",
-      "letterboxdUnverified": true,
+      "letterboxdUnverified": false,
       "appleTvUrl": "https://tv.apple.com/us/movie/everything-everywhere-all-at-once/umc.cmc.5cxq4yswbsp3apykshwrcb890",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1e/Everything_Everywhere_All_at_Once.jpg",
       "plotSummary": "Evelyn Quan Wang is a middle-aged Chinese immigrant who runs a laundromat with her husband Waymond in Simi Valley, California. Two decades earlier, they eloped to the United States and had a daughter, Joy. In the present day, Evelyn struggles to manage a failing laundromat while navigating an impending Internal Revenue Service (IRS) audit."
@@ -732,8 +732,8 @@
       "studios": ["Syncopy", "Atlas Entertainment"],
       "mainCast": ["Cillian Murphy", "Emily Blunt", "Matt Damon", "Robert Downey Jr.", "Florence Pugh"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Oppenheimer_(film)",
-      "letterboxdUrl": "https://letterboxd.com/film/oppenheimer/",
-      "letterboxdUnverified": true,
+      "letterboxdUrl": "https://letterboxd.com/film/oppenheimer-2023/",
+      "letterboxdUnverified": false,
       "appleTvUrl": "https://tv.apple.com/us/movie/oppenheimer/umc.cmc.5gylew9icuhfiifdv3oxwxen8",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%28film%29.jpg",
       "plotSummary": "A 1959 Senate committee questions ex-AEC Chairman, Lewis Strauss, over his actions during Robert Oppenheimer's security hearing, when a revoked Q-clearance ended Oppenheimer's government advisory role. Strauss, who is nominated for Commerce Secretary, alleges the FBI was suspicious of Oppenheimer since his teaching days, well before anti-Communist William Borden accused him of espionage in 1954. He claims to not have acted against Oppenheimer, despite having many public disagreements with him."
@@ -748,7 +748,7 @@
       "mainCast": ["Mikey Madison", "Mark Eydelshteyn", "Yura Borisov", "Karren Karagulian", "Vache Tovmasyan"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Anora_(film)",
       "letterboxdUrl": "https://letterboxd.com/film/anora/",
-      "letterboxdUnverified": true,
+      "letterboxdUnverified": false,
       "appleTvUrl": "https://tv.apple.com/us/movie/anora/umc.cmc.ka0xf4gk3tckil4x7x14hpcy",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2b/Anora_%282024_film%29_poster.jpg",
       "plotSummary": "Anora \"Ani\" Mikheeva, a 23-year-old stripper, lives in Brighton Beach, a Russian-American neighborhood in Brooklyn, New York City. Her boss introduces her to Ivan \"Vanya\" Zakharov, the 21-year-old son of the Russian oligarch Nikolai Zakharov, who requests someone fluent in Russian. Though Vanya is in the U.S. to study, he spends most of his time partying in clubs and playing video games in his parents' lavish Brooklyn mansion."
