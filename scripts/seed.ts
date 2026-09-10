@@ -64,31 +64,31 @@ async function main() {
         .insert(schema.films)
         .values({
           title: win.title,
-          originalTitle: win.originalTitle,
+          originalTitle: win.originalTitle ?? null,
           releaseYear: win.releaseYear,
           directors: win.directors ?? [],
           studios: win.studios ?? [],
           mainCast: win.mainCast ?? [],
-          wikiUrl: win.wikiUrl,
-          letterboxdUrl: win.letterboxdUrl,
+          wikiUrl: win.wikiUrl ?? null,
+          letterboxdUrl: win.letterboxdUrl ?? null,
           letterboxdUnverified: win.letterboxdUnverified ?? false,
-          appleTvUrl: win.appleTvUrl,
-          posterUrl: win.posterUrl,
-          plotSummary: win.plotSummary,
+          appleTvUrl: win.appleTvUrl ?? null,
+          posterUrl: win.posterUrl ?? null,
+          plotSummary: win.plotSummary ?? null,
         })
         .onConflictDoUpdate({
           target: [schema.films.title, schema.films.releaseYear],
           set: {
-            originalTitle: win.originalTitle,
+            originalTitle: win.originalTitle ?? null,
             directors: win.directors ?? [],
             studios: win.studios ?? [],
             mainCast: win.mainCast ?? [],
-            wikiUrl: win.wikiUrl,
-            letterboxdUrl: win.letterboxdUrl,
+            wikiUrl: win.wikiUrl ?? null,
+            letterboxdUrl: win.letterboxdUrl ?? null,
             letterboxdUnverified: win.letterboxdUnverified ?? false,
-            appleTvUrl: win.appleTvUrl,
-            posterUrl: win.posterUrl,
-            plotSummary: win.plotSummary,
+            appleTvUrl: win.appleTvUrl ?? null,
+            posterUrl: win.posterUrl ?? null,
+            plotSummary: win.plotSummary ?? null,
           },
         })
         .returning();
