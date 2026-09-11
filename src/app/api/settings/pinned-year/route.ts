@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { setPinnedYear } from '@/db/queries';
 import { getCurrentUser } from '@/lib/auth';
+import { isTrustedOrigin } from '@/lib/origin-check';
 
 // Loose bounds around the real award-year range (earliest ceremony: 1929) —
 // just enough to reject nonsense like -1 or 99999999999, which the DB's
@@ -9,6 +10,10 @@ const MIN_YEAR = 1870;
 const MAX_YEAR = new Date().getFullYear() + 5;
 
 export async function PATCH(req: NextRequest) {
+  if (!isTrustedOrigin(req)) {
+    return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 });
+  }
+
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: 'Not logged in' }, { status: 401 });

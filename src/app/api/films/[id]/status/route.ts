@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db/client';
 import { filmStatus, ownedFormatValues, digitalQualityValues } from '@/db/schema';
 import { getCurrentUser } from '@/lib/auth';
+import { isTrustedOrigin } from '@/lib/origin-check';
 
 const NOTES_MAX_LENGTH = 10_000;
 
@@ -60,6 +61,10 @@ function pickPatch(body: StatusPatch) {
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  if (!isTrustedOrigin(req)) {
+    return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 });
+  }
+
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: 'Not logged in' }, { status: 401 });

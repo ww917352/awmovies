@@ -4,6 +4,7 @@ import { db } from '@/db/client';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { createSession, hashPassword, setMustChangePasswordCookie, verifyPassword, pruneExpiredSessions } from '@/lib/auth';
+import { isTrustedOrigin } from '@/lib/origin-check';
 
 // A validly-shaped but unreachable hash to verify against when the username
 // doesn't exist, so that branch costs the same scrypt time as a real
@@ -12,6 +13,10 @@ import { createSession, hashPassword, setMustChangePasswordCookie, verifyPasswor
 const DUMMY_HASH = hashPassword(randomBytes(32).toString('hex'));
 
 export async function POST(req: NextRequest) {
+  if (!isTrustedOrigin(req)) {
+    return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 });
+  }
+
   const body = await req.json().catch(() => null);
   if (
     typeof body !== 'object' ||

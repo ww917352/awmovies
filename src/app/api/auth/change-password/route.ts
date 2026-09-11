@@ -11,8 +11,13 @@ import {
   setMustChangePasswordCookie,
   verifyPassword,
 } from '@/lib/auth';
+import { isTrustedOrigin } from '@/lib/origin-check';
 
 export async function POST(req: NextRequest) {
+  if (!isTrustedOrigin(req)) {
+    return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 });
+  }
+
   const sessionUser = await getCurrentUser();
   if (!sessionUser) {
     return NextResponse.json({ error: 'Not logged in' }, { status: 401 });
