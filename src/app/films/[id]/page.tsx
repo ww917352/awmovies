@@ -40,6 +40,7 @@ export default async function FilmDetailPage({
           <img
             src={film.posterUrl}
             alt={`${film.title} poster`}
+            referrerPolicy="no-referrer"
             className="[grid-area:poster] w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-200 dark:border-neutral-800 self-start"
           />
         )}
