@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { getAllWins, getPinnedYear } from '@/db/queries';
@@ -12,18 +11,9 @@ export const dynamic = 'force-dynamic';
 
 const DEFAULT_YEAR = 2000;
 
-export default async function AccountPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ back?: string }>;
-}) {
+export default async function AccountPage() {
   const user = await getCurrentUser();
   if (!user) redirect('/login');
-
-  const { back } = await searchParams;
-  // Only accept a same-site relative path — back is attacker-controlled,
-  // and an absolute/protocol-relative URL here would make this an open redirect.
-  const backHref = back && back.startsWith('/') && !back.startsWith('//') ? back : '/';
 
   const [wins, pinnedYear] = await Promise.all([getAllWins(user.id), getPinnedYear(user.id)]);
 
@@ -51,11 +41,7 @@ export default async function AccountPage({
         user={{ username: user.username }}
       />
       <main className="mx-auto max-w-sm px-4 pt-20 pb-16">
-        <Link href={backHref} className="text-sm text-sky-600 dark:text-sky-400 hover:underline">
-          &larr; Back
-        </Link>
-
-        <h1 className="text-2xl font-bold mt-3 mb-6">{capitalizeWords(user.username)}</h1>
+        <h1 className="text-2xl font-bold mb-6">{capitalizeWords(user.username)}</h1>
 
         <div className="flex flex-col gap-3 mb-8">
           <StatTile label="Movies watched" value={watchedFilms} total={totalFilms} color="emerald" />

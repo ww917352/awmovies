@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import PinIcon from './PinIcon';
 import { capitalizeWords } from '@/lib/format';
 
@@ -29,8 +29,6 @@ export default function QuickNav({
   user?: { username: string } | null;
 }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentPath = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
 
   const yearClass = `flex items-center gap-1 text-sm font-semibold pb-0.5 border-b-2 border-transparent whitespace-nowrap ${
     isPinned
@@ -62,11 +60,7 @@ export default function QuickNav({
             </Link>
           ))}
         {user ? (
-          <Link
-            href={`/account?back=${encodeURIComponent(currentPath)}`}
-            prefetch={false}
-            className={linkClass(pathname === '/account')}
-          >
+          <Link href="/account" prefetch={false} className={linkClass(pathname === '/account')}>
             {capitalizeWords(user.username)}
           </Link>
         ) : (
