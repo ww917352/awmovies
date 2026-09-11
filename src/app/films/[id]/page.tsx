@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFilmById } from '@/db/queries';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
+import { toSafeRelativePath } from '@/lib/safe-path';
 import StatusControls from '@/components/StatusControls';
 
 export const dynamic = 'force-dynamic';
@@ -18,14 +19,12 @@ export default async function FilmDetailPage({
   if (!Number.isInteger(id)) notFound();
 
   const user = await getCurrentUser();
+  requireUpToDatePassword(user);
   const film = await getFilmById(id, user?.id ?? null);
   if (!film) notFound();
 
   const { back } = await searchParams;
-
-  // Only accept a same-site relative path — back is attacker-controlled,
-  // and an absolute/protocol-relative URL here would make this an open redirect.
-  const backHref = back && back.startsWith('/') && !back.startsWith('//') ? back : '/';
+  const backHref = toSafeRelativePath(back);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
@@ -41,6 +40,7 @@ export default async function FilmDetailPage({
           <img
             src={film.posterUrl}
             alt={`${film.title} poster`}
+            referrerPolicy="no-referrer"
             className="[grid-area:poster] w-40 sm:w-48 shrink-0 rounded-lg border border-neutral-200 dark:border-neutral-800 self-start"
           />
         )}

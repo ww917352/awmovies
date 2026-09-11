@@ -8,11 +8,17 @@
 //
 // Usage:
 //   DATABASE_URL="..." npx tsx scripts/claim-owner.ts <username> [password]
+//   DATABASE_URL="..." npx tsx scripts/claim-owner.ts <username> -   # read password from stdin
+//
+// A password typed as a normal argument sits in shell history and is
+// visible to anyone else on the machine via `ps` while this runs — pass
+// "-" instead to read it from stdin (e.g. `echo "$PW" | ... <username> -`).
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
 import * as schema from '../src/db/schema';
 import { hashPassword, passwordPolicyErrors, generateStrongPassword } from '../src/lib/password';
+import { readLineFromStdin } from './read-stdin';
 
 const PLACEHOLDER_USERNAME = '__pending_owner__';
 
@@ -23,12 +29,12 @@ async function main() {
 
   const [usernameArg, passwordArg] = process.argv.slice(2);
   if (!usernameArg) {
-    console.error('Usage: npx tsx scripts/claim-owner.ts <username> [password]');
+    console.error('Usage: npx tsx scripts/claim-owner.ts <username> [password|-]');
     process.exit(1);
   }
 
   const username = usernameArg.trim().toLowerCase();
-  let password = passwordArg;
+  let password = passwordArg === '-' ? await readLineFromStdin('Password: ') : passwordArg;
   let generated = false;
 
   if (!password) {
