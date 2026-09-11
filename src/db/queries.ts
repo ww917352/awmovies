@@ -114,10 +114,18 @@ export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]
     }
   }
 
+  // Comparing with relational operators rather than subtracting handles
+  // -Infinity correctly (Math.max() over an empty wins array is -Infinity,
+  // and -Infinity - -Infinity is NaN — two films with no wins would
+  // otherwise produce a NaN comparator result and undefined ordering).
+  // Every seeded film currently has at least one win, but this stays
+  // correct if that ever isn't true.
   return Array.from(byFilm.values()).sort((a, b) => {
-    const aYear = Math.max(...a.wins.map((w) => w.year));
-    const bYear = Math.max(...b.wins.map((w) => w.year));
-    return bYear - aYear;
+    const aYear = a.wins.length ? Math.max(...a.wins.map((w) => w.year)) : -Infinity;
+    const bYear = b.wins.length ? Math.max(...b.wins.map((w) => w.year)) : -Infinity;
+    if (aYear > bYear) return -1;
+    if (aYear < bYear) return 1;
+    return 0;
   });
 }
 
