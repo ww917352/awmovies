@@ -36,9 +36,11 @@ export async function getAllAwards() {
   return db.select().from(awards);
 }
 
-// `userId` scopes watched/owned status to that user; pass `null` for
-// logged-out visitors, who see blank status regardless of what's in the DB.
-export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]> {
+// Shared by getAllFilms and getFilmById — `filmId` narrows to one film via
+// a real SQL WHERE instead of loading every film and filtering in JS
+// (getFilmById used to call getAllFilms() and .find(), joining the entire
+// catalogue to return a single row).
+async function selectFilmsWithWins(userId: number | null, filmId?: number): Promise<FilmWithWins[]> {
   const statusJoinCondition =
     userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
 
@@ -71,7 +73,8 @@ export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]
     .from(films)
     .leftJoin(filmStatus, statusJoinCondition)
     .leftJoin(awardWins, eq(awardWins.filmId, films.id))
-    .leftJoin(awards, eq(awards.id, awardWins.awardId));
+    .leftJoin(awards, eq(awards.id, awardWins.awardId))
+    .where(filmId === undefined ? undefined : eq(films.id, filmId));
 
   const byFilm = new Map<number, FilmWithWins>();
 
@@ -129,9 +132,15 @@ export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]
   });
 }
 
+// `userId` scopes watched/owned status to that user; pass `null` for
+// logged-out visitors, who see blank status regardless of what's in the DB.
+export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]> {
+  return selectFilmsWithWins(userId);
+}
+
 export async function getFilmById(id: number, userId: number | null): Promise<FilmWithWins | null> {
-  const all = await getAllFilms(userId);
-  return all.find((f) => f.id === id) ?? null;
+  const [film] = await selectFilmsWithWins(userId, id);
+  return film ?? null;
 }
 
 export type WinEntry = {
