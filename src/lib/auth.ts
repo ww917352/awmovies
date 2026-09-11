@@ -52,6 +52,13 @@ export async function setMustChangePasswordCookie(mustChange: boolean): Promise<
   }
 }
 
+// Called when a password changes — the standard response to a suspected
+// compromise, so every other session (every other browser/device) should
+// stop working immediately rather than riding out its 30-day expiry.
+export async function revokeAllSessions(userId: number): Promise<void> {
+  await db.delete(sessions).where(eq(sessions.userId, userId));
+}
+
 export async function destroySession(): Promise<void> {
   const jar = await cookies();
   const token = jar.get(SESSION_COOKIE)?.value;

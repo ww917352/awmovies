@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db/client';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { getCurrentUser, hashPassword, passwordPolicyErrors, setMustChangePasswordCookie, verifyPassword } from '@/lib/auth';
+import {
+  createSession,
+  getCurrentUser,
+  hashPassword,
+  passwordPolicyErrors,
+  revokeAllSessions,
+  setMustChangePasswordCookie,
+  verifyPassword,
+} from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
   const sessionUser = await getCurrentUser();
@@ -40,6 +48,12 @@ export async function POST(req: NextRequest) {
     .set({ passwordHash: hashPassword(newPassword), mustChangePassword: false })
     .where(eq(users.id, user.id));
 
+  // Invalidate every session on every device (including this one — a
+  // password change is the standard response to a suspected compromise),
+  // then issue a fresh session so the browser making this request stays
+  // logged in.
+  await revokeAllSessions(user.id);
+  await createSession(user.id);
   await setMustChangePasswordCookie(false);
 
   return NextResponse.json({ ok: true });
