@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFilmById } from '@/db/queries';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import StatusControls from '@/components/StatusControls';
 
 export const dynamic = 'force-dynamic';
@@ -18,6 +18,7 @@ export default async function FilmDetailPage({
   if (!Number.isInteger(id)) notFound();
 
   const user = await getCurrentUser();
+  requireUpToDatePassword(user);
   const film = await getFilmById(id, user?.id ?? null);
   if (!film) notFound();
 

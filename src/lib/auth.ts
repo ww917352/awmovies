@@ -1,5 +1,6 @@
 import { randomBytes, createHash } from 'crypto';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { db } from '@/db/client';
 import { users, sessions } from '@/db/schema';
 import { eq, lt } from 'drizzle-orm';
@@ -91,4 +92,16 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
 // than on a schedule — this app has no background job runner.
 export async function pruneExpiredSessions(): Promise<void> {
   await db.delete(sessions).where(lt(sessions.expiresAt, new Date()));
+}
+
+// Server-side enforcement of the forced-password-change gate, backed by the
+// live `users.must_change_password` column (not the pwd_change_required
+// cookie middleware.ts reads — that cookie is a fast path the client
+// controls, not the source of truth). Call this from every page that isn't
+// itself part of the change-password flow; skip it on /login and
+// /change-password, which need to stay reachable while pending.
+export function requireUpToDatePassword(user: SessionUser | null): void {
+  if (user?.mustChangePassword) {
+    redirect('/change-password');
+  }
 }

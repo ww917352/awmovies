@@ -8,8 +8,10 @@ if (!process.env.DATABASE_URL) {
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  // Neon's certificate chains to a public CA, so the default system trust
+  // store verifies it — no need to (and no reason to) skip verification.
   ssl: process.env.DATABASE_URL.includes('sslmode=require')
-    ? { rejectUnauthorized: false }
+    ? { rejectUnauthorized: true }
     : undefined,
 });
 

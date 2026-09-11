@@ -64,6 +64,9 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   if (!user) {
     return NextResponse.json({ error: 'Not logged in' }, { status: 401 });
   }
+  if (user.mustChangePassword) {
+    return NextResponse.json({ error: 'Password change required' }, { status: 403 });
+  }
 
   const { id } = await params;
   const filmId = Number(id);

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { getAllWins } from '@/db/queries';
 import { capitalizeWords } from '@/lib/format';
 import StatTile from '@/components/StatTile';
@@ -16,6 +16,7 @@ export default async function AccountPage({
 }) {
   const user = await getCurrentUser();
   if (!user) redirect('/login');
+  requireUpToDatePassword(user);
 
   const { back } = await searchParams;
   // Only accept a same-site relative path — back is attacker-controlled,
