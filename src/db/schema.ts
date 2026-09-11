@@ -29,6 +29,18 @@ export const sessions = pgTable('sessions', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
+// Backs login rate limiting (see src/lib/rate-limit.ts). One row per
+// bucket — e.g. "login:ip:1.2.3.4" or "login:user:wei" — so a failed
+// login is throttled by both IP and username independently; whichever
+// hits its threshold first locks. Not a sessions-style table: rows here
+// are small, short-lived counters, cleaned up opportunistically.
+export const rateLimitAttempts = pgTable('rate_limit_attempts', {
+  key: text('key').primaryKey(),
+  attempts: integer('attempts').notNull().default(0),
+  windowStart: timestamp('window_start').notNull().defaultNow(),
+  lockedUntil: timestamp('locked_until'),
+});
+
 export const awards = pgTable('awards', {
   id: serial('id').primaryKey(),
   slug: varchar('slug', { length: 64 }).notNull().unique(),
