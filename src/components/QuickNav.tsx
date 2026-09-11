@@ -5,8 +5,13 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import PinIcon from './PinIcon';
 import { capitalizeWords } from '@/lib/format';
 
-const pillClass =
-  'flex items-center gap-1.5 bg-card/90 backdrop-blur border border-neutral-300 dark:border-neutral-700 rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg hover:border-neutral-400 dark:hover:border-neutral-500 whitespace-nowrap';
+function linkClass(active: boolean) {
+  return `text-sm font-semibold pb-0.5 border-b-2 whitespace-nowrap ${
+    active
+      ? 'text-neutral-900 dark:text-neutral-100 border-neutral-900 dark:border-neutral-100'
+      : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-900 dark:hover:text-neutral-100'
+  }`;
+}
 
 export default function QuickNav({
   targetYear,
@@ -27,41 +32,49 @@ export default function QuickNav({
   const searchParams = useSearchParams();
   const currentPath = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
 
-  const yearPillClass = `flex items-center gap-1.5 backdrop-blur border rounded-full px-3 py-1.5 text-sm font-semibold shadow-lg whitespace-nowrap ${
+  const yearClass = `flex items-center gap-1 text-sm font-semibold whitespace-nowrap ${
     isPinned
-      ? 'bg-amber-100/90 border-amber-300 text-amber-800 hover:border-amber-500 dark:bg-amber-950/90 dark:border-amber-700 dark:text-amber-300'
-      : 'bg-card/90 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-500'
+      ? 'text-amber-600 dark:text-amber-400'
+      : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100'
   }`;
 
   return (
-    <div className={`flex flex-wrap items-center justify-end gap-2 ${className}`}>
-      <Link href="/years" prefetch={false} className={pillClass}>
+    <nav
+      className={`flex items-center gap-5 h-12 px-4 border-b border-neutral-200 dark:border-neutral-800 bg-surface/90 backdrop-blur ${className}`}
+    >
+      <Link href="/years" prefetch={false} className={linkClass(pathname === '/years')}>
         Years
       </Link>
-      <Link href="/movies" prefetch={false} className={pillClass}>
+      <Link href="/movies" prefetch={false} className={linkClass(pathname === '/movies')}>
         Movies
       </Link>
-      {user &&
-        (onYearClick ? (
-          <button onClick={onYearClick} className={yearPillClass}>
-            {isPinned && <PinIcon filled className="w-4 h-4" />}
-            {targetYear}
-          </button>
-        ) : (
-          <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearPillClass}>
-            {isPinned && <PinIcon filled className="w-4 h-4" />}
-            {targetYear}
+      <div className="ml-auto flex items-center gap-5">
+        {user &&
+          (onYearClick ? (
+            <button onClick={onYearClick} className={yearClass}>
+              {isPinned && <PinIcon filled className="w-3.5 h-3.5" />}
+              {targetYear}
+            </button>
+          ) : (
+            <Link href={yearHref ?? `/?year=${targetYear}`} prefetch={false} className={yearClass}>
+              {isPinned && <PinIcon filled className="w-3.5 h-3.5" />}
+              {targetYear}
+            </Link>
+          ))}
+        {user ? (
+          <Link
+            href={`/account?back=${encodeURIComponent(currentPath)}`}
+            prefetch={false}
+            className={linkClass(pathname === '/account')}
+          >
+            {capitalizeWords(user.username)}
           </Link>
-        ))}
-      {user ? (
-        <Link href={`/account?back=${encodeURIComponent(currentPath)}`} prefetch={false} className={pillClass}>
-          {capitalizeWords(user.username)}
-        </Link>
-      ) : (
-        <Link href="/login" prefetch={false} className={pillClass}>
-          Log in
-        </Link>
-      )}
-    </div>
+        ) : (
+          <Link href="/login" prefetch={false} className={linkClass(pathname === '/login')}>
+            Log in
+          </Link>
+        )}
+      </div>
+    </nav>
   );
 }

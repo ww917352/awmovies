@@ -28,9 +28,9 @@ export default async function YearsPage() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-6">
+    <main className="mx-auto max-w-3xl px-4 pt-20 pb-6">
       <QuickNav
-        className="fixed top-4 right-4 z-20"
+        className="fixed inset-x-0 top-0 z-20"
         targetYear={pinnedYear ?? DEFAULT_YEAR}
         isPinned={pinnedYear !== null}
         yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}

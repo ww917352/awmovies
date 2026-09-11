@@ -87,7 +87,7 @@ export default function YearScroll({
     <FilmWatchedProvider initial={initialWatchedMap}>
     <div className="relative">
       <QuickNav
-        className="fixed top-4 right-4 z-20"
+        className="fixed inset-x-0 top-0 z-20"
         targetYear={homeYear}
         isPinned={pinnedYear !== null}
         onYearClick={scrollToHomeYear}
@@ -96,7 +96,7 @@ export default function YearScroll({
 
       <div
         ref={containerRef}
-        className="h-dvh overflow-y-scroll snap-y snap-mandatory"
+        className="h-dvh overflow-y-scroll"
         style={{ scrollBehavior: 'auto' }}
       >
         {years.map((year) => {
@@ -110,7 +110,7 @@ export default function YearScroll({
                 if (el) sectionRefs.current.set(year, el);
                 else sectionRefs.current.delete(year);
               }}
-              className="min-h-dvh snap-start flex flex-col items-center justify-center px-4 pt-24 pb-[calc(4rem+env(safe-area-inset-bottom))]"
+              className="min-h-dvh flex flex-col items-center justify-center px-4 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))]"
             >
               <div className="w-full max-w-3xl">
                 <div className="flex items-center justify-center gap-3 mb-6">
