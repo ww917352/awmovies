@@ -547,6 +547,21 @@
       "appleTvUrl": "https://tv.apple.com/us/movie/father-mother-sister-brother/umc.cmc.4gc839mlciax6zjcxzovu1hae",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/50/Father_Mother_Sister_Brother_poster.jpg",
       "plotSummary": "Somewhere in a countryside town in the United States, Jeff and Emily drive down a snowy road to a reunion with their estranged and reclusive father. While Emily has no idea how he has enough money to survive without social security following the passing of their mother, Jeff appears to be secretly supporting him. Further concerned with his loneliness, Jeff brings a box full of expensive groceries."
+    },
+    {
+      "year": 2026,
+      "editionLabel": "83rd Venice International Film Festival",
+      "title": "Woman Unknown",
+      "releaseYear": 2026,
+      "directors": ["May el-Toukhy"],
+      "studios": ["Nordisk Film Production", "SIA Nafta Films", "Nordisk Film Production Sverige", "Film i Väst"],
+      "mainCast": ["Mathilde Arcel", "Carsten Bjørnlund", "Thorbjørn Hedegaard", "Marina Bouras", "Sofia Nolsøe"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Woman_Unknown_(film)",
+      "letterboxdUrl": "https://letterboxd.com/film/woman-unknown/",
+      "letterboxdUnverified": false,
+      "originalTitle": "Kvinde ukendt",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/07/Woman_Unknown_film_poster.jpg",
+      "plotSummary": "In the summer of 1945, shortly after the end of the Nazi occupation of Denmark, a young nanny and housemaid named Marie prepares to marry her wealthy employer while concealing a secret from her past. As the wedding draws near, the truth she has buried threatens to resurface and unravel the new life she has built for herself. Set against a country still reckoning with the war, the film traces Marie's quiet reckoning with guilt, class, and self-reinvention."
     }
   ]
 }
