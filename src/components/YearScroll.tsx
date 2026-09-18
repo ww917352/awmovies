@@ -9,6 +9,22 @@ import { FilmWatchedProvider } from './FilmWatchedContext';
 
 const DEFAULT_YEAR = 2000;
 
+// Feeds `contain-intrinsic-size` below — content-visibility: auto skips
+// layout/paint for a section while it's off-screen, but needs a size
+// estimate to reserve while skipped (otherwise the page's scrollable
+// height would collapse to nothing off-screen and jump around as sections
+// come into view). Fit empirically against real rendered section heights
+// (linear in win count, R² was strong): ~125px per FilmRow, ~165px fixed
+// for the year heading and padding.
+const ESTIMATED_FIXED_HEIGHT_PX = 165;
+const ESTIMATED_ROW_HEIGHT_PX = 125;
+const ESTIMATED_EMPTY_HEIGHT_PX = 140; // years with no recorded win — just a one-line message
+
+function estimateSectionHeight(winCount: number): number {
+  if (winCount === 0) return ESTIMATED_EMPTY_HEIGHT_PX;
+  return ESTIMATED_FIXED_HEIGHT_PX + ESTIMATED_ROW_HEIGHT_PX * winCount;
+}
+
 export default function YearScroll({
   wins,
   minYear,
@@ -24,7 +40,6 @@ export default function YearScroll({
   requestedYear?: number | null;
   user: { username: string } | null;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Map<number, HTMLElement>>(new Map());
 
   // Descending order: latest year at the top (DOM start), earliest at the bottom.
@@ -54,12 +69,22 @@ export default function YearScroll({
   const [pinnedYear, setPinnedYear] = useState(initialPinnedYear);
 
   // Jump to the starting year before first paint, with no visible scroll animation.
+  //
+  // Deliberately scrollIntoView() rather than `container.scrollTop =
+  // target.offsetTop`: content-visibility: auto (below) always implies
+  // layout containment for a section, on top of the size containment that
+  // does the actual off-screen skipping — and containment changes margin
+  // collapsing, so a section measured via a plain offsetTop read comes out
+  // a different height than the same section as the browser actually lays
+  // it out once it's on-screen. That mismatch compounds over ~90 years and
+  // was landing this jump several thousand pixels short in testing.
+  // scrollIntoView is the browser's own content-visibility-aware primitive
+  // for this and doesn't have that problem. The container's own
+  // scroll-behavior: auto (below) keeps this jump instant, matching the
+  // "no visible animation" intent.
   useLayoutEffect(() => {
-    const container = containerRef.current;
     const target = sectionRefs.current.get(startYear);
-    if (container && target) {
-      container.scrollTop = target.offsetTop;
-    }
+    target?.scrollIntoView({ block: 'start' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -82,12 +107,18 @@ export default function YearScroll({
 
   const homeYear = pinnedYear ?? DEFAULT_YEAR;
 
+  // Deliberately instant, not smooth: a smooth scrollIntoView (or a smooth
+  // scrollTo aimed at a pixel value measured via a separate instant pass)
+  // lands wrong when the target is far away — content-visibility sections
+  // along the path switch from estimated to real height *during* the
+  // animation, shifting the destination under it mid-flight. Verified this
+  // isn't just a bad estimate: it reproduced consistently, landing years
+  // away from the actual target, even after re-measuring the exact
+  // destination immediately beforehand. Instant scrollIntoView doesn't
+  // have this problem (same mechanism the initial-load jump above uses).
   function scrollToHomeYear() {
-    const container = containerRef.current;
     const target = sectionRefs.current.get(homeYear);
-    if (container && target) {
-      container.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-    }
+    target?.scrollIntoView({ block: 'start' });
   }
 
   return (
@@ -102,8 +133,7 @@ export default function YearScroll({
       />
 
       <div
-        ref={containerRef}
-        className="h-dvh overflow-y-scroll"
+        className="year-scroll-container h-dvh overflow-y-scroll"
         style={{ scrollBehavior: 'auto' }}
       >
         {years.map((year, index) => {
@@ -120,6 +150,7 @@ export default function YearScroll({
               className={`flex flex-col items-center px-4 ${index === 0 ? 'pt-20' : 'pt-10'} ${
                 index === years.length - 1 ? 'pb-[calc(2.5rem+env(safe-area-inset-bottom))]' : 'pb-10'
               }`}
+              style={{ containIntrinsicSize: `auto ${estimateSectionHeight(yearWins.length)}px` }}
             >
               <div className="w-full max-w-3xl">
                 <div className="flex items-center justify-center gap-3 mb-6">
