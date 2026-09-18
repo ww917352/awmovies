@@ -66,18 +66,18 @@ export default function MovieList({
   return (
     <FilmWatchedProvider initial={initialWatchedMap}>
     <QuickNav
-      className="fixed top-4 right-4 z-20"
+      className="fixed inset-x-0 top-0 z-20"
       targetYear={pinnedYear ?? DEFAULT_YEAR}
       isPinned={pinnedYear !== null}
       yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}
       user={user}
     />
-    <main className="mx-auto max-w-3xl px-4 py-6">
+    <main className="mx-auto max-w-3xl px-4 pt-20 pb-6">
       <h1 className="text-2xl font-bold mb-4">All Movies</h1>
 
       {user && <WatchedProgress filmIds={uniqueFilmIds} />}
 
-      <div className="flex flex-wrap gap-3 mb-4 sticky top-0 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
+      <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
         <input
           type="search"
           value={search}

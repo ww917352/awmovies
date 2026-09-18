@@ -1,28 +1,22 @@
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
-import { getAllWins } from '@/db/queries';
+import { getAllWins, getPinnedYear } from '@/db/queries';
 import { capitalizeWords } from '@/lib/format';
-import { toSafeRelativePath } from '@/lib/safe-path';
 import StatTile from '@/components/StatTile';
 import ThemeSettings from '@/components/ThemeSettings';
 import LogoutButton from '@/components/LogoutButton';
+import QuickNav from '@/components/QuickNav';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AccountPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ back?: string }>;
-}) {
+const DEFAULT_YEAR = 2000;
+
+export default async function AccountPage() {
   const user = await getCurrentUser();
   if (!user) redirect('/login');
   requireUpToDatePassword(user);
 
-  const { back } = await searchParams;
-  const backHref = toSafeRelativePath(back);
-
-  const wins = await getAllWins(user.id);
+  const [wins, pinnedYear] = await Promise.all([getAllWins(user.id), getPinnedYear(user.id)]);
 
   const filmWatched = new Map<number, boolean>();
   for (const w of wins) filmWatched.set(w.film.id, w.status.watched);
@@ -39,24 +33,29 @@ export default async function AccountPage({
   const completedYears = Array.from(winsByYear.values()).filter((list) => list.every((w) => w.status.watched)).length;
 
   return (
-    <main className="mx-auto max-w-sm px-4 py-16">
-      <Link href={backHref} className="text-sm text-sky-600 dark:text-sky-400 hover:underline">
-        &larr; Back
-      </Link>
+    <>
+      <QuickNav
+        className="fixed inset-x-0 top-0 z-20"
+        targetYear={pinnedYear ?? DEFAULT_YEAR}
+        isPinned={pinnedYear !== null}
+        yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}
+        user={{ username: user.username }}
+      />
+      <main className="mx-auto max-w-sm px-4 pt-20 pb-16">
+        <h1 className="text-2xl font-bold mb-6">{capitalizeWords(user.username)}</h1>
 
-      <h1 className="text-2xl font-bold mt-3 mb-6">{capitalizeWords(user.username)}</h1>
+        <div className="flex flex-col gap-3 mb-8">
+          <StatTile label="Movies watched" value={watchedFilms} total={totalFilms} color="emerald" />
+          <StatTile label="Years completed" value={completedYears} total={totalYears} color="sky" />
+        </div>
 
-      <div className="flex flex-col gap-3 mb-8">
-        <StatTile label="Movies watched" value={watchedFilms} total={totalFilms} color="emerald" />
-        <StatTile label="Years completed" value={completedYears} total={totalYears} color="sky" />
-      </div>
+        <div className="mb-8">
+          <h2 className="text-sm font-semibold text-neutral-500 mb-2">Theme</h2>
+          <ThemeSettings />
+        </div>
 
-      <div className="mb-8">
-        <h2 className="text-sm font-semibold text-neutral-500 mb-2">Theme</h2>
-        <ThemeSettings />
-      </div>
-
-      <LogoutButton />
-    </main>
+        <LogoutButton />
+      </main>
+    </>
   );
 }
