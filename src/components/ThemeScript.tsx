@@ -24,7 +24,7 @@ const THEME_INIT_SCRIPT = `
 })();
 `;
 
-export default function ThemeScript() {
+export default function ThemeScript({ nonce }: { nonce?: string }) {
   // eslint-disable-next-line react/no-danger
-  return <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />;
+  return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />;
 }

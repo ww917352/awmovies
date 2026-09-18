@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getYearRange, getPinnedYear } from '@/db/queries';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import QuickNav from '@/components/QuickNav';
 
 export const dynamic = 'force-dynamic';
@@ -17,6 +17,7 @@ function yearPillClass(isPinned: boolean) {
 
 export default async function YearsPage() {
   const user = await getCurrentUser();
+  requireUpToDatePassword(user);
   const [{ minYear, maxYear }, pinnedYear] = await Promise.all([
     getYearRange(),
     getPinnedYear(user?.id ?? null),

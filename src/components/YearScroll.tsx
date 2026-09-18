@@ -64,13 +64,20 @@ export default function YearScroll({
   }, []);
 
   function togglePinForYear(year: number) {
+    const previous = pinnedYear;
     const next = pinnedYear === year ? null : year;
     setPinnedYear(next);
     fetch('/api/settings/pinned-year', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ year: next }),
-    });
+    })
+      .then((res) => {
+        // Roll back if the write didn't actually land (e.g. the session
+        // expired) — otherwise the pin icon shows saved when it wasn't.
+        if (!res.ok) setPinnedYear(previous);
+      })
+      .catch(() => setPinnedYear(previous));
   }
 
   const homeYear = pinnedYear ?? DEFAULT_YEAR;

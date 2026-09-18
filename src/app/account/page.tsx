@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { getAllWins, getPinnedYear } from '@/db/queries';
 import { capitalizeWords } from '@/lib/format';
 import StatTile from '@/components/StatTile';
@@ -14,6 +14,7 @@ const DEFAULT_YEAR = 2000;
 export default async function AccountPage() {
   const user = await getCurrentUser();
   if (!user) redirect('/login');
+  requireUpToDatePassword(user);
 
   const [wins, pinnedYear] = await Promise.all([getAllWins(user.id), getPinnedYear(user.id)]);
 

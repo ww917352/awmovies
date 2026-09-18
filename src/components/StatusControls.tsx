@@ -22,13 +22,17 @@ export default function StatusControls({
   const [isPending, startTransition] = useTransition();
 
   function persist(next: Status) {
+    const previous = status;
     setStatus(next);
     startTransition(async () => {
-      await fetch(`/api/films/${filmId}/status`, {
+      const res = await fetch(`/api/films/${filmId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(next),
-      });
+      }).catch(() => null);
+      // Roll back if the write didn't actually land (e.g. the session
+      // expired) — otherwise these controls show saved when they weren't.
+      if (!res || !res.ok) setStatus(previous);
     });
   }
 
