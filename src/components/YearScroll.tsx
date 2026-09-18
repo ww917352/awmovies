@@ -82,9 +82,26 @@ export default function YearScroll({
   // for this and doesn't have that problem. The container's own
   // scroll-behavior: auto (below) keeps this jump instant, matching the
   // "no visible animation" intent.
+  //
+  // The immediate call alone is enough on a full page load, but lands wrong
+  // after a client-side route transition (e.g. clicking a year on /years) —
+  // that content has never been painted even once yet at this point, and
+  // content-visibility hasn't classified which of these brand-new sections
+  // are "relevant" (near the viewport) until it has been. A page that was
+  // already server-rendered and hydrated doesn't have this problem, since
+  // its HTML painted once before React ran at all. The double-rAF re-jump
+  // re-runs scrollIntoView once the browser has definitely painted this
+  // content at least once, self-correcting the rare case where the first
+  // call was wrong; it's a no-op on top of an already-correct position.
   useLayoutEffect(() => {
     const target = sectionRefs.current.get(startYear);
-    target?.scrollIntoView({ block: 'start' });
+    if (!target) return;
+    target.scrollIntoView({ block: 'start' });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ block: 'start' });
+      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
