@@ -16,3 +16,10 @@
 body {
   @apply bg-surface text-neutral-900 dark:text-neutral-100;
 }
+
+/* Lets YearScroll skip layout/paint for off-screen years — see
+   contentVisibility usage in YearScroll.tsx for why jumping to a specific
+   year uses scrollIntoView() rather than manual offsetTop math. */
+.year-scroll-container section[data-year] {
+  content-visibility: auto;
+}
