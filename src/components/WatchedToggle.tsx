@@ -14,14 +14,19 @@ export default function WatchedToggle({
   const [isPending, startTransition] = useTransition();
 
   function toggle() {
+    const previous = watched;
     const next = !watched;
     setWatched(next);
     startTransition(async () => {
-      await fetch(`/api/films/${filmId}/status`, {
+      const res = await fetch(`/api/films/${filmId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ watched: next }),
-      });
+      }).catch(() => null);
+      // Roll back the optimistic update if the write didn't actually land
+      // (e.g. the session expired) — otherwise the checkbox shows saved
+      // when it wasn't.
+      if (!res || !res.ok) setWatched(previous);
     });
   }
 

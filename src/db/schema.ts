@@ -9,6 +9,7 @@ import {
   unique,
   primaryKey,
   timestamp,
+  index,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
@@ -20,13 +21,32 @@ export const users = pgTable('users', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
-export const sessions = pgTable('sessions', {
-  id: text('id').primaryKey(), // sha256 hex of the session cookie token
-  userId: integer('user_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  expiresAt: timestamp('expires_at').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
+export const sessions = pgTable(
+  'sessions',
+  {
+    id: text('id').primaryKey(), // sha256 hex of the session cookie token
+    userId: integer('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    expiresAt: timestamp('expires_at').notNull(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    // pruneExpiredSessions (called on every login) filters on this column.
+    expiresAtIdx: index('sessions_expires_at_idx').on(table.expiresAt),
+  })
+);
+
+// Backs login rate limiting (see src/lib/rate-limit.ts). One row per
+// bucket — e.g. "login:ip:1.2.3.4" or "login:user:wei" — so a failed
+// login is throttled by both IP and username independently; whichever
+// hits its threshold first locks. Not a sessions-style table: rows here
+// are small, short-lived counters, cleaned up opportunistically.
+export const rateLimitAttempts = pgTable('rate_limit_attempts', {
+  key: text('key').primaryKey(),
+  attempts: integer('attempts').notNull().default(0),
+  windowStart: timestamp('window_start').notNull().defaultNow(),
+  lockedUntil: timestamp('locked_until'),
 });
 
 export const awards = pgTable('awards', {
