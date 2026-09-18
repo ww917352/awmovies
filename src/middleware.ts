@@ -32,9 +32,17 @@ function generateNonce(): string {
 }
 
 function buildCsp(nonce: string): string {
+  // React dev mode calls eval() for debugging features (e.g. reconstructing
+  // component stacks); it never does in production, so only dev gets the
+  // 'unsafe-eval' relaxation.
+  const scriptSrc = ["'self'", `'nonce-${nonce}'`];
+  if (process.env.NODE_ENV !== 'production') {
+    scriptSrc.push("'unsafe-eval'");
+  }
+
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}'`,
+    `script-src ${scriptSrc.join(' ')}`,
     // React/Next inline `style={{...}}` attributes need this — a narrower
     // attack surface than unsafe-inline script, and not worth nonce-ing
     // every style prop in the app for.
