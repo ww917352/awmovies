@@ -38,7 +38,7 @@ export default function QuickNav({
 
   return (
     <nav
-      className={`flex items-center gap-5 h-12 px-4 border-b border-neutral-200 dark:border-neutral-800 bg-surface/90 backdrop-blur ${className}`}
+      className={`flex items-center gap-5 h-12 px-4 bg-card border-b border-neutral-300 dark:border-neutral-700 shadow-sm ${className}`}
     >
       <Link href="/years" prefetch={false} className={linkClass(pathname === '/years')}>
         Years
