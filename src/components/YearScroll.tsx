@@ -164,7 +164,7 @@ export default function YearScroll({
                 if (el) sectionRefs.current.set(year, el);
                 else sectionRefs.current.delete(year);
               }}
-              className={`flex flex-col items-center px-4 ${index === 0 ? 'pt-20' : 'pt-10'} ${
+              className={`flex flex-col items-center px-4 pt-20 ${
                 index === years.length - 1 ? 'pb-[calc(2.5rem+env(safe-area-inset-bottom))]' : 'pb-10'
               }`}
               style={{ containIntrinsicSize: `auto ${estimateSectionHeight(yearWins.length)}px` }}
