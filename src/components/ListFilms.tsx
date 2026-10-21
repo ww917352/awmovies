@@ -80,6 +80,7 @@ export default function ListFilms({
             }
             isLoggedIn={isLoggedIn}
             backHref={backHref}
+            returnToRow
           />
         ))
       )}

@@ -5,25 +5,34 @@ import WatchedToggle from './WatchedToggle';
 import { formatOwnedLabel } from '@/lib/format';
 
 // `label` is the small caps line above the title — the award (and year) on
-// the year/movie pages, the film's wins on a list.
+// the year/movie pages, the film's wins on a list. With `returnToRow`, the
+// film page's back link lands on this row instead of the top of the page;
+// only use it where a film appears once, since the row id must be unique.
 export default function FilmRow({
   film,
   status,
   label,
   isLoggedIn = false,
   backHref = '/',
+  returnToRow = false,
 }: {
   film: WinEntry['film'];
   status: WinEntry['status'];
   label: ReactNode;
   isLoggedIn?: boolean;
   backHref?: string;
+  returnToRow?: boolean;
 }) {
   const ownedLabel = formatOwnedLabel(status);
-  const filmHref = `/films/${film.id}?back=${encodeURIComponent(backHref)}`;
+  const rowId = `film-${film.id}`;
+  const back = returnToRow ? `${backHref}#${rowId}` : backHref;
+  const filmHref = `/films/${film.id}?back=${encodeURIComponent(back)}`;
 
   return (
-    <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card/40 px-3 py-2.5 mb-2.5">
+    <div
+      id={returnToRow ? rowId : undefined}
+      className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card/40 px-3 py-2.5 mb-2.5 scroll-mt-36"
+    >
       <div className="flex items-center justify-between gap-2">
         <span className="text-[11px] uppercase tracking-wide text-neutral-500">{label}</span>
         {isLoggedIn && <WatchedToggle filmId={film.id} initialWatched={status.watched} />}
