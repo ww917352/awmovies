@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Set by middleware.ts on the CSP header (script-src 'nonce-...') — our
+  // Set by proxy.ts on the CSP header (script-src 'nonce-...') — our
   // inline theme script needs the same nonce to run under that policy.
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 

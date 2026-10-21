@@ -165,7 +165,7 @@ ends up owned by that account. Run once per database (local, then Neon).
 src/app/                    pages + the film-status/auth Route Handlers
 src/lib/auth.ts              sessions, cookies, getCurrentUser()
 src/lib/password.ts          password hashing/verification/policy (no Next.js deps)
-src/middleware.ts            edge redirect to /change-password while pending
+src/proxy.ts                 redirect to /change-password while pending
 src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status)
 src/db/client.ts             pg Pool + drizzle()
 src/db/queries.ts            read queries used by Server Components

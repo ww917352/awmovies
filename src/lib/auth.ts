@@ -103,7 +103,7 @@ export async function pruneExpiredSessions(): Promise<void> {
 
 // Server-side enforcement of the forced-password-change gate, backed by the
 // live `users.must_change_password` column (not the pwd_change_required
-// cookie middleware.ts reads — that cookie is a fast path the client
+// cookie proxy.ts reads — that cookie is a fast path the client
 // controls, not the source of truth). Call this from every page that isn't
 // itself part of the change-password flow; skip it on /login and
 // /change-password, which need to stay reachable while pending.

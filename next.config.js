@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   async headers() {
-    // Content-Security-Policy is set per-request in middleware.ts instead
+    // Content-Security-Policy is set per-request in proxy.ts instead
     // (it needs a fresh nonce each time); everything here is static.
     return [
       {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PWD_CHANGE_COOKIE } from '@/lib/auth-cookies';
 
-// Runs on the edge, so it only reads a non-secret flag cookie (mirroring
+// Runs before every matched request, so it only reads a non-secret flag cookie (mirroring
 // users.mustChangePassword) rather than hitting the DB — see setMustChangePasswordCookie.
 // The DB flag is still the source of truth: requireUpToDatePassword() (src/lib/auth.ts)
 // enforces it server-side on every page and mutating route, so this cookie check is a
@@ -57,7 +57,7 @@ function buildCsp(nonce: string): string {
   ].join('; ');
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const nonce = generateNonce();
   const csp = buildCsp(nonce);
 
