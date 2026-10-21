@@ -1,17 +1,20 @@
 'use client';
 
 import { useMemo, useState, type ReactNode } from 'react';
-import type { ListOnlyEntry, WinEntry } from '@/db/queries';
+import type { ListMembership, ListOnlyEntry, WinEntry } from '@/db/queries';
 import FilmRow from './FilmRow';
 import WinLabel from './WinLabel';
+import ListLabel from './ListLabel';
 import QuickNav from './QuickNav';
 import { FilmWatchedProvider } from './FilmWatchedContext';
+import UnwatchedOnlyToggle from './UnwatchedOnlyToggle';
 import { AWARD_ABBR } from '@/lib/format';
 
 type Award = { slug: string; name: string };
 
 // One row on the page: an award win, or a film that's only in lists — which
-// has no award year, so it's placed and filtered by its release year.
+// has no award year, so it's placed and filtered by its release year and
+// labelled "Released" to tell the two apart.
 type Row = Pick<WinEntry, 'film' | 'status'> & {
   key: string;
   year: number;
@@ -24,29 +27,39 @@ const DEFAULT_YEAR = 2000;
 export default function MovieList({
   wins,
   listOnlyFilms,
+  listMemberships,
   awards,
   pinnedYear,
   user,
 }: {
   wins: WinEntry[];
   listOnlyFilms: ListOnlyEntry[];
+  listMemberships: Record<number, ListMembership[]>;
   awards: Award[];
   pinnedYear: number | null;
   user: { username: string } | null;
 }) {
   const [awardSlug, setAwardSlug] = useState('all');
   const [year, setYear] = useState('all');
-  const [unwatchedOnly, setUnwatchedOnly] = useState(false);
+  const [hiddenIds, setHiddenIds] = useState<Set<number> | null>(null);
   const [search, setSearch] = useState('');
 
   const rows = useMemo<Row[]>(() => {
+    const listLabels = (filmId: number) =>
+      (listMemberships[filmId] ?? []).map((l) => <ListLabel key={l.slug} list={l} />);
+
     const winRows: Row[] = wins.map((w) => ({
       key: `${w.awardSlug}-${w.year}-${w.film.id}`,
       film: w.film,
       status: w.status,
       year: w.year,
       awardSlug: w.awardSlug,
-      label: <WinLabel year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />,
+      label: (
+        <span className="flex flex-wrap gap-x-3">
+          <WinLabel year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
+          {listLabels(w.film.id)}
+        </span>
+      ),
     }));
     const listRows: Row[] = listOnlyFilms.map((f) => ({
       key: `list-${f.film.id}`,
@@ -55,15 +68,16 @@ export default function MovieList({
       year: f.film.releaseYear,
       awardSlug: null,
       label: (
-        <span>
-          <span className="text-neutral-700 dark:text-neutral-300 font-semibold mr-1.5">{f.film.releaseYear}</span>
-          {f.lists.map((l) => (l.rank === null ? l.title : `${l.title} · No. ${l.rank}`)).join(', ')}
+        <span className="flex flex-wrap gap-x-3">
+          <span className="text-neutral-700 dark:text-neutral-300 font-semibold">Released {f.film.releaseYear}</span>
+          {listLabels(f.film.id)}
         </span>
       ),
     }));
-    // Stable, so wins keep their award/title order within a year.
+    // Stable, so within a year the award wins keep their award/title order
+    // and list-only films follow them.
     return [...winRows, ...listRows].sort((a, b) => a.year - b.year);
-  }, [wins, listOnlyFilms]);
+  }, [wins, listOnlyFilms, listMemberships]);
 
   const years = useMemo(() => {
     const set = new Set(rows.map((r) => r.year));
@@ -75,7 +89,7 @@ export default function MovieList({
     return rows.filter((w) => {
       if (awardSlug !== 'all' && w.awardSlug !== awardSlug) return false;
       if (year !== 'all' && w.year !== Number(year)) return false;
-      if (unwatchedOnly && w.status.watched) return false;
+      if (hiddenIds?.has(w.film.id)) return false;
       if (query) {
         const haystack = [
           w.film.title,
@@ -91,7 +105,10 @@ export default function MovieList({
       }
       return true;
     });
-  }, [rows, awardSlug, year, unwatchedOnly, search]);
+  }, [rows, awardSlug, year, hiddenIds, search]);
+
+  // Rows are award wins, so a film that won twice has two rows.
+  const filmCount = useMemo(() => new Set(filtered.map((r) => r.film.id)).size, [filtered]);
 
   const initialWatchedMap = useMemo(
     () => Object.fromEntries(rows.map((r) => [r.film.id, r.status.watched])),
@@ -145,18 +162,13 @@ export default function MovieList({
           ))}
         </select>
 
-        <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
-          <input
-            type="checkbox"
-            checked={unwatchedOnly}
-            onChange={(e) => setUnwatchedOnly(e.target.checked)}
-            className="accent-emerald-500"
-          />
-          Unwatched only
-        </label>
+        <UnwatchedOnlyToggle onChange={setHiddenIds} />
       </div>
 
-      <p className="text-sm text-neutral-500 mb-3">{filtered.length} films</p>
+      <p className="text-sm text-neutral-500 mb-3">
+        {filmCount} film{filmCount === 1 ? '' : 's'}
+        {filtered.length !== filmCount && ` · ${filtered.length} entries`}
+      </p>
 
       {filtered.length === 0 ? (
         <p className="text-neutral-500 text-center py-8">No films match these filters.</p>

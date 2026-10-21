@@ -1,5 +1,5 @@
 {
-  "id": "cee72499-296f-49fe-b94a-c1dafae4800a",
+  "id": "8c5b801e-44be-460e-af11-2e2c8467da57",
   "prevId": "3a529782-c37e-4426-90b8-7166a1f61c96",
   "version": "7",
   "dialect": "postgresql",
@@ -39,7 +39,23 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "award_wins_film_id_idx": {
+          "name": "award_wins_film_id_idx",
+          "columns": [
+            {
+              "expression": "film_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "award_wins_award_id_awards_id_fk": {
           "name": "award_wins_award_id_awards_id_fk",
@@ -354,7 +370,23 @@
           "notNull": true
         }
       },
-      "indexes": {},
+      "indexes": {
+        "list_films_film_id_idx": {
+          "name": "list_films_film_id_idx",
+          "columns": [
+            {
+              "expression": "film_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "list_films_list_id_lists_id_fk": {
           "name": "list_films_list_id_lists_id_fk",

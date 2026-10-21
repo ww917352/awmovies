@@ -102,6 +102,9 @@ export const awardWins = pgTable(
       table.year,
       table.filmId
     ),
+    // For "does this film have a win" lookups (getListOnlyFilms, the seed's
+    // orphan check), which the unique index above can't serve.
+    filmIdx: index('award_wins_film_id_idx').on(table.filmId),
   })
 );
 
@@ -187,6 +190,7 @@ export const listFilms = pgTable(
   },
   (table) => ({
     pk: primaryKey({ columns: [table.listId, table.filmId] }),
+    filmIdx: index('list_films_film_id_idx').on(table.filmId),
   })
 );
 
