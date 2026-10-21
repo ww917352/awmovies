@@ -10,8 +10,10 @@ import {
   primaryKey,
   timestamp,
   index,
+  check,
+  type AnyPgColumn,
 } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+import { relations, sql } from 'drizzle-orm';
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -138,6 +140,33 @@ export const userSettings = pgTable('user_settings', {
     .references(() => users.id, { onDelete: 'cascade' }),
   pinnedYear: integer('pinned_year'),
 });
+
+export const listKindValues = ['films', 'lists'] as const;
+export const listRuleValues = ['owned'] as const;
+
+// A list holds either films (kind 'films') or other lists (kind 'lists'),
+// nested via parentId — a 'lists' list's sublists are the rows pointing at
+// it. A films list with a `rule` is computed per viewer instead of stored:
+// 'owned' is every film the logged-in user has an owned format for (see
+// getListFilms in queries.ts). Lists are defined in src/db/seed/lists/.
+export const lists = pgTable(
+  'lists',
+  {
+    id: serial('id').primaryKey(),
+    slug: varchar('slug', { length: 64 }).notNull().unique(),
+    title: text('title').notNull(),
+    description: text('description'),
+    kind: varchar('kind', { length: 8, enum: listKindValues }).notNull(),
+    rule: varchar('rule', { length: 16, enum: listRuleValues }),
+    parentId: integer('parent_id').references((): AnyPgColumn => lists.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull().default(0),
+  },
+  (table) => ({
+    kindCheck: check('lists_kind_check', sql`${table.kind} in ('films', 'lists')`),
+    ruleCheck: check('lists_rule_check', sql`${table.rule} is null or (${table.kind} = 'films' and ${table.rule} in ('owned'))`),
+    parentIdx: index('lists_parent_id_idx').on(table.parentId),
+  })
+);
 
 export const awardsRelations = relations(awards, ({ many }) => ({
   wins: many(awardWins),

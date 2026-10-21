@@ -46,6 +46,9 @@ export default function QuickNav({
       <Link href="/movies" prefetch={false} className={linkClass(pathname === '/movies')}>
         Movies
       </Link>
+      <Link href="/lists" prefetch={false} className={linkClass(pathname.startsWith('/lists'))}>
+        Lists
+      </Link>
       <div className="ml-auto flex items-center gap-5">
         {user &&
           (onYearClick ? (

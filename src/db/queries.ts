@@ -1,6 +1,6 @@
 import { db } from './client';
-import { awards, awardWins, films, filmStatus, userSettings } from './schema';
-import { and, eq, min, max, sql } from 'drizzle-orm';
+import { awards, awardWins, films, filmStatus, lists, userSettings } from './schema';
+import { and, asc, count, eq, gt, inArray, isNull, min, max, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
   id: number;
@@ -36,11 +36,15 @@ export async function getAllAwards() {
   return db.select().from(awards);
 }
 
-// Shared by getAllFilms and getFilmById — `filmId` narrows to one film via
-// a real SQL WHERE instead of loading every film and filtering in JS
-// (getFilmById used to call getAllFilms() and .find(), joining the entire
-// catalogue to return a single row).
-async function selectFilmsWithWins(userId: number | null, filmId?: number): Promise<FilmWithWins[]> {
+// Shared by getAllFilms, getFilmById and getListFilms — `filmId` narrows to
+// one film via a real SQL WHERE instead of loading every film and filtering
+// in JS (getFilmById used to call getAllFilms() and .find(), joining the
+// entire catalogue to return a single row); `ownedOnly` likewise keeps only
+// films the user owns in some format.
+async function selectFilmsWithWins(
+  userId: number | null,
+  { filmId, ownedOnly = false }: { filmId?: number; ownedOnly?: boolean } = {}
+): Promise<FilmWithWins[]> {
   const statusJoinCondition =
     userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
 
@@ -74,7 +78,12 @@ async function selectFilmsWithWins(userId: number | null, filmId?: number): Prom
     .leftJoin(filmStatus, statusJoinCondition)
     .leftJoin(awardWins, eq(awardWins.filmId, films.id))
     .leftJoin(awards, eq(awards.id, awardWins.awardId))
-    .where(filmId === undefined ? undefined : eq(films.id, filmId));
+    .where(
+      and(
+        filmId === undefined ? undefined : eq(films.id, filmId),
+        ownedOnly ? gt(sql`cardinality(${filmStatus.ownedFormats})`, 0) : undefined
+      )
+    );
 
   const byFilm = new Map<number, FilmWithWins>();
 
@@ -139,7 +148,7 @@ export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]
 }
 
 export async function getFilmById(id: number, userId: number | null): Promise<FilmWithWins | null> {
-  const [film] = await selectFilmsWithWins(userId, id);
+  const [film] = await selectFilmsWithWins(userId, { filmId: id });
   return film ?? null;
 }
 
@@ -246,4 +255,64 @@ export async function setPinnedYear(userId: number, year: number | null): Promis
     .insert(userSettings)
     .values({ userId, pinnedYear: year })
     .onConflictDoUpdate({ target: userSettings.userId, set: { pinnedYear: year } });
+}
+
+export type List = typeof lists.$inferSelect;
+
+// `itemCount` is the number of sublists for a 'lists' list, or of films for a
+// films list — null when that depends on a logged-out viewer (an 'owned'
+// list has no films until someone logs in).
+export type ListSummary = List & { itemCount: number | null };
+
+export async function getListBySlug(slug: string): Promise<List | null> {
+  const [list] = await db.select().from(lists).where(eq(lists.slug, slug));
+  return list ?? null;
+}
+
+export async function getListById(id: number): Promise<List | null> {
+  const [list] = await db.select().from(lists).where(eq(lists.id, id));
+  return list ?? null;
+}
+
+// The lists directly under `parentId` (null for the top level), in display order.
+export async function getListSummaries(parentId: number | null, userId: number | null): Promise<ListSummary[]> {
+  const rows = await db
+    .select()
+    .from(lists)
+    .where(parentId === null ? isNull(lists.parentId) : eq(lists.parentId, parentId))
+    .orderBy(asc(lists.position), asc(lists.title));
+  if (rows.length === 0) return [];
+
+  const parentIds = rows.filter((l) => l.kind === 'lists').map((l) => l.id);
+  const childCounts = new Map<number, number>();
+  if (parentIds.length) {
+    const counts = await db
+      .select({ parentId: lists.parentId, n: count() })
+      .from(lists)
+      .where(inArray(lists.parentId, parentIds))
+      .groupBy(lists.parentId);
+    for (const c of counts) childCounts.set(c.parentId!, c.n);
+  }
+
+  let ownedCount: number | null = null;
+  if (userId !== null && rows.some((l) => l.rule === 'owned')) {
+    const [row] = await db
+      .select({ n: count() })
+      .from(filmStatus)
+      .where(and(eq(filmStatus.userId, userId), gt(sql`cardinality(${filmStatus.ownedFormats})`, 0)));
+    ownedCount = row?.n ?? 0;
+  }
+
+  return rows.map((l) => ({
+    ...l,
+    itemCount: l.kind === 'lists' ? (childCounts.get(l.id) ?? 0) : l.rule === 'owned' ? ownedCount : 0,
+  }));
+}
+
+// The films in a films list, sorted by title. Only rule-based lists exist so
+// far, so a list without a rule has no films yet.
+export async function getListFilms(list: List, userId: number | null): Promise<FilmWithWins[]> {
+  if (list.rule !== 'owned' || userId === null) return [];
+  const owned = await selectFilmsWithWins(userId, { ownedOnly: true });
+  return owned.sort((a, b) => a.title.localeCompare(b.title) || a.releaseYear - b.releaseYear);
 }

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import type { WinEntry } from '@/db/queries';
 import FilmRow from './FilmRow';
+import WinLabel from './WinLabel';
 import QuickNav from './QuickNav';
 import WatchedProgress from './WatchedProgress';
 import { FilmWatchedProvider } from './FilmWatchedContext';
@@ -131,8 +132,9 @@ export default function MovieList({
         filtered.map((w) => (
           <FilmRow
             key={`${w.awardSlug}-${w.year}-${w.film.id}`}
-            win={w}
-            showYear
+            film={w.film}
+            status={w.status}
+            label={<WinLabel year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />}
             isLoggedIn={!!user}
             backHref="/movies"
           />

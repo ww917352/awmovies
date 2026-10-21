@@ -3,6 +3,7 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { WinEntry } from '@/db/queries';
 import FilmRow from './FilmRow';
+import WinLabel from './WinLabel';
 import QuickNav from './QuickNav';
 import PinIcon from './PinIcon';
 import { FilmWatchedProvider } from './FilmWatchedContext';
@@ -194,7 +195,9 @@ export default function YearScroll({
                     {yearWins.map((w) => (
                       <FilmRow
                         key={`${w.awardSlug}-${w.film.id}`}
-                        win={w}
+                        film={w.film}
+                        status={w.status}
+                        label={<WinLabel awardSlug={w.awardSlug} awardName={w.awardName} />}
                         isLoggedIn={!!user}
                         backHref={`/?year=${year}`}
                       />

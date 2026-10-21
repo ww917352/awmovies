@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "owned",
+    "title": "Movies I Own",
+    "description": "Every film in the catalog you own on DVD, Blu-ray or digital.",
+    "kind": "films",
+    "rule": "owned"
+  }
+]
