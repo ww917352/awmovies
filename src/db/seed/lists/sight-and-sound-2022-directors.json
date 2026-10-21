@@ -1,0 +1,880 @@
+[
+  {
+    "rank": 1,
+    "title": "2001: A Space Odyssey",
+    "releaseYear": 1968
+  },
+  {
+    "rank": 2,
+    "title": "Citizen Kane",
+    "releaseYear": 1941
+  },
+  {
+    "rank": 3,
+    "title": "The Godfather",
+    "releaseYear": 1972
+  },
+  {
+    "rank": 4,
+    "title": "Tokyo Story",
+    "releaseYear": 1953
+  },
+  {
+    "rank": 4,
+    "title": "Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles",
+    "releaseYear": 1975
+  },
+  {
+    "rank": 6,
+    "title": "8½",
+    "releaseYear": 1963
+  },
+  {
+    "rank": 6,
+    "title": "Vertigo",
+    "releaseYear": 1958
+  },
+  {
+    "rank": 8,
+    "title": "Mirror",
+    "releaseYear": 1975
+  },
+  {
+    "rank": 9,
+    "title": "Persona",
+    "releaseYear": 1966
+  },
+  {
+    "rank": 9,
+    "title": "Close-Up",
+    "releaseYear": 1990
+  },
+  {
+    "rank": 9,
+    "title": "In the Mood for Love",
+    "releaseYear": 2000
+  },
+  {
+    "rank": 12,
+    "title": "Barry Lyndon",
+    "releaseYear": 1975
+  },
+  {
+    "rank": 12,
+    "title": "Taxi Driver",
+    "releaseYear": 1976
+  },
+  {
+    "rank": 14,
+    "title": "Stalker",
+    "releaseYear": 1979
+  },
+  {
+    "rank": 14,
+    "title": "Breathless",
+    "releaseYear": 1960
+  },
+  {
+    "rank": 14,
+    "title": "Seven Samurai",
+    "releaseYear": 1954
+  },
+  {
+    "rank": 14,
+    "title": "Beau Travail",
+    "releaseYear": 1999
+  },
+  {
+    "rank": 18,
+    "title": "A Woman Under the Influence",
+    "releaseYear": 1974,
+    "directors": [
+      "John Cassavetes"
+    ],
+    "studios": [
+      "Faces International Films"
+    ],
+    "mainCast": [
+      "Gena Rowlands",
+      "Peter Falk"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/A_Woman_Under_the_Influence",
+    "letterboxdUrl": "https://letterboxd.com/film/a-woman-under-the-influence/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/a-woman-under-the-influence/umc.cmc.2r3aflq10e9kr876p26kgb3k3",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/A_Woman_Under_the_Influence_%281974_poster_-_retouched%29.jpg",
+    "plotSummary": "Mabel Longhetti, a Los Angeles housewife and mother of three, is warm and loving but behaves in increasingly erratic ways that frighten those around her. Her husband Nick, a construction foreman, loves her but cannot cope, and eventually has her committed to a mental institution."
+  },
+  {
+    "rank": 18,
+    "title": "Apocalypse Now",
+    "releaseYear": 1979
+  },
+  {
+    "rank": 20,
+    "title": "Rashomon",
+    "releaseYear": 1950
+  },
+  {
+    "rank": 20,
+    "title": "Bicycle Thieves",
+    "releaseYear": 1948
+  },
+  {
+    "rank": 22,
+    "title": "Raging Bull",
+    "releaseYear": 1980,
+    "directors": [
+      "Martin Scorsese"
+    ],
+    "studios": [
+      "Chartoff-Winkler Productions"
+    ],
+    "mainCast": [
+      "Robert De Niro",
+      "Cathy Moriarty",
+      "Joe Pesci",
+      "Frank Vincent"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Raging_Bull",
+    "letterboxdUrl": "https://letterboxd.com/film/raging-bull/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/raging-bull/umc.cmc.1b4fm4n7ysgazalrhn1deyhce",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/5f/Raging_Bull_poster.jpg",
+    "plotSummary": "Middleweight boxer Jake LaMotta fights his way to a world title in the 1940s, but his jealousy and violence drive away his wife Vickie and his brother and manager Joey. After retiring from the ring, he ends up a nightclub comedian, overweight and alone."
+  },
+  {
+    "rank": 22,
+    "title": "The Battle of Algiers",
+    "releaseYear": 1966
+  },
+  {
+    "rank": 22,
+    "title": "Pather Panchali",
+    "releaseYear": 1955
+  },
+  {
+    "rank": 22,
+    "title": "Mulholland Drive",
+    "releaseYear": 2001
+  },
+  {
+    "rank": 26,
+    "title": "The Godfather Part II",
+    "releaseYear": 1974
+  },
+  {
+    "rank": 26,
+    "title": "Andrei Rublev",
+    "releaseYear": 1966
+  },
+  {
+    "rank": 28,
+    "title": "Goodfellas",
+    "releaseYear": 1990
+  },
+  {
+    "rank": 29,
+    "title": "Do the Right Thing",
+    "releaseYear": 1989
+  },
+  {
+    "rank": 30,
+    "title": "Ordet",
+    "releaseYear": 1955
+  },
+  {
+    "rank": 30,
+    "title": "The Passion of Joan of Arc",
+    "releaseYear": 1928
+  },
+  {
+    "rank": 30,
+    "title": "Man with a Movie Camera",
+    "releaseYear": 1929
+  },
+  {
+    "rank": 33,
+    "title": "The 400 Blows",
+    "releaseYear": 1959
+  },
+  {
+    "rank": 33,
+    "title": "Sunrise: A Song of Two Humans",
+    "releaseYear": 1927
+  },
+  {
+    "rank": 35,
+    "title": "La Jetée",
+    "releaseYear": 1962
+  },
+  {
+    "rank": 35,
+    "title": "La Dolce Vita",
+    "releaseYear": 1960
+  },
+  {
+    "rank": 37,
+    "title": "Au hasard Balthazar",
+    "releaseYear": 1966
+  },
+  {
+    "rank": 38,
+    "title": "La Strada",
+    "releaseYear": 1954
+  },
+  {
+    "rank": 38,
+    "title": "L'Avventura",
+    "releaseYear": 1960
+  },
+  {
+    "rank": 38,
+    "title": "The Rules of the Game",
+    "releaseYear": 1939
+  },
+  {
+    "rank": 41,
+    "title": "Come and See",
+    "originalTitle": "Иди и смотри",
+    "releaseYear": 1985,
+    "directors": [
+      "Elem Klimov"
+    ],
+    "studios": [
+      "Belarusfilm",
+      "Mosfilm"
+    ],
+    "mainCast": [
+      "Aleksei Kravchenko",
+      "Olga Mironova"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Come_and_See",
+    "letterboxdUrl": "https://letterboxd.com/film/come-and-see/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/come-and-see/umc.cmc.3eb5vzooka0je73d5ru7e6bbt",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/08/Come_and_See_%28poster%29.jpg",
+    "plotSummary": "In 1943, teenage Flyora digs up a rifle and joins the Soviet partisans fighting the Nazis in occupied Belarus, against his mother's wishes. Left behind by the partisans, he returns to find his village massacred, and he witnesses the horrors of the German extermination campaign."
+  },
+  {
+    "rank": 41,
+    "title": "Vagabond",
+    "releaseYear": 1985
+  },
+  {
+    "rank": 41,
+    "title": "A Man Escaped",
+    "releaseYear": 1956
+  },
+  {
+    "rank": 41,
+    "title": "The Night of the Hunter",
+    "releaseYear": 1955
+  },
+  {
+    "rank": 41,
+    "title": "Playtime",
+    "releaseYear": 1967
+  },
+  {
+    "rank": 46,
+    "title": "Dr. Strangelove",
+    "releaseYear": 1964,
+    "directors": [
+      "Stanley Kubrick"
+    ],
+    "studios": [
+      "Columbia Pictures Corporation",
+      "Hawk Films",
+      "Polaris Productions"
+    ],
+    "mainCast": [
+      "Peter Sellers",
+      "George C. Scott",
+      "Sterling Hayden",
+      "Keenan Wynn",
+      "Slim Pickens"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dr._Strangelove",
+    "letterboxdUrl": "https://letterboxd.com/film/dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb/umc.cmc.5ljuxkgsnadlgpbjkpyb39zhf",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e6/Dr._Strangelove_poster.jpg",
+    "plotSummary": "Convinced that communists are polluting Americans' \"precious bodily fluids\", a deranged US Air Force general orders his bomber wing to launch a nuclear attack on the Soviet Union. In the War Room, the President, his generals and the ex-Nazi scientist Dr. Strangelove try to recall the planes before they trigger the Soviet doomsday device."
+  },
+  {
+    "rank": 46,
+    "title": "Don't Look Now",
+    "releaseYear": 1973,
+    "directors": [
+      "Nicolas Roeg"
+    ],
+    "studios": [
+      "Casey Productions",
+      "Eldorado Films"
+    ],
+    "mainCast": [
+      "Julie Christie",
+      "Donald Sutherland"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Don%27t_Look_Now",
+    "letterboxdUrl": "https://letterboxd.com/film/dont-look-now/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/dont-look-now/umc.cmc.6buu9bl6cwhl53wriznuptob7",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b8/Dont_look_movieposter.jpg",
+    "plotSummary": "After their young daughter drowns, John and Laura Baxter go to Venice, where John is restoring a church. Laura meets two elderly sisters, one of them a blind psychic who says their dead daughter is trying to warn John that he is in danger, while John keeps glimpsing a small figure in a red coat."
+  },
+  {
+    "rank": 46,
+    "title": "Once Upon a Time in the West",
+    "releaseYear": 1968
+  },
+  {
+    "rank": 46,
+    "title": "Contempt",
+    "releaseYear": 1963
+  },
+  {
+    "rank": 46,
+    "title": "L'Atalante",
+    "releaseYear": 1934
+  },
+  {
+    "rank": 46,
+    "title": "Psycho",
+    "releaseYear": 1960
+  },
+  {
+    "rank": 52,
+    "title": "Viridiana",
+    "releaseYear": 1961
+  },
+  {
+    "rank": 52,
+    "title": "Eraserhead",
+    "releaseYear": 1977,
+    "directors": [
+      "David Lynch"
+    ],
+    "studios": [
+      "AFI Center for Advanced Studies"
+    ],
+    "mainCast": [
+      "Jack Nance",
+      "Charlotte Stewart",
+      "Allen Joseph",
+      "Jeanne Bates",
+      "Judith Roberts"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Eraserhead",
+    "letterboxdUrl": "https://letterboxd.com/film/eraserhead/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/eraserhead/umc.cmc.1iiaiznzitwoa081epr27xn6l",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Eraserhead_-_Filmex_%2777_poster.jpg",
+    "plotSummary": "In a bleak industrial city, the timid printer Henry Spencer learns that his girlfriend Mary has given birth to a severely deformed child. When Mary leaves, Henry is left to care for the wailing creature alone in his apartment, and he retreats into dreams of a woman singing inside his radiator."
+  },
+  {
+    "rank": 52,
+    "title": "La Notte",
+    "releaseYear": 1961
+  },
+  {
+    "rank": 52,
+    "title": "Fanny and Alexander",
+    "releaseYear": 1982
+  },
+  {
+    "rank": 52,
+    "title": "The Mother and the Whore",
+    "originalTitle": "La Maman et la Putain",
+    "releaseYear": 1973,
+    "directors": [
+      "Jean Eustache"
+    ],
+    "studios": [
+      "Élite Films",
+      "Ciné Qua Non",
+      "Les Films du Losange",
+      "Simar Films",
+      "V.M. Productions"
+    ],
+    "mainCast": [
+      "Jean-Pierre Léaud",
+      "Bernadette Lafont",
+      "Françoise Lebrun"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/The_Mother_and_the_Whore",
+    "letterboxdUrl": "https://letterboxd.com/film/the-mother-and-the-whore/",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/The_Mother_and_the_Whore.jpg",
+    "plotSummary": "Alexandre, an idle young Parisian intellectual, lives with his older girlfriend Marie, a boutique owner, while he pursues Veronika, a promiscuous nurse. The three drift into a love triangle, and their long conversations about sex, love and post-1968 politics grow more painful."
+  },
+  {
+    "rank": 52,
+    "title": "Ali: Fear Eats the Soul",
+    "releaseYear": 1974
+  },
+  {
+    "rank": 52,
+    "title": "The Piano",
+    "releaseYear": 1993
+  },
+  {
+    "rank": 52,
+    "title": "City Lights",
+    "releaseYear": 1931
+  },
+  {
+    "rank": 52,
+    "title": "Cléo from 5 to 7",
+    "releaseYear": 1962
+  },
+  {
+    "rank": 52,
+    "title": "Singin' in the Rain",
+    "releaseYear": 1952
+  },
+  {
+    "rank": 62,
+    "title": "La ciénaga",
+    "releaseYear": 2001,
+    "directors": [
+      "Lucrecia Martel"
+    ],
+    "studios": [
+      "Wanda Visión"
+    ],
+    "mainCast": [
+      "Graciela Borges",
+      "Mercedes Morán",
+      "Martín Adjemián",
+      "Daniel Valenzuela"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/La_ci%C3%A9naga_(film)",
+    "letterboxdUrl": "https://letterboxd.com/film/la-cienaga/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/la-cienaga/umc.cmc.3tifrt019h3xh7bb0bqkye45j",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Lacienagaposter.jpg",
+    "plotSummary": "During a stifling summer in northwestern Argentina, middle-aged Mecha and her family idle by the filthy swimming pool of their decaying country house, drinking and bickering. When her cousin Tali's family comes to visit, the children roam freely while the adults ignore the dangers around them."
+  },
+  {
+    "rank": 62,
+    "title": "Lawrence of Arabia",
+    "releaseYear": 1962
+  },
+  {
+    "rank": 62,
+    "title": "Jaws",
+    "releaseYear": 1975,
+    "directors": [
+      "Steven Spielberg"
+    ],
+    "studios": [
+      "Zanuck/Brown Company",
+      "Universal Pictures"
+    ],
+    "mainCast": [
+      "Roy Scheider",
+      "Robert Shaw",
+      "Richard Dreyfuss",
+      "Lorraine Gary",
+      "Murray Hamilton"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
+    "letterboxdUrl": "https://letterboxd.com/film/jaws/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/jaws/umc.cmc.2bz6csnv519zyivpg4qb9cgbn",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Jaws_movie_poster.jpg",
+    "plotSummary": "When a great white shark kills swimmers off Amity Island, police chief Martin Brody wants to close the beaches, but the mayor refuses to lose the summer tourist trade. After more attacks, Brody, marine biologist Matt Hooper and the shark hunter Quint go out to sea to kill it."
+  },
+  {
+    "rank": 62,
+    "title": "Tropical Malady",
+    "releaseYear": 2004
+  },
+  {
+    "rank": 62,
+    "title": "Sátántangó",
+    "releaseYear": 1994
+  },
+  {
+    "rank": 62,
+    "title": "Sunset Boulevard",
+    "releaseYear": 1950
+  },
+  {
+    "rank": 62,
+    "title": "Blade Runner",
+    "releaseYear": 1982
+  },
+  {
+    "rank": 62,
+    "title": "Some Like It Hot",
+    "releaseYear": 1959
+  },
+  {
+    "rank": 62,
+    "title": "Late Spring",
+    "releaseYear": 1949
+  },
+  {
+    "rank": 62,
+    "title": "Meshes of the Afternoon",
+    "releaseYear": 1943
+  },
+  {
+    "rank": 72,
+    "title": "Kes",
+    "releaseYear": 1969,
+    "directors": [
+      "Ken Loach"
+    ],
+    "studios": [
+      "Woodfall Film Productions",
+      "Kestrel Films"
+    ],
+    "mainCast": [
+      "David Bradley",
+      "Freddie Fletcher",
+      "Lynne Perrie",
+      "Colin Welland",
+      "Brian Glover"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kes_(film)",
+    "letterboxdUrl": "https://letterboxd.com/film/kes/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/kes/umc.cmc.748tgzbuwa8ov97bcz1z6ekqd",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/89/Kes_1969_film_poster.jpg",
+    "plotSummary": "Billy Casper, a bullied working-class boy in a Yorkshire mining town, has little to look forward to but a job down the pit. He finds a kestrel chick, takes it from its nest and trains it, and the bird gives him the only sense of purpose in his life."
+  },
+  {
+    "rank": 72,
+    "title": "A Separation",
+    "releaseYear": 2011
+  },
+  {
+    "rank": 72,
+    "title": "Salò, or the 120 Days of Sodom",
+    "originalTitle": "Salò o le 120 giornate di Sodoma",
+    "releaseYear": 1975,
+    "directors": [
+      "Pier Paolo Pasolini"
+    ],
+    "studios": [
+      "Produzioni Europee Associati",
+      "Les Productions Artistes Associés"
+    ],
+    "mainCast": [
+      "Paolo Bonacelli",
+      "Giorgio Cataldi",
+      "Uberto Paolo Quintavalle",
+      "Aldo Valletti",
+      "Caterina Boratto"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sal%C3%B2,_or_the_120_Days_of_Sodom",
+    "letterboxdUrl": "https://letterboxd.com/film/salo-or-the-120-days-of-sodom/",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f3/Saloposter.jpg",
+    "plotSummary": "In the Fascist Republic of Salò in 1944, four powerful libertines round up a group of teenagers and imprison them in a villa. Over 120 days they subject them to escalating sexual abuse and torture, in a film based on the Marquis de Sade's novel."
+  },
+  {
+    "rank": 72,
+    "title": "The Conversation",
+    "releaseYear": 1974
+  },
+  {
+    "rank": 72,
+    "title": "L'Argent",
+    "releaseYear": 1983,
+    "directors": [
+      "Robert Bresson"
+    ],
+    "studios": [
+      "Marion's Films",
+      "FR 3",
+      "EOS Films"
+    ],
+    "mainCast": [
+      "Christian Patey",
+      "Vincent Risterucci",
+      "Caroline Lang"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/L%27Argent_(1983_film)",
+    "letterboxdUrl": "https://letterboxd.com/film/largent-1983/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/largent/umc.cmc.5zpk6py4o29s3mpc0vhoz1azl",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/76/L%27Argent_%281983_movie_poster%29.jpg",
+    "plotSummary": "Two schoolboys pass a counterfeit banknote at a photography shop, and the shop owners in turn give fake bills to Yvon, a fuel delivery man. Arrested when he tries to spend them, Yvon loses his job and his family, and the chain of corruption turns him into a murderer."
+  },
+  {
+    "rank": 72,
+    "title": "Where Is the Friend's House?",
+    "originalTitle": "خانه دوست کجاست؟",
+    "releaseYear": 1987,
+    "directors": [
+      "Abbas Kiarostami"
+    ],
+    "studios": [
+      "Kanoon"
+    ],
+    "mainCast": [
+      "Babak Ahmadpour",
+      "Ahmad Ahmadpour"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Where_Is_the_Friend%27s_House%3F",
+    "letterboxdUrl": "https://letterboxd.com/film/where-is-the-friends-house/",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/%D8%AE%D8%A7%D9%86%D9%87_%D8%AF%D9%88%D8%B3%D8%AA_%DA%A9%D8%AC%D8%A7%D8%B3%D8%AA_%28%D9%BE%D9%88%D8%B3%D8%AA%D8%B1%29.jpg",
+    "plotSummary": "Eight-year-old Ahmad realises he has taken his classmate Mohammad Reza's notebook home by mistake, and knows his friend will be expelled if he cannot do his homework in it. Defying his family, he sets off for the neighbouring village to find his friend's house, without knowing where it is."
+  },
+  {
+    "rank": 72,
+    "title": "Ikiru",
+    "originalTitle": "生きる",
+    "releaseYear": 1952,
+    "directors": [
+      "Akira Kurosawa"
+    ],
+    "studios": [
+      "Toho"
+    ],
+    "mainCast": [
+      "Takashi Shimura",
+      "Shin'ichi Himori",
+      "Haruo Tanaka",
+      "Miki Odagiri",
+      "Nobuo Kaneko"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ikiru",
+    "letterboxdUrl": "https://letterboxd.com/film/ikiru/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/ikiru/umc.cmc.52fkxbe3toqs259outmn47cdg",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Ikiru_poster.jpg",
+    "plotSummary": "Kanji Watanabe, a Tokyo bureaucrat who has spent decades pushing paper, learns he has stomach cancer and less than a year to live. After failing to find meaning in nightlife and in the company of a young co-worker, he devotes his last months to getting a playground built on a cesspool."
+  },
+  {
+    "rank": 72,
+    "title": "Chinatown",
+    "releaseYear": 1974,
+    "directors": [
+      "Roman Polanski"
+    ],
+    "studios": [
+      "Long Road Productions",
+      "Robert Evans Company"
+    ],
+    "mainCast": [
+      "Jack Nicholson",
+      "Faye Dunaway",
+      "John Huston",
+      "Perry Lopez",
+      "John Hillerman"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chinatown_(1974_film)",
+    "letterboxdUrl": "https://letterboxd.com/film/chinatown/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/chinatown/umc.cmc.2fu6smvsot08y0ebs5gatspfb",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/38/Chinatownposter1.jpg",
+    "plotSummary": "In 1937 Los Angeles, private detective J. J. Gittes is hired to investigate the chief engineer of the city's water department for adultery. When the engineer turns up dead, Gittes uncovers a conspiracy over the city's water supply and a dark family secret belonging to the engineer's widow, Evelyn Mulwray."
+  },
+  {
+    "rank": 72,
+    "title": "The Seventh Seal",
+    "releaseYear": 1957,
+    "directors": [
+      "Ingmar Bergman"
+    ],
+    "studios": [
+      "AB Svensk Filmindustri"
+    ],
+    "mainCast": [
+      "Max von Sydow",
+      "Gunnar Björnstrand",
+      "Bengt Ekerot",
+      "Nils Poppe",
+      "Bibi Andersson"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/The_Seventh_Seal",
+    "letterboxdUrl": "https://letterboxd.com/film/the-seventh-seal/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/the-seventh-seal/umc.cmc.1rovx26v5irut9bpkvqac83uj",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/69/Seventhsealposter.jpg",
+    "plotSummary": "Returning from the Crusades to a Sweden ravaged by the plague, the knight Antonius Block meets Death on the shore and challenges him to a game of chess to delay his end. As the game goes on, he travels home with his squire and a family of travelling players, looking for meaning before Death claims him."
+  },
+  {
+    "rank": 72,
+    "title": "The Ascent",
+    "releaseYear": 1977
+  },
+  {
+    "rank": 72,
+    "title": "Wild Strawberries",
+    "releaseYear": 1957
+  },
+  {
+    "rank": 72,
+    "title": "Blue Velvet",
+    "releaseYear": 1986
+  },
+  {
+    "rank": 72,
+    "title": "The Spirit of the Beehive",
+    "releaseYear": 1973
+  },
+  {
+    "rank": 72,
+    "title": "A Brighter Summer Day",
+    "releaseYear": 1991
+  },
+  {
+    "rank": 72,
+    "title": "Modern Times",
+    "releaseYear": 1936
+  },
+  {
+    "rank": 72,
+    "title": "The Red Shoes",
+    "releaseYear": 1948
+  },
+  {
+    "rank": 72,
+    "title": "Touki Bouki",
+    "releaseYear": 1973
+  },
+  {
+    "rank": 72,
+    "title": "Sans Soleil",
+    "releaseYear": 1983
+  },
+  {
+    "rank": 72,
+    "title": "News from Home",
+    "releaseYear": 1976
+  },
+  {
+    "rank": 72,
+    "title": "Shoah",
+    "releaseYear": 1985
+  },
+  {
+    "rank": 72,
+    "title": "The Searchers",
+    "releaseYear": 1956
+  },
+  {
+    "rank": 93,
+    "title": "Throne of Blood",
+    "originalTitle": "蜘蛛巣城",
+    "releaseYear": 1957,
+    "directors": [
+      "Akira Kurosawa"
+    ],
+    "studios": [
+      "Toho"
+    ],
+    "mainCast": [
+      "Toshiro Mifune",
+      "Isuzu Yamada",
+      "Takashi Shimura"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Throne_of_Blood",
+    "letterboxdUrl": "https://letterboxd.com/film/throne-of-blood/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/throne-of-blood/umc.cmc.74gio5f9qsq4ubom1fbeum4on",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d5/Throne_of_Blood_Japanese_1957_poster.jpg",
+    "plotSummary": "In this retelling of Macbeth set in feudal Japan, the general Washizu is told by a forest spirit that he will become lord of Spider's Web Castle. Spurred on by his ambitious wife Asaji, he murders his lord to fulfil the prophecy and is consumed by paranoia and guilt."
+  },
+  {
+    "rank": 93,
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "releaseYear": 2004
+  },
+  {
+    "rank": 93,
+    "title": "Caché",
+    "releaseYear": 2005
+  },
+  {
+    "rank": 93,
+    "title": "Taste of Cherry",
+    "releaseYear": 1997
+  },
+  {
+    "rank": 93,
+    "title": "Pickpocket",
+    "releaseYear": 1959,
+    "directors": [
+      "Robert Bresson"
+    ],
+    "studios": [
+      "Agnès Delahaie Productions"
+    ],
+    "mainCast": [
+      "Martin LaSalle",
+      "Marika Green",
+      "Pierre Leymarie",
+      "Jean Pélégri"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Pickpocket_(film)",
+    "letterboxdUrl": "https://letterboxd.com/film/pickpocket/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/pickpocket/umc.cmc.3ulsn91o4vxw5ucs5h4nfvr0j",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Pickpocketposter.jpg",
+    "plotSummary": "Michel, a solitary young man in Paris, turns to pickpocketing, which he believes superior men may justify. He refines his technique with a gang of thieves while a police inspector watches him closely and Jeanne, his dying mother's neighbour, tries to reach him."
+  },
+  {
+    "rank": 93,
+    "title": "The Color of Pomegranates",
+    "originalTitle": "Նռան գույնը",
+    "releaseYear": 1969,
+    "directors": [
+      "Sergei Parajanov"
+    ],
+    "studios": [
+      "Armenfilm"
+    ],
+    "mainCast": [
+      "Sofiko Chiaureli",
+      "Melkon Aleksanyan",
+      "Vilen Galstyan",
+      "Giorgi Gegechkori"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/The_Color_of_Pomegranates",
+    "letterboxdUrl": "https://letterboxd.com/film/the-color-of-pomegranates/",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c7/The_Color_of_Pomegranates_cover_art.jpg",
+    "plotSummary": "The life of the 18th-century Armenian poet Sayat-Nova, from childhood through his years at the royal court, his love for a princess and his retreat to a monastery, is told in a series of tableaux. There is almost no dialogue, and his story unfolds in still, painterly compositions drawn from his poetry and Armenian iconography."
+  },
+  {
+    "rank": 93,
+    "title": "The Conformist",
+    "originalTitle": "Il conformista",
+    "releaseYear": 1970,
+    "directors": [
+      "Bernardo Bertolucci"
+    ],
+    "studios": [
+      "Mars Film Produzione",
+      "Marianne Productions",
+      "Maran Film"
+    ],
+    "mainCast": [
+      "Jean-Louis Trintignant",
+      "Stefania Sandrelli",
+      "Gastone Moschin",
+      "Enzo Tarascio",
+      "Dominique Sanda"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/The_Conformist_(1970_film)",
+    "letterboxdUrl": "https://letterboxd.com/film/the-conformist/",
+    "appleTvUrl": "https://tv.apple.com/us/movie/the-conformist/umc.cmc.2n0oznnii97liggm2zr52mouj",
+    "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/78/The_Conformist_poster.jpg",
+    "plotSummary": "In 1938, Marcello Clerici, an Italian official desperate to live a normal life, offers his services to the Fascist secret police. On his honeymoon in Paris he is ordered to help assassinate his former university professor, an anti-fascist exile, and he becomes infatuated with the professor's young wife."
+  },
+  {
+    "rank": 93,
+    "title": "Parasite",
+    "releaseYear": 2019
+  },
+  {
+    "rank": 93,
+    "title": "Yi Yi",
+    "releaseYear": 2000
+  },
+  {
+    "rank": 93,
+    "title": "Moonlight",
+    "releaseYear": 2016
+  },
+  {
+    "rank": 93,
+    "title": "Battleship Potemkin",
+    "releaseYear": 1925
+  },
+  {
+    "rank": 93,
+    "title": "Wanda",
+    "releaseYear": 1970
+  }
+]

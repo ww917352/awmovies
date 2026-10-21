@@ -13,5 +13,30 @@
     "sourceUrl": "https://www.bbc.com/culture/article/20160819-the-21st-centurys-100-greatest-films",
     "kind": "films",
     "films": "bbc-21st-century-100.json"
+  },
+  {
+    "slug": "sight-and-sound-2022",
+    "title": "Sight and Sound: The Greatest Films of All Time (2022)",
+    "description": "The BFI's Sight and Sound poll, held once a decade since 1952. The 2022 edition polled critics and, separately, filmmakers.",
+    "sourceUrl": "https://www.bfi.org.uk/sight-and-sound/greatest-films-all-time",
+    "kind": "lists",
+    "lists": [
+      {
+        "slug": "sight-and-sound-2022-critics",
+        "title": "Sight and Sound 2022: Critics' Poll",
+        "description": "The top 100 from the ballots of 1,639 critics, programmers, curators, archivists and academics. Six films tied at No. 95.",
+        "sourceUrl": "https://www.bfi.org.uk/sight-and-sound/greatest-films-all-time",
+        "kind": "films",
+        "films": "sight-and-sound-2022-critics.json"
+      },
+      {
+        "slug": "sight-and-sound-2022-directors",
+        "title": "Sight and Sound 2022: Directors' Poll",
+        "description": "The top 100 from the ballots of 480 filmmakers. Twelve films tied at No. 93, so the list has 104.",
+        "sourceUrl": "https://www.bfi.org.uk/sight-and-sound/directors-100-greatest-films-all-time",
+        "kind": "films",
+        "films": "sight-and-sound-2022-directors.json"
+      }
+    ]
   }
 ]
