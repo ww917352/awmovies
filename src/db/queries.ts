@@ -322,11 +322,17 @@ export async function getYearRange(): Promise<{ minYear: number; maxYear: number
   return { minYear: row?.minYear ?? 1929, maxYear: row?.maxYear ?? currentYear };
 }
 
-// Logged-out visitors (userId === null) never have a pin — skip the query.
-export async function getPinnedYear(userId: number | null): Promise<number | null> {
-  if (userId === null) return null;
+export type UserSettings = { pinnedYear: number | null; lockWatched: boolean };
+
+// Logged-out visitors (userId === null) have no settings — skip the query.
+export async function getUserSettings(userId: number | null): Promise<UserSettings> {
+  if (userId === null) return { pinnedYear: null, lockWatched: false };
   const [row] = await db.select().from(userSettings).where(eq(userSettings.userId, userId));
-  return row?.pinnedYear ?? null;
+  return { pinnedYear: row?.pinnedYear ?? null, lockWatched: row?.lockWatched ?? false };
+}
+
+export async function getPinnedYear(userId: number | null): Promise<number | null> {
+  return (await getUserSettings(userId)).pinnedYear;
 }
 
 export async function setPinnedYear(userId: number, year: number | null): Promise<void> {
@@ -334,6 +340,13 @@ export async function setPinnedYear(userId: number, year: number | null): Promis
     .insert(userSettings)
     .values({ userId, pinnedYear: year })
     .onConflictDoUpdate({ target: userSettings.userId, set: { pinnedYear: year } });
+}
+
+export async function setLockWatched(userId: number, lockWatched: boolean): Promise<void> {
+  await db
+    .insert(userSettings)
+    .values({ userId, lockWatched })
+    .onConflictDoUpdate({ target: userSettings.userId, set: { lockWatched } });
 }
 
 export type List = typeof lists.$inferSelect;

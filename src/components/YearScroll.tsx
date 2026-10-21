@@ -33,6 +33,7 @@ export default function YearScroll({
   initialPinnedYear,
   requestedYear,
   user,
+  lockWatched,
 }: {
   wins: WinEntry[];
   minYear: number;
@@ -40,6 +41,7 @@ export default function YearScroll({
   initialPinnedYear: number | null;
   requestedYear?: number | null;
   user: { username: string } | null;
+  lockWatched: boolean;
 }) {
   const sectionRefs = useRef<Map<number, HTMLElement>>(new Map());
 
@@ -140,7 +142,7 @@ export default function YearScroll({
   }
 
   return (
-    <FilmWatchedProvider initial={initialWatchedMap}>
+    <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
     <div className="relative">
       <QuickNav
         className="fixed inset-x-0 top-0 z-20"

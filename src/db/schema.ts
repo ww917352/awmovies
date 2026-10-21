@@ -136,12 +136,15 @@ export const filmStatus = pgTable(
 
 // One row per user holding their personal preferences, e.g. the pinned
 // starting year for the home page. Logged-out visitors have no row and no
-// pin — see getPinnedYear in queries.ts.
+// pin — see getUserSettings in queries.ts. `lockWatched` stops the list
+// views' Watched checkbox from being unticked once ticked (the film page
+// can still change it), guarding against accidental taps.
 export const userSettings = pgTable('user_settings', {
   userId: integer('user_id')
     .primaryKey()
     .references(() => users.id, { onDelete: 'cascade' }),
   pinnedYear: integer('pinned_year'),
+  lockWatched: boolean('lock_watched').notNull().default(false),
 });
 
 export const listKindValues = ['films', 'lists'] as const;

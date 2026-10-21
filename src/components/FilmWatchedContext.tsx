@@ -7,16 +7,28 @@ type WatchedMap = Record<number, boolean>;
 const WatchedContext = createContext<{
   watchedMap: WatchedMap;
   setWatched: (filmId: number, watched: boolean) => void;
+  lockWatched: boolean;
 } | null>(null);
 
-export function FilmWatchedProvider({ initial, children }: { initial: WatchedMap; children: ReactNode }) {
+// `lockWatched` is the user's "don't let me untick Watched" setting — see
+// userSettings in schema.ts. It only applies to the WatchedToggles under
+// this provider, i.e. the list views, never the film page.
+export function FilmWatchedProvider({
+  initial,
+  lockWatched = false,
+  children,
+}: {
+  initial: WatchedMap;
+  lockWatched?: boolean;
+  children: ReactNode;
+}) {
   const [watchedMap, setWatchedMap] = useState<WatchedMap>(initial);
 
   const setWatched = useCallback((filmId: number, watched: boolean) => {
     setWatchedMap((prev) => ({ ...prev, [filmId]: watched }));
   }, []);
 
-  return <WatchedContext.Provider value={{ watchedMap, setWatched }}>{children}</WatchedContext.Provider>;
+  return <WatchedContext.Provider value={{ watchedMap, setWatched, lockWatched }}>{children}</WatchedContext.Provider>;
 }
 
 // Falls back to `fallback` (the server-rendered initial value) when used
@@ -28,6 +40,10 @@ export function useFilmWatched(filmId: number, fallback: boolean) {
   const watched = ctx ? (ctx.watchedMap[filmId] ?? fallback) : fallback;
   const setWatched = (value: boolean) => ctx?.setWatched(filmId, value);
   return [watched, setWatched] as const;
+}
+
+export function useLockWatched(): boolean {
+  return useContext(WatchedContext)?.lockWatched ?? false;
 }
 
 // Reads the live watched map so summary/progress UI stays in sync with

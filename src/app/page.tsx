@@ -1,4 +1,4 @@
-import { getAllWins, getPinnedYear } from '@/db/queries';
+import { getAllWins, getUserSettings } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import YearScroll from '@/components/YearScroll';
 
@@ -7,7 +7,10 @@ export const dynamic = 'force-dynamic';
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ year?: string }> }) {
   const user = await getCurrentUser();
   requireUpToDatePassword(user);
-  const [wins, pinnedYear] = await Promise.all([getAllWins(user?.id ?? null), getPinnedYear(user?.id ?? null)]);
+  const [wins, { pinnedYear, lockWatched }] = await Promise.all([
+    getAllWins(user?.id ?? null),
+    getUserSettings(user?.id ?? null),
+  ]);
   const years = wins.map((w) => w.year);
   const minYear = years.length ? Math.min(...years) : 1929;
   const maxYear = years.length ? Math.max(...years) : new Date().getFullYear();
@@ -23,6 +26,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       initialPinnedYear={pinnedYear}
       requestedYear={Number.isFinite(requestedYear) ? requestedYear : null}
       user={user ? { username: user.username } : null}
+      lockWatched={lockWatched}
     />
   );
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getListById, getListBySlug, getListFilms, getListSummaries, getPinnedYear } from '@/db/queries';
+import { getListById, getListBySlug, getListFilms, getListSummaries, getUserSettings } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import QuickNav from '@/components/QuickNav';
 import ListCard from '@/components/ListCard';
@@ -19,9 +19,9 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
   const list = await getListBySlug(slug);
   if (!list) notFound();
 
-  const [parent, pinnedYear, sublists, films] = await Promise.all([
+  const [parent, { pinnedYear, lockWatched }, sublists, films] = await Promise.all([
     list.parentId === null ? null : getListById(list.parentId),
-    getPinnedYear(userId),
+    getUserSettings(userId),
     list.kind === 'lists' ? getListSummaries(list.id, userId) : [],
     list.kind === 'films' ? getListFilms(list, userId) : [],
   ]);
@@ -74,7 +74,7 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
             sublists.map((sublist) => <ListCard key={sublist.id} list={sublist} />)
           )
         ) : (
-          <ListFilms films={films} isLoggedIn={!!user} backHref={`/lists/${list.slug}`} />
+          <ListFilms films={films} isLoggedIn={!!user} lockWatched={lockWatched} backHref={`/lists/${list.slug}`} />
         )}
       </div>
     </main>

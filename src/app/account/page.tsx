@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
-import { getAllAwards, getAllWins, getPinnedYear } from '@/db/queries';
+import { getAllAwards, getAllWins, getUserSettings } from '@/db/queries';
 import { AWARD_ABBR, capitalizeWords } from '@/lib/format';
 import StatTile from '@/components/StatTile';
 import ThemeSettings from '@/components/ThemeSettings';
+import LockWatchedSetting from '@/components/LockWatchedSetting';
 import LogoutButton from '@/components/LogoutButton';
 import QuickNav from '@/components/QuickNav';
 
@@ -17,7 +18,11 @@ export default async function AccountPage() {
   if (!user) redirect('/login');
   requireUpToDatePassword(user);
 
-  const [wins, awards, pinnedYear] = await Promise.all([getAllWins(user.id), getAllAwards(), getPinnedYear(user.id)]);
+  const [wins, awards, { pinnedYear, lockWatched }] = await Promise.all([
+    getAllWins(user.id),
+    getAllAwards(),
+    getUserSettings(user.id),
+  ]);
 
   // e.g. "Berlin · Golden Bear, …, Oscar · Int’l Feature and Venice · Golden
   // Lion", alphabetically.
@@ -68,6 +73,11 @@ export default async function AccountPage() {
         <div className="mb-8">
           <h2 className="text-sm font-semibold text-neutral-500 mb-2">Theme</h2>
           <ThemeSettings />
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-sm font-semibold text-neutral-500 mb-2">Watched</h2>
+          <LockWatchedSetting initialLockWatched={lockWatched} />
         </div>
 
         <LogoutButton />
