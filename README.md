@@ -123,8 +123,16 @@ list of sublists, nested under its `lists` key, in display order):
 ```
 
 A films list with `"rule": "owned"` is computed per logged-in user: every film
-they've marked as owned in any format. Storing a fixed set of films in a list
-isn't supported yet.
+they've marked as owned in any format.
+
+A films list without a rule holds a fixed set of films, read from the file its
+`films` key names in `src/db/seed/lists/` (e.g. `bbc-21st-century-100.json`).
+That file is an array of films in display order, each with an optional `rank`
+(tied films share one). An entry with only `title` and `releaseYear` refers to
+a film already in an award file; any other entry carries the film's full data,
+like an award winner, and adds a list-only film to the catalog. List-only films
+get a detail page and watched/owned status but have no award wins, so they
+don't appear on the year/Movies pages or count toward their progress.
 
 ## Adding users
 
@@ -184,11 +192,12 @@ src/app/                    pages + the film-status/auth Route Handlers
 src/lib/auth.ts              sessions, cookies, getCurrentUser()
 src/lib/password.ts          password hashing/verification/policy (no Next.js deps)
 src/proxy.ts                 redirect to /change-password while pending
-src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status, lists)
+src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status, lists, list_films)
 src/db/client.ts             pg Pool + drizzle()
 src/db/queries.ts            read queries used by Server Components
 src/db/seed/*.json            per-award seed data
 src/db/seed/lists/lists.json  list definitions (see "Lists")
+src/db/seed/lists/*.json      films of fixed lists
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
 scripts/create-user.ts        adds a new user (see "Adding users")

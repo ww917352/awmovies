@@ -148,7 +148,8 @@ export const listRuleValues = ['owned'] as const;
 // nested via parentId — a 'lists' list's sublists are the rows pointing at
 // it. A films list with a `rule` is computed per viewer instead of stored:
 // 'owned' is every film the logged-in user has an owned format for (see
-// getListFilms in queries.ts). Lists are defined in src/db/seed/lists/.
+// getListFilms in queries.ts). A films list without a rule holds a fixed set
+// of films in listFilms. Lists are defined in src/db/seed/lists/.
 export const lists = pgTable(
   'lists',
   {
@@ -156,6 +157,7 @@ export const lists = pgTable(
     slug: varchar('slug', { length: 64 }).notNull().unique(),
     title: text('title').notNull(),
     description: text('description'),
+    sourceUrl: text('source_url'),
     kind: varchar('kind', { length: 8, enum: listKindValues }).notNull(),
     rule: varchar('rule', { length: 16, enum: listRuleValues }),
     parentId: integer('parent_id').references((): AnyPgColumn => lists.id, { onDelete: 'cascade' }),
@@ -165,6 +167,26 @@ export const lists = pgTable(
     kindCheck: check('lists_kind_check', sql`${table.kind} in ('films', 'lists')`),
     ruleCheck: check('lists_rule_check', sql`${table.rule} is null or (${table.kind} = 'films' and ${table.rule} in ('owned'))`),
     parentIdx: index('lists_parent_id_idx').on(table.parentId),
+  })
+);
+
+// The films in a fixed (rule-less) films list. `rank` is the film's place on
+// the list as published — tied films share a rank — and `position` is the
+// display order, which also breaks ties.
+export const listFilms = pgTable(
+  'list_films',
+  {
+    listId: integer('list_id')
+      .notNull()
+      .references(() => lists.id, { onDelete: 'cascade' }),
+    filmId: integer('film_id')
+      .notNull()
+      .references(() => films.id, { onDelete: 'cascade' }),
+    rank: integer('rank'),
+    position: integer('position').notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.listId, table.filmId] }),
   })
 );
 

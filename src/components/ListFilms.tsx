@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { FilmWithWins } from '@/db/queries';
+import type { ListFilm } from '@/db/queries';
 import FilmRow from './FilmRow';
 import WatchedProgress from './WatchedProgress';
 import WinLabel from './WinLabel';
@@ -12,7 +12,7 @@ export default function ListFilms({
   isLoggedIn,
   backHref,
 }: {
-  films: FilmWithWins[];
+  films: ListFilm[];
   isLoggedIn: boolean;
   backHref: string;
 }) {
@@ -63,6 +63,9 @@ export default function ListFilms({
             status={f.status}
             label={
               <span className="flex flex-wrap gap-x-3">
+                {f.rank !== null && (
+                  <span className="text-neutral-700 dark:text-neutral-300 font-semibold">No. {f.rank}</span>
+                )}
                 {f.wins.map((w) => (
                   <WinLabel key={`${w.awardSlug}-${w.year}`} year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
                 ))}

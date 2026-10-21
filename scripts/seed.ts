@@ -29,18 +29,45 @@ type SeedFile = {
   wins: SeedWin[];
 };
 
-// Nested: a 'lists' entry's `lists` are its sublists, in display order.
+type SeedFilm = Omit<SeedWin, 'year' | 'editionLabel'>;
+
+// Nested: a 'lists' entry's `lists` are its sublists, in display order. A
+// films entry without a `rule` names a `films` file in src/db/seed/lists/
+// holding its films, in display order.
 type SeedList = {
   slug: string;
   title: string;
   description?: string;
+  sourceUrl?: string;
   kind: (typeof schema.listKindValues)[number];
   rule?: (typeof schema.listRuleValues)[number];
+  films?: string;
   lists?: SeedList[];
 };
 
+// An entry with just title + releaseYear refers to a film already seeded from
+// the award files, so its data lives in one place; any other entry carries
+// the film's full data and is upserted like an award winner.
+type SeedListFilm = { rank?: number; title: string; releaseYear: number } & Partial<SeedFilm>;
+
 const SEED_DIR = path.join(__dirname, '../src/db/seed');
-const LISTS_FILE = path.join(SEED_DIR, 'lists/lists.json');
+const LISTS_DIR = path.join(SEED_DIR, 'lists');
+const LISTS_FILE = path.join(LISTS_DIR, 'lists.json');
+
+function filmValues(film: SeedFilm) {
+  return {
+    originalTitle: film.originalTitle ?? null,
+    directors: film.directors ?? [],
+    studios: film.studios ?? [],
+    mainCast: film.mainCast ?? [],
+    wikiUrl: film.wikiUrl ?? null,
+    letterboxdUrl: film.letterboxdUrl ?? null,
+    letterboxdUnverified: film.letterboxdUnverified ?? false,
+    appleTvUrl: film.appleTvUrl ?? null,
+    posterUrl: film.posterUrl ?? null,
+    plotSummary: film.plotSummary ?? null,
+  };
+}
 
 async function main() {
   if (!process.env.DATABASE_URL) {
@@ -51,6 +78,16 @@ async function main() {
   const db = drizzle(pool, { schema });
 
   const files = readdirSync(SEED_DIR).filter((f) => f.endsWith('.json'));
+
+  async function upsertFilm(film: SeedFilm) {
+    const values = filmValues(film);
+    const [row] = await db
+      .insert(schema.films)
+      .values({ title: film.title, releaseYear: film.releaseYear, ...values })
+      .onConflictDoUpdate({ target: [schema.films.title, schema.films.releaseYear], set: values })
+      .returning();
+    return row;
+  }
 
   let awardCount = 0;
   let filmCount = 0;
@@ -71,38 +108,7 @@ async function main() {
     awardCount++;
 
     for (const win of data.wins) {
-      const [film] = await db
-        .insert(schema.films)
-        .values({
-          title: win.title,
-          originalTitle: win.originalTitle ?? null,
-          releaseYear: win.releaseYear,
-          directors: win.directors ?? [],
-          studios: win.studios ?? [],
-          mainCast: win.mainCast ?? [],
-          wikiUrl: win.wikiUrl ?? null,
-          letterboxdUrl: win.letterboxdUrl ?? null,
-          letterboxdUnverified: win.letterboxdUnverified ?? false,
-          appleTvUrl: win.appleTvUrl ?? null,
-          posterUrl: win.posterUrl ?? null,
-          plotSummary: win.plotSummary ?? null,
-        })
-        .onConflictDoUpdate({
-          target: [schema.films.title, schema.films.releaseYear],
-          set: {
-            originalTitle: win.originalTitle ?? null,
-            directors: win.directors ?? [],
-            studios: win.studios ?? [],
-            mainCast: win.mainCast ?? [],
-            wikiUrl: win.wikiUrl ?? null,
-            letterboxdUrl: win.letterboxdUrl ?? null,
-            letterboxdUnverified: win.letterboxdUnverified ?? false,
-            appleTvUrl: win.appleTvUrl ?? null,
-            posterUrl: win.posterUrl ?? null,
-            plotSummary: win.plotSummary ?? null,
-          },
-        })
-        .returning();
+      const film = await upsertFilm(win);
       filmCount++;
 
       const existing = await db
@@ -133,15 +139,44 @@ async function main() {
   // so lists dropped from the file are deleted rather than left orphaned.
   const seedLists: SeedList[] = JSON.parse(readFileSync(LISTS_FILE, 'utf-8'));
   const listSlugs: string[] = [];
+  let listFilmCount = 0;
+
+  // Replaces the list's films with the file's, so films dropped from the file
+  // leave the list (the films themselves stay in the catalog).
+  async function seedListFilms(listId: number, file: string) {
+    const entries: SeedListFilm[] = JSON.parse(readFileSync(path.join(LISTS_DIR, file), 'utf-8'));
+    const rows: (typeof schema.listFilms.$inferInsert)[] = [];
+    for (const [position, entry] of entries.entries()) {
+      let filmId: number;
+      if (entry.directors) {
+        filmId = (await upsertFilm(entry as SeedFilm)).id;
+      } else {
+        const [film] = await db
+          .select({ id: schema.films.id })
+          .from(schema.films)
+          .where(and(eq(schema.films.title, entry.title), eq(schema.films.releaseYear, entry.releaseYear)));
+        if (!film) throw new Error(`${file}: "${entry.title}" (${entry.releaseYear}) isn't in the catalog`);
+        filmId = film.id;
+      }
+      rows.push({ listId, filmId, rank: entry.rank ?? null, position });
+    }
+    await db.delete(schema.listFilms).where(eq(schema.listFilms.listId, listId));
+    if (rows.length) await db.insert(schema.listFilms).values(rows);
+    listFilmCount += rows.length;
+  }
 
   async function upsertLists(entries: SeedList[], parentId: number | null) {
     for (const [position, entry] of entries.entries()) {
       if (entry.kind !== 'lists' && entry.lists?.length) {
         throw new Error(`List "${entry.slug}" has sublists but kind "${entry.kind}"`);
       }
+      if (entry.films && (entry.kind !== 'films' || entry.rule)) {
+        throw new Error(`List "${entry.slug}" has a films file but isn't a rule-less films list`);
+      }
       const values = {
         title: entry.title,
         description: entry.description ?? null,
+        sourceUrl: entry.sourceUrl ?? null,
         kind: entry.kind,
         rule: entry.rule ?? null,
         parentId,
@@ -153,6 +188,7 @@ async function main() {
         .onConflictDoUpdate({ target: schema.lists.slug, set: values })
         .returning();
       listSlugs.push(entry.slug);
+      if (entry.films) await seedListFilms(list.id, entry.films);
       await upsertLists(entry.lists ?? [], list.id);
     }
   }
@@ -161,7 +197,7 @@ async function main() {
   await db.delete(schema.lists).where(notInArray(schema.lists.slug, listSlugs));
 
   console.log(
-    `Seeded ${awardCount} awards, ${filmCount} film entries, ${winCount} wins, ${listSlugs.length} lists.`
+    `Seeded ${awardCount} awards, ${filmCount} film entries, ${winCount} wins, ${listSlugs.length} lists with ${listFilmCount} films.`
   );
   await pool.end();
 }
