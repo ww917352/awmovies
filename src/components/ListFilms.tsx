@@ -17,18 +17,20 @@ export default function ListFilms({
   backHref: string;
 }) {
   const [search, setSearch] = useState('');
+  const [unwatchedOnly, setUnwatchedOnly] = useState(false);
 
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return films;
-    return films.filter((f) =>
-      [f.title, f.originalTitle, ...f.directors, ...f.mainCast, ...f.studios]
+    return films.filter((f) => {
+      if (unwatchedOnly && f.status.watched) return false;
+      if (!query) return true;
+      return [f.title, f.originalTitle, ...f.directors, ...f.mainCast, ...f.studios]
         .filter(Boolean)
         .join(' ')
         .toLowerCase()
-        .includes(query)
-    );
-  }, [films, search]);
+        .includes(query);
+    });
+  }, [films, search, unwatchedOnly]);
 
   const initialWatchedMap = useMemo(() => Object.fromEntries(films.map((f) => [f.id, f.status.watched])), [films]);
   const filmIds = useMemo(() => films.map((f) => f.id), [films]);
@@ -41,7 +43,7 @@ export default function ListFilms({
     <FilmWatchedProvider initial={initialWatchedMap}>
       {isLoggedIn && <WatchedProgress filmIds={filmIds} />}
 
-      <div className="mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
+      <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
         <input
           type="search"
           value={search}
@@ -49,12 +51,24 @@ export default function ListFilms({
           placeholder="Search title, director, cast…"
           className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base w-full"
         />
+
+        {isLoggedIn && (
+          <label className="flex items-center gap-1.5 text-sm cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={unwatchedOnly}
+              onChange={(e) => setUnwatchedOnly(e.target.checked)}
+              className="accent-emerald-500"
+            />
+            Unwatched only
+          </label>
+        )}
       </div>
 
       <p className="text-sm text-neutral-500 mb-3">{filtered.length} films</p>
 
       {filtered.length === 0 ? (
-        <p className="text-neutral-500 text-center py-8">No films match this search.</p>
+        <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
       ) : (
         filtered.map((f) => (
           <FilmRow
