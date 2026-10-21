@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { getAllWins, getPinnedYear } from '@/db/queries';
@@ -44,10 +45,18 @@ export default async function AccountPage() {
       <main className="mx-auto max-w-sm px-4 pt-20 pb-16">
         <h1 className="text-2xl font-bold mb-6">{capitalizeWords(user.username)}</h1>
 
-        <div className="flex flex-col gap-3 mb-8">
-          <StatTile label="Movies watched" value={watchedFilms} total={totalFilms} color="emerald" />
-          <StatTile label="Years completed" value={completedYears} total={totalYears} color="sky" />
+        <div className="flex flex-col gap-3 mb-3">
+          <StatTile label="Award winners watched" value={watchedFilms} total={totalFilms} color="emerald" />
+          <StatTile label="Award years completed" value={completedYears} total={totalYears} color="sky" />
         </div>
+        <p className="text-sm text-neutral-500 mb-8">
+          Only winners of the five awards count here: the Oscars for Best Picture and International Feature, the
+          Palme d’Or, the Golden Lion and the Golden Bear. Each{' '}
+          <Link href="/lists" prefetch={false} className="text-sky-600 dark:text-sky-400 hover:underline">
+            list
+          </Link>{' '}
+          shows its own progress.
+        </p>
 
         <div className="mb-8">
           <h2 className="text-sm font-semibold text-neutral-500 mb-2">Theme</h2>

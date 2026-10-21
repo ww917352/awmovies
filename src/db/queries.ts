@@ -1,6 +1,6 @@
 import { db } from './client';
 import { awards, awardWins, films, filmStatus, listFilms, lists, userSettings } from './schema';
-import { and, asc, count, eq, gt, inArray, isNull, min, max, sql } from 'drizzle-orm';
+import { and, asc, count, eq, gt, inArray, isNull, min, max, notExists, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
   id: number;
@@ -239,6 +239,75 @@ export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
       digitalQuality: row.digitalQuality,
     },
   }));
+}
+
+// Films with no award win — they're in the catalog only because a list holds
+// them — with the lists they're in, for the Movies page.
+export type ListOnlyEntry = Pick<WinEntry, 'film' | 'status'> & {
+  lists: { slug: string; title: string; rank: number | null }[];
+};
+
+export async function getListOnlyFilms(userId: number | null): Promise<ListOnlyEntry[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
+
+  const rows = await db
+    .select({
+      filmId: films.id,
+      title: films.title,
+      originalTitle: films.originalTitle,
+      releaseYear: films.releaseYear,
+      directors: films.directors,
+      studios: films.studios,
+      mainCast: films.mainCast,
+      wikiUrl: films.wikiUrl,
+      letterboxdUrl: films.letterboxdUrl,
+      letterboxdUnverified: films.letterboxdUnverified,
+      appleTvUrl: films.appleTvUrl,
+      watched: filmStatus.watched,
+      ownedFormats: filmStatus.ownedFormats,
+      digitalQuality: filmStatus.digitalQuality,
+      listSlug: lists.slug,
+      listTitle: lists.title,
+      rank: listFilms.rank,
+    })
+    .from(films)
+    .innerJoin(listFilms, eq(listFilms.filmId, films.id))
+    .innerJoin(lists, eq(lists.id, listFilms.listId))
+    .leftJoin(filmStatus, statusJoinCondition)
+    .where(notExists(db.select({ id: awardWins.id }).from(awardWins).where(eq(awardWins.filmId, films.id))))
+    .orderBy(films.releaseYear, films.title, lists.position);
+
+  const byFilm = new Map<number, ListOnlyEntry>();
+  for (const row of rows) {
+    let entry = byFilm.get(row.filmId);
+    if (!entry) {
+      entry = {
+        film: {
+          id: row.filmId,
+          title: row.title,
+          originalTitle: row.originalTitle,
+          releaseYear: row.releaseYear,
+          directors: row.directors,
+          studios: row.studios,
+          mainCast: row.mainCast,
+          wikiUrl: row.wikiUrl,
+          letterboxdUrl: row.letterboxdUrl,
+          letterboxdUnverified: row.letterboxdUnverified,
+          appleTvUrl: row.appleTvUrl,
+        },
+        status: {
+          watched: row.watched ?? false,
+          ownedFormats: row.ownedFormats ?? [],
+          digitalQuality: row.digitalQuality,
+        },
+        lists: [],
+      };
+      byFilm.set(row.filmId, entry);
+    }
+    entry.lists.push({ slug: row.listSlug, title: row.listTitle, rank: row.rank });
+  }
+  return Array.from(byFilm.values());
 }
 
 export async function getYearRange(): Promise<{ minYear: number; maxYear: number }> {
