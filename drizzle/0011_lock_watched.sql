@@ -1,0 +1,1 @@
+ALTER TABLE "user_settings" ADD COLUMN "lock_watched" boolean DEFAULT false NOT NULL;

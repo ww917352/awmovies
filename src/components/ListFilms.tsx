@@ -11,10 +11,12 @@ import UnwatchedOnlyToggle from './UnwatchedOnlyToggle';
 export default function ListFilms({
   films,
   isLoggedIn,
+  lockWatched,
   backHref,
 }: {
   films: ListFilm[];
   isLoggedIn: boolean;
+  lockWatched: boolean;
   backHref: string;
 }) {
   const [search, setSearch] = useState('');
@@ -41,7 +43,7 @@ export default function ListFilms({
   }
 
   return (
-    <FilmWatchedProvider initial={initialWatchedMap}>
+    <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
       {isLoggedIn && <WatchedProgress filmIds={filmIds} />}
 
       <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">

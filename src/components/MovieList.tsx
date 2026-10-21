@@ -31,6 +31,7 @@ export default function MovieList({
   awards,
   pinnedYear,
   user,
+  lockWatched,
 }: {
   wins: WinEntry[];
   listOnlyFilms: ListOnlyEntry[];
@@ -38,6 +39,7 @@ export default function MovieList({
   awards: Award[];
   pinnedYear: number | null;
   user: { username: string } | null;
+  lockWatched: boolean;
 }) {
   const [awardSlug, setAwardSlug] = useState('all');
   const [year, setYear] = useState('all');
@@ -116,7 +118,7 @@ export default function MovieList({
   );
 
   return (
-    <FilmWatchedProvider initial={initialWatchedMap}>
+    <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
     <QuickNav
       className="fixed inset-x-0 top-0 z-20"
       targetYear={pinnedYear ?? DEFAULT_YEAR}
