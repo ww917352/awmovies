@@ -64,6 +64,13 @@
       "when": 1789111422516,
       "tag": "0008_shallow_hydra",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1792568025987,
+      "tag": "0009_lists",
+      "breakpoints": true
     }
   ]
 }

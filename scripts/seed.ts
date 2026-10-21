@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, notInArray } from 'drizzle-orm';
 import * as schema from '../src/db/schema';
 
 type SeedWin = {
@@ -29,7 +29,18 @@ type SeedFile = {
   wins: SeedWin[];
 };
 
+// Nested: a 'lists' entry's `lists` are its sublists, in display order.
+type SeedList = {
+  slug: string;
+  title: string;
+  description?: string;
+  kind: (typeof schema.listKindValues)[number];
+  rule?: (typeof schema.listRuleValues)[number];
+  lists?: SeedList[];
+};
+
 const SEED_DIR = path.join(__dirname, '../src/db/seed');
+const LISTS_FILE = path.join(SEED_DIR, 'lists/lists.json');
 
 async function main() {
   if (!process.env.DATABASE_URL) {
@@ -118,7 +129,40 @@ async function main() {
     }
   }
 
-  console.log(`Seeded ${awardCount} awards, ${filmCount} film entries, ${winCount} wins.`);
+  // lists.json is the source of truth for lists (they hold no user data),
+  // so lists dropped from the file are deleted rather than left orphaned.
+  const seedLists: SeedList[] = JSON.parse(readFileSync(LISTS_FILE, 'utf-8'));
+  const listSlugs: string[] = [];
+
+  async function upsertLists(entries: SeedList[], parentId: number | null) {
+    for (const [position, entry] of entries.entries()) {
+      if (entry.kind !== 'lists' && entry.lists?.length) {
+        throw new Error(`List "${entry.slug}" has sublists but kind "${entry.kind}"`);
+      }
+      const values = {
+        title: entry.title,
+        description: entry.description ?? null,
+        kind: entry.kind,
+        rule: entry.rule ?? null,
+        parentId,
+        position,
+      };
+      const [list] = await db
+        .insert(schema.lists)
+        .values({ slug: entry.slug, ...values })
+        .onConflictDoUpdate({ target: schema.lists.slug, set: values })
+        .returning();
+      listSlugs.push(entry.slug);
+      await upsertLists(entry.lists ?? [], list.id);
+    }
+  }
+
+  await upsertLists(seedLists, null);
+  await db.delete(schema.lists).where(notInArray(schema.lists.slug, listSlugs));
+
+  console.log(
+    `Seeded ${awardCount} awards, ${filmCount} film entries, ${winCount} wins, ${listSlugs.length} lists.`
+  );
   await pool.end();
 }
 

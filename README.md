@@ -108,6 +108,24 @@ JSON (then re-run `npm run seed`) as you notice wrong ones.
 Re-run `npm run seed` any time after editing/adding seed JSON files to apply
 the changes.
 
+### Lists
+
+Lists (the "Lists" menu) are defined in `src/db/seed/lists/lists.json`, which
+`npm run seed` treats as the source of truth — lists removed from the file are
+deleted. A list's `kind` is either `films` (a list of movies) or `lists` (a
+list of sublists, nested under its `lists` key, in display order):
+
+```json
+[
+  { "slug": "owned", "title": "Movies I Own", "kind": "films", "rule": "owned" },
+  { "slug": "critics", "title": "Critics' Picks", "kind": "lists", "lists": [] }
+]
+```
+
+A films list with `"rule": "owned"` is computed per logged-in user: every film
+they've marked as owned in any format. Storing a fixed set of films in a list
+isn't supported yet.
+
 ## Adding users
 
 There's no registration UI. To add a friend, pick a username and either give
@@ -166,10 +184,11 @@ src/app/                    pages + the film-status/auth Route Handlers
 src/lib/auth.ts              sessions, cookies, getCurrentUser()
 src/lib/password.ts          password hashing/verification/policy (no Next.js deps)
 src/proxy.ts                 redirect to /change-password while pending
-src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status)
+src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status, lists)
 src/db/client.ts             pg Pool + drizzle()
 src/db/queries.ts            read queries used by Server Components
 src/db/seed/*.json            per-award seed data
+src/db/seed/lists/lists.json  list definitions (see "Lists")
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
 scripts/create-user.ts        adds a new user (see "Adding users")
