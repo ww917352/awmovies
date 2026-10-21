@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
-import { getAllWins, getPinnedYear } from '@/db/queries';
-import { capitalizeWords } from '@/lib/format';
+import { getAllAwards, getAllWins, getPinnedYear } from '@/db/queries';
+import { AWARD_ABBR, capitalizeWords } from '@/lib/format';
 import StatTile from '@/components/StatTile';
 import ThemeSettings from '@/components/ThemeSettings';
 import LogoutButton from '@/components/LogoutButton';
@@ -16,7 +17,15 @@ export default async function AccountPage() {
   if (!user) redirect('/login');
   requireUpToDatePassword(user);
 
-  const [wins, pinnedYear] = await Promise.all([getAllWins(user.id), getPinnedYear(user.id)]);
+  const [wins, awards, pinnedYear] = await Promise.all([getAllWins(user.id), getAllAwards(), getPinnedYear(user.id)]);
+
+  // e.g. "Berlin · Golden Bear, …, Oscar · Int’l Feature and Venice · Golden
+  // Lion", alphabetically.
+  const awardNames = awards
+    .map((a) => AWARD_ABBR[a.slug] ?? a.name)
+    .sort((a, b) => a.localeCompare(b));
+  const awardList =
+    awardNames.length > 1 ? `${awardNames.slice(0, -1).join(', ')} and ${awardNames.at(-1)}` : (awardNames[0] ?? '');
 
   const filmWatched = new Map<number, boolean>();
   for (const w of wins) filmWatched.set(w.film.id, w.status.watched);
@@ -44,10 +53,17 @@ export default async function AccountPage() {
       <main className="mx-auto max-w-sm px-4 pt-20 pb-16">
         <h1 className="text-2xl font-bold mb-6">{capitalizeWords(user.username)}</h1>
 
-        <div className="flex flex-col gap-3 mb-8">
-          <StatTile label="Movies watched" value={watchedFilms} total={totalFilms} color="emerald" />
-          <StatTile label="Years completed" value={completedYears} total={totalYears} color="sky" />
+        <div className="flex flex-col gap-3 mb-3">
+          <StatTile label="Award winners watched" value={watchedFilms} total={totalFilms} color="emerald" />
+          <StatTile label="Award years completed" value={completedYears} total={totalYears} color="sky" />
         </div>
+        <p className="text-sm text-neutral-500 mb-8">
+          Only winners of the {awards.length} awards count here: {awardList}. Each{' '}
+          <Link href="/lists" prefetch={false} className="text-sky-600 dark:text-sky-400 hover:underline">
+            list
+          </Link>{' '}
+          shows its own progress.
+        </p>
 
         <div className="mb-8">
           <h2 className="text-sm font-semibold text-neutral-500 mb-2">Theme</h2>

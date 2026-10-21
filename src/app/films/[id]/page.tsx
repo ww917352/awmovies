@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getFilmById } from '@/db/queries';
+import { getFilmById, getListMemberships } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { toSafeRelativePath } from '@/lib/safe-path';
 import StatusControls from '@/components/StatusControls';
@@ -20,8 +20,9 @@ export default async function FilmDetailPage({
 
   const user = await getCurrentUser();
   requireUpToDatePassword(user);
-  const film = await getFilmById(id, user?.id ?? null);
+  const [film, memberships] = await Promise.all([getFilmById(id, user?.id ?? null), getListMemberships(id)]);
   if (!film) notFound();
+  const filmLists = memberships[film.id] ?? [];
 
   const { back } = await searchParams;
   const backHref = toSafeRelativePath(back);
@@ -62,6 +63,17 @@ export default async function FilmDetailPage({
               >
                 {w.awardName} &mdash; {w.editionLabel ?? w.year}
               </span>
+            ))}
+            {filmLists.map((l) => (
+              <Link
+                key={l.slug}
+                href={`/lists/${l.slug}`}
+                prefetch={false}
+                className="text-xs bg-sky-50 border border-sky-200 dark:bg-sky-950 dark:border-sky-800 rounded-full px-2 py-0.5 text-sky-700 dark:text-sky-300 hover:underline"
+              >
+                {l.title}
+                {l.rank !== null && <> &mdash; No. {l.rank}</>}
+              </Link>
             ))}
           </div>
 

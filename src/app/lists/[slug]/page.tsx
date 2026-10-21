@@ -48,6 +48,16 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
 
       <h1 className="text-2xl font-bold mt-2">{list.title}</h1>
       {list.description && <p className="text-neutral-600 dark:text-neutral-400 mt-1">{list.description}</p>}
+      {list.sourceUrl && (
+        <a
+          href={list.sourceUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block text-sm text-sky-600 dark:text-sky-400 hover:underline mt-1"
+        >
+          Source
+        </a>
+      )}
 
       <div className="mt-4">
         {needsLogin ? (

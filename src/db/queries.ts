@@ -1,6 +1,6 @@
 import { db } from './client';
-import { awards, awardWins, films, filmStatus, lists, userSettings } from './schema';
-import { and, asc, count, eq, gt, inArray, isNull, min, max, sql } from 'drizzle-orm';
+import { awards, awardWins, films, filmStatus, listFilms, lists, userSettings } from './schema';
+import { and, asc, count, eq, exists, gt, inArray, isNull, min, max, notExists, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
   id: number;
@@ -40,10 +40,11 @@ export async function getAllAwards() {
 // one film via a real SQL WHERE instead of loading every film and filtering
 // in JS (getFilmById used to call getAllFilms() and .find(), joining the
 // entire catalogue to return a single row); `ownedOnly` likewise keeps only
-// films the user owns in some format.
+// films the user owns in some format, and `listId` only the films in that
+// fixed list.
 async function selectFilmsWithWins(
   userId: number | null,
-  { filmId, ownedOnly = false }: { filmId?: number; ownedOnly?: boolean } = {}
+  { filmId, ownedOnly = false, listId }: { filmId?: number; ownedOnly?: boolean; listId?: number } = {}
 ): Promise<FilmWithWins[]> {
   const statusJoinCondition =
     userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
@@ -81,7 +82,10 @@ async function selectFilmsWithWins(
     .where(
       and(
         filmId === undefined ? undefined : eq(films.id, filmId),
-        ownedOnly ? gt(sql`cardinality(${filmStatus.ownedFormats})`, 0) : undefined
+        ownedOnly ? gt(sql`cardinality(${filmStatus.ownedFormats})`, 0) : undefined,
+        listId === undefined
+          ? undefined
+          : inArray(films.id, db.select({ id: listFilms.filmId }).from(listFilms).where(eq(listFilms.listId, listId)))
       )
     );
 
@@ -237,6 +241,81 @@ export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
   }));
 }
 
+// A film's place in a fixed list, for showing which lists a film is in.
+export type ListMembership = { slug: string; title: string; rank: number | null };
+
+// The fixed lists each film is in (rule-based lists like 'owned' aren't
+// stored per film), keyed by film id — for one film when `filmId` is given.
+export async function getListMemberships(filmId?: number): Promise<Record<number, ListMembership[]>> {
+  const rows = await db
+    .select({ filmId: listFilms.filmId, slug: lists.slug, title: lists.title, rank: listFilms.rank })
+    .from(listFilms)
+    .innerJoin(lists, eq(lists.id, listFilms.listId))
+    .where(filmId === undefined ? undefined : eq(listFilms.filmId, filmId))
+    .orderBy(asc(lists.position), asc(lists.title));
+
+  const byFilm: Record<number, ListMembership[]> = {};
+  for (const { filmId, ...membership } of rows) (byFilm[filmId] ??= []).push(membership);
+  return byFilm;
+}
+
+// Films with no award win — they're in the catalog only because a list holds
+// them — for the Movies page, in release order.
+export type ListOnlyEntry = Pick<WinEntry, 'film' | 'status'>;
+
+export async function getListOnlyFilms(userId: number | null): Promise<ListOnlyEntry[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
+
+  const rows = await db
+    .select({
+      filmId: films.id,
+      title: films.title,
+      originalTitle: films.originalTitle,
+      releaseYear: films.releaseYear,
+      directors: films.directors,
+      studios: films.studios,
+      mainCast: films.mainCast,
+      wikiUrl: films.wikiUrl,
+      letterboxdUrl: films.letterboxdUrl,
+      letterboxdUnverified: films.letterboxdUnverified,
+      appleTvUrl: films.appleTvUrl,
+      watched: filmStatus.watched,
+      ownedFormats: filmStatus.ownedFormats,
+      digitalQuality: filmStatus.digitalQuality,
+    })
+    .from(films)
+    .leftJoin(filmStatus, statusJoinCondition)
+    .where(
+      and(
+        notExists(db.select({ id: awardWins.id }).from(awardWins).where(eq(awardWins.filmId, films.id))),
+        exists(db.select({ id: listFilms.listId }).from(listFilms).where(eq(listFilms.filmId, films.id)))
+      )
+    )
+    .orderBy(films.releaseYear, films.title);
+
+  return rows.map((row) => ({
+    film: {
+      id: row.filmId,
+      title: row.title,
+      originalTitle: row.originalTitle,
+      releaseYear: row.releaseYear,
+      directors: row.directors,
+      studios: row.studios,
+      mainCast: row.mainCast,
+      wikiUrl: row.wikiUrl,
+      letterboxdUrl: row.letterboxdUrl,
+      letterboxdUnverified: row.letterboxdUnverified,
+      appleTvUrl: row.appleTvUrl,
+    },
+    status: {
+      watched: row.watched ?? false,
+      ownedFormats: row.ownedFormats ?? [],
+      digitalQuality: row.digitalQuality,
+    },
+  }));
+}
+
 export async function getYearRange(): Promise<{ minYear: number; maxYear: number }> {
   const [row] = await db.select({ minYear: min(awardWins.year), maxYear: max(awardWins.year) }).from(awardWins);
   const currentYear = new Date().getFullYear();
@@ -294,6 +373,17 @@ export async function getListSummaries(parentId: number | null, userId: number |
     for (const c of counts) childCounts.set(c.parentId!, c.n);
   }
 
+  const fixedIds = rows.filter((l) => l.kind === 'films' && l.rule === null).map((l) => l.id);
+  const filmCounts = new Map<number, number>();
+  if (fixedIds.length) {
+    const counts = await db
+      .select({ listId: listFilms.listId, n: count() })
+      .from(listFilms)
+      .where(inArray(listFilms.listId, fixedIds))
+      .groupBy(listFilms.listId);
+    for (const c of counts) filmCounts.set(c.listId, c.n);
+  }
+
   let ownedCount: number | null = null;
   if (userId !== null && rows.some((l) => l.rule === 'owned')) {
     const [row] = await db
@@ -305,14 +395,37 @@ export async function getListSummaries(parentId: number | null, userId: number |
 
   return rows.map((l) => ({
     ...l,
-    itemCount: l.kind === 'lists' ? (childCounts.get(l.id) ?? 0) : l.rule === 'owned' ? ownedCount : 0,
+    itemCount:
+      l.kind === 'lists' ? (childCounts.get(l.id) ?? 0) : l.rule === 'owned' ? ownedCount : (filmCounts.get(l.id) ?? 0),
   }));
 }
 
-// The films in a films list, sorted by title. Only rule-based lists exist so
-// far, so a list without a rule has no films yet.
-export async function getListFilms(list: List, userId: number | null): Promise<FilmWithWins[]> {
-  if (list.rule !== 'owned' || userId === null) return [];
-  const owned = await selectFilmsWithWins(userId, { ownedOnly: true });
-  return owned.sort((a, b) => a.title.localeCompare(b.title) || a.releaseYear - b.releaseYear);
+// A film in a films list; `rank` is its place on a ranked fixed list (shared
+// by tied films), null on a rule-based list.
+export type ListFilm = FilmWithWins & { rank: number | null };
+
+// The films in a films list: an 'owned' list sorted by title, a fixed list in
+// its stored order.
+export async function getListFilms(list: List, userId: number | null): Promise<ListFilm[]> {
+  if (list.rule === 'owned') {
+    if (userId === null) return [];
+    const owned = await selectFilmsWithWins(userId, { ownedOnly: true });
+    return owned
+      .sort((a, b) => a.title.localeCompare(b.title) || a.releaseYear - b.releaseYear)
+      .map((f) => ({ ...f, rank: null }));
+  }
+
+  const [entries, filmsInList] = await Promise.all([
+    db
+      .select({ filmId: listFilms.filmId, rank: listFilms.rank })
+      .from(listFilms)
+      .where(eq(listFilms.listId, list.id))
+      .orderBy(asc(listFilms.position)),
+    selectFilmsWithWins(userId, { listId: list.id }),
+  ]);
+  const byId = new Map(filmsInList.map((f) => [f.id, f]));
+  return entries.flatMap((e) => {
+    const film = byId.get(e.filmId);
+    return film ? [{ ...film, rank: e.rank }] : [];
+  });
 }

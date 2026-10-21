@@ -123,8 +123,20 @@ list of sublists, nested under its `lists` key, in display order):
 ```
 
 A films list with `"rule": "owned"` is computed per logged-in user: every film
-they've marked as owned in any format. Storing a fixed set of films in a list
-isn't supported yet.
+they've marked as owned in any format.
+
+A films list without a rule holds a fixed set of films, read from the file its
+`films` key names in `src/db/seed/lists/` (e.g. `bbc-21st-century-100.json`).
+That file is an array of films in display order, each with an optional `rank`
+(tied films share one). An entry with only `title`, `releaseYear` and `rank`
+refers to a film in an award file; any other entry carries the film's full
+data, like an award winner, and adds a list-only film to the catalog. The seed
+refuses a film that's listed twice, an entry with some film data but no
+`directors`, and full data for a film that's in an award file (its data lives
+there). List-only films get a detail page and watched/owned status and appear
+on the Movies page under their release year, but have no award wins, so they
+don't appear on the year pages or count toward award progress. A film dropped
+from every list keeps its row (and users' status); the seed warns about it.
 
 ## Adding users
 
@@ -177,6 +189,15 @@ ends up owned by that account. Run once per database (local, then Neon).
    repo in the Vercel dashboard). No other config is needed — this is a
    standard Next.js App Router project.
 
+### Shipping a schema change
+
+The build doesn't run migrations, and merging to `main` deploys to
+production straight away — so run new migrations against Neon **before**
+merging code that depends on them, or production pages will query tables or
+columns that don't exist yet. Migrations here only add things, so the code
+already in production keeps working on the migrated schema. Then merge, and
+run `npm run seed` if the seed data changed.
+
 ## Project layout
 
 ```
@@ -184,11 +205,12 @@ src/app/                    pages + the film-status/auth Route Handlers
 src/lib/auth.ts              sessions, cookies, getCurrentUser()
 src/lib/password.ts          password hashing/verification/policy (no Next.js deps)
 src/proxy.ts                 redirect to /change-password while pending
-src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status, lists)
+src/db/schema.ts             Drizzle schema (users, sessions, awards, films, award_wins, film_status, lists, list_films)
 src/db/client.ts             pg Pool + drizzle()
 src/db/queries.ts            read queries used by Server Components
 src/db/seed/*.json            per-award seed data
 src/db/seed/lists/lists.json  list definitions (see "Lists")
+src/db/seed/lists/*.json      films of fixed lists
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
 scripts/create-user.ts        adds a new user (see "Adding users")
