@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useWatchedMap } from './FilmWatchedContext';
 
-export default function WatchedProgress({ filmIds }: { filmIds: number[] }) {
+export default function WatchedProgress({ filmIds, noun = 'movies' }: { filmIds: number[]; noun?: string }) {
   const watchedMap = useWatchedMap();
 
   const { watched, total, pct } = useMemo(() => {
@@ -16,7 +16,7 @@ export default function WatchedProgress({ filmIds }: { filmIds: number[] }) {
   return (
     <div className="mb-4">
       <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1.5">
-        <span className="font-semibold text-neutral-900 dark:text-neutral-100">{watched}</span> of {total} movies watched ({pct}%)
+        <span className="font-semibold text-neutral-900 dark:text-neutral-100">{watched}</span> of {total} {noun} watched ({pct}%)
       </p>
       <div className="h-2 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
         <div

@@ -82,6 +82,7 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
             lockWatched={lockWatched}
             backHref={`/lists/${list.slug}`}
             showYear={!!director}
+            progressSection={director ? 'Feature films' : undefined}
           />
         )}
       </div>

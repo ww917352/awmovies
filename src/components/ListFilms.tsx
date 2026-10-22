@@ -14,12 +14,14 @@ export default function ListFilms({
   lockWatched,
   backHref,
   showYear = false,
+  progressSection,
 }: {
   films: ListFilm[];
   isLoggedIn: boolean;
   lockWatched: boolean;
   backHref: string;
   showYear?: boolean;
+  progressSection?: string;
 }) {
   const [search, setSearch] = useState('');
   const [hiddenIds, setHiddenIds] = useState<Set<number> | null>(null);
@@ -45,7 +47,12 @@ export default function ListFilms({
   }, [filtered]);
 
   const initialWatchedMap = useMemo(() => Object.fromEntries(films.map((f) => [f.id, f.status.watched])), [films]);
-  const filmIds = useMemo(() => films.map((f) => f.id), [films]);
+  // With `progressSection`, the progress bar counts only that section's films,
+  // e.g. a director's feature films but not their shorts.
+  const progressIds = useMemo(
+    () => films.filter((f) => progressSection === undefined || f.section === progressSection).map((f) => f.id),
+    [films, progressSection]
+  );
 
   if (films.length === 0) {
     return <p className="text-neutral-500 text-center py-8">No films in this list yet.</p>;
@@ -53,7 +60,9 @@ export default function ListFilms({
 
   return (
     <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
-      {isLoggedIn && <WatchedProgress filmIds={filmIds} />}
+      {isLoggedIn && (
+        <WatchedProgress filmIds={progressIds} noun={progressSection?.toLowerCase()} />
+      )}
 
       <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
         <input
