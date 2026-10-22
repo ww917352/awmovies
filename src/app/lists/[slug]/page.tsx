@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getListById, getListBySlug, getListFilms, getListSummaries, getUserSettings } from '@/db/queries';
+import { getDirectorById, getListById, getListBySlug, getListFilms, getListSummaries, getUserSettings } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import QuickNav from '@/components/QuickNav';
 import ListCard from '@/components/ListCard';
 import ListFilms from '@/components/ListFilms';
+import DirectorHeader from '@/components/DirectorHeader';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,8 +20,9 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
   const list = await getListBySlug(slug);
   if (!list) notFound();
 
-  const [parent, { pinnedYear, lockWatched }, sublists, films] = await Promise.all([
+  const [parent, director, { pinnedYear, lockWatched }, sublists, films] = await Promise.all([
     list.parentId === null ? null : getListById(list.parentId),
+    list.directorId === null ? null : getDirectorById(list.directorId),
     getUserSettings(userId),
     list.kind === 'lists' ? getListSummaries(list.id, userId) : [],
     list.kind === 'films' ? getListFilms(list, userId) : [],
@@ -46,8 +48,8 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
         &larr; {parent ? parent.title : 'All lists'}
       </Link>
 
-      <h1 className="text-2xl font-bold mt-2">{list.title}</h1>
-      {list.description && <p className="text-neutral-600 dark:text-neutral-400 mt-1">{list.description}</p>}
+      {director ? <DirectorHeader director={director} /> : <h1 className="text-2xl font-bold mt-2">{list.title}</h1>}
+      {list.description && <p className="text-neutral-600 dark:text-neutral-400 mt-2">{list.description}</p>}
       {list.sourceUrl && (
         <a
           href={list.sourceUrl}
@@ -74,7 +76,13 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
             sublists.map((sublist) => <ListCard key={sublist.id} list={sublist} />)
           )
         ) : (
-          <ListFilms films={films} isLoggedIn={!!user} lockWatched={lockWatched} backHref={`/lists/${list.slug}`} />
+          <ListFilms
+            films={films}
+            isLoggedIn={!!user}
+            lockWatched={lockWatched}
+            backHref={`/lists/${list.slug}`}
+            showYear={!!director}
+          />
         )}
       </div>
     </main>

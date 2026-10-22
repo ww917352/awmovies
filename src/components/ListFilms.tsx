@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import type { ListFilm } from '@/db/queries';
 import FilmRow from './FilmRow';
 import WatchedProgress from './WatchedProgress';
@@ -13,11 +13,13 @@ export default function ListFilms({
   isLoggedIn,
   lockWatched,
   backHref,
+  showYear = false,
 }: {
   films: ListFilm[];
   isLoggedIn: boolean;
   lockWatched: boolean;
   backHref: string;
+  showYear?: boolean;
 }) {
   const [search, setSearch] = useState('');
   const [hiddenIds, setHiddenIds] = useState<Set<number> | null>(null);
@@ -34,6 +36,13 @@ export default function ListFilms({
         .includes(query);
     });
   }, [films, search, hiddenIds]);
+
+  // How many of the shown films each section heading covers.
+  const sectionCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const f of filtered) if (f.section !== null) counts.set(f.section, (counts.get(f.section) ?? 0) + 1);
+    return counts;
+  }, [filtered]);
 
   const initialWatchedMap = useMemo(() => Object.fromEntries(films.map((f) => [f.id, f.status.watched])), [films]);
   const filmIds = useMemo(() => films.map((f) => f.id), [films]);
@@ -63,25 +72,35 @@ export default function ListFilms({
       {filtered.length === 0 ? (
         <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
       ) : (
-        filtered.map((f) => (
-          <FilmRow
-            key={f.id}
-            film={f}
-            status={f.status}
-            label={
-              <span className="flex flex-wrap gap-x-3">
-                {f.rank !== null && (
-                  <span className="text-neutral-700 dark:text-neutral-300 font-semibold">No. {f.rank}</span>
-                )}
-                {f.wins.map((w) => (
-                  <WinLabel key={`${w.awardSlug}-${w.year}`} year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
-                ))}
-              </span>
-            }
-            isLoggedIn={isLoggedIn}
-            backHref={backHref}
-            returnToRow
-          />
+        filtered.map((f, i) => (
+          <Fragment key={f.id}>
+            {f.section !== null && f.section !== filtered[i - 1]?.section && (
+              <h2 className={`text-lg font-semibold mb-2 ${i > 0 ? 'mt-6' : ''}`}>
+                {f.section}
+                <span className="text-sm font-normal text-neutral-500 ml-2">{sectionCounts.get(f.section)}</span>
+              </h2>
+            )}
+            <FilmRow
+              film={f}
+              status={f.status}
+              label={
+                <span className="flex flex-wrap gap-x-3">
+                  {f.rank !== null && (
+                    <span className="text-neutral-700 dark:text-neutral-300 font-semibold">No. {f.rank}</span>
+                  )}
+                  {showYear && !f.wins.some((w) => w.year === f.releaseYear) && (
+                    <span className="text-neutral-700 dark:text-neutral-300 font-semibold">{f.releaseYear}</span>
+                  )}
+                  {f.wins.map((w) => (
+                    <WinLabel key={`${w.awardSlug}-${w.year}`} year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
+                  ))}
+                </span>
+              }
+              isLoggedIn={isLoggedIn}
+              backHref={backHref}
+              returnToRow
+            />
+          </Fragment>
         ))
       )}
     </FilmWatchedProvider>

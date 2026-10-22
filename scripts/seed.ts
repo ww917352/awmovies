@@ -31,9 +31,19 @@ type SeedFile = {
 
 type SeedFilm = Omit<SeedWin, 'year' | 'editionLabel'>;
 
+type SeedDirector = {
+  name: string;
+  birthYear: number;
+  deathYear?: number;
+  photoUrl?: string;
+  wikiUrl?: string;
+  letterboxdUrl?: string;
+};
+
 // Nested: a 'lists' entry's `lists` are its sublists, in display order. A
 // films entry without a `rule` names a `films` file in src/db/seed/lists/
-// holding its films, in display order.
+// holding its films, in display order. A `director` makes the list that
+// director's filmography, with the director shown as its header.
 type SeedList = {
   slug: string;
   title: string;
@@ -43,15 +53,17 @@ type SeedList = {
   rule?: (typeof schema.listRuleValues)[number];
   films?: string;
   lists?: SeedList[];
+  director?: SeedDirector;
 };
 
 // An entry with just title + releaseYear (and rank) refers to a film already
 // seeded from the award files, so its data lives in one place; any other
 // entry carries the film's full data and is upserted like an award winner —
-// which is only allowed for a film that's in no award file.
-type SeedListFilm = { rank?: number; title: string; releaseYear: number } & Partial<SeedFilm>;
+// which is only allowed for a film that's in no award file. `section` is the
+// heading the film is listed under, if the list has sections.
+type SeedListFilm = { rank?: number; section?: string; title: string; releaseYear: number } & Partial<SeedFilm>;
 
-const REFERENCE_KEYS = new Set(['rank', 'title', 'releaseYear']);
+const REFERENCE_KEYS = new Set(['rank', 'section', 'title', 'releaseYear']);
 
 const filmKey = (film: { title: string; releaseYear: number }) => `${film.title} (${film.releaseYear})`;
 
@@ -170,10 +182,10 @@ async function main() {
         const isReference = Object.keys(entry).every((k) => REFERENCE_KEYS.has(k));
         if (!isReference) {
           if (awardFilms.has(key)) {
-            throw new Error(`${file}: ${key} is in an award file — list it by title, releaseYear and rank only`);
+            throw new Error(`${file}: ${key} is in an award file — list it by title, releaseYear, rank and section only`);
           }
           if (!Array.isArray(entry.directors)) {
-            throw new Error(`${file}: ${key} has film data but no directors — give full data or only title, releaseYear and rank`);
+            throw new Error(`${file}: ${key} has film data but no directors — give full data or only title, releaseYear, rank and section`);
           }
           filmId = (await upsertFilm(entry as SeedFilm)).id;
         } else {
@@ -184,11 +196,27 @@ async function main() {
           if (!film) throw new Error(`${file}: ${key} isn't in the catalog`);
           filmId = film.id;
         }
-        rows.push({ listId, filmId, rank: entry.rank ?? null, position });
+        rows.push({ listId, filmId, rank: entry.rank ?? null, section: entry.section ?? null, position });
       }
       await db.delete(schema.listFilms).where(eq(schema.listFilms.listId, listId));
       if (rows.length) await db.insert(schema.listFilms).values(rows);
       listFilmCount += rows.length;
+    }
+
+    async function upsertDirector(director: SeedDirector) {
+      const values = {
+        birthYear: director.birthYear,
+        deathYear: director.deathYear ?? null,
+        photoUrl: director.photoUrl ?? null,
+        wikiUrl: director.wikiUrl ?? null,
+        letterboxdUrl: director.letterboxdUrl ?? null,
+      };
+      const [row] = await db
+        .insert(schema.directors)
+        .values({ name: director.name, ...values })
+        .onConflictDoUpdate({ target: schema.directors.name, set: values })
+        .returning();
+      return row;
     }
 
     async function upsertLists(entries: SeedList[], parentId: number | null) {
@@ -206,6 +234,7 @@ async function main() {
           kind: entry.kind,
           rule: entry.rule ?? null,
           parentId,
+          directorId: entry.director ? (await upsertDirector(entry.director)).id : null,
           position,
         };
         const [list] = await db
