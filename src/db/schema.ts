@@ -147,6 +147,18 @@ export const userSettings = pgTable('user_settings', {
   lockWatched: boolean('lock_watched').notNull().default(false),
 });
 
+// A director a list is about (see lists.directorId), shown as the list's
+// header. Keyed by name, which matches the names in films.directors.
+export const directors = pgTable('directors', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull().unique(),
+  birthYear: integer('birth_year').notNull(),
+  deathYear: integer('death_year'),
+  photoUrl: text('photo_url'),
+  wikiUrl: text('wiki_url'),
+  letterboxdUrl: text('letterboxd_url'),
+});
+
 export const listKindValues = ['films', 'lists'] as const;
 export const listRuleValues = ['owned'] as const;
 
@@ -155,7 +167,8 @@ export const listRuleValues = ['owned'] as const;
 // it. A films list with a `rule` is computed per viewer instead of stored:
 // 'owned' is every film the logged-in user has an owned format for (see
 // getListFilms in queries.ts). A films list without a rule holds a fixed set
-// of films in listFilms. Lists are defined in src/db/seed/lists/.
+// of films in listFilms. A list with a `directorId` is that director's
+// filmography. Lists are defined in src/db/seed/lists/.
 export const lists = pgTable(
   'lists',
   {
@@ -167,6 +180,7 @@ export const lists = pgTable(
     kind: varchar('kind', { length: 8, enum: listKindValues }).notNull(),
     rule: varchar('rule', { length: 16, enum: listRuleValues }),
     parentId: integer('parent_id').references((): AnyPgColumn => lists.id, { onDelete: 'cascade' }),
+    directorId: integer('director_id').references(() => directors.id, { onDelete: 'set null' }),
     position: integer('position').notNull().default(0),
   },
   (table) => ({
@@ -178,7 +192,8 @@ export const lists = pgTable(
 
 // The films in a fixed (rule-less) films list. `rank` is the film's place on
 // the list as published — tied films share a rank — and `position` is the
-// display order, which also breaks ties.
+// display order, which also breaks ties. `section` groups the list's films
+// under headings, e.g. "Feature films" and "Short films" in a filmography.
 export const listFilms = pgTable(
   'list_films',
   {
@@ -189,6 +204,7 @@ export const listFilms = pgTable(
       .notNull()
       .references(() => films.id, { onDelete: 'cascade' }),
     rank: integer('rank'),
+    section: text('section'),
     position: integer('position').notNull(),
   },
   (table) => ({

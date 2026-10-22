@@ -1,5 +1,5 @@
 import { db } from './client';
-import { awards, awardWins, films, filmStatus, listFilms, lists, userSettings } from './schema';
+import { awards, awardWins, directors, films, filmStatus, listFilms, lists, userSettings } from './schema';
 import { and, asc, count, eq, exists, gt, inArray, isNull, min, max, notExists, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
@@ -350,11 +350,13 @@ export async function setLockWatched(userId: number, lockWatched: boolean): Prom
 }
 
 export type List = typeof lists.$inferSelect;
+export type Director = typeof directors.$inferSelect;
 
 // `itemCount` is the number of sublists for a 'lists' list, or of films for a
 // films list — null when that depends on a logged-out viewer (an 'owned'
-// list has no films until someone logs in).
-export type ListSummary = List & { itemCount: number | null };
+// list has no films until someone logs in). `director` is set on a
+// director's filmography list.
+export type ListSummary = List & { itemCount: number | null; director: Director | null };
 
 export async function getListBySlug(slug: string): Promise<List | null> {
   const [list] = await db.select().from(lists).where(eq(lists.slug, slug));
@@ -364,6 +366,11 @@ export async function getListBySlug(slug: string): Promise<List | null> {
 export async function getListById(id: number): Promise<List | null> {
   const [list] = await db.select().from(lists).where(eq(lists.id, id));
   return list ?? null;
+}
+
+export async function getDirectorById(id: number): Promise<Director | null> {
+  const [director] = await db.select().from(directors).where(eq(directors.id, id));
+  return director ?? null;
 }
 
 // The lists directly under `parentId` (null for the top level), in display order.
@@ -397,6 +404,13 @@ export async function getListSummaries(parentId: number | null, userId: number |
     for (const c of counts) filmCounts.set(c.listId, c.n);
   }
 
+  const directorIds = rows.flatMap((l) => (l.directorId === null ? [] : [l.directorId]));
+  const directorsById = new Map<number, Director>();
+  if (directorIds.length) {
+    const found = await db.select().from(directors).where(inArray(directors.id, directorIds));
+    for (const d of found) directorsById.set(d.id, d);
+  }
+
   let ownedCount: number | null = null;
   if (userId !== null && rows.some((l) => l.rule === 'owned')) {
     const [row] = await db
@@ -410,12 +424,14 @@ export async function getListSummaries(parentId: number | null, userId: number |
     ...l,
     itemCount:
       l.kind === 'lists' ? (childCounts.get(l.id) ?? 0) : l.rule === 'owned' ? ownedCount : (filmCounts.get(l.id) ?? 0),
+    director: l.directorId === null ? null : (directorsById.get(l.directorId) ?? null),
   }));
 }
 
 // A film in a films list; `rank` is its place on a ranked fixed list (shared
-// by tied films), null on a rule-based list.
-export type ListFilm = FilmWithWins & { rank: number | null };
+// by tied films), null on a rule-based list. `section` is the heading it's
+// listed under, null on a list without sections.
+export type ListFilm = FilmWithWins & { rank: number | null; section: string | null };
 
 // The films in a films list: an 'owned' list sorted by title, a fixed list in
 // its stored order.
@@ -425,12 +441,12 @@ export async function getListFilms(list: List, userId: number | null): Promise<L
     const owned = await selectFilmsWithWins(userId, { ownedOnly: true });
     return owned
       .sort((a, b) => a.title.localeCompare(b.title) || a.releaseYear - b.releaseYear)
-      .map((f) => ({ ...f, rank: null }));
+      .map((f) => ({ ...f, rank: null, section: null }));
   }
 
   const [entries, filmsInList] = await Promise.all([
     db
-      .select({ filmId: listFilms.filmId, rank: listFilms.rank })
+      .select({ filmId: listFilms.filmId, rank: listFilms.rank, section: listFilms.section })
       .from(listFilms)
       .where(eq(listFilms.listId, list.id))
       .orderBy(asc(listFilms.position)),
@@ -439,6 +455,6 @@ export async function getListFilms(list: List, userId: number | null): Promise<L
   const byId = new Map(filmsInList.map((f) => [f.id, f]));
   return entries.flatMap((e) => {
     const film = byId.get(e.filmId);
-    return film ? [{ ...film, rank: e.rank }] : [];
+    return film ? [{ ...film, rank: e.rank, section: e.section }] : [];
   });
 }

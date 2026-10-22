@@ -38,5 +38,45 @@
         "films": "sight-and-sound-2022-directors.json"
       }
     ]
+  },
+  {
+    "slug": "top-directors",
+    "title": "Top Directors",
+    "description": "The complete filmographies of great directors: every feature film in release order, then their shorts and other films.",
+    "kind": "lists",
+    "lists": [
+      {
+        "slug": "director-david-lynch",
+        "title": "David Lynch",
+        "description": "Ten feature films from Eraserhead to Inland Empire, plus his notable shorts and other films.",
+        "sourceUrl": "https://en.wikipedia.org/wiki/David_Lynch_filmography",
+        "kind": "films",
+        "films": "director-david-lynch.json",
+        "director": {
+          "name": "David Lynch",
+          "birthYear": 1946,
+          "deathYear": 2025,
+          "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/David_Lynch_%281990%29.jpg",
+          "wikiUrl": "https://en.wikipedia.org/wiki/David_Lynch",
+          "letterboxdUrl": "https://letterboxd.com/director/david-lynch/"
+        }
+      },
+      {
+        "slug": "director-stanley-kubrick",
+        "title": "Stanley Kubrick",
+        "description": "Thirteen feature films from Fear and Desire to Eyes Wide Shut, plus his three early documentary shorts.",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Stanley_Kubrick_filmography",
+        "kind": "films",
+        "films": "director-stanley-kubrick.json",
+        "director": {
+          "name": "Stanley Kubrick",
+          "birthYear": 1928,
+          "deathYear": 1999,
+          "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Stanley_Kubrick_in_Dr._Strangelove_Trailer_%284%29_Cropped.jpg",
+          "wikiUrl": "https://en.wikipedia.org/wiki/Stanley_Kubrick",
+          "letterboxdUrl": "https://letterboxd.com/director/stanley-kubrick/"
+        }
+      }
+    ]
   }
 ]
