@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="5"/>
+    </filter>
+    <filter id="rough2" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="21"/>
+      <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+    <clipPath id="bowlShade"><path d="M160 112 C160 214 200 268 238 290 L274 290 C312 268 352 214 352 112 Z"/><rect x="0" y="0" width="0" height="0"/></clipPath>
+    <clipPath id="rightHalf"><rect x="304" y="0" width="230" height="512"/></clipPath>
+    <clipPath id="baseShade"><path d="M214 336 L298 336 L306 366 L206 366 Z"/></clipPath>
+  </defs>
+  <rect width="512" height="512" fill="#fbfaf6"/>
+  <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+    <g clip-path="url(#bowlShade)"><g clip-path="url(#rightHalf)" filter="url(#rough2)">
+      <path d="M196 100 L276 300 M205 100 L285 300 M214 100 L294 300 M223 100 L303 300 M232 100 L312 300 M241 100 L321 300 M250 100 L330 300 M259 100 L339 300 M268 100 L348 300 M277 100 L357 300 M286 100 L366 300 M295 100 L375 300 M304 100 L384 300 M313 100 L393 300 M322 100 L402 300 M331 100 L411 300 M340 100 L420 300 M349 100 L429 300 M358 100 L438 300 M367 100 L447 300 M376 100 L456 300 M385 100 L465 300 M394 100 L474 300 M403 100 L483 300 M412 100 L492 300 M421 100 L501 300 M430 100 L510 300 M439 100 L519 300 M448 100 L528 300 M457 100 L537 300 M466 100 L546 300 M475 100 L555 300 M484 100 L564 300 M493 100 L573 300 M502 100 L582 300 M511 100 L591 300 " stroke-width="3"/>
+    </g></g>
+    <g clip-path="url(#baseShade)"><g clip-path="url(#rightHalf)" filter="url(#rough2)">
+      <path d="M250 336 L268 366 M258 336 L276 366 M266 336 L284 366 M274 336 L292 366 M282 336 L300 366 M290 336 L308 366 M298 336 L316 366 M306 336 L324 366 M314 336 L332 366 M322 336 L340 366 M330 336 L348 366 M338 336 L356 366 " stroke-width="3"/>
+    </g></g>
+    <g filter="url(#rough)"><path d="M160 112 C160 214 200 268 238 290 L274 290 C312 268 352 214 352 112 Z M150 104 Q256 98 362 104 M164 132 C104 124 92 214 186 244 M162 150 C120 150 116 206 180 228 M348 132 C408 124 420 214 326 244 M350 150 C392 150 396 206 332 228 M244 290 L240 336 M268 290 L272 336 M230 300 Q256 312 282 300 M214 336 L298 336 L306 366 L206 366 Z M176 366 L336 366 L336 418 L176 418 Z M256.0,142.0L265.4,167.1L292.1,168.3L271.2,184.9L278.3,210.7L256.0,196.0L233.7,210.7L240.8,184.9L219.9,168.3L246.6,167.1Z" stroke-width="9"/></g>
+    <g filter="url(#rough2)" transform="translate(3 -2) rotate(0.6 256 256)" opacity="0.75">
+      <path d="M160 112 C160 214 200 268 238 290 L274 290 C312 268 352 214 352 112 Z M150 104 Q256 98 362 104 M164 132 C104 124 92 214 186 244 M162 150 C120 150 116 206 180 228 M348 132 C408 124 420 214 326 244 M350 150 C392 150 396 206 332 228 M244 290 L240 336 M268 290 L272 336 M230 300 Q256 312 282 300 M214 336 L298 336 L306 366 L206 366 Z M176 366 L336 366 L336 418 L176 418 Z M256.0,142.0L265.4,167.1L292.1,168.3L271.2,184.9L278.3,210.7L256.0,196.0L233.7,210.7L240.8,184.9L219.9,168.3L246.6,167.1Z" stroke-width="3.5"/>
+    </g>
+    <g filter="url(#rough)"><path d="M186 373 h10 v7 h-10 Z M186 404 h10 v7 h-10 Z M206 373 h10 v7 h-10 Z M206 404 h10 v7 h-10 Z M226 373 h10 v7 h-10 Z M226 404 h10 v7 h-10 Z M246 373 h10 v7 h-10 Z M246 404 h10 v7 h-10 Z M266 373 h10 v7 h-10 Z M266 404 h10 v7 h-10 Z M286 373 h10 v7 h-10 Z M286 404 h10 v7 h-10 Z M306 373 h10 v7 h-10 Z M306 404 h10 v7 h-10 Z " stroke-width="3.5" fill="#111"/></g>
+    <g filter="url(#rough2)" stroke-width="5">
+      <path d="M118 74 v28 M104 88 h28"/>
+      <path d="M396 62 v20 M386 72 h20"/>
+      <path d="M126 432 Q256 446 392 428" stroke-width="6"/>
+      <path d="M150 446 Q256 456 360 444" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

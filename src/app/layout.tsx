@@ -5,7 +5,7 @@ import ThemeScript from '@/components/ThemeScript';
 import ThemeSync from '@/components/ThemeSync';
 
 export const metadata: Metadata = {
-  title: 'Award-Winning Movies',
+  title: 'Palmarès',
   description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
 };
 

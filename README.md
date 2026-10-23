@@ -1,4 +1,4 @@
-# Award-Winning Movies
+# Palmarès
 
 A personal catalog of winning films from five major film awards, across their
 full history:
