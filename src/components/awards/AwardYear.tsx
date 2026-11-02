@@ -40,6 +40,15 @@ export default function AwardYear({
   const next = year < maxYear ? year + 1 : null;
 
   const winners = useMemo(() => cards.flatMap((c) => c.winners), [cards]);
+  const slots = useMemo(
+    () =>
+      cards.flatMap((award): { award: AwardCardData; winner: WinEntry | null; shared: boolean }[] =>
+        award.winners.length === 0
+          ? [{ award, winner: null, shared: false }]
+          : award.winners.map((winner) => ({ award, winner, shared: award.winners.length > 1 }))
+      ),
+    [cards]
+  );
   const initialWatched = useMemo(
     () => Object.fromEntries(winners.map((w) => [w.film.id, w.status.watched])),
     [winners]
@@ -149,9 +158,20 @@ export default function AwardYear({
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
-          {cards.map((card) => (
-            <AwardCard key={card.slug} card={card} year={year} isLoggedIn={isLoggedIn} />
+        {/* One card per film (a shared prize gives one per winner), all on one row on wide screens. */}
+        <div
+          className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+          style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
+        >
+          {slots.map((slot) => (
+            <AwardCard
+              key={`${slot.award.slug}-${slot.winner?.film.id ?? 'none'}`}
+              award={slot.award}
+              winner={slot.winner}
+              shared={slot.shared}
+              year={year}
+              isLoggedIn={isLoggedIn}
+            />
           ))}
         </div>
 
