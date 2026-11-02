@@ -63,15 +63,6 @@ export const SearchIcon = icon(
 export const ChevronLeft = icon(<path d="M15 5l-7 7 7 7" />, 2.2);
 export const ChevronRight = icon(<path d="M9 5l7 7-7 7" />, 2.2);
 export const CheckIcon = icon(<path d="M5 12.5l4.5 4.5L19 7.5" />, 2.6);
-export const GridIcon = icon(
-  <>
-    <rect x="4" y="4" width="7" height="7" rx="1.5" />
-    <rect x="13" y="4" width="7" height="7" rx="1.5" />
-    <rect x="4" y="13" width="7" height="7" rx="1.5" />
-    <rect x="13" y="13" width="7" height="7" rx="1.5" />
-  </>
-);
-export const RowsIcon = icon(<path d="M4 6h16M4 12h16M4 18h16" />);
 export const CalendarIcon = icon(
   <>
     <rect x="3.5" y="5" width="17" height="15" rx="2.5" />

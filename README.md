@@ -138,6 +138,27 @@ on the Movies page under their release year, but have no award wins, so they
 don't appear on the Awards tab or count toward award progress. A film dropped
 from every list keeps its row (and users' status); the seed warns about it.
 
+### Posters and photos
+
+Posters (`posterUrl`) and director photos (`photoUrl`) come only from TMDB's
+image CDN: TMDB's API terms let non-commercial apps show its images with the
+attribution the app displays (`src/components/TmdbAttribution.tsx`). Images
+from elsewhere, such as Wikipedia's fair-use posters, aren't shown. The app
+renders a placeholder instead, and the CSP only allows `image.tmdb.org`.
+
+After adding films, point their images at TMDB and reseed:
+
+```bash
+TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts   # or TMDB_READ_TOKEN="<v4 token>"
+npm run seed
+```
+
+The script matches each film or director by its TMDB id on Wikidata (from
+`wikiUrl`), falling back to a title + year search. It rewrites only the
+`posterUrl`/`photoUrl` lines in the seed JSON, and removes images TMDB doesn't
+have. Use `--dry-run` to preview. Lists only show posters on the Awards and
+Pinned tabs and film pages; list rows stay text-only.
+
 ## Adding users
 
 There's no registration UI. To add a friend, pick a username and either give
@@ -213,6 +234,7 @@ src/db/seed/lists/lists.json  list definitions (see "Lists")
 src/db/seed/lists/*.json      films of fixed lists
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
+scripts/tmdb-images.ts        points seed posters/photos at TMDB (see "Posters and photos")
 scripts/create-user.ts        adds a new user (see "Adding users")
 scripts/claim-owner.ts        one-time: attach pre-existing watched/owned data to a real user
 drizzle/                      generated SQL migrations

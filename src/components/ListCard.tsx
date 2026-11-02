@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ListSummary } from '@/db/queries';
 import { lifeYears } from './DirectorHeader';
 import { ChevronRight, ListsIcon } from './ui/icons';
+import { isTmdbImage, tmdbImage } from './Poster';
 
 function countLabel(list: ListSummary): string {
   if (list.itemCount === null) return 'Log in to see';
@@ -14,10 +15,10 @@ export default function ListCard({ list }: { list: ListSummary }) {
   const { director } = list;
   return (
     <Link href={`/lists/${list.slug}`} prefetch={false} className="flex items-center gap-3 px-4 py-3 hover:bg-card-2">
-      {director?.photoUrl ? (
+      {director?.photoUrl && isTmdbImage(director.photoUrl) ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={director.photoUrl}
+          src={tmdbImage(director.photoUrl, 'w185')}
           alt=""
           referrerPolicy="no-referrer"
           className="h-12 w-12 shrink-0 rounded-full object-cover object-top"

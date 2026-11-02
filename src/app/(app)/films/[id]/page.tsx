@@ -4,7 +4,7 @@ import { getFilmById, getListMemberships } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { toSafeRelativePath } from '@/lib/safe-path';
 import StatusControls from '@/components/StatusControls';
-import Poster from '@/components/Poster';
+import Poster, { isTmdbImage } from '@/components/Poster';
 import { ChevronLeft } from '@/components/ui/icons';
 import { AWARD_ABBR } from '@/lib/format';
 
@@ -50,7 +50,15 @@ export default async function FilmDetailPage({
 
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-10">
         <div className="mx-auto w-[min(62vw,260px)] shrink-0 md:mx-0 md:w-64 lg:w-72">
-          <Poster src={film.posterUrl} title={film.title} className="w-full shadow-card" rounded="rounded-xl" />
+          <Poster src={film.posterUrl} title={film.title} size="md" className="w-full shadow-card" rounded="rounded-xl" />
+          {film.posterUrl && isTmdbImage(film.posterUrl) && (
+            <p className="mt-2 text-center text-[11px] text-label-3">
+              Poster:{' '}
+              <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer" className="hover:underline">
+                TMDB
+              </a>
+            </p>
+          )}
         </div>
 
         <div className="min-w-0 flex-1">

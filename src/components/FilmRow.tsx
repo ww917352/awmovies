@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import type { WinEntry } from '@/db/queries';
-import Poster from './Poster';
 import PinButton from './PinButton';
 import WatchedToggle from './WatchedToggle';
 import { filmHref, formatOwnedLabel } from '@/lib/format';
 
-type Film = Pick<WinEntry['film'], 'id' | 'title' | 'originalTitle' | 'releaseYear' | 'directors' | 'posterUrl'>;
+type Film = Pick<WinEntry['film'], 'id' | 'title' | 'originalTitle' | 'releaseYear' | 'directors'>;
 type Status = Pick<WinEntry['status'], 'watched' | 'ownedFormats' | 'digitalQuality' | 'pinned'>;
 
-// One film in a grouped list (put rows inside a <FilmRows>). `label` is the
+// One film in a grouped list (put rows inside a <FilmRows>); text only, no
+// poster, to keep long lists light. `label` is the
 // small line above the title — the award and year, a list rank. With
 // `returnToRow`, the film page's back link lands on this row instead of the
 // top of the page; only use it where a film appears once, since the row id
@@ -36,11 +36,10 @@ export default function FilmRow({
   return (
     <div
       id={returnToRow ? rowId : undefined}
-      className="flex items-center gap-3 px-3 py-2.5 sm:px-4"
+      className="flex items-center gap-3 px-4 py-2.5"
       style={{ scrollMarginTop: 'calc(var(--sticky-top) + 120px)' }}
     >
-      <Link href={filmHref(film.id, back)} prefetch={false} className="group flex min-w-0 flex-1 items-center gap-3">
-        <Poster src={film.posterUrl} title={film.title} className="w-12 sm:w-14" rounded="rounded" />
+      <Link href={filmHref(film.id, back)} prefetch={false} className="group flex min-w-0 flex-1 items-center">
         <span className="min-w-0 flex-1">
           {label && <span className="block truncate text-[12px] font-medium text-label-2">{label}</span>}
           <span className="block truncate headline group-hover:underline decoration-label-3 underline-offset-2">

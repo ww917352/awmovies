@@ -1,18 +1,13 @@
 'use client';
 
-import Link from 'next/link';
-import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { Fragment, useMemo, useState, type ReactNode } from 'react';
 import type { ListMembership, ListOnlyEntry, WinEntry } from '@/db/queries';
 import FilmRow, { FilmRows } from './FilmRow';
-import { filmHref } from '@/lib/format';
 import WinLabel from './WinLabel';
 import ListLabel from './ListLabel';
-import Poster from './Poster';
-import WatchedToggle from './WatchedToggle';
 import { FilmWatchedProvider } from './FilmWatchedContext';
 import UnwatchedOnlyToggle, { Chip } from './UnwatchedOnlyToggle';
 import SearchField, { StickyToolbar } from './ui/SearchField';
-import { GridIcon, RowsIcon } from './ui/icons';
 import { AWARDS } from '@/lib/format';
 
 // One row on the page: an award win, or a film that's only in lists — which
@@ -24,9 +19,6 @@ type Row = Pick<WinEntry, 'film' | 'status'> & {
   awardSlug: string | null;
   label: ReactNode;
 };
-
-type View = 'rows' | 'grid';
-const VIEW_KEY = 'movies-view';
 
 function joinLabels(parts: ReactNode[]) {
   return parts.map((part, i) => (
@@ -54,15 +46,6 @@ export default function MovieList({
   const [year, setYear] = useState('all');
   const [hiddenIds, setHiddenIds] = useState<Set<number> | null>(null);
   const [search, setSearch] = useState('');
-  const [view, setView] = useState<View>('rows');
-
-  useEffect(() => {
-    if (localStorage.getItem(VIEW_KEY) === 'grid') setView('grid');
-  }, []);
-  function chooseView(next: View) {
-    setView(next);
-    localStorage.setItem(VIEW_KEY, next);
-  }
 
   const rows = useMemo<Row[]>(() => {
     const listLabels = (filmId: number) =>
@@ -161,55 +144,21 @@ export default function MovieList({
           </div>
         </StickyToolbar>
 
-        <div className="mb-2 flex items-center justify-between px-1">
+        <div className="mb-2 px-1">
           <p className="text-[13px] text-label-2">
             {filmCount} film{filmCount === 1 ? '' : 's'}
             {filtered.length !== filmCount && ` · ${filtered.length} awards`}
           </p>
-          <div className="flex rounded-lg bg-fill p-0.5" role="group" aria-label="View">
-            {(['rows', 'grid'] as const).map((v) => (
-              <button
-                key={v}
-                onClick={() => chooseView(v)}
-                aria-pressed={view === v}
-                aria-label={v === 'rows' ? 'List view' : 'Poster grid'}
-                className={`grid h-7 w-9 place-items-center rounded-md ${view === v ? 'bg-card shadow-card' : 'text-label-2'}`}
-              >
-                {v === 'rows' ? <RowsIcon className="w-4 h-4" /> : <GridIcon className="w-4 h-4" />}
-              </button>
-            ))}
-          </div>
         </div>
 
         {filtered.length === 0 ? (
           <p className="py-12 text-center text-label-2">No films match these filters.</p>
-        ) : view === 'rows' ? (
+        ) : (
           <FilmRows>
             {filtered.map((r) => (
               <FilmRow key={r.key} film={r.film} status={r.status} label={r.label} isLoggedIn={!!user} backHref="/movies" />
             ))}
           </FilmRows>
-        ) : (
-          <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6">
-            {filtered.map((r) => (
-              <article key={r.key} className="flex min-w-0 flex-col">
-                <Link href={filmHref(r.film.id, '/movies')} prefetch={false}>
-                  <Poster src={r.film.posterUrl} title={r.film.title} className="w-full shadow-card" rounded="rounded-lg" />
-                </Link>
-                <p className="mt-1.5 truncate text-[11px] font-medium text-label-2">{r.label}</p>
-                <div className="flex items-start justify-between gap-1">
-                  <Link
-                    href={filmHref(r.film.id, '/movies')}
-                    prefetch={false}
-                    className="line-clamp-2 text-[14px] font-semibold leading-snug"
-                  >
-                    {r.film.title}
-                  </Link>
-                  {user && <WatchedToggle filmId={r.film.id} title={r.film.title} initialWatched={r.status.watched} />}
-                </div>
-              </article>
-            ))}
-          </div>
         )}
       </div>
     </FilmWatchedProvider>

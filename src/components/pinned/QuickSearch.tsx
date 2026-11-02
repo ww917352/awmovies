@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { SearchFilm } from '@/db/queries';
-import Poster from '../Poster';
 import PinButton from '../PinButton';
 import { filmHref } from '@/lib/format';
 import SearchField from '../ui/SearchField';
@@ -65,9 +64,8 @@ export default function QuickSearch({ films, isLoggedIn }: { films: SearchFilm[]
             <ul className="divide-y divide-sep">
               {results.map((film) => (
                 <li key={film.id} className="flex items-center gap-3 px-3 py-2">
-                  <Link href={filmHref(film.id, '/')} prefetch={false} className="flex min-w-0 flex-1 items-center gap-3">
-                    <Poster src={film.posterUrl} title={film.title} className="w-9" rounded="rounded" />
-                    <span className="min-w-0">
+                  <Link href={filmHref(film.id, '/')} prefetch={false} className="min-w-0 flex-1 px-1">
+                    <span className="block min-w-0">
                       <span className="block truncate text-[15px] font-semibold">{film.title}</span>
                       <span className="block truncate text-[13px] text-label-2">
                         {[film.directors.join(', '), film.releaseYear].filter(Boolean).join(' · ')}

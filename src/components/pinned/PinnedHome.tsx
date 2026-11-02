@@ -85,7 +85,7 @@ function NowWatching({ pinnedIds, filmsById }: { pinnedIds: number[]; filmsById:
           {shown.map((film) => (
             <article key={film.id} className="flex min-w-0 flex-col">
               <Link href={filmHref(film.id, '/')} prefetch={false}>
-                <Poster src={film.posterUrl} title={film.title} className="w-full shadow-card" rounded="rounded-lg" />
+                <Poster src={film.posterUrl} title={film.title} size="md" className="w-full shadow-card" rounded="rounded-lg" />
               </Link>
               <Link
                 href={filmHref(film.id, '/')}
@@ -172,7 +172,7 @@ function PinnedYear({
             return (
               <div key={`${slot.award}-${film.id}`} className="min-w-0">
                 <Link href={filmHref(film.id, '/')} prefetch={false} className="relative block" title={film.title}>
-                  <Poster src={film.posterUrl} title={film.title} className="w-full" rounded="rounded-md" />
+                  <Poster src={film.posterUrl} title={film.title} size="sm" className="w-full" rounded="rounded-md" />
                   {watchedMap[film.id] && (
                     <span className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-ok-bright text-white shadow">
                       <CheckIcon className="w-3 h-3" />

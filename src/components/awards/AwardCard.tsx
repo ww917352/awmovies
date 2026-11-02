@@ -36,7 +36,7 @@ export default function AwardCard({
 
       <article className="flex flex-1 gap-3 sm:flex-col sm:gap-2.5">
         <Link href={filmHref(winner.film.id, back)} prefetch={false} className="shrink-0">
-          <Poster src={winner.film.posterUrl} title={winner.film.title} className="w-[72px] sm:w-full" rounded="rounded-lg" />
+          <Poster src={winner.film.posterUrl} title={winner.film.title} size="md" className="w-[72px] sm:w-full" rounded="rounded-lg" />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col">
           <Link
