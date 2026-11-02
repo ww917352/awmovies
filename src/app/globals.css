@@ -220,14 +220,6 @@ main.app-main {
   min-width: 0;
 }
 
-/* The TMDB notice sits at the foot of the sidebar; the top bar and tab bar
-   have no room, so there it's on the account page instead. */
-@media (max-width: 1099px) {
-  .app-nav .nav-footer {
-    display: none;
-  }
-}
-
 .page {
   width: 100%;
   max-width: 1120px;

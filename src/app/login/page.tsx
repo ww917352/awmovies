@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import LoginForm from '@/components/LoginForm';
 import AuthFrame from '@/components/AuthFrame';
-import TmdbAttribution from '@/components/TmdbAttribution';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,7 +27,6 @@ export default async function LoginPage() {
         </Link>{' '}
         without logging in.
       </p>
-      <TmdbAttribution className="mt-8 text-center" />
     </AuthFrame>
   );
 }

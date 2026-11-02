@@ -1,5 +1,5 @@
 import type { Director } from '@/db/queries';
-import { isTmdbImage, tmdbImage } from './Poster';
+import { isAllowedImage, sizedImage } from './Poster';
 
 export function lifeYears(director: Director): string {
   return director.deathYear === null ? `Born ${director.birthYear}` : `${director.birthYear}–${director.deathYear}`;
@@ -9,10 +9,10 @@ export function lifeYears(director: Director): string {
 export default function DirectorHeader({ director }: { director: Director }) {
   return (
     <div className="flex items-center gap-4">
-      {director.photoUrl && isTmdbImage(director.photoUrl) && (
+      {director.photoUrl && isAllowedImage(director.photoUrl) && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={tmdbImage(director.photoUrl, 'w185')}
+          src={sizedImage(director.photoUrl, 'w185')}
           alt={director.name}
           referrerPolicy="no-referrer"
           className="h-24 w-24 shrink-0 rounded-full object-cover object-top shadow-card sm:h-28 sm:w-28"

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Logo from './Logo';
-import TmdbAttribution from './TmdbAttribution';
 import { FilmIcon, ListsIcon, PersonIcon, PinTabIcon, TrophyIcon } from './ui/icons';
 import { capitalizeWords } from '@/lib/format';
 
@@ -51,7 +50,6 @@ export default function AppNav({ user }: { user: { username: string } | null }) 
           );
         })}
       </div>
-      <TmdbAttribution className="nav-footer mt-auto px-2" />
     </nav>
   );
 }

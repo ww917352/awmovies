@@ -7,7 +7,6 @@ import StatTile from '@/components/StatTile';
 import ThemeSettings from '@/components/ThemeSettings';
 import LockWatchedSetting from '@/components/LockWatchedSetting';
 import LogoutButton from '@/components/LogoutButton';
-import TmdbAttribution from '@/components/TmdbAttribution';
 import { ChevronRight } from '@/components/ui/icons';
 
 export const dynamic = 'force-dynamic';
@@ -89,11 +88,6 @@ export default async function AccountPage() {
         </Link>
       </div>
       <LogoutButton />
-
-      <h2 className="group-label mt-8">About</h2>
-      <div className="rounded-2xl bg-card px-4 py-3">
-        <TmdbAttribution />
-      </div>
     </div>
   );
 }

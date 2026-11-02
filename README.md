@@ -140,24 +140,24 @@ from every list keeps its row (and users' status); the seed warns about it.
 
 ### Posters and photos
 
-Posters (`posterUrl`) and director photos (`photoUrl`) come only from TMDB's
-image CDN: TMDB's API terms let non-commercial apps show its images with the
-attribution the app displays (`src/components/TmdbAttribution.tsx`). Images
-from elsewhere, such as Wikipedia's fair-use posters, aren't shown. The app
-renders a placeholder instead, and the CSP only allows `image.tmdb.org`.
+Posters (`posterUrl`) and director photos (`photoUrl`) are linked from
+Wikipedia, a few from TMDB; the CSP allows only those two image hosts. To
+keep requests to Wikipedia low (it rate-limits bursts with HTTP 429), posters
+only appear on the Awards year view, the Pinned tab and film pages. Movies,
+list pages and search results are text-only.
 
-After adding films, point their images at TMDB and reseed:
+Moving everything to TMDB, whose API terms allow non-commercial apps to
+display its images with attribution, is planned. `scripts/tmdb-images.ts`
+does the data side: it matches each film or director by its TMDB id on
+Wikidata (from `wikiUrl`), falling back to a title + year search, and rewrites
+only the `posterUrl`/`photoUrl` lines in the seed JSON:
 
 ```bash
-TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts   # or TMDB_READ_TOKEN="<v4 token>"
-npm run seed
+TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts --dry-run   # preview
+TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts && npm run seed
 ```
 
-The script matches each film or director by its TMDB id on Wikidata (from
-`wikiUrl`), falling back to a title + year search. It rewrites only the
-`posterUrl`/`photoUrl` lines in the seed JSON, and removes images TMDB doesn't
-have. Use `--dry-run` to preview. Lists only show posters on the Awards and
-Pinned tabs and film pages; list rows stay text-only.
+The app would then need TMDB's attribution notice displayed.
 
 ## Adding users
 
