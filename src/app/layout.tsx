@@ -5,10 +5,10 @@ import ThemeScript from '@/components/ThemeScript';
 import ThemeSync from '@/components/ThemeSync';
 
 export const metadata: Metadata = {
-  title: 'Palmarès',
-  description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
   // Keep the app out of search engines (see also robots.ts and next.config.js).
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+  title: 'Palmarès',
+  description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
 };
 
 export const viewport: Viewport = {
