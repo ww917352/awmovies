@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import type { SearchFilm } from '@/db/queries';
 import { FilmWatchedProvider, usePinnedMap, useWatchedMap } from '../FilmWatchedContext';
-import Logo from '../Logo';
 import Poster from '../Poster';
 import PinButton from '../PinButton';
 import WatchedToggle from '../WatchedToggle';
@@ -38,10 +37,6 @@ export default function PinnedHome({
   return (
     <FilmWatchedProvider initial={initialWatched} initialPinned={initialPinned} lockWatched={lockWatched}>
       <div className="page">
-        <div className="phone-only mb-3 items-center gap-2">
-          <Logo idPrefix="home-logo" className="h-9 w-9" />
-          <span className="text-[19px] font-bold tracking-tight">Palmarès</span>
-        </div>
         <h1 className="large-title mb-4">Pinned</h1>
 
         <QuickSearch films={searchFilms} isLoggedIn={isLoggedIn} />

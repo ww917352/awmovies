@@ -339,16 +339,6 @@ main.app-main {
   }
 }
 
-/* Only visible where the shell has no brand of its own (the phone tab bar). */
-.phone-only {
-  display: none;
-}
-@media (max-width: 699px) {
-  .phone-only {
-    display: flex;
-  }
-}
-
 /* Native <dialog> as a bottom sheet on phones, centred card elsewhere. */
 dialog.sheet {
   margin: auto;
