@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 type FilmMap = Record<number, boolean>;
 
@@ -9,6 +9,8 @@ type Ctx = {
   setWatched: (filmId: number, watched: boolean) => void;
   pinnedMap: FilmMap;
   setPinned: (filmId: number, pinned: boolean) => void;
+  // Pinned films, newest pin first (pins made on this page lead).
+  pinnedIds: number[];
   // Called after a film is marked watched; asks whether to unpin it if pinned.
   offerUnpin: (filmId: number, title: string) => void;
   lockWatched: boolean;
@@ -25,39 +27,94 @@ export async function saveStatus(filmId: number, patch: Record<string, unknown>)
   return !!res?.ok;
 }
 
+// Optimistic status saves for one film. Saves are sent one after another, so
+// they land in the order they were made, and only the latest decides what a
+// failure rolls back to: the last value the server accepted. So two quick
+// taps can't leave the screen and the database disagreeing. `save` applies
+// `next` straight away — call it from the event handler, not inside
+// startTransition, or the optimistic update becomes low-priority and a quick
+// second tap sees the old value. Resolves true when this save is the latest
+// and it landed; the second value is true while any save is in flight.
+export function useStatusSaver<T>(filmId: number, initial: T) {
+  const confirmed = useRef(initial);
+  const latest = useRef(0);
+  const queue = useRef<Promise<unknown>>(Promise.resolve());
+  const [inFlight, setInFlight] = useState(0);
+  const save = useCallback(
+    async (next: T, patch: Record<string, unknown>, apply: (value: T) => void): Promise<boolean> => {
+      const mine = ++latest.current;
+      apply(next);
+      setInFlight((n) => n + 1);
+      const request = queue.current.then(() => saveStatus(filmId, patch));
+      queue.current = request;
+      const ok = await request;
+      setInFlight((n) => n - 1);
+      if (ok) confirmed.current = next;
+      if (mine !== latest.current) return false;
+      if (!ok) apply(confirmed.current);
+      return ok;
+    },
+    [filmId]
+  );
+  return [save, inFlight > 0] as const;
+}
+
 // Shared watched/pinned state for every film on a page, so the same film
 // shown twice (or a progress bar) stays in sync. `lockWatched` is the user's
 // "don't let me untick Watched" setting — see userSettings in schema.ts. It
 // only applies to WatchedToggles, never the film page's own controls.
+// `initialPinnedOrder` lists pinned films newest first, for pages that show
+// them in order (the Pinned tab).
 export function FilmWatchedProvider({
   initial,
   initialPinned = {},
+  initialPinnedOrder = [],
   lockWatched = false,
   children,
 }: {
   initial: FilmMap;
   initialPinned?: FilmMap;
+  initialPinnedOrder?: number[];
   lockWatched?: boolean;
   children: ReactNode;
 }) {
   const [watchedMap, setWatchedMap] = useState<FilmMap>(initial);
   const [pinnedMap, setPinnedMap] = useState<FilmMap>(initialPinned);
+  // Higher = pinned more recently.
+  const [pinRank, setPinRank] = useState<Record<number, number>>(() =>
+    Object.fromEntries(initialPinnedOrder.map((id, i) => [id, initialPinnedOrder.length - i]))
+  );
+  const nextRank = useRef(initialPinnedOrder.length + 1);
   const [prompt, setPrompt] = useState<{ filmId: number; title: string } | null>(null);
   const pinnedRef = useRef(pinnedMap);
-  pinnedRef.current = pinnedMap;
+  useEffect(() => {
+    pinnedRef.current = pinnedMap;
+  }, [pinnedMap]);
 
   const setWatched = useCallback((filmId: number, watched: boolean) => {
     setWatchedMap((prev) => ({ ...prev, [filmId]: watched }));
   }, []);
   const setPinned = useCallback((filmId: number, pinned: boolean) => {
     setPinnedMap((prev) => ({ ...prev, [filmId]: pinned }));
+    if (pinned) {
+      const rank = nextRank.current++;
+      setPinRank((prev) => ({ ...prev, [filmId]: rank }));
+    }
   }, []);
   const offerUnpin = useCallback((filmId: number, title: string) => {
     if (pinnedRef.current[filmId]) setPrompt({ filmId, title });
   }, []);
+  const pinnedIds = useMemo(
+    () =>
+      Object.entries(pinnedMap)
+        .filter(([, pinned]) => pinned)
+        .map(([id]) => Number(id))
+        .sort((a, b) => (pinRank[b] ?? 0) - (pinRank[a] ?? 0)),
+    [pinnedMap, pinRank]
+  );
 
   return (
-    <WatchedContext.Provider value={{ watchedMap, setWatched, pinnedMap, setPinned, offerUnpin, lockWatched }}>
+    <WatchedContext.Provider value={{ watchedMap, setWatched, pinnedMap, setPinned, pinnedIds, offerUnpin, lockWatched }}>
       {children}
       {prompt && (
         <UnpinPrompt
@@ -67,6 +124,8 @@ export function FilmWatchedProvider({
             const { filmId } = prompt;
             setPrompt(null);
             setPinned(filmId, false);
+            // Rolling back re-pins it, which moves it to the front; acceptable
+            // for a failed save.
             if (!(await saveStatus(filmId, { pinned: false }))) setPinned(filmId, true);
           }}
         />
@@ -137,6 +196,6 @@ export function useWatchedMap(): FilmMap {
   return useContext(WatchedContext)?.watchedMap ?? {};
 }
 
-export function usePinnedMap(): FilmMap {
-  return useContext(WatchedContext)?.pinnedMap ?? {};
+export function usePinnedIds(): number[] {
+  return useContext(WatchedContext)?.pinnedIds ?? [];
 }

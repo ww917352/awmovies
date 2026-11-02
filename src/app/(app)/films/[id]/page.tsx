@@ -6,7 +6,7 @@ import { toSafeRelativePath } from '@/lib/safe-path';
 import StatusControls from '@/components/StatusControls';
 import Poster, { imageSource } from '@/components/Poster';
 import { ChevronLeft } from '@/components/ui/icons';
-import { AWARD_ABBR } from '@/lib/format';
+import { awardLabel } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
 
@@ -53,7 +53,7 @@ export default async function FilmDetailPage({
         <div className="mx-auto w-[min(62vw,260px)] shrink-0 md:mx-0 md:w-64 lg:w-72">
           <Poster src={film.posterUrl} title={film.title} size="md" className="w-full shadow-card" rounded="rounded-xl" />
           {posterSource && (
-            <p className="mt-2 text-center text-[11px] text-label-3">
+            <p className="mt-2 text-center text-[12px] text-label-2">
               Poster:{' '}
               <a href={posterSource.href} target="_blank" rel="noreferrer" className="hover:underline">
                 {posterSource.name}
@@ -79,7 +79,7 @@ export default async function FilmDetailPage({
                 prefetch={false}
                 className="rounded-full bg-tint-soft px-3 py-1 text-[13px] font-semibold text-tint hover:underline"
               >
-                {AWARD_ABBR[w.awardSlug] ?? w.awardName} · {w.editionLabel ?? w.year}
+                {awardLabel(w.awardSlug, w.awardName)} · {w.editionLabel ?? w.year}
               </Link>
             ))}
             {filmLists.map((l) => (

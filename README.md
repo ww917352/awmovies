@@ -150,7 +150,9 @@ Moving everything to TMDB, whose API terms allow non-commercial apps to
 display its images with attribution, is planned. `scripts/tmdb-images.ts`
 does the data side: it matches each film or director by its TMDB id on
 Wikidata (from `wikiUrl`), falling back to a title + year search, and rewrites
-only the `posterUrl`/`photoUrl` lines in the seed JSON:
+only the `posterUrl`/`photoUrl` lines in the seed JSON. Its Wikidata lookup
+has been tried (596 of 604 images matched); the TMDB API half hasn't been run
+yet, so preview with `--dry-run` first:
 
 ```bash
 TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts --dry-run   # preview

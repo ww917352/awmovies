@@ -1,29 +1,28 @@
 'use client';
 
-import { useTransition } from 'react';
 import PinIcon from './PinIcon';
-import { saveStatus, useFilmPinned } from './FilmWatchedContext';
+import { useFilmPinned, useStatusSaver } from './FilmWatchedContext';
 
 // Pins a film to the Pinned tab's "Now watching". `variant="pill"` shows a
 // labelled button (film page); the default is a bare icon (rows, results).
+// `onSaved` runs after a pin change lands, e.g. to refresh the page's data.
 export default function PinButton({
   filmId,
   initialPinned,
   variant = 'icon',
+  onSaved,
 }: {
   filmId: number;
   initialPinned: boolean;
   variant?: 'icon' | 'pill';
+  onSaved?: () => void;
 }) {
   const [pinned, setPinned] = useFilmPinned(filmId, initialPinned);
-  const [isPending, startTransition] = useTransition();
+  const [save, isPending] = useStatusSaver(filmId, initialPinned);
 
   function toggle() {
     const next = !pinned;
-    setPinned(next);
-    startTransition(async () => {
-      if (!(await saveStatus(filmId, { pinned: next }))) setPinned(!next);
-    });
+    save(next, { pinned: next }, setPinned).then((ok) => ok && onSaved?.());
   }
 
   const label = pinned ? 'Unpin' : 'Pin to Now watching';

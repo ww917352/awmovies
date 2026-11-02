@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 import PinButton from './PinButton';
-import { FilmWatchedProvider, saveStatus, useOfferUnpin } from './FilmWatchedContext';
-import { Chip } from './UnwatchedOnlyToggle';
+import { FilmWatchedProvider, useOfferUnpin, useStatusSaver } from './FilmWatchedContext';
+import Chip from './ui/Chip';
 import { CheckIcon } from './ui/icons';
 
 type Status = {
@@ -32,17 +32,12 @@ export default function StatusControls(props: { filmId: number; title: string; i
 
 function Controls({ filmId, title, initialStatus }: { filmId: number; title: string; initialStatus: Status }) {
   const [status, setStatus] = useState(initialStatus);
-  const [isPending, startTransition] = useTransition();
+  const [save, isPending] = useStatusSaver(filmId, initialStatus);
   const offerUnpin = useOfferUnpin();
 
   function persist(next: Status, patch: Partial<Status>) {
-    const previous = status;
-    setStatus(next);
-    startTransition(async () => {
-      // Roll back if the write didn't land (e.g. the session expired).
-      if (!(await saveStatus(filmId, patch))) setStatus(previous);
-      else if (patch.watched) offerUnpin(filmId, title);
-    });
+    // Rolls back if the write didn't land (e.g. the session expired).
+    save(next, patch, setStatus).then((ok) => ok && patch.watched && offerUnpin(filmId, title));
   }
 
   function toggleFormat(format: string) {

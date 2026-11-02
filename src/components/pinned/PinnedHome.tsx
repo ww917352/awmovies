@@ -1,30 +1,41 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { SearchFilm } from '@/db/queries';
-import { FilmWatchedProvider, usePinnedMap, useWatchedMap } from '../FilmWatchedContext';
+import { FilmWatchedProvider, usePinnedIds, useWatchedMap } from '../FilmWatchedContext';
 import Poster from '../Poster';
 import PinButton from '../PinButton';
 import WatchedToggle from '../WatchedToggle';
-import { filmHref } from '@/lib/format';
+import { awardInfo, filmHref } from '@/lib/format';
+import { gridCols } from '../ui/gridCols';
 import { CheckIcon, ChevronRight } from '../ui/icons';
 import QuickSearch from './QuickSearch';
 
-export type YearSlot = { award: string; prize: string; filmId: number };
+// One winning film of the pinned year, for the year strip.
+export type YearSlot = {
+  awardSlug: string;
+  awardName: string;
+  organization: string;
+  filmId: number;
+  title: string;
+  posterUrl: string | null;
+};
 
+// `posters` covers the films pinned when the page loaded; films pinned from
+// the search show a placeholder until the refresh that follows the pin.
 export default function PinnedHome({
   searchFilms,
   pinnedIds,
+  posters,
   pinnedYear,
   yearSlots,
-  yearFilmIds,
   isLoggedIn,
   lockWatched,
 }: {
-  yearFilmIds: number[];
   searchFilms: SearchFilm[];
   pinnedIds: number[];
+  posters: Record<number, string | null>;
   pinnedYear: number | null;
   yearSlots: YearSlot[] | null;
   isLoggedIn: boolean;
@@ -35,7 +46,12 @@ export default function PinnedHome({
   const filmsById = useMemo(() => new Map(searchFilms.map((f) => [f.id, f])), [searchFilms]);
 
   return (
-    <FilmWatchedProvider initial={initialWatched} initialPinned={initialPinned} lockWatched={lockWatched}>
+    <FilmWatchedProvider
+      initial={initialWatched}
+      initialPinned={initialPinned}
+      initialPinnedOrder={pinnedIds}
+      lockWatched={lockWatched}
+    >
       <div className="page">
         <h1 className="large-title mb-4">Pinned</h1>
 
@@ -43,8 +59,8 @@ export default function PinnedHome({
 
         {isLoggedIn ? (
           <>
-            <NowWatching pinnedIds={pinnedIds} filmsById={filmsById} />
-            <PinnedYear year={pinnedYear} slots={yearSlots} filmIds={yearFilmIds} filmsById={filmsById} />
+            <NowWatching filmsById={filmsById} posters={posters} />
+            <PinnedYear year={pinnedYear} slots={yearSlots} />
           </>
         ) : (
           <InviteOnly />
@@ -54,21 +70,14 @@ export default function PinnedHome({
   );
 }
 
-function NowWatching({ pinnedIds, filmsById }: { pinnedIds: number[]; filmsById: Map<number, SearchFilm> }) {
-  const pinnedMap = usePinnedMap();
-  // Films pinned since the page loaded go first, newest first.
-  const [added, setAdded] = useState<number[]>([]);
-  useEffect(() => {
-    const fresh = Object.entries(pinnedMap)
-      .filter(([id, pinned]) => pinned && !pinnedIds.includes(Number(id)))
-      .map(([id]) => Number(id));
-    setAdded((prev) => {
-      const newcomers = fresh.filter((id) => !prev.includes(id));
-      return newcomers.length ? [...newcomers, ...prev] : prev;
-    });
-  }, [pinnedMap, pinnedIds]);
-
-  const shown = [...added, ...pinnedIds].filter((id) => pinnedMap[id]).flatMap((id) => filmsById.get(id) ?? []);
+function NowWatching({
+  filmsById,
+  posters,
+}: {
+  filmsById: Map<number, SearchFilm>;
+  posters: Record<number, string | null>;
+}) {
+  const shown = usePinnedIds().flatMap((id) => filmsById.get(id) ?? []);
 
   return (
     <section className="mt-8">
@@ -84,8 +93,9 @@ function NowWatching({ pinnedIds, filmsById }: { pinnedIds: number[]; filmsById:
         <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6">
           {shown.map((film) => (
             <article key={film.id} className="flex min-w-0 flex-col">
-              <Link href={filmHref(film.id, '/')} prefetch={false}>
-                <Poster src={film.posterUrl} title={film.title} size="md" className="w-full shadow-card" rounded="rounded-lg" />
+              {/* The title below links to the same page; this one is for pointer users. */}
+              <Link href={filmHref(film.id, '/')} prefetch={false} tabIndex={-1} aria-hidden>
+                <Poster src={posters[film.id] ?? null} title={film.title} size="md" className="w-full shadow-card" rounded="rounded-lg" />
               </Link>
               <Link
                 href={filmHref(film.id, '/')}
@@ -109,17 +119,7 @@ function NowWatching({ pinnedIds, filmsById }: { pinnedIds: number[]; filmsById:
   );
 }
 
-function PinnedYear({
-  year,
-  slots,
-  filmIds,
-  filmsById,
-}: {
-  year: number | null;
-  slots: YearSlot[] | null;
-  filmIds: number[];
-  filmsById: Map<number, SearchFilm>;
-}) {
+function PinnedYear({ year, slots }: { year: number | null; slots: YearSlot[] | null }) {
   const watchedMap = useWatchedMap();
 
   if (year === null || slots === null) {
@@ -138,7 +138,7 @@ function PinnedYear({
   }
 
   // Counts every winner, shared prizes included, as the Awards tab does.
-  const unique = Array.from(new Set(filmIds));
+  const unique = Array.from(new Set(slots.map((s) => s.filmId)));
   const watched = unique.filter((id) => watchedMap[id]).length;
   const total = unique.length;
 
@@ -162,25 +162,27 @@ function PinnedYear({
             {watched} of {total} watched
           </span>
         </div>
-        <div
-          className="grid grid-cols-[repeat(var(--cols),minmax(0,1fr))] gap-2 sm:gap-4"
-          style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
-        >
+        <div className="grid grid-cols-[repeat(var(--cols),minmax(0,1fr))] gap-2 sm:gap-4" style={gridCols(slots.length)}>
           {slots.map((slot) => {
-            const film = filmsById.get(slot.filmId);
-            if (!film) return null;
+            const award = awardInfo({ slug: slot.awardSlug, organization: slot.organization, name: slot.awardName });
             return (
-              <div key={`${slot.award}-${film.id}`} className="min-w-0">
-                <Link href={filmHref(film.id, '/')} prefetch={false} className="relative block" title={film.title}>
-                  <Poster src={film.posterUrl} title={film.title} size="sm" className="w-full" rounded="rounded-md" />
-                  {watchedMap[film.id] && (
+              <div key={`${slot.awardSlug}-${slot.filmId}`} className="min-w-0">
+                <Link
+                  href={filmHref(slot.filmId, '/')}
+                  prefetch={false}
+                  className="relative block"
+                  title={slot.title}
+                  aria-label={`${slot.title}, ${award.label}`}
+                >
+                  <Poster src={slot.posterUrl} title={slot.title} size="sm" className="w-full" rounded="rounded-md" />
+                  {watchedMap[slot.filmId] && (
                     <span className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-ok-bright text-white shadow">
                       <CheckIcon className="w-3 h-3" />
                     </span>
                   )}
                 </Link>
-                <p className="mt-1.5 truncate text-center text-[11px] font-medium text-label-2" title={slot.prize}>
-                  {slot.award}
+                <p className="mt-1.5 truncate text-center text-[11px] font-medium text-label-2" title={award.label} aria-hidden>
+                  {award.chip}
                 </p>
               </div>
             );

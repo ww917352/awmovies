@@ -35,7 +35,8 @@ export default function AwardCard({
       </header>
 
       <article className="flex flex-1 gap-3 sm:flex-col sm:gap-2.5">
-        <Link href={filmHref(winner.film.id, back)} prefetch={false} className="shrink-0">
+        {/* The title links to the same page; this one is for pointer users. */}
+        <Link href={filmHref(winner.film.id, back)} prefetch={false} className="shrink-0" tabIndex={-1} aria-hidden>
           <Poster src={winner.film.posterUrl} title={winner.film.title} size="md" className="w-[72px] sm:w-full" rounded="rounded-lg" />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col">

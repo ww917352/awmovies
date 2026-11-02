@@ -1,44 +1,47 @@
 'use client';
 
-import { Fragment, useMemo, useState, type ReactNode } from 'react';
-import type { ListMembership, ListOnlyEntry, WinEntry } from '@/db/queries';
+import { useMemo, useState, type ReactNode } from 'react';
+import type { ListMembership, WinEntry } from '@/db/queries';
 import FilmRow, { FilmRows } from './FilmRow';
 import WinLabel from './WinLabel';
 import ListLabel from './ListLabel';
 import { FilmWatchedProvider } from './FilmWatchedContext';
-import UnwatchedOnlyToggle, { Chip } from './UnwatchedOnlyToggle';
-import SearchField, { StickyToolbar } from './ui/SearchField';
-import { AWARDS } from '@/lib/format';
+import UnwatchedOnlyToggle from './UnwatchedOnlyToggle';
+import Chip from './ui/Chip';
+import SearchField from './ui/SearchField';
+import StickyToolbar from './ui/StickyToolbar';
+import { joinLabels } from './ui/joinLabels';
+
+export type MovieFilm = Pick<
+  WinEntry['film'],
+  'id' | 'title' | 'originalTitle' | 'releaseYear' | 'directors' | 'mainCast' | 'studios'
+>;
+type MovieWin = Pick<WinEntry, 'year' | 'awardSlug' | 'awardName' | 'status'> & { film: MovieFilm };
+type MovieListOnly = Pick<WinEntry, 'status'> & { film: MovieFilm };
 
 // One row on the page: an award win, or a film that's only in lists — which
 // has no award year, so it's placed and filtered by its release year and
 // labelled "Released" to tell the two apart.
-type Row = Pick<WinEntry, 'film' | 'status'> & {
+type Row = Pick<MovieWin, 'film' | 'status'> & {
   key: string;
   year: number;
   awardSlug: string | null;
   label: ReactNode;
 };
 
-function joinLabels(parts: ReactNode[]) {
-  return parts.map((part, i) => (
-    <Fragment key={i}>
-      {i > 0 && ' · '}
-      {part}
-    </Fragment>
-  ));
-}
 
 export default function MovieList({
   wins,
   listOnlyFilms,
   listMemberships,
+  awards,
   user,
   lockWatched,
 }: {
-  wins: WinEntry[];
-  listOnlyFilms: ListOnlyEntry[];
+  wins: MovieWin[];
+  listOnlyFilms: MovieListOnly[];
   listMemberships: Record<number, ListMembership[]>;
+  awards: { slug: string; chip: string }[];
   user: { username: string } | null;
   lockWatched: boolean;
 }) {
@@ -116,9 +119,9 @@ export default function MovieList({
             <Chip on={awardSlug === 'all'} onClick={() => setAwardSlug('all')}>
               All
             </Chip>
-            {AWARDS.map((a) => (
+            {awards.map((a) => (
               <Chip key={a.slug} on={awardSlug === a.slug} onClick={() => setAwardSlug(awardSlug === a.slug ? 'all' : a.slug)}>
-                {a.prize === 'International Feature' ? 'Int’l Feature' : a.prize}
+                {a.chip}
               </Chip>
             ))}
             <span className="mx-1 h-5 w-px shrink-0 bg-sep" />

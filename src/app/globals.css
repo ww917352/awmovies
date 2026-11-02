@@ -220,6 +220,24 @@ main.app-main {
   min-width: 0;
 }
 
+/* A long username mustn't push the other tabs around. */
+.app-nav .tab {
+  min-width: 0;
+}
+.app-nav .tab-label {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A list row a film page's Back link returns to (FilmRow returnToRow):
+   clear the sticky nav and the list's search toolbar above it. */
+.row-anchor {
+  scroll-margin-top: calc(var(--sticky-top) + 7.5rem);
+}
+
 .page {
   width: 100%;
   max-width: 1120px;

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { getCurrentUser } from '@/lib/auth';
-import AppNav from '@/components/AppNav';
+import AppNavWithBack, { AppNav } from '@/components/AppNav';
 
 // The tabbed part of the app. Login and change-password live outside this
 // group, so they get a bare page with no nav.
@@ -10,9 +10,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="shell">
-      {/* AppNav reads ?back= on film pages; the fallback is the same nav without it. */}
+      {/* The live nav reads ?back= on film pages; the fallback is the same nav without it. */}
       <Suspense fallback={<AppNav user={navUser} />}>
-        <AppNav user={navUser} />
+        <AppNavWithBack user={navUser} />
       </Suspense>
       <main className="app-main">{children}</main>
     </div>

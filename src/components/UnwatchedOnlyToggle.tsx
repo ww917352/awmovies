@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useWatchedMap } from './FilmWatchedContext';
+import Chip from './ui/Chip';
 
 // The "Unwatched" filter chip. Turning it on reports the films watched at
 // that moment — including ones marked watched since the page loaded — so the
@@ -23,20 +24,5 @@ export default function UnwatchedOnlyToggle({ onChange }: { onChange: (hiddenIds
     >
       Unwatched
     </Chip>
-  );
-}
-
-export function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={on}
-      className={`shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium transition-colors ${
-        on ? 'bg-label text-bg' : 'bg-fill text-label hover:bg-fill-2'
-      }`}
-    >
-      {children}
-    </button>
   );
 }

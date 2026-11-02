@@ -113,7 +113,7 @@ export const digitalQualityValues = ['sd', 'hd', '4k'] as const;
 
 // Composite-keyed on (userId, filmId): each user has their own watched/owned
 // status for a film. Anonymous (logged-out) visitors have no row and see
-// blank status — see getAllFilms/getAllWins in queries.ts.
+// blank status — see getAllWins in queries.ts.
 export const filmStatus = pgTable(
   'film_status',
   {

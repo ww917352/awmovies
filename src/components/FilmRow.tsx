@@ -36,8 +36,7 @@ export default function FilmRow({
   return (
     <div
       id={returnToRow ? rowId : undefined}
-      className="flex items-center gap-3 px-4 py-2.5"
-      style={{ scrollMarginTop: 'calc(var(--sticky-top) + 120px)' }}
+      className="row-anchor flex items-center gap-3 px-4 py-2.5"
     >
       <Link href={filmHref(film.id, back)} prefetch={false} className="group flex min-w-0 flex-1 items-center">
         <span className="min-w-0 flex-1">

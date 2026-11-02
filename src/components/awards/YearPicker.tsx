@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import { AWARDS } from '@/lib/format';
 import PinIcon from '../PinIcon';
 import { XIcon } from '../ui/icons';
 
@@ -11,10 +10,12 @@ export type PickerRow = { year: number; cells: (0 | 1 | 2)[] };
 
 // Every year at a glance, a dot per award, grouped by decade — doubles as a
 // map of what's left to watch. Decades flow into columns on wider screens.
+// `columns` are the awards' short codes, one per cell.
 export default function YearPicker({
   open,
   onClose,
   rows,
+  columns,
   currentYear,
   pinnedYear,
   showWatched,
@@ -22,6 +23,7 @@ export default function YearPicker({
   open: boolean;
   onClose: () => void;
   rows: PickerRow[];
+  columns: string[];
   currentYear: number;
   pinnedYear: number | null;
   showWatched: boolean;
@@ -86,9 +88,9 @@ export default function YearPicker({
                 <div className="mb-1 flex items-end justify-between px-2">
                   <h3 className="text-[13px] font-semibold text-label-2">{decade}s</h3>
                   <div className="flex gap-1">
-                    {AWARDS.map((a) => (
-                      <span key={a.slug} className="w-6 text-center text-[9px] font-medium uppercase text-label-3">
-                        {a.short.slice(0, 3)}
+                    {columns.map((code, i) => (
+                      <span key={i} className="w-6 text-center text-[9px] font-medium uppercase text-label-3">
+                        {code}
                       </span>
                     ))}
                   </div>

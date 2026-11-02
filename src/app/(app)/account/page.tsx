@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
 import { getAllAwards, getAllWins, getUserSettings } from '@/db/queries';
-import { AWARD_ABBR, capitalizeWords } from '@/lib/format';
+import { awardLabel, capitalizeWords } from '@/lib/format';
 import StatTile from '@/components/StatTile';
 import ThemeSettings from '@/components/ThemeSettings';
 import LockWatchedSetting from '@/components/LockWatchedSetting';
@@ -25,7 +25,7 @@ export default async function AccountPage() {
   // e.g. "Berlin · Golden Bear, …, Oscar · Int’l Feature and Venice · Golden
   // Lion", alphabetically.
   const awardNames = awards
-    .map((a) => AWARD_ABBR[a.slug] ?? a.name)
+    .map((a) => awardLabel(a.slug, a.name))
     .sort((a, b) => a.localeCompare(b));
   const awardList =
     awardNames.length > 1 ? `${awardNames.slice(0, -1).join(', ')} and ${awardNames.at(-1)}` : (awardNames[0] ?? '');

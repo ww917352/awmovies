@@ -30,22 +30,25 @@ export default function ThemeSettings() {
     }
   }
 
+  // Native radios (arrow keys move between them), drawn as a segmented control.
   return (
-    <div className="flex rounded-lg bg-fill p-0.5" role="radiogroup" aria-label="Theme">
+    <fieldset className="flex rounded-lg bg-fill p-0.5">
+      <legend className="sr-only">Theme</legend>
       {OPTIONS.map((opt) => (
-        <button
+        <label
           key={opt.label}
-          type="button"
-          role="radio"
-          aria-checked={override === opt.value}
-          onClick={() => apply(opt.value)}
-          className={`flex-1 rounded-md px-3 py-1.5 text-[14px] font-medium ${
-            override === opt.value ? 'bg-card shadow-card' : 'text-label-2'
-          }`}
+          className="flex-1 cursor-pointer rounded-md px-3 py-1.5 text-center text-[14px] font-medium text-label-2 has-[:checked]:bg-card has-[:checked]:text-label has-[:checked]:shadow-card has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-tint"
         >
+          <input
+            type="radio"
+            name="theme"
+            className="sr-only"
+            checked={override === opt.value}
+            onChange={() => apply(opt.value)}
+          />
           {opt.label}
-        </button>
+        </label>
       ))}
-    </div>
+    </fieldset>
   );
 }

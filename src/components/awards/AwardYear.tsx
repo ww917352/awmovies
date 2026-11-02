@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { gridCols } from '../ui/gridCols';
 import { useRouter } from 'next/navigation';
 import type { WinEntry } from '@/db/queries';
 import { FilmWatchedProvider, useWatchedMap } from '../FilmWatchedContext';
@@ -54,11 +55,6 @@ export default function AwardYear({
   );
   const initialPinned = useMemo(() => Object.fromEntries(winners.map((w) => [w.film.id, w.status.pinned])), [winners]);
 
-  useEffect(() => {
-    if (prev) router.prefetch(`/awards/${prev}`);
-    if (next) router.prefetch(`/awards/${next}`);
-  }, [router, prev, next]);
-
   // ← → step a year, unless typing or a dialog is open.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -103,10 +99,6 @@ export default function AwardYear({
   }
 
   const isPinned = pinnedYear === year;
-  const stepClass = (enabled: boolean) =>
-    `grid h-10 w-10 place-items-center rounded-full bg-card shadow-card ${
-      enabled ? 'text-tint hover:bg-card-2' : 'pointer-events-none text-label-3 opacity-50'
-    }`;
 
   return (
     <FilmWatchedProvider initial={initialWatched} initialPinned={initialPinned} lockWatched={lockWatched}>
@@ -138,22 +130,12 @@ export default function AwardYear({
                 <span className="hidden sm:inline">{isPinned ? 'Pinned year' : 'Pin year'}</span>
               </button>
             )}
-            <Link
-              href={prev ? `/awards/${prev}` : '#'}
-              className={stepClass(!!prev)}
-              aria-label="Previous year"
-              aria-disabled={!prev}
-            >
+            <StepLink year={prev} label="Previous year">
               <ChevronLeft className="w-5 h-5" />
-            </Link>
-            <Link
-              href={next ? `/awards/${next}` : '#'}
-              className={stepClass(!!next)}
-              aria-label="Next year"
-              aria-disabled={!next}
-            >
+            </StepLink>
+            <StepLink year={next} label="Next year">
               <ChevronRight className="w-5 h-5" />
-            </Link>
+            </StepLink>
           </div>
         </header>
 
@@ -164,7 +146,7 @@ export default function AwardYear({
           // row on wide screens; at least five columns so cards keep their size.
           <div
             className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
-            style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
+            style={gridCols(slots.length)}
           >
             {slots.map((slot) => (
               <AwardCard
@@ -187,11 +169,29 @@ export default function AwardYear({
         onClose={() => setPickerOpen(false)}
         rows={pickerRows}
         cards={cards}
+        columns={cards.map((c) => c.short)}
         currentYear={year}
         pinnedYear={pinnedYear}
         showWatched={isLoggedIn}
       />
     </FilmWatchedProvider>
+  );
+}
+
+// ‹ / › to the neighbouring year; a disabled button at either end.
+function StepLink({ year, label, children }: { year: number | null; label: string; children: React.ReactNode }) {
+  const base = 'grid h-10 w-10 place-items-center rounded-full bg-card shadow-card';
+  if (year === null) {
+    return (
+      <button type="button" disabled aria-label={label} className={`${base} text-label-3 opacity-50`}>
+        {children}
+      </button>
+    );
+  }
+  return (
+    <Link href={`/awards/${year}`} aria-label={label} className={`${base} text-tint hover:bg-card-2`}>
+      {children}
+    </Link>
   );
 }
 

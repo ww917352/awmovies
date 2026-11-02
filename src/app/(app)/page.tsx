@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
-import { getAllWins, getPinnedFilms, getSearchFilms, getUserSettings } from '@/db/queries';
+import { getAllWins, getFilmPosters, getPinnedFilmIds, getSearchFilms, getUserSettings } from '@/db/queries';
 import { getCurrentUser, requireUpToDatePassword } from '@/lib/auth';
-import { AWARDS } from '@/lib/format';
+import { orderAwards } from '@/lib/format';
 import PinnedHome, { type YearSlot } from '@/components/pinned/PinnedHome';
 
 export const dynamic = 'force-dynamic';
@@ -15,31 +15,34 @@ export default async function PinnedPage({ searchParams }: { searchParams: Promi
   requireUpToDatePassword(user);
   const userId = user?.id ?? null;
 
-  const [searchFilms, pinnedFilms, { pinnedYear, lockWatched }, wins] = await Promise.all([
+  const [searchFilms, pinnedIds, { pinnedYear, lockWatched }] = await Promise.all([
     getSearchFilms(userId),
-    getPinnedFilms(userId),
+    getPinnedFilmIds(userId),
     getUserSettings(userId),
-    getAllWins(userId),
+  ]);
+  const [yearWins, posters] = await Promise.all([
+    pinnedYear === null ? [] : getAllWins(userId, { year: pinnedYear }),
+    getFilmPosters(pinnedIds),
   ]);
 
-  // The pinned year's winners, in Awards-tab order, one per film; awards not
-  // given that year are left out, as on the Awards tab.
+  // The pinned year's winners, one per film, in Awards-tab order.
   const yearSlots: YearSlot[] | null =
     pinnedYear === null
       ? null
-      : AWARDS.flatMap((award) =>
-          wins
-            .filter((w) => w.year === pinnedYear && w.awardSlug === award.slug)
-            .map((w) => ({ award: award.short, prize: award.prize, filmId: w.film.id }))
-        );
-
-  const yearFilmIds = pinnedYear === null ? [] : wins.filter((w) => w.year === pinnedYear).map((w) => w.film.id);
+      : orderAwards(yearWins.map((w) => ({ ...w, slug: w.awardSlug }))).map((w) => ({
+          awardSlug: w.awardSlug,
+          awardName: w.awardName,
+          organization: w.organization,
+          filmId: w.film.id,
+          title: w.film.title,
+          posterUrl: w.film.posterUrl,
+        }));
 
   return (
     <PinnedHome
-      yearFilmIds={yearFilmIds}
       searchFilms={searchFilms}
-      pinnedIds={pinnedFilms.map((f) => f.id)}
+      pinnedIds={pinnedIds}
+      posters={posters}
       pinnedYear={pinnedYear}
       yearSlots={yearSlots}
       isLoggedIn={!!user}

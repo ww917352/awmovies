@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { SearchFilm } from '@/db/queries';
 import PinButton from '../PinButton';
@@ -18,6 +19,7 @@ function fold(value: string) {
 // starting with the query rank first, then other title matches, then
 // original-title and director matches. "/" focuses it from anywhere.
 export default function QuickSearch({ films, isLoggedIn }: { films: SearchFilm[]; isLoggedIn: boolean }) {
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,7 +74,10 @@ export default function QuickSearch({ films, isLoggedIn }: { films: SearchFilm[]
                       </span>
                     </span>
                   </Link>
-                  {isLoggedIn && <PinButton filmId={film.id} initialPinned={film.pinned} />}
+                  {isLoggedIn && (
+                    // Refresh so a newly pinned film's card gets its poster.
+                    <PinButton filmId={film.id} initialPinned={film.pinned} onSaved={() => router.refresh()} />
+                  )}
                 </li>
               ))}
             </ul>

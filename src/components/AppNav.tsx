@@ -20,11 +20,17 @@ function tabs(user: { username: string } | null): Tab[] {
   ];
 }
 
-// One nav rendered three ways by globals.css: sidebar, top bar, tab bar.
-// A film page belongs to whichever tab it was opened from (its ?back= link).
-export default function AppNav({ user }: { user: { username: string } | null }) {
-  const pathname = usePathname();
+// The nav, with a film page shown under whichever tab it was opened from
+// (its ?back= link). Reading the query string needs a Suspense boundary;
+// the layout's fallback is <AppNav>, which doesn't.
+export default function AppNavWithBack({ user }: { user: { username: string } | null }) {
   const back = useSearchParams().get('back');
+  return <AppNav user={user} back={back} />;
+}
+
+// One nav rendered three ways by globals.css: sidebar, top bar, tab bar.
+export function AppNav({ user, back = null }: { user: { username: string } | null; back?: string | null }) {
+  const pathname = usePathname();
   const activePath = pathname.startsWith('/films/') && back?.startsWith('/') ? back.split(/[?#]/)[0] : pathname;
 
   return (
@@ -45,7 +51,7 @@ export default function AppNav({ user }: { user: { username: string } | null }) 
               aria-current={active ? 'page' : undefined}
             >
               <Icon />
-              <span>{label}</span>
+              <span className="tab-label">{label}</span>
             </Link>
           );
         })}

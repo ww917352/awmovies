@@ -1,9 +1,11 @@
 'use client';
 
-import { Fragment, useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState } from 'react';
 import type { ListFilm } from '@/db/queries';
 import FilmRow, { FilmRows } from './FilmRow';
-import SearchField, { StickyToolbar } from './ui/SearchField';
+import SearchField from './ui/SearchField';
+import StickyToolbar from './ui/StickyToolbar';
+import { joinLabels } from './ui/joinLabels';
 import WatchedProgress from './WatchedProgress';
 import WinLabel from './WinLabel';
 import { FilmWatchedProvider } from './FilmWatchedContext';
@@ -124,11 +126,3 @@ export default function ListFilms({
   );
 }
 
-function joinLabels(parts: ReactNode[]) {
-  return parts.map((part, i) => (
-    <Fragment key={i}>
-      {i > 0 && ' · '}
-      {part}
-    </Fragment>
-  ));
-}
