@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useWatchedMap } from './FilmWatchedContext';
 
-export default function WatchedProgress({ filmIds, noun = 'movies' }: { filmIds: number[]; noun?: string }) {
+export default function WatchedProgress({ filmIds, noun = 'films' }: { filmIds: number[]; noun?: string }) {
   const watchedMap = useWatchedMap();
 
   const { watched, total, pct } = useMemo(() => {
@@ -14,15 +14,15 @@ export default function WatchedProgress({ filmIds, noun = 'movies' }: { filmIds:
   }, [filmIds, watchedMap]);
 
   return (
-    <div className="mb-4">
-      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1.5">
-        <span className="font-semibold text-neutral-900 dark:text-neutral-100">{watched}</span> of {total} {noun} watched ({pct}%)
+    <div className="mb-4 rounded-2xl bg-card px-4 py-3">
+      <p className="mb-2 flex items-baseline justify-between text-[15px] text-label-2">
+        <span>
+          <span className="font-semibold text-label">{watched}</span> of {total} {noun} watched
+        </span>
+        <span className="tabular-nums">{pct}%</span>
       </p>
-      <div className="h-2 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
-        <div
-          className="h-full rounded-full bg-emerald-500 transition-[width] duration-300"
-          style={{ width: `${pct}%` }}
-        />
+      <div className="h-1.5 overflow-hidden rounded-full bg-fill">
+        <div className="h-full rounded-full bg-ok-bright transition-[width] duration-300" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );

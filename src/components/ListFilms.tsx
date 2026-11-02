@@ -1,8 +1,11 @@
 'use client';
 
-import { Fragment, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { ListFilm } from '@/db/queries';
-import FilmRow from './FilmRow';
+import FilmRow, { FilmRows } from './FilmRow';
+import SearchField from './ui/SearchField';
+import StickyToolbar from './ui/StickyToolbar';
+import { joinLabels } from './ui/joinLabels';
 import WatchedProgress from './WatchedProgress';
 import WinLabel from './WinLabel';
 import { FilmWatchedProvider } from './FilmWatchedContext';
@@ -47,6 +50,7 @@ export default function ListFilms({
   }, [filtered]);
 
   const initialWatchedMap = useMemo(() => Object.fromEntries(films.map((f) => [f.id, f.status.watched])), [films]);
+  const initialPinnedMap = useMemo(() => Object.fromEntries(films.map((f) => [f.id, f.status.pinned])), [films]);
   // With `progressSection`, the progress bar counts only that section's films,
   // e.g. a director's feature films but not their shorts.
   const progressIds = useMemo(
@@ -54,64 +58,71 @@ export default function ListFilms({
     [films, progressSection]
   );
 
+  // Consecutive films under the same heading, each run in its own card.
+  const groups = useMemo(() => {
+    const out: { section: string | null; films: ListFilm[] }[] = [];
+    for (const f of filtered) {
+      const last = out.at(-1);
+      if (last && last.section === f.section) last.films.push(f);
+      else out.push({ section: f.section, films: [f] });
+    }
+    return out;
+  }, [filtered]);
+
   if (films.length === 0) {
-    return <p className="text-neutral-500 text-center py-8">No films in this list yet.</p>;
+    return <p className="py-12 text-center text-label-2">No films in this list yet.</p>;
   }
 
   return (
-    <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
-      {isLoggedIn && (
-        <WatchedProgress filmIds={progressIds} noun={progressSection?.toLowerCase()} />
-      )}
+    <FilmWatchedProvider initial={initialWatchedMap} initialPinned={initialPinnedMap} lockWatched={lockWatched}>
+      {isLoggedIn && <WatchedProgress filmIds={progressIds} noun={progressSection?.toLowerCase()} />}
 
-      <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search title, director, cast…"
-          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base w-full"
-        />
+      <StickyToolbar>
+        <SearchField value={search} onChange={setSearch} placeholder="Search title, director, cast" />
+        {isLoggedIn && (
+          <div className="flex gap-2">
+            <UnwatchedOnlyToggle onChange={setHiddenIds} />
+          </div>
+        )}
+      </StickyToolbar>
 
-        {isLoggedIn && <UnwatchedOnlyToggle onChange={setHiddenIds} />}
-      </div>
-
-      <p className="text-sm text-neutral-500 mb-3">{filtered.length} films</p>
+      <p className="mb-2 px-1 text-[13px] text-label-2">{filtered.length} films</p>
 
       {filtered.length === 0 ? (
-        <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
+        <p className="py-12 text-center text-label-2">No films match these filters.</p>
       ) : (
-        filtered.map((f, i) => (
-          <Fragment key={f.id}>
-            {f.section !== null && f.section !== filtered[i - 1]?.section && (
-              <h2 className={`text-lg font-semibold mb-2 ${i > 0 ? 'mt-6' : ''}`}>
-                {f.section}
-                <span className="text-sm font-normal text-neutral-500 ml-2">{sectionCounts.get(f.section)}</span>
+        groups.map((group, gi) => (
+          <section key={`${group.section}-${gi}`} className="mb-6">
+            {group.section !== null && (
+              <h2 className="group-label">
+                {group.section} · {sectionCounts.get(group.section)}
               </h2>
             )}
-            <FilmRow
-              film={f}
-              status={f.status}
-              label={
-                <span className="flex flex-wrap gap-x-3">
-                  {f.rank !== null && (
-                    <span className="text-neutral-700 dark:text-neutral-300 font-semibold">No. {f.rank}</span>
-                  )}
-                  {showYear && !f.wins.some((w) => w.year === f.releaseYear) && (
-                    <span className="text-neutral-700 dark:text-neutral-300 font-semibold">{f.releaseYear}</span>
-                  )}
-                  {f.wins.map((w) => (
-                    <WinLabel key={`${w.awardSlug}-${w.year}`} year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
-                  ))}
-                </span>
-              }
-              isLoggedIn={isLoggedIn}
-              backHref={backHref}
-              returnToRow
-            />
-          </Fragment>
+            <FilmRows>
+              {group.films.map((f) => (
+                <FilmRow
+                  key={f.id}
+                  film={f}
+                  status={f.status}
+                  label={joinLabels([
+                    ...(f.rank !== null ? [<span key="rank" className="font-semibold text-tint">No. {f.rank}</span>] : []),
+                    ...(showYear && !f.wins.some((w) => w.year === f.releaseYear)
+                      ? [<span key="year">{f.releaseYear}</span>]
+                      : []),
+                    ...f.wins.map((w) => (
+                      <WinLabel key={`${w.awardSlug}-${w.year}`} year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
+                    )),
+                  ])}
+                  isLoggedIn={isLoggedIn}
+                  backHref={backHref}
+                  returnToRow
+                />
+              ))}
+            </FilmRows>
+          </section>
         ))
       )}
     </FilmWatchedProvider>
   );
 }
+

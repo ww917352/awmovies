@@ -7,8 +7,8 @@ type Override = 'light' | 'dark' | null;
 
 const OPTIONS: { value: Override; label: string }[] = [
   { value: null, label: 'Automatic' },
-  { value: 'light', label: 'Always light' },
-  { value: 'dark', label: 'Always dark' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
 ];
 
 export default function ThemeSettings() {
@@ -30,20 +30,25 @@ export default function ThemeSettings() {
     }
   }
 
+  // Native radios (arrow keys move between them), drawn as a segmented control.
   return (
-    <div className="flex flex-col gap-2">
+    <fieldset className="flex rounded-lg bg-fill p-0.5">
+      <legend className="sr-only">Theme</legend>
       {OPTIONS.map((opt) => (
-        <label key={opt.label} className="flex items-center gap-2 text-sm cursor-pointer select-none">
+        <label
+          key={opt.label}
+          className="flex-1 cursor-pointer rounded-md px-3 py-1.5 text-center text-[14px] font-medium text-label-2 has-[:checked]:bg-card has-[:checked]:text-label has-[:checked]:shadow-card has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-tint"
+        >
           <input
             type="radio"
             name="theme"
+            className="sr-only"
             checked={override === opt.value}
             onChange={() => apply(opt.value)}
-            className="accent-emerald-500"
           />
           {opt.label}
         </label>
       ))}
-    </div>
+    </fieldset>
   );
 }

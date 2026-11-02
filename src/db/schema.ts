@@ -113,7 +113,7 @@ export const digitalQualityValues = ['sd', 'hd', '4k'] as const;
 
 // Composite-keyed on (userId, filmId): each user has their own watched/owned
 // status for a film. Anonymous (logged-out) visitors have no row and see
-// blank status — see getAllFilms/getAllWins in queries.ts.
+// blank status — see getAllWins in queries.ts.
 export const filmStatus = pgTable(
   'film_status',
   {
@@ -128,6 +128,9 @@ export const filmStatus = pgTable(
     ownedFormats: text('owned_formats').array().notNull().default([]),
     digitalQuality: varchar('digital_quality', { length: 8 }),
     notes: text('notes'),
+    // Set while the film is pinned to the user's "watching" shelf on the
+    // home page; null otherwise. Newest pins are shown first.
+    pinnedAt: timestamp('pinned_at'),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.filmId] }),

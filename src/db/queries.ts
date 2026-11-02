@@ -1,6 +1,6 @@
 import { db } from './client';
 import { awards, awardWins, directors, films, filmStatus, listFilms, lists, userSettings } from './schema';
-import { and, asc, count, eq, exists, gt, inArray, isNull, min, max, notExists, sql } from 'drizzle-orm';
+import { and, asc, count, desc, eq, exists, gt, inArray, isNotNull, isNull, min, max, notExists, sql } from 'drizzle-orm';
 
 export type FilmWithWins = {
   id: number;
@@ -22,6 +22,7 @@ export type FilmWithWins = {
     ownedFormats: string[];
     digitalQuality: string | null;
     notes: string | null;
+    pinned: boolean;
   };
   wins: {
     awardSlug: string;
@@ -36,7 +37,7 @@ export async function getAllAwards() {
   return db.select().from(awards);
 }
 
-// Shared by getAllFilms, getFilmById and getListFilms — `filmId` narrows to
+// Shared by getFilmById and getListFilms — `filmId` narrows to
 // one film via a real SQL WHERE instead of loading every film and filtering
 // in JS (getFilmById used to call getAllFilms() and .find(), joining the
 // entire catalogue to return a single row); `ownedOnly` likewise keeps only
@@ -69,6 +70,7 @@ async function selectFilmsWithWins(
       ownedFormats: filmStatus.ownedFormats,
       digitalQuality: filmStatus.digitalQuality,
       notes: filmStatus.notes,
+      pinnedAt: filmStatus.pinnedAt,
       awardSlug: awards.slug,
       awardName: awards.name,
       organization: awards.organization,
@@ -114,6 +116,7 @@ async function selectFilmsWithWins(
           ownedFormats: row.ownedFormats ?? [],
           digitalQuality: row.digitalQuality,
           notes: row.notes,
+          pinned: row.pinnedAt !== null,
         },
         wins: [],
       };
@@ -145,10 +148,15 @@ async function selectFilmsWithWins(
   });
 }
 
-// `userId` scopes watched/owned status to that user; pass `null` for
-// logged-out visitors, who see blank status regardless of what's in the DB.
-export async function getAllFilms(userId: number | null): Promise<FilmWithWins[]> {
-  return selectFilmsWithWins(userId);
+// The user's pinned films, newest pin first.
+export async function getPinnedFilmIds(userId: number | null): Promise<number[]> {
+  if (userId === null) return [];
+  const rows = await db
+    .select({ filmId: filmStatus.filmId })
+    .from(filmStatus)
+    .where(and(eq(filmStatus.userId, userId), isNotNull(filmStatus.pinnedAt)))
+    .orderBy(desc(filmStatus.pinnedAt));
+  return rows.map((r) => r.filmId);
 }
 
 export async function getFilmById(id: number, userId: number | null): Promise<FilmWithWins | null> {
@@ -174,15 +182,20 @@ export type WinEntry = {
     letterboxdUrl: string | null;
     letterboxdUnverified: boolean;
     appleTvUrl: string | null;
+    posterUrl: string | null;
   };
   status: {
     watched: boolean;
     ownedFormats: string[];
     digitalQuality: string | null;
+    pinned: boolean;
   };
 };
 
-export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
+// `userId` scopes watched/owned status to that user; pass `null` for
+// logged-out visitors, who see blank status regardless of what's in the DB.
+// `year` narrows to one award year.
+export async function getAllWins(userId: number | null, { year }: { year?: number } = {}): Promise<WinEntry[]> {
   const statusJoinCondition =
     userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
 
@@ -204,14 +217,17 @@ export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
       letterboxdUrl: films.letterboxdUrl,
       letterboxdUnverified: films.letterboxdUnverified,
       appleTvUrl: films.appleTvUrl,
+      posterUrl: films.posterUrl,
       watched: filmStatus.watched,
       ownedFormats: filmStatus.ownedFormats,
       digitalQuality: filmStatus.digitalQuality,
+      pinnedAt: filmStatus.pinnedAt,
     })
     .from(awardWins)
     .innerJoin(awards, eq(awards.id, awardWins.awardId))
     .innerJoin(films, eq(films.id, awardWins.filmId))
     .leftJoin(filmStatus, statusJoinCondition)
+    .where(year === undefined ? undefined : eq(awardWins.year, year))
     .orderBy(awardWins.year, awards.slug, films.title);
 
   return rows.map((row) => ({
@@ -232,11 +248,13 @@ export async function getAllWins(userId: number | null): Promise<WinEntry[]> {
       letterboxdUrl: row.letterboxdUrl,
       letterboxdUnverified: row.letterboxdUnverified,
       appleTvUrl: row.appleTvUrl,
+      posterUrl: row.posterUrl,
     },
     status: {
       watched: row.watched ?? false,
       ownedFormats: row.ownedFormats ?? [],
       digitalQuality: row.digitalQuality,
+      pinned: row.pinnedAt !== null,
     },
   }));
 }
@@ -280,9 +298,11 @@ export async function getListOnlyFilms(userId: number | null): Promise<ListOnlyE
       letterboxdUrl: films.letterboxdUrl,
       letterboxdUnverified: films.letterboxdUnverified,
       appleTvUrl: films.appleTvUrl,
+      posterUrl: films.posterUrl,
       watched: filmStatus.watched,
       ownedFormats: filmStatus.ownedFormats,
       digitalQuality: filmStatus.digitalQuality,
+      pinnedAt: filmStatus.pinnedAt,
     })
     .from(films)
     .leftJoin(filmStatus, statusJoinCondition)
@@ -307,13 +327,76 @@ export async function getListOnlyFilms(userId: number | null): Promise<ListOnlyE
       letterboxdUrl: row.letterboxdUrl,
       letterboxdUnverified: row.letterboxdUnverified,
       appleTvUrl: row.appleTvUrl,
+      posterUrl: row.posterUrl,
     },
     status: {
       watched: row.watched ?? false,
       ownedFormats: row.ownedFormats ?? [],
       digitalQuality: row.digitalQuality,
+      pinned: row.pinnedAt !== null,
     },
   }));
+}
+
+// Every film in the catalogue, trimmed to what the quick search shows and
+// matches on (no posters: results are text-only), with the user's
+// watched/pinned state for its result buttons.
+export type SearchFilm = {
+  id: number;
+  title: string;
+  originalTitle: string | null;
+  releaseYear: number;
+  directors: string[];
+  watched: boolean;
+  pinned: boolean;
+};
+
+export async function getSearchFilms(userId: number | null): Promise<SearchFilm[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, films.id), eq(filmStatus.userId, userId));
+  const rows = await db
+    .select({
+      id: films.id,
+      title: films.title,
+      originalTitle: films.originalTitle,
+      releaseYear: films.releaseYear,
+      directors: films.directors,
+      watched: filmStatus.watched,
+      pinnedAt: filmStatus.pinnedAt,
+    })
+    .from(films)
+    .leftJoin(filmStatus, statusJoinCondition)
+    .orderBy(films.title);
+  return rows.map(({ pinnedAt, watched, ...film }) => ({ ...film, watched: watched ?? false, pinned: pinnedAt !== null }));
+}
+
+// Poster URLs for just these films, keyed by film id.
+export async function getFilmPosters(filmIds: number[]): Promise<Record<number, string | null>> {
+  if (filmIds.length === 0) return {};
+  const rows = await db
+    .select({ id: films.id, posterUrl: films.posterUrl })
+    .from(films)
+    .where(inArray(films.id, filmIds));
+  return Object.fromEntries(rows.map((r) => [r.id, r.posterUrl]));
+}
+
+// Per award year and award, whether the user has watched every winner — the
+// Awards tab's year picker. Logged-out visitors get `watched: false`.
+export type AwardProgress = { year: number; awardSlug: string; watched: boolean };
+
+export async function getAwardProgress(userId: number | null): Promise<AwardProgress[]> {
+  const statusJoinCondition =
+    userId === null ? sql`false` : and(eq(filmStatus.filmId, awardWins.filmId), eq(filmStatus.userId, userId));
+  return db
+    .select({
+      year: awardWins.year,
+      awardSlug: awards.slug,
+      watched: sql<boolean>`coalesce(bool_and(coalesce(${filmStatus.watched}, false)), false)`,
+    })
+    .from(awardWins)
+    .innerJoin(awards, eq(awards.id, awardWins.awardId))
+    .leftJoin(filmStatus, statusJoinCondition)
+    .groupBy(awardWins.year, awards.slug);
 }
 
 export async function getYearRange(): Promise<{ minYear: number; maxYear: number }> {

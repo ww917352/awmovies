@@ -135,8 +135,31 @@ refuses a film that's listed twice, an entry with some film data but no
 `directors`, and full data for a film that's in an award file (its data lives
 there). List-only films get a detail page and watched/owned status and appear
 on the Movies page under their release year, but have no award wins, so they
-don't appear on the year pages or count toward award progress. A film dropped
+don't appear on the Awards tab or count toward award progress. A film dropped
 from every list keeps its row (and users' status); the seed warns about it.
+
+### Posters and photos
+
+Posters (`posterUrl`) and director photos (`photoUrl`) are linked from
+Wikipedia, a few from TMDB; the CSP allows only those two image hosts. To
+keep requests to Wikipedia low (it rate-limits bursts with HTTP 429), posters
+only appear on the Awards year view, the Pinned tab and film pages. Movies,
+list pages and search results are text-only.
+
+Moving everything to TMDB, whose API terms allow non-commercial apps to
+display its images with attribution, is planned. `scripts/tmdb-images.ts`
+does the data side: it matches each film or director by its TMDB id on
+Wikidata (from `wikiUrl`), falling back to a title + year search, and rewrites
+only the `posterUrl`/`photoUrl` lines in the seed JSON. Its Wikidata lookup
+has been tried (596 of 604 images matched); the TMDB API half hasn't been run
+yet, so preview with `--dry-run` first:
+
+```bash
+TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts --dry-run   # preview
+TMDB_API_KEY="<v3 api key>" npx tsx scripts/tmdb-images.ts && npm run seed
+```
+
+The app would then need TMDB's attribution notice displayed.
 
 ## Adding users
 
@@ -213,6 +236,7 @@ src/db/seed/lists/lists.json  list definitions (see "Lists")
 src/db/seed/lists/*.json      films of fixed lists
 scripts/migrate.ts            applies drizzle/ migrations
 scripts/seed.ts               loads src/db/seed/*.json into the database
+scripts/tmdb-images.ts        points seed posters/photos at TMDB (see "Posters and photos")
 scripts/create-user.ts        adds a new user (see "Adding users")
 scripts/claim-owner.ts        one-time: attach pre-existing watched/owned data to a real user
 drizzle/                      generated SQL migrations

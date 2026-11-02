@@ -1,15 +1,9 @@
 import type { Config } from 'tailwindcss';
 
+// Colours, fonts and shadows live in globals.css (@theme) as CSS variables,
+// so they switch with the .dark class without needing dark: variants.
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
-  theme: {
-    extend: {
-      colors: {
-        surface: 'rgb(var(--color-surface) / <alpha-value>)',
-        card: 'rgb(var(--color-card) / <alpha-value>)',
-      },
-    },
-  },
   darkMode: 'class',
   plugins: [],
 };

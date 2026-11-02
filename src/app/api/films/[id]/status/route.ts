@@ -12,6 +12,7 @@ type StatusPatch = {
   ownedFormats?: string[];
   digitalQuality?: string | null;
   notes?: string | null;
+  pinned?: boolean;
 };
 
 // Real calendar-date check, not just shape — rejects e.g. "2024-02-30".
@@ -43,6 +44,8 @@ function isValidPatch(body: unknown): body is StatusPatch {
     if (b.notes !== null && (typeof b.notes !== 'string' || b.notes.length > NOTES_MAX_LENGTH)) return false;
   }
 
+  if ('pinned' in b && typeof b.pinned !== 'boolean') return false;
+
   return true;
 }
 
@@ -57,6 +60,8 @@ function pickPatch(body: StatusPatch) {
   if ('ownedFormats' in body) patch.ownedFormats = body.ownedFormats;
   if ('digitalQuality' in body) patch.digitalQuality = body.digitalQuality;
   if ('notes' in body) patch.notes = body.notes;
+  // Pinning stamps the time so the home page can show newest pins first.
+  if ('pinned' in body) patch.pinnedAt = body.pinned ? new Date() : null;
   return patch;
 }
 

@@ -1,43 +1,47 @@
 'use client';
 
 import { useMemo, useState, type ReactNode } from 'react';
-import type { ListMembership, ListOnlyEntry, WinEntry } from '@/db/queries';
-import FilmRow from './FilmRow';
+import type { ListMembership, WinEntry } from '@/db/queries';
+import FilmRow, { FilmRows } from './FilmRow';
 import WinLabel from './WinLabel';
 import ListLabel from './ListLabel';
-import QuickNav from './QuickNav';
 import { FilmWatchedProvider } from './FilmWatchedContext';
 import UnwatchedOnlyToggle from './UnwatchedOnlyToggle';
-import { AWARD_ABBR } from '@/lib/format';
+import Chip from './ui/Chip';
+import SearchField from './ui/SearchField';
+import StickyToolbar from './ui/StickyToolbar';
+import { joinLabels } from './ui/joinLabels';
 
-type Award = { slug: string; name: string };
+export type MovieFilm = Pick<
+  WinEntry['film'],
+  'id' | 'title' | 'originalTitle' | 'releaseYear' | 'directors' | 'mainCast' | 'studios'
+>;
+type MovieWin = Pick<WinEntry, 'year' | 'awardSlug' | 'awardName' | 'status'> & { film: MovieFilm };
+type MovieListOnly = Pick<WinEntry, 'status'> & { film: MovieFilm };
 
 // One row on the page: an award win, or a film that's only in lists — which
 // has no award year, so it's placed and filtered by its release year and
 // labelled "Released" to tell the two apart.
-type Row = Pick<WinEntry, 'film' | 'status'> & {
+type Row = Pick<MovieWin, 'film' | 'status'> & {
   key: string;
   year: number;
   awardSlug: string | null;
   label: ReactNode;
 };
 
-const DEFAULT_YEAR = 2000;
 
 export default function MovieList({
   wins,
   listOnlyFilms,
   listMemberships,
   awards,
-  pinnedYear,
   user,
   lockWatched,
 }: {
-  wins: WinEntry[];
-  listOnlyFilms: ListOnlyEntry[];
+  wins: MovieWin[];
+  listOnlyFilms: MovieListOnly[];
   listMemberships: Record<number, ListMembership[]>;
-  awards: Award[];
-  pinnedYear: number | null;
+  awards: { slug: string; chip: string }[];
   user: { username: string } | null;
   lockWatched: boolean;
 }) {
@@ -56,12 +60,10 @@ export default function MovieList({
       status: w.status,
       year: w.year,
       awardSlug: w.awardSlug,
-      label: (
-        <span className="flex flex-wrap gap-x-3">
-          <WinLabel year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />
-          {listLabels(w.film.id)}
-        </span>
-      ),
+      label: joinLabels([
+        <WinLabel key="win" year={w.year} awardSlug={w.awardSlug} awardName={w.awardName} />,
+        ...listLabels(w.film.id),
+      ]),
     }));
     const listRows: Row[] = listOnlyFilms.map((f) => ({
       key: `list-${f.film.id}`,
@@ -69,22 +71,19 @@ export default function MovieList({
       status: f.status,
       year: f.film.releaseYear,
       awardSlug: null,
-      label: (
-        <span className="flex flex-wrap gap-x-3">
-          <span className="text-neutral-700 dark:text-neutral-300 font-semibold">Released {f.film.releaseYear}</span>
-          {listLabels(f.film.id)}
-        </span>
-      ),
+      label: joinLabels([
+        <span key="released" className="font-semibold text-tint">
+          Released {f.film.releaseYear}
+        </span>,
+        ...listLabels(f.film.id),
+      ]),
     }));
     // Stable, so within a year the award wins keep their award/title order
     // and list-only films follow them.
     return [...winRows, ...listRows].sort((a, b) => a.year - b.year);
   }, [wins, listOnlyFilms, listMemberships]);
 
-  const years = useMemo(() => {
-    const set = new Set(rows.map((r) => r.year));
-    return Array.from(set).sort((a, b) => b - a);
-  }, [rows]);
+  const years = useMemo(() => Array.from(new Set(rows.map((r) => r.year))).sort((a, b) => b - a), [rows]);
 
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -93,13 +92,7 @@ export default function MovieList({
       if (year !== 'all' && w.year !== Number(year)) return false;
       if (hiddenIds?.has(w.film.id)) return false;
       if (query) {
-        const haystack = [
-          w.film.title,
-          w.film.originalTitle,
-          ...w.film.directors,
-          ...w.film.mainCast,
-          ...w.film.studios,
-        ]
+        const haystack = [w.film.title, w.film.originalTitle, ...w.film.directors, ...w.film.mainCast, ...w.film.studios]
           .filter(Boolean)
           .join(' ')
           .toLowerCase();
@@ -112,81 +105,65 @@ export default function MovieList({
   // Rows are award wins, so a film that won twice has two rows.
   const filmCount = useMemo(() => new Set(filtered.map((r) => r.film.id)).size, [filtered]);
 
-  const initialWatchedMap = useMemo(
-    () => Object.fromEntries(rows.map((r) => [r.film.id, r.status.watched])),
-    [rows]
-  );
+  const initialWatchedMap = useMemo(() => Object.fromEntries(rows.map((r) => [r.film.id, r.status.watched])), [rows]);
+  const initialPinnedMap = useMemo(() => Object.fromEntries(rows.map((r) => [r.film.id, r.status.pinned])), [rows]);
 
   return (
-    <FilmWatchedProvider initial={initialWatchedMap} lockWatched={lockWatched}>
-    <QuickNav
-      className="fixed inset-x-0 top-0 z-20"
-      targetYear={pinnedYear ?? DEFAULT_YEAR}
-      isPinned={pinnedYear !== null}
-      yearHref={`/?year=${pinnedYear ?? DEFAULT_YEAR}`}
-      user={user}
-    />
-    <main className="mx-auto max-w-3xl px-4 pt-20 pb-6">
-      <h1 className="text-2xl font-bold mb-4">All Movies</h1>
+    <FilmWatchedProvider initial={initialWatchedMap} initialPinned={initialPinnedMap} lockWatched={lockWatched}>
+      <div className="page">
+        <h1 className="large-title mb-4">Movies</h1>
 
-      <div className="flex flex-wrap gap-3 mb-4 sticky top-12 bg-surface/95 backdrop-blur py-2 -mx-4 px-4 z-10 border-b border-neutral-200 dark:border-neutral-800">
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search title, director, cast…"
-          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base w-full"
-        />
+        <StickyToolbar>
+          <SearchField value={search} onChange={setSearch} placeholder="Search title, director, cast" />
+          <div className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+            <Chip on={awardSlug === 'all'} onClick={() => setAwardSlug('all')}>
+              All
+            </Chip>
+            {awards.map((a) => (
+              <Chip key={a.slug} on={awardSlug === a.slug} onClick={() => setAwardSlug(awardSlug === a.slug ? 'all' : a.slug)}>
+                {a.chip}
+              </Chip>
+            ))}
+            <span className="mx-1 h-5 w-px shrink-0 bg-sep" />
+            <label className="relative shrink-0">
+              <select
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                aria-label="Year"
+                className={`appearance-none rounded-full py-1.5 pl-3.5 pr-7 text-[16px] font-medium sm:text-[14px] ${
+                  year === 'all' ? 'bg-fill text-label' : 'bg-label text-bg'
+                }`}
+              >
+                <option value="all">Any year</option>
+                {years.map((y) => (
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+              <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[10px] opacity-60">▼</span>
+            </label>
+            {user && <UnwatchedOnlyToggle onChange={setHiddenIds} />}
+          </div>
+        </StickyToolbar>
 
-        <select
-          value={awardSlug}
-          onChange={(e) => setAwardSlug(e.target.value)}
-          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base"
-        >
-          <option value="all">All movies</option>
-          {awards.map((a) => (
-            <option key={a.slug} value={a.slug}>
-              {AWARD_ABBR[a.slug] ?? a.name}
-            </option>
-          ))}
-        </select>
+        <div className="mb-2 px-1">
+          <p className="text-[13px] text-label-2">
+            {filmCount} film{filmCount === 1 ? '' : 's'}
+            {filtered.length !== filmCount && ` · ${filtered.length} awards`}
+          </p>
+        </div>
 
-        <select
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          className="bg-card border border-neutral-300 dark:border-neutral-700 rounded px-2 py-1.5 text-base"
-        >
-          <option value="all">All years</option>
-          {years.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
-
-        <UnwatchedOnlyToggle onChange={setHiddenIds} />
+        {filtered.length === 0 ? (
+          <p className="py-12 text-center text-label-2">No films match these filters.</p>
+        ) : (
+          <FilmRows>
+            {filtered.map((r) => (
+              <FilmRow key={r.key} film={r.film} status={r.status} label={r.label} isLoggedIn={!!user} backHref="/movies" />
+            ))}
+          </FilmRows>
+        )}
       </div>
-
-      <p className="text-sm text-neutral-500 mb-3">
-        {filmCount} film{filmCount === 1 ? '' : 's'}
-        {filtered.length !== filmCount && ` · ${filtered.length} entries`}
-      </p>
-
-      {filtered.length === 0 ? (
-        <p className="text-neutral-500 text-center py-8">No films match these filters.</p>
-      ) : (
-        filtered.map((r) => (
-          <FilmRow
-            key={r.key}
-            film={r.film}
-            status={r.status}
-            label={r.label}
-            isLoggedIn={!!user}
-            backHref="/movies"
-          />
-        ))
-      )}
-    </main>
     </FilmWatchedProvider>
   );
 }

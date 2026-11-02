@@ -22,7 +22,8 @@ const ALLOWED_WHILE_PENDING = [
   '/api/auth/change-password',
 ];
 
-// Poster images are the only third-party content the app embeds.
+// Posters and director photos (from Wikipedia or TMDB, see Poster.tsx) are
+// the only third-party content the app embeds.
 const IMG_SRC = ["'self'", 'data:', 'https://upload.wikimedia.org', 'https://image.tmdb.org'];
 
 function generateNonce(): string {

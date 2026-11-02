@@ -19,7 +19,7 @@ export default function LogoutButton() {
     <button
       onClick={logout}
       disabled={isPending}
-      className={`rounded-full border border-neutral-300 dark:border-neutral-700 bg-card/90 px-4 py-2 text-sm font-semibold hover:border-neutral-400 dark:hover:border-neutral-500 ${
+      className={`w-full rounded-2xl bg-card px-4 py-3 text-[17px] text-red-600 hover:bg-card-2 dark:text-red-400 ${
         isPending ? 'opacity-60' : ''
       }`}
     >

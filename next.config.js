@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  async redirects() {
+    // The old year index; the Awards tab's year picker replaced it.
+    return [{ source: '/years', destination: '/awards', permanent: true }];
+  },
   async headers() {
     // Content-Security-Policy is set per-request in proxy.ts instead
     // (it needs a fresh nonce each time); everything here is static.

@@ -1,54 +1,45 @@
 'use client';
 
-import { useTransition } from 'react';
-import { useFilmWatched, useLockWatched } from './FilmWatchedContext';
+import { useFilmWatched, useLockWatched, useOfferUnpin, useStatusSaver } from './FilmWatchedContext';
+import { CheckIcon } from './ui/icons';
 
+// A round check button, like Reminders. Marking a pinned film watched offers
+// to unpin it (see FilmWatchedProvider).
 export default function WatchedToggle({
   filmId,
+  title,
   initialWatched,
 }: {
   filmId: number;
+  title: string;
   initialWatched: boolean;
 }) {
   const [watched, setWatched] = useFilmWatched(filmId, initialWatched);
-  const [isPending, startTransition] = useTransition();
+  const offerUnpin = useOfferUnpin();
+  const [save, isPending] = useStatusSaver(filmId, initialWatched);
   // With the lock setting on, a watched film can't be unticked here — only
   // from its film page.
   const locked = useLockWatched() && watched;
 
   function toggle() {
     if (locked) return;
-    const previous = watched;
     const next = !watched;
-    setWatched(next);
-    startTransition(async () => {
-      const res = await fetch(`/api/films/${filmId}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ watched: next }),
-      }).catch(() => null);
-      // Roll back the optimistic update if the write didn't actually land
-      // (e.g. the session expired) — otherwise the checkbox shows saved
-      // when it wasn't.
-      if (!res || !res.ok) setWatched(previous);
-    });
+    save(next, { watched: next }, setWatched).then((ok) => ok && next && offerUnpin(filmId, title));
   }
 
   return (
-    <label
-      className={`flex items-center gap-1.5 text-xs select-none shrink-0 ${locked ? 'cursor-default' : 'cursor-pointer'} ${
-        isPending ? 'opacity-60' : ''
-      }`}
+    <button
+      type="button"
+      role="checkbox"
+      aria-checked={watched}
+      aria-label={locked ? 'Watched — change it on the film page' : `Watched: ${title}`}
       title={locked ? 'Watched — change it on the film page' : 'Watched'}
+      onClick={toggle}
+      className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-colors ${
+        watched ? 'bg-ok-bright text-white' : 'ring-[1.5px] ring-inset ring-label-3 text-transparent hover:ring-label-2'
+      } ${locked ? 'cursor-default' : ''} ${isPending ? 'opacity-60' : ''}`}
     >
-      <input
-        type="checkbox"
-        checked={watched}
-        onChange={toggle}
-        disabled={locked}
-        className="accent-emerald-500"
-      />
-      <span className="hidden sm:inline text-neutral-600 dark:text-neutral-400">Watched</span>
-    </label>
+      <CheckIcon className="w-[60%] h-[60%]" />
+    </button>
   );
 }

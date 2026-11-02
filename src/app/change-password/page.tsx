@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import ChangePasswordForm from '@/components/ChangePasswordForm';
+import AuthFrame from '@/components/AuthFrame';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,9 +10,9 @@ export default async function ChangePasswordPage() {
   if (!user) redirect('/login');
 
   return (
-    <main className="mx-auto max-w-sm px-4 py-16">
-      <h1 className="text-2xl font-bold mb-6">Change password</h1>
+    <AuthFrame>
+      <h1 className="title-2 mb-4 text-center">Change password</h1>
       <ChangePasswordForm forced={user.mustChangePassword} />
-    </main>
+    </AuthFrame>
   );
 }

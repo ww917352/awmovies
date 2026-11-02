@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   title: 'Palmarès',
   description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
+  appleWebApp: { capable: true, title: 'Palmarès', statusBarStyle: 'default' },
 };
 
 export const viewport: Viewport = {

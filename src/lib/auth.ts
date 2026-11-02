@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { randomBytes, createHash } from 'crypto';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
@@ -69,7 +70,8 @@ export async function destroySession(): Promise<void> {
   jar.delete(PWD_CHANGE_COOKIE);
 }
 
-export async function getCurrentUser(): Promise<SessionUser | null> {
+// Cached per request: the app layout and the page both ask for the user.
+export const getCurrentUser = cache(async (): Promise<SessionUser | null> => {
   const jar = await cookies();
   const token = jar.get(SESSION_COOKIE)?.value;
   if (!token) return null;
@@ -93,7 +95,7 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
   }
 
   return { id: row.userId, username: row.username, mustChangePassword: row.mustChangePassword };
-}
+});
 
 // Best-effort cleanup, called opportunistically from the login route rather
 // than on a schedule — this app has no background job runner.

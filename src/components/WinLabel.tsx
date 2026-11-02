@@ -1,7 +1,6 @@
-import { AWARD_ABBR } from '@/lib/format';
+import { awardLabel } from '@/lib/format';
 
-// One award win as shown in a FilmRow label, e.g. "1976 Oscar · Best Picture"
-// (the year is left out on the year page, where it's the section heading).
+// One award win as shown in a FilmRow label, e.g. "1976 · Oscar · Best Picture".
 export default function WinLabel({
   year,
   awardSlug,
@@ -13,10 +12,8 @@ export default function WinLabel({
 }) {
   return (
     <span>
-      {year !== undefined && (
-        <span className="text-neutral-700 dark:text-neutral-300 font-semibold mr-1.5">{year}</span>
-      )}
-      {AWARD_ABBR[awardSlug] ?? awardName}
+      {year !== undefined && <span className="font-semibold text-tint">{year} </span>}
+      {awardLabel(awardSlug, awardName)}
     </span>
   );
 }
