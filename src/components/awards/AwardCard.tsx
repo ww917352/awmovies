@@ -6,9 +6,8 @@ import { filmHref } from '@/lib/format';
 import type { WinEntry } from '@/db/queries';
 import type { AwardCardData } from './AwardYear';
 
-// One winning film of one award, or an empty card when the award wasn't
-// given that year. A shared prize gets a card per film, each tagged
-// "Shared". Poster beside the text on phones, above it on wider screens,
+// One winning film of one award. A shared prize gets a card per film, each
+// tagged "Shared". Poster beside the text on phones, above it on wider screens,
 // where the card spans two rows of the year grid as a subgrid so a header
 // that wraps (e.g. "International Feature") doesn't push its poster down.
 export default function AwardCard({
@@ -19,7 +18,7 @@ export default function AwardCard({
   isLoggedIn,
 }: {
   award: Pick<AwardCardData, 'org' | 'prize'>;
-  winner: WinEntry | null;
+  winner: WinEntry;
   shared: boolean;
   year: number;
   isLoggedIn: boolean;
@@ -35,38 +34,32 @@ export default function AwardCard({
         <h2 className="headline leading-tight">{award.prize}</h2>
       </header>
 
-      {winner === null ? (
-        <div className="grid flex-1 place-items-center rounded-xl border border-dashed border-sep px-3 py-4 text-center text-[13px] text-label-3 sm:aspect-[2/3] sm:flex-none sm:py-0">
-          Not awarded this year
-        </div>
-      ) : (
-        <article className="flex flex-1 gap-3 sm:flex-col sm:gap-2.5">
-          <Link href={filmHref(winner.film.id, back)} prefetch={false} className="shrink-0">
-            <Poster src={winner.film.posterUrl} title={winner.film.title} className="w-[72px] sm:w-full" rounded="rounded-lg" />
+      <article className="flex flex-1 gap-3 sm:flex-col sm:gap-2.5">
+        <Link href={filmHref(winner.film.id, back)} prefetch={false} className="shrink-0">
+          <Poster src={winner.film.posterUrl} title={winner.film.title} className="w-[72px] sm:w-full" rounded="rounded-lg" />
+        </Link>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <Link
+            href={filmHref(winner.film.id, back)}
+            prefetch={false}
+            className="text-[16px] font-semibold leading-snug hover:underline decoration-label-3 underline-offset-2"
+          >
+            {winner.film.title}
           </Link>
-          <div className="flex min-w-0 flex-1 flex-col">
-            <Link
-              href={filmHref(winner.film.id, back)}
-              prefetch={false}
-              className="text-[16px] font-semibold leading-snug hover:underline decoration-label-3 underline-offset-2"
-            >
-              {winner.film.title}
-            </Link>
-            {winner.film.originalTitle && winner.film.originalTitle !== winner.film.title && (
-              <p className="text-[13px] italic leading-snug text-label-2">{winner.film.originalTitle}</p>
-            )}
-            {winner.film.directors.length > 0 && (
-              <p className="mt-0.5 text-[13px] leading-snug text-label-2">{winner.film.directors.join(', ')}</p>
-            )}
-            {isLoggedIn && (
-              <div className="mt-auto flex items-center justify-between gap-2 pt-1.5 sm:pt-2">
-                <WatchedToggle filmId={winner.film.id} title={winner.film.title} initialWatched={winner.status.watched} />
-                <PinButton filmId={winner.film.id} initialPinned={winner.status.pinned} />
-              </div>
-            )}
-          </div>
-        </article>
-      )}
+          {winner.film.originalTitle && winner.film.originalTitle !== winner.film.title && (
+            <p className="text-[13px] italic leading-snug text-label-2">{winner.film.originalTitle}</p>
+          )}
+          {winner.film.directors.length > 0 && (
+            <p className="mt-0.5 text-[13px] leading-snug text-label-2">{winner.film.directors.join(', ')}</p>
+          )}
+          {isLoggedIn && (
+            <div className="mt-auto flex items-center justify-between gap-2 pt-1.5 sm:pt-2">
+              <WatchedToggle filmId={winner.film.id} title={winner.film.title} initialWatched={winner.status.watched} />
+              <PinButton filmId={winner.film.id} initialPinned={winner.status.pinned} />
+            </div>
+          )}
+        </div>
+      </article>
     </section>
   );
 }

@@ -11,7 +11,7 @@ import { filmHref } from '@/lib/format';
 import { CheckIcon, ChevronRight } from '../ui/icons';
 import QuickSearch from './QuickSearch';
 
-export type YearSlot = { award: string; prize: string; filmId: number | null };
+export type YearSlot = { award: string; prize: string; filmId: number };
 
 export default function PinnedHome({
   searchFilms,
@@ -162,25 +162,23 @@ function PinnedYear({
             {watched} of {total} watched
           </span>
         </div>
-        <div className="grid grid-cols-5 gap-2 sm:gap-4">
+        <div
+          className="grid grid-cols-[repeat(var(--cols),minmax(0,1fr))] gap-2 sm:gap-4"
+          style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
+        >
           {slots.map((slot) => {
-            const film = slot.filmId === null ? null : filmsById.get(slot.filmId);
+            const film = filmsById.get(slot.filmId);
+            if (!film) return null;
             return (
-              <div key={slot.award} className="min-w-0">
-                {film ? (
-                  <Link href={filmHref(film.id, '/')} prefetch={false} className="relative block" title={film.title}>
-                    <Poster src={film.posterUrl} title={film.title} className="w-full" rounded="rounded-md" />
-                    {watchedMap[film.id] && (
-                      <span className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-ok-bright text-white shadow">
-                        <CheckIcon className="w-3 h-3" />
-                      </span>
-                    )}
-                  </Link>
-                ) : (
-                  <div className="grid aspect-[2/3] place-items-center rounded-md border border-dashed border-sep text-center text-[10px] text-label-3">
-                    —
-                  </div>
-                )}
+              <div key={`${slot.award}-${film.id}`} className="min-w-0">
+                <Link href={filmHref(film.id, '/')} prefetch={false} className="relative block" title={film.title}>
+                  <Poster src={film.posterUrl} title={film.title} className="w-full" rounded="rounded-md" />
+                  {watchedMap[film.id] && (
+                    <span className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-ok-bright text-white shadow">
+                      <CheckIcon className="w-3 h-3" />
+                    </span>
+                  )}
+                </Link>
                 <p className="mt-1.5 truncate text-center text-[11px] font-medium text-label-2" title={slot.prize}>
                   {slot.award}
                 </p>

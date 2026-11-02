@@ -22,15 +22,16 @@ export default async function PinnedPage({ searchParams }: { searchParams: Promi
     getAllWins(userId),
   ]);
 
-  // The pinned year's five awards, in Awards-tab order; a shared prize shows
-  // its first winner.
+  // The pinned year's winners, in Awards-tab order, one per film; awards not
+  // given that year are left out, as on the Awards tab.
   const yearSlots: YearSlot[] | null =
     pinnedYear === null
       ? null
-      : AWARDS.map((award) => {
-          const win = wins.find((w) => w.year === pinnedYear && w.awardSlug === award.slug);
-          return { award: award.short, prize: award.prize, filmId: win?.film.id ?? null };
-        });
+      : AWARDS.flatMap((award) =>
+          wins
+            .filter((w) => w.year === pinnedYear && w.awardSlug === award.slug)
+            .map((w) => ({ award: award.short, prize: award.prize, filmId: w.film.id }))
+        );
 
   const yearFilmIds = pinnedYear === null ? [] : wins.filter((w) => w.year === pinnedYear).map((w) => w.film.id);
 

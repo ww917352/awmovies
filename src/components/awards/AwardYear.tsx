@@ -40,12 +40,11 @@ export default function AwardYear({
   const next = year < maxYear ? year + 1 : null;
 
   const winners = useMemo(() => cards.flatMap((c) => c.winners), [cards]);
+  // One card per winning film; awards not given this year get none.
   const slots = useMemo(
     () =>
-      cards.flatMap((award): { award: AwardCardData; winner: WinEntry | null; shared: boolean }[] =>
-        award.winners.length === 0
-          ? [{ award, winner: null, shared: false }]
-          : award.winners.map((winner) => ({ award, winner, shared: award.winners.length > 1 }))
+      cards.flatMap((award) =>
+        award.winners.map((winner) => ({ award, winner, shared: award.winners.length > 1 }))
       ),
     [cards]
   );
@@ -158,22 +157,27 @@ export default function AwardYear({
           </div>
         </header>
 
-        {/* One card per film (a shared prize gives one per winner), all on one row on wide screens. */}
-        <div
-          className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
-          style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
-        >
-          {slots.map((slot) => (
-            <AwardCard
-              key={`${slot.award.slug}-${slot.winner?.film.id ?? 'none'}`}
-              award={slot.award}
-              winner={slot.winner}
-              shared={slot.shared}
-              year={year}
-              isLoggedIn={isLoggedIn}
-            />
-          ))}
-        </div>
+        {slots.length === 0 ? (
+          <p className="rounded-2xl bg-card px-5 py-10 text-center text-label-2">No awards recorded for {year}.</p>
+        ) : (
+          // One card per film (a shared prize gives one per winner), all on one
+          // row on wide screens; at least five columns so cards keep their size.
+          <div
+            className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+            style={{ '--cols': Math.max(5, slots.length) } as React.CSSProperties}
+          >
+            {slots.map((slot) => (
+              <AwardCard
+                key={`${slot.award.slug}-${slot.winner.film.id}`}
+                award={slot.award}
+                winner={slot.winner}
+                shared={slot.shared}
+                year={year}
+                isLoggedIn={isLoggedIn}
+              />
+            ))}
+          </div>
+        )}
 
         <p className="mt-8 hidden text-center caption sm:block">Use ← → to step through the years</p>
       </div>
