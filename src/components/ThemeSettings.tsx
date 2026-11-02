@@ -7,8 +7,8 @@ type Override = 'light' | 'dark' | null;
 
 const OPTIONS: { value: Override; label: string }[] = [
   { value: null, label: 'Automatic' },
-  { value: 'light', label: 'Always light' },
-  { value: 'dark', label: 'Always dark' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
 ];
 
 export default function ThemeSettings() {
@@ -31,18 +31,20 @@ export default function ThemeSettings() {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex rounded-lg bg-fill p-0.5" role="radiogroup" aria-label="Theme">
       {OPTIONS.map((opt) => (
-        <label key={opt.label} className="flex items-center gap-2 text-sm cursor-pointer select-none">
-          <input
-            type="radio"
-            name="theme"
-            checked={override === opt.value}
-            onChange={() => apply(opt.value)}
-            className="accent-emerald-500"
-          />
+        <button
+          key={opt.label}
+          type="button"
+          role="radio"
+          aria-checked={override === opt.value}
+          onClick={() => apply(opt.value)}
+          className={`flex-1 rounded-md px-3 py-1.5 text-[14px] font-medium ${
+            override === opt.value ? 'bg-card shadow-card' : 'text-label-2'
+          }`}
+        >
           {opt.label}
-        </label>
+        </button>
       ))}
     </div>
   );

@@ -48,7 +48,7 @@ export default function ChangePasswordForm({ forced }: { forced: boolean }) {
   return (
     <form onSubmit={submit} className="space-y-4">
       {forced && (
-        <p className="text-sm text-amber-800 bg-amber-100 border border-amber-300 dark:text-amber-300 dark:bg-amber-950 dark:border-amber-800 rounded px-3 py-2">
+        <p className="rounded-xl bg-tint-soft px-4 py-3 text-[14px] text-tint">
           You&apos;re using a temporary password. Choose a new one to continue.
         </p>
       )}
@@ -69,11 +69,11 @@ export default function ChangePasswordForm({ forced }: { forced: boolean }) {
           onChange={setNewPassword}
           autoComplete="new-password"
         />
-        <ul className="mt-2 space-y-0.5 text-xs">
+        <ul className="mt-2 space-y-0.5 px-1 text-[13px]">
           {PASSWORD_REQUIREMENTS.map((req) => {
             const met = req.test(newPassword);
             return (
-              <li key={req.id} className={met ? 'text-emerald-600 dark:text-emerald-400' : 'text-neutral-500'}>
+              <li key={req.id} className={met ? 'text-ok' : 'text-label-2'}>
                 {met ? '✓' : '·'} {req.label}
               </li>
             );
@@ -90,18 +90,18 @@ export default function ChangePasswordForm({ forced }: { forced: boolean }) {
           autoComplete="new-password"
         />
         {confirmPassword.length > 0 && (
-          <p className={`mt-1 text-xs ${passwordsMatch ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
+          <p className={`mt-1 px-1 text-[13px] ${passwordsMatch ? 'text-ok' : 'text-red-600 dark:text-red-400'}`}>
             {passwordsMatch ? '✓ Passwords match' : '✗ Passwords do not match'}
           </p>
         )}
       </div>
 
-      {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+      {error && <p className="text-[14px] text-red-600 dark:text-red-400 px-1">{error}</p>}
 
       <button
         type="submit"
         disabled={isPending || !isStrongEnough || !passwordsMatch}
-        className="w-full bg-sky-600 hover:bg-sky-500 disabled:opacity-60 text-white rounded px-3 py-2 text-sm font-semibold"
+        className="w-full rounded-xl bg-tint px-3 py-3 text-[17px] font-semibold text-white disabled:opacity-50 dark:text-black"
       >
         {isPending ? 'Saving…' : 'Change password'}
       </button>

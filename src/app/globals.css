@@ -1,25 +1,380 @@
 @import "tailwindcss";
 @config "../../tailwind.config.mts";
 
+/* ---- design tokens --------------------------------------------------------
+   Apple's system palette: grouped background, elevated cards, translucent
+   label/separator greys, one tint. Dark mode is the `.dark` class set by
+   ThemeScript/ThemeSync, so every utility below follows it without dark:. */
+
 :root {
-  --color-surface: 247 243 236;
-  --color-card: 255 255 255;
+  --bg: #f2f2f7;
+  --card: #ffffff;
+  --card-2: #f7f7fa;
+  --fill: rgb(120 120 128 / 0.12);
+  --fill-2: rgb(120 120 128 / 0.2);
+  --label: #000000;
+  --label-2: rgb(60 60 67 / 0.64);
+  --label-3: rgb(60 60 67 / 0.36);
+  --sep: rgb(60 60 67 / 0.16);
+  --tint: #9a6700;
+  --tint-soft: #fbf1d9;
+  --ok: #248a3d;
+  --ok-bright: #34c759;
+  --ok-soft: #e3f5e8;
+  --bar: rgb(249 249 251 / 0.82);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 16px rgb(0 0 0 / 0.06);
   color-scheme: light;
 }
 
 .dark {
-  --color-surface: 15 17 21;
-  --color-card: 23 26 33;
+  --bg: #000000;
+  --card: #1c1c1e;
+  --card-2: #2c2c2e;
+  --fill: rgb(118 118 128 / 0.24);
+  --fill-2: rgb(118 118 128 / 0.36);
+  --label: #ffffff;
+  --label-2: rgb(235 235 245 / 0.62);
+  --label-3: rgb(235 235 245 / 0.32);
+  --sep: rgb(84 84 88 / 0.5);
+  --tint: #f2c14e;
+  --tint-soft: #3a2f14;
+  --ok: #30d158;
+  --ok-bright: #30d158;
+  --ok-soft: #12301b;
+  --bar: rgb(22 22 24 / 0.8);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 16px rgb(0 0 0 / 0.3);
   color-scheme: dark;
 }
 
-body {
-  @apply bg-surface text-neutral-900 dark:text-neutral-100;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-fill: var(--fill);
+  --color-fill-2: var(--fill-2);
+  --color-label: var(--label);
+  --color-label-2: var(--label-2);
+  --color-label-3: var(--label-3);
+  --color-sep: var(--sep);
+  --color-tint: var(--tint);
+  --color-tint-soft: var(--tint-soft);
+  --color-ok: var(--ok);
+  --color-ok-bright: var(--ok-bright);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  --shadow-card: var(--shadow);
 }
 
-/* Lets YearScroll skip layout/paint for off-screen years — see
-   contentVisibility usage in YearScroll.tsx for why jumping to a specific
-   year uses scrollIntoView() rather than manual offsetTop math. */
-.year-scroll-container section[data-year] {
-  content-visibility: auto;
+/* ---- base (layered, so utilities can override it) ---------------------- */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-label font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.45;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* iOS zooms into any input under 16px. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  button {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--tint);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Large Title / Title 2 / Headline, after Apple's text styles. */
+  .large-title {
+    font-size: 34px;
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+  }
+  .title-2 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.016em;
+  }
+  .headline {
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+  }
+  .caption {
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--label-2);
+  }
+  /* Section header over a grouped list, e.g. "NOW WATCHING". */
+  .group-label {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--label-2);
+    padding: 0 16px 6px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---- shell ----------------------------------------------------------------
+   One nav, three layouts (same approach as Liner Notes):
+   ≥1100px  sidebar                (Mac, iPad landscape)
+   700–1099 translucent top bar    (iPad portrait, narrow windows)
+   <700     bottom tab bar         (iPhone)
+   --sticky-top is where a page's sticky toolbar should stop, i.e. just
+   under whatever nav sits at the top of the viewport.                      */
+
+:root {
+  --sticky-top: 0px;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.app-nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-right: 1px solid var(--sep);
+  background: var(--card-2);
+  z-index: 30;
+}
+.app-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.app-nav .brand svg {
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+.app-nav .tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.app-nav .tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--label);
+  font-size: 15px;
+  font-weight: 500;
+}
+.app-nav .tab svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--tint);
+}
+.app-nav .tab:hover {
+  background: var(--fill);
+}
+.app-nav .tab.active {
+  background: var(--fill-2);
+}
+
+main.app-main {
+  min-width: 0;
+}
+
+.page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 40px 80px;
+}
+.page.narrow {
+  max-width: 720px;
+}
+
+@media (max-width: 1099px) {
+  :root {
+    --sticky-top: 56px;
+  }
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+  .app-nav {
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    min-height: 56px;
+    border-right: none;
+    border-bottom: 1px solid var(--sep);
+    background: var(--bar);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  .app-nav .brand {
+    margin-right: auto;
+    padding: 0;
+    font-size: 19px;
+  }
+  .app-nav .brand svg {
+    width: 34px;
+    height: 34px;
+  }
+  .app-nav .tabs {
+    flex-direction: row;
+  }
+  .app-nav .tab {
+    padding: 6px 12px;
+    gap: 6px;
+    border-radius: 99px;
+  }
+  .app-nav .tab svg {
+    width: 20px;
+    height: 20px;
+  }
+  .page {
+    padding: 28px 28px 64px;
+  }
+}
+
+@media (max-width: 699px) {
+  :root {
+    --sticky-top: 0px;
+  }
+  body {
+    font-size: 16px;
+  }
+  .app-nav {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 0;
+    padding: 4px 4px max(4px, env(safe-area-inset-bottom));
+    border-bottom: none;
+    border-top: 1px solid var(--sep);
+    justify-content: space-around;
+  }
+  .app-nav .brand {
+    display: none;
+  }
+  .app-nav .tabs {
+    display: contents;
+  }
+  .app-nav .tab {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-height: 50px;
+    padding: 4px 0;
+    border-radius: 0;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--label-3);
+  }
+  .app-nav .tab svg {
+    width: 26px;
+    height: 26px;
+    color: inherit;
+  }
+  .app-nav .tab:hover,
+  .app-nav .tab.active {
+    background: none;
+  }
+  .app-nav .tab.active {
+    color: var(--tint);
+  }
+  main.app-main {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+  .page {
+    padding: max(16px, env(safe-area-inset-top)) 16px 32px;
+  }
+  .large-title {
+    font-size: 30px;
+  }
+}
+
+/* Only visible where the shell has no brand of its own (the phone tab bar). */
+.phone-only {
+  display: none;
+}
+@media (max-width: 699px) {
+  .phone-only {
+    display: flex;
+  }
+}
+
+/* Native <dialog> as a bottom sheet on phones, centred card elsewhere. */
+dialog.sheet {
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: var(--card);
+  color: var(--label);
+  box-shadow: 0 10px 40px rgb(0 0 0 / 0.3);
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(80dvh, 820px);
+}
+dialog.sheet.wide {
+  width: min(1040px, calc(100vw - 48px));
+}
+dialog.sheet::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+@media (max-width: 699px) {
+  dialog.sheet,
+  dialog.sheet.wide {
+    margin: auto 0 0;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 16px 16px 0 0;
+    max-height: 88dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

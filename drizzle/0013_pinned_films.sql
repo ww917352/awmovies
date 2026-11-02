@@ -1,0 +1,1 @@
+ALTER TABLE "film_status" ADD COLUMN "pinned_at" timestamp;

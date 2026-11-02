@@ -24,3 +24,18 @@ export function formatOwnedLabel(status: { ownedFormats: string[]; digitalQualit
     })
     .join(', ');
 }
+
+// The five awards in the order the Awards tab shows them, with the two-part
+// name an award card heads itself with and a short code for the year picker.
+export const AWARDS: { slug: string; org: string; prize: string; short: string }[] = [
+  { slug: 'oscar-best-picture', org: 'Academy Awards', prize: 'Best Picture', short: 'Picture' },
+  { slug: 'oscar-foreign-language', org: 'Academy Awards', prize: 'International Feature', short: 'Int’l' },
+  { slug: 'cannes-palme-dor', org: 'Cannes', prize: 'Palme d’Or', short: 'Palme' },
+  { slug: 'venice-golden-lion', org: 'Venice', prize: 'Golden Lion', short: 'Lion' },
+  { slug: 'berlin-golden-bear', org: 'Berlin', prize: 'Golden Bear', short: 'Bear' },
+];
+
+// A film page link that returns to `back` (see the film page's Back link).
+export function filmHref(filmId: number, back: string) {
+  return `/films/${filmId}?back=${encodeURIComponent(back)}`;
+}

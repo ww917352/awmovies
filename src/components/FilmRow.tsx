@@ -1,13 +1,19 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import type { WinEntry } from '@/db/queries';
+import Poster from './Poster';
+import PinButton from './PinButton';
 import WatchedToggle from './WatchedToggle';
-import { formatOwnedLabel } from '@/lib/format';
+import { filmHref, formatOwnedLabel } from '@/lib/format';
 
-// `label` is the small caps line above the title — the award (and year) on
-// the year/movie pages, the film's wins on a list. With `returnToRow`, the
-// film page's back link lands on this row instead of the top of the page;
-// only use it where a film appears once, since the row id must be unique.
+type Film = Pick<WinEntry['film'], 'id' | 'title' | 'originalTitle' | 'releaseYear' | 'directors' | 'posterUrl'>;
+type Status = Pick<WinEntry['status'], 'watched' | 'ownedFormats' | 'digitalQuality' | 'pinned'>;
+
+// One film in a grouped list (put rows inside a <FilmRows>). `label` is the
+// small line above the title — the award and year, a list rank. With
+// `returnToRow`, the film page's back link lands on this row instead of the
+// top of the page; only use it where a film appears once, since the row id
+// must be unique.
 export default function FilmRow({
   film,
   status,
@@ -16,9 +22,9 @@ export default function FilmRow({
   backHref = '/',
   returnToRow = false,
 }: {
-  film: WinEntry['film'];
-  status: WinEntry['status'];
-  label: ReactNode;
+  film: Film;
+  status: Status;
+  label?: ReactNode;
   isLoggedIn?: boolean;
   backHref?: string;
   returnToRow?: boolean;
@@ -26,61 +32,46 @@ export default function FilmRow({
   const ownedLabel = formatOwnedLabel(status);
   const rowId = `film-${film.id}`;
   const back = returnToRow ? `${backHref}#${rowId}` : backHref;
-  const filmHref = `/films/${film.id}?back=${encodeURIComponent(back)}`;
 
   return (
     <div
       id={returnToRow ? rowId : undefined}
-      className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card/40 px-3 py-2.5 mb-2.5 scroll-mt-36"
+      className="flex items-center gap-3 px-3 py-2.5 sm:px-4"
+      style={{ scrollMarginTop: 'calc(var(--sticky-top) + 120px)' }}
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-[11px] uppercase tracking-wide text-neutral-500">{label}</span>
-        {isLoggedIn && <WatchedToggle filmId={film.id} initialWatched={status.watched} />}
-      </div>
-
-      <Link href={filmHref} className="block leading-snug mt-1 hover:underline">
-        <span className="text-lg font-semibold">{film.title}</span>
-        {film.originalTitle && film.originalTitle !== film.title && (
-          <span className="text-sm text-neutral-500 italic ml-1.5">({film.originalTitle})</span>
-        )}
-      </Link>
-
-      {film.directors.length > 0 && (
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">{film.directors.join(', ')}</p>
-      )}
-
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
-        {film.wikiUrl && (
-          <a href={film.wikiUrl} target="_blank" rel="noreferrer" className="text-xs text-sky-600 dark:text-sky-400 hover:underline">
-            Wiki
-          </a>
-        )}
-        {film.letterboxdUrl && (
-          <a
-            href={film.letterboxdUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs text-emerald-600 dark:text-emerald-400 hover:underline"
-          >
-            Letterboxd
-          </a>
-        )}
-        {film.appleTvUrl && (
-          <a
-            href={film.appleTvUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs text-fuchsia-600 dark:text-fuchsia-400 hover:underline"
-          >
-            Apple TV
-          </a>
-        )}
-        {ownedLabel && (
-          <span className="text-[11px] px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300 dark:bg-sky-950 dark:text-sky-300 dark:border-sky-800">
-            {ownedLabel}
+      <Link href={filmHref(film.id, back)} prefetch={false} className="group flex min-w-0 flex-1 items-center gap-3">
+        <Poster src={film.posterUrl} title={film.title} className="w-12 sm:w-14" rounded="rounded" />
+        <span className="min-w-0 flex-1">
+          {label && <span className="block truncate text-[12px] font-medium text-label-2">{label}</span>}
+          <span className="block truncate headline group-hover:underline decoration-label-3 underline-offset-2">
+            {film.title}
           </span>
-        )}
-      </div>
+          {film.originalTitle && film.originalTitle !== film.title && (
+            <span className="block truncate text-[13px] italic text-label-2">{film.originalTitle}</span>
+          )}
+          <span className="block truncate text-[13px] text-label-2">
+            {[film.directors.join(', '), film.releaseYear].filter(Boolean).join(' · ')}
+          </span>
+          {ownedLabel && (
+            <span className="mt-1 inline-block rounded-full bg-fill px-2 py-px text-[11px] font-medium text-label-2">
+              {ownedLabel}
+            </span>
+          )}
+        </span>
+      </Link>
+      {isLoggedIn && (
+        <span className="flex shrink-0 items-center gap-1">
+          <PinButton filmId={film.id} initialPinned={status.pinned} />
+          <WatchedToggle filmId={film.id} title={film.title} initialWatched={status.watched} />
+        </span>
+      )}
     </div>
+  );
+}
+
+// The inset-grouped card a run of FilmRows sits in.
+export function FilmRows({ children, className = '' }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`overflow-hidden rounded-2xl bg-card divide-y divide-sep ${className}`}>{children}</div>
   );
 }

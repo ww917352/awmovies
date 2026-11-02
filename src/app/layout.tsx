@@ -7,6 +7,7 @@ import ThemeSync from '@/components/ThemeSync';
 export const metadata: Metadata = {
   title: 'Palmarès',
   description: 'A catalog of Oscar, Cannes, Venice and Berlin top award winners.',
+  appleWebApp: { capable: true, title: 'Palmarès', statusBarStyle: 'default' },
 };
 
 export const viewport: Viewport = {

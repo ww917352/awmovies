@@ -21,15 +21,13 @@ export default function LockWatchedSetting({ initialLockWatched }: { initialLock
   }
 
   return (
-    <div>
-      <label className={`flex items-center gap-2 text-sm cursor-pointer select-none ${isPending ? 'opacity-60' : ''}`}>
-        <input type="checkbox" checked={lockWatched} onChange={toggle} className="accent-emerald-500" />
-        Keep watched films watched
-      </label>
-      <p className="text-sm text-neutral-500 mt-1 ml-6">
-        Once a film is marked watched, it can&rsquo;t be unticked from the year, movie or list pages — only from the
-        film&rsquo;s own page.
-      </p>
-    </div>
+    <label className={`flex cursor-pointer items-center justify-between gap-4 select-none ${isPending ? 'opacity-60' : ''}`}>
+      <span className="text-[17px]">Keep watched films watched</span>
+      <input type="checkbox" checked={lockWatched} onChange={toggle} className="peer sr-only" role="switch" />
+      <span
+        aria-hidden
+        className="relative h-[31px] w-[51px] shrink-0 rounded-full bg-fill-2 transition-colors peer-checked:bg-ok-bright peer-focus-visible:ring-2 peer-focus-visible:ring-tint after:absolute after:left-[2px] after:top-[2px] after:h-[27px] after:w-[27px] after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"
+      />
+    </label>
   );
 }

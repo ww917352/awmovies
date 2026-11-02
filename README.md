@@ -135,7 +135,7 @@ refuses a film that's listed twice, an entry with some film data but no
 `directors`, and full data for a film that's in an award file (its data lives
 there). List-only films get a detail page and watched/owned status and appear
 on the Movies page under their release year, but have no award wins, so they
-don't appear on the year pages or count toward award progress. A film dropped
+don't appear on the Awards tab or count toward award progress. A film dropped
 from every list keeps its row (and users' status); the seed warns about it.
 
 ## Adding users

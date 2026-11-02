@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import LoginForm from '@/components/LoginForm';
+import AuthFrame from '@/components/AuthFrame';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,12 +11,22 @@ export default async function LoginPage() {
   if (user) redirect(user.mustChangePassword ? '/change-password' : '/');
 
   return (
-    <main className="mx-auto max-w-sm px-4 py-16">
-      <h1 className="text-2xl font-bold mb-6">Log in</h1>
+    <AuthFrame>
+      <div className="mb-4 rounded-2xl bg-tint-soft px-4 py-3 text-center">
+        <p className="text-[15px] font-semibold text-tint">Invite only</p>
+        <p className="mt-0.5 text-[14px] text-label-2">
+          Accounts are by invitation; there’s no sign-up. If you’ve been invited, log in with the username and password
+          you were given.
+        </p>
+      </div>
       <LoginForm />
-      <p className="text-sm text-neutral-500 mt-6">
-        You can browse the catalog without logging in — logging in lets you track watched/owned status.
+      <p className="mt-6 text-center text-[15px] text-label-2">
+        No invitation?{' '}
+        <Link href="/" className="text-tint hover:underline">
+          Browse the catalog
+        </Link>{' '}
+        without logging in.
       </p>
-    </main>
+    </AuthFrame>
   );
 }

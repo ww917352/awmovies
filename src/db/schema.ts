@@ -128,6 +128,9 @@ export const filmStatus = pgTable(
     ownedFormats: text('owned_formats').array().notNull().default([]),
     digitalQuality: varchar('digital_quality', { length: 8 }),
     notes: text('notes'),
+    // Set while the film is pinned to the user's "watching" shelf on the
+    // home page; null otherwise. Newest pins are shown first.
+    pinnedAt: timestamp('pinned_at'),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.filmId] }),
