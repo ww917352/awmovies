@@ -149,7 +149,7 @@ export default function AwardYear({
           </div>
         </header>
 
-        <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
           {cards.map((card) => (
             <AwardCard key={card.slug} card={card} year={year} isLoggedIn={isLoggedIn} />
           ))}
